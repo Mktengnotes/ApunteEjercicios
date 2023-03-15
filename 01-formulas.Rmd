@@ -1,4 +1,4 @@
-# Fórmulas útiles 
+# Formulas utiles 
 
 - Distribución *Poisson*: 
 

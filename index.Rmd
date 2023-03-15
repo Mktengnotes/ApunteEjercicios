@@ -1,6 +1,6 @@
 --- 
 title: "Apunte Problemas Resueltos"
-author: "Marcel Goic - Jocelyn Linares"
+author: "Marcel Goic"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -11,7 +11,9 @@ description: "Apunte de ejercicios realizados durante el curso de Marketing II"
 
 ---
 
-# Prólogo {-}
+Disclaimer: Algunos tildes fueron omitidos intencionalmente debido al formato de publicación
+
+# Prologo {-}
 
 Dentro del contexto de Marketing, estamos interesados ene estudiar el comportamiento de las personas, de modo de comprenderlo y finalmente, tomar decisiones estratégicas en función de los aprendizajes adquiridos. 
 
