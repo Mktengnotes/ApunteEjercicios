@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Modelos de Regresión | Apunte Problemas Resueltos</title>
+  <meta name="description" content="Apunte de ejercicios realizados durante el curso de Marketing II" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Modelos de Regresión | Apunte Problemas Resueltos" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Apunte de ejercicios realizados durante el curso de Marketing II" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Modelos de Regresión | Apunte Problemas Resueltos" />
+  
+  <meta name="twitter:description" content="Apunte de ejercicios realizados durante el curso de Marketing II" />
+  
+
+<meta name="author" content="Marcel Goic" />
+
+
+<meta name="date" content="2023-05-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="formulas-utiles.html"/>
+<link rel="next" href="modelos-probabilísticos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Apunte de Problemas Resueltos</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prologo</a></li>
+<li class="chapter" data-level="1" data-path="formulas-utiles.html"><a href="formulas-utiles.html"><i class="fa fa-check"></i><b>1</b> Formulas utiles</a></li>
+<li class="chapter" data-level="2" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html"><i class="fa fa-check"></i><b>2</b> Modelos de Regresión</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#introducción"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
+<li class="chapter" data-level="2.2" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#metodología"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
+<li class="chapter" data-level="2.3" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problemas"><i class="fa fa-check"></i><b>2.3</b> Problemas</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-1"><i class="fa fa-check"></i>Problema 1</a></li>
+<li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#solución"><i class="fa fa-check"></i>Solución</a></li>
+<li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-2"><i class="fa fa-check"></i>Problema 2</a></li>
+<li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#solución-1"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html"><i class="fa fa-check"></i><b>3</b> Modelos Probabilísticos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#introducción-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#metodología-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
+<li class="chapter" data-level="3.3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problemas-1"><i class="fa fa-check"></i><b>3.3</b> Problemas</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-1-1"><i class="fa fa-check"></i>Problema 1</a></li>
+<li class="chapter" data-level="3.3.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-2"><i class="fa fa-check"></i><b>3.3.1</b> Solución</a></li>
+<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-2-1"><i class="fa fa-check"></i>Problema 2</a></li>
+<li class="chapter" data-level="3.3.2" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-3"><i class="fa fa-check"></i><b>3.3.2</b> Solución</a></li>
+<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-3"><i class="fa fa-check"></i>Problema 3</a></li>
+<li class="chapter" data-level="3.3.3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-4"><i class="fa fa-check"></i><b>3.3.3</b> Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#introducción-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a></li>
+<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas-2"><i class="fa fa-check"></i><b>4.2</b> Problemas</a></li>
+<li class="chapter" data-level="4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#soluciones"><i class="fa fa-check"></i><b>4.3</b> Soluciones</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Apunte Problemas Resueltos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modelos-de-regresión" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Modelos de Regresión<a href="modelos-de-regresión.html#modelos-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introducción" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Introducción<a href="modelos-de-regresión.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En este capítulo se abarcarán problemas relacionados a modelos de regresión; es decir, aquellos modelos donde la variable dependiente <span class="math inline">\(y\)</span> se escribe como:</p>
+<p><span class="math display">\[
+y = f(\textbf{X})= \beta^´X + \varepsilon
+\]</span>
+donde <span class="math inline">\(\textbf{X}\)</span> corresponde a las variables explicativas, <span class="math inline">\(\beta^´\)</span> son los parámetros que buscamos para estudiar la influencia de las vairables explicativas en la variable dependiente; o mejor dicho, la influencia de las variaciones en las variables explicativas en las variaciones de la variable depndiente, y <span class="math inline">\(\varepsilon\)</span> es el error aleatorio.</p>
+<p>Los modelos de regresión tienen la ventaja de ser fáciles de implementar e interpretar, pero se debe tener cuidado al momento de construir, evaluar e interpretar estos modelos. A partir de los datos que uno observa, existen infinitos modelos de regresión para explicar una variable <span class="math inline">\(y\)</span>. Un buen modelo encuentra el balance entre su complejidad y poder explicativo.</p>
+</div>
+<div id="metodología" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Metodología<a href="modelos-de-regresión.html#metodología" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como mencionabámos anteriormente, para poder crear y utilizar los modelos de regresión que nos permite responder de la manera más informada las preguntas de</p>
+<ol style="list-style-type: decimal">
+<li><p>Definir el nivel de agregación de las variables apropiado para el problema en cuestión, ya sea una agregación temporal (datos diarios, semanales, mensuales,anuales) o lógicos (agregación por producto, categoría, marca, tienda), como también definir los índices de los parámetros del modelo</p></li>
+<li><p>Elegir las variables explicativas a considerar para el modelo, realizar las transformaciones según lo solicitado por el problema de gestión.</p></li>
+<li><p>Decidir si se incluirán interacciones entre las variables explicativas, como también si posee un efecto fijo (como también definir los índices de estos efectos).</p></li>
+<li><p>Evaluar los modelos a partir de distintas métricas, ya sean genéricas (<span class="math inline">\(R^2\)</span>, <span class="math inline">\(MAE\)</span>, <span class="math inline">\(MAPE\)</span>, <span class="math inline">\(RMS\)</span>) o de verosimilitud (<span class="math inline">\(\text{Likelihood Ratio}\)</span>, <span class="math inline">\(AIC\)</span>, <span class="math inline">\(BIC\)</span>), escogiendo aquél que, a partir de las métricas mencionadas, tengan una buena calibración y una alta capacidad de predicción.</p></li>
+<li><p>Interpretar los coeficientes más significativas de un modelo, para responder la pregunta de gestión original.</p></li>
+</ol>
+</div>
+<div id="problemas" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Problemas<a href="modelos-de-regresión.html#problemas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="problema-1" class="section level3 unnumbered hasAnchor">
+<h3>Problema 1<a href="modelos-de-regresión.html#problema-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un reconocido grupo empresarial que manefactura productos de aseo y limpieza de diversa índole le pide a usted evaluar el impacto de la pandemia en sus ventas a partir del registro obtenido por distintas tiendas distribuidas a lo largo del país.</p>
+<p>El foco del análisis se en la variable <span class="math inline">\(q_{ist}\)</span>, la cual corresponde al número de unidades vendidas del producto <span class="math inline">\(i\)</span> en la tienda <span class="math inline">\(s\)</span> en el día <span class="math inline">\(t\)</span>. Junto a las ventas se cuenta con un vector de características <span class="math inline">\(z_{t}\)</span> que describe cada día <span class="math inline">\(t\)</span>, entre ellas <span class="math inline">\(FDS_t\)</span> que indica si es un fin de semana y <span class="math inline">\(FER_t\)</span> que indica si el día fue feriado. También, se tiene el vector <span class="math inline">\(x_{ist}\)</span> con características que varían según producto, tienda y día, entre ellas <span class="math inline">\(PRECIO_{ist}\)</span> (precio del producto), <span class="math inline">\(QUAR_{st}\)</span> (si la comunda donde se encuentra la tienda estaba en caurentena o no).</p>
+<ol style="list-style-type: decimal">
+<li>Formule un modelo de regresión lineal que capture los siguientes factores:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Existe un efecto fijo por producto y por tienda, es decir, la linea base de las ventas es distinto para cada producto dependiendo de la tienda.</li>
+<li>Si un producto no se vende en una tienda en un día dado es probable que aya un quiebre de stock y si un día hay quiebre, es probable que el día siguiente el producto siga quebrado.</li>
+<li>El conjunto <span class="math inline">\(\mathcal{PN}\)</span> registra todos los productos de la firma que son de primera necesidad. Las cuarentenass no tienen efecto en os productos de primera necesidad.</li>
+<li>El efecto de las cuarentenas puede ser distinto para las ventas de un día de semana con respecto a un fin de semana.</li>
+<li>El nivel de progresión de las infecciones (<span class="math inline">\(InfMV_{st}\)</span>) afecta el nivel de ventas.</li>
+<li>El nivel de progresión de las infecciones afecta el nivel de ventas a través de cuñanto han variado las infecciones con respecto a una semana. Por ejemplo, si hoy hay 100 casos nuevos y hace una semana había solo 800, entonces ese aumento de 200 casos capturarían una fracción relevante de la relación entre la progresión de la pandemia y als ventas de los productos de la firma.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Considere los siguientes dos modelos, los cuales contienen variables mencionadas anteriormente, junto con otras que no vale la pena nombrar:</li>
+</ol>
+<table class=" lightable-classic lightable-striped" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+M1
+</th>
+<th style="text-align:center;">
+M2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+…
+</td>
+<td style="text-align:center;">
+…
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quar
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+-0.06 (0.02)
+</td>
+<td style="text-align:center;">
+-0.07 (0.01)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FER
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+0.11 (0.03)
+</td>
+<td style="text-align:center;">
+0.12 (0.02)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FDS
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+0.14 (0.02)
+</td>
+<td style="text-align:center;">
+0.13 (0.02)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quar x FER
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+0.07 (0.02)
+</td>
+<td style="text-align:center;">
+0.06 (0.03)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Quar x FDS
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+0.06 (0.03)
+</td>
+<td style="text-align:center;">
+0.08 (0.01)
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong> </strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Npar
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+23
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr grouplength="4">
+<td colspan="3" style="border-bottom: 1px solid;">
+<strong> </strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+R**2
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+0.63
+</td>
+<td style="text-align:center;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Adj. R**2
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+0.62
+</td>
+<td style="text-align:center;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+RMSE train
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+0.34
+</td>
+<td style="text-align:center;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+RMSE test
+</td>
+<td style="text-align:center;border-left:1px solid;border-right:1px solid;">
+0.34
+</td>
+<td style="text-align:center;">
+0.38
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\textbf{Tabla 1: } \text{Fragmento de parámetros y métricas de ajuste para dos modelos alternativos. Para los parámetros se  }\\
+\text{reporta el estimador de mínimos cuadrados y en paréntesis el error estándar. En la tabla, tanto } R^2 \text{ como } Adj. R^2 \\ \text{ han sido calculados sobre la base de entrenamiento.}
+\]</span></p>
+<p>Además de incluir el valor de los coeficientes, se entrega para cada modelo 4 métricas de ajuste. ¿Cuál de los dos modelos recomendaría usar para ver el efecto de las cuarentenas en las ventas?</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Inspeccionando los resultados del modelo de regresión lineal que consideró en la parte anterior, ¿cómo describiría el rol que han jugado las cuarentenas en las ventas de la firma?</li>
+</ol>
+</div>
+<div id="solución" class="section level3 unnumbered hasAnchor">
+<h3>Solución<a href="modelos-de-regresión.html#solución" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Agregamos progresivamente un término adicional a la regresión:</li>
+</ol>
+<p><span class="math display">\[
+q_{ist} = \alpha_{is}  \\
++ \beta_1 \cdot \textbf{1}_{[q_{ist-1}= 0]} \\
++ \beta_2 \cdot QUAR_{st} \times \textbf{1}_{[i \notin \mathcal{PN}]} \\
++ \beta_3 \cdot QUAR_{st} \times FDS_t \\
++ \beta_4 \cdot InfMV_{st} \\
++ \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
+\]</span></p>
+<p><span class="math inline">\(\textbf{Observación:}\)</span> El modelo anterior puede permitir algunas variantes. Por ejemplo, aunque la condición (a) indique que existe un factor fijo por tienda y producto, una variante (no tan correcta) es considerar por separador los factores. Esto es, en vez de tomar <span class="math inline">\(\alpha_{is}\)</span> se elige <span class="math inline">\((\alpha_{i}+\alpha_{s})\)</span>.</p>
+<p>También, al considerar la condición (c) al momento de abordar el factor en (d), se puede decir que el efecto de las cuarentenas en los fines de semana no afecta a los productos de primera necesidad (como lo dice la condición (c)). De este modo, este factor se puede considerar como <span class="math inline">\(\beta_3 \cdot QUAR_{st} \times FDS_t \times \textbf{1}_{[i \notin \mathcal{PN}]}\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>El modelo 1 es mejor que el modelo 2 en casi todas las métricas relevantes, excepto en la métrica de <span class="math inline">\(R^2\)</span>. Esto se explica porque tiene más parámetros y queda corregido al mirar el coeficiente Adj. <span class="math inline">\(R^2\)</span>.</p></li>
+<li><p>Para el modelo preferido (1) todos los coeficientes asociados a las cuarentenas y sus interacciones son significativos y por lo tanto mirar los estimadores nos dan una razonable primera aproximación. Acá vemos que las cuarentenas tienen un efecto negativo siginificativo en reducir las ventas. Sin embargo, este efecto solo se da en los días de semana. Tanto para feriados como fines de semana el efecto se va a cero los fines de semana y (marginalmente) positivo para feriados.</p></li>
+</ol>
+</div>
+<div id="problema-2" class="section level3 unnumbered hasAnchor">
+<h3>Problema 2<a href="modelos-de-regresión.html#problema-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un cine pequeño quiere impulsar la venta de entradas para este verano. Para atraer de manera eficiente a los clientes deciden ser selectivos en las películas que tendrán en cartelera. Para ello, desean determinar las características de las películas que provocan un mayor ingreso. El equipo de ventas dispone de un panel de datos con el historial de las 3,800 funciones del año de las 1,250 películas presentadas con los siguientes datos:</p>
+<table class=" lightable-classic lightable-striped" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; margin-left: auto; margin-right: auto;'>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Descripción
+</th>
+<th style="text-align:left;">
+Media
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IdFunción
+</td>
+<td style="text-align:left;">
+Identificador de la función
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fecha
+</td>
+<td style="text-align:left;">
+Fecha de la función
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hora
+</td>
+<td style="text-align:left;">
+Hora de la función
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Película
+</td>
+<td style="text-align:left;">
+Nombre de la película a proyectar
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Duración
+</td>
+<td style="text-align:left;">
+Duración de la película presentada [en Minutos]
+</td>
+<td style="text-align:left;">
+103.32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tipo
+</td>
+<td style="text-align:left;">
+Tipo de película presentada {Acción, Comedia, Romance, Drama, Terror}
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Edad
+</td>
+<td style="text-align:left;">
+Restricción de edad de la película {TE, TE+7, MA+14, MA+18}
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estudio
+</td>
+<td style="text-align:left;">
+Estudio que produjo la película {Dis, WB, Para, Uni}
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Presupuesto
+</td>
+<td style="text-align:left;">
+Presupuesto de la película [en CLP]
+</td>
+<td style="text-align:left;">
+160,200,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ingreso
+</td>
+<td style="text-align:left;">
+Ingreso recibido por las entradas vendidas en la función [en CLP]
+</td>
+<td style="text-align:left;">
+714,500
+</td>
+</tr>
+</tbody>
+</table>
+<span class="math display">\[
+\textbf{Tabla 2: } \text{Resumen de ventas para cada función.}
+\]</span>
+Para tener una mejor idea de cómo se ven los datos, se pueden observar estos 6 registros:</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<table class=" lightable-classic lightable-striped" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+IdFunción_i
+</th>
+<th style="text-align:left;">
+Fecha_i
+</th>
+<th style="text-align:left;">
+Hora_i
+</th>
+<th style="text-align:left;">
+Película_i
+</th>
+<th style="text-align:right;">
+Duración_i
+</th>
+<th style="text-align:left;">
+Tipo_i
+</th>
+<th style="text-align:left;">
+Edad_i
+</th>
+<th style="text-align:left;">
+Estudio_i
+</th>
+<th style="text-align:left;">
+Presupuesto_i
+</th>
+<th style="text-align:left;">
+Ingreso_i
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+14156
+</td>
+<td style="text-align:left;">
+23/07/2022
+</td>
+<td style="text-align:left;">
+19:00
+</td>
+<td style="text-align:left;">
+Odín 4
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:left;">
+Acción
+</td>
+<td style="text-align:left;">
+TE+7
+</td>
+<td style="text-align:left;">
+Dis
+</td>
+<td style="text-align:left;">
+354,970,000
+</td>
+<td style="text-align:left;">
+948,640
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14157
+</td>
+<td style="text-align:left;">
+23/07/2022
+</td>
+<td style="text-align:left;">
+22:00
+</td>
+<td style="text-align:left;">
+Chillido 5
+</td>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:left;">
+Terror
+</td>
+<td style="text-align:left;">
+MA+18
+</td>
+<td style="text-align:left;">
+Para
+</td>
+<td style="text-align:left;">
+135,600,000
+</td>
+<td style="text-align:left;">
+804,300
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14158
+</td>
+<td style="text-align:left;">
+24/07/2022
+</td>
+<td style="text-align:left;">
+11:00
+</td>
+<td style="text-align:left;">
+Odín 4
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:left;">
+Acción
+</td>
+<td style="text-align:left;">
+TE+7
+</td>
+<td style="text-align:left;">
+Dis
+</td>
+<td style="text-align:left;">
+354,970,000
+</td>
+<td style="text-align:left;">
+893,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14159
+</td>
+<td style="text-align:left;">
+24/07/2022
+</td>
+<td style="text-align:left;">
+15:30
+</td>
+<td style="text-align:left;">
+Desafiar Barreras
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+Romance
+</td>
+<td style="text-align:left;">
+MA+14
+</td>
+<td style="text-align:left;">
+WB
+</td>
+<td style="text-align:left;">
+94,500,000
+</td>
+<td style="text-align:left;">
+569,200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14160
+</td>
+<td style="text-align:left;">
+24/07/2022
+</td>
+<td style="text-align:left;">
+20:15
+</td>
+<td style="text-align:left;">
+Odín 4
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:left;">
+Acción
+</td>
+<td style="text-align:left;">
+TE+7
+</td>
+<td style="text-align:left;">
+Dis
+</td>
+<td style="text-align:left;">
+354,970,000
+</td>
+<td style="text-align:left;">
+832,150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14161
+</td>
+<td style="text-align:left;">
+25/07/2022
+</td>
+<td style="text-align:left;">
+11:00
+</td>
+<td style="text-align:left;">
+Desafiar Barreras
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+Romance
+</td>
+<td style="text-align:left;">
+MA+14
+</td>
+<td style="text-align:left;">
+WB
+</td>
+<td style="text-align:left;">
+94,500,000
+</td>
+<td style="text-align:left;">
+452,900
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\textbf{Tabla 3: } \text{Ejemplo de 6 registro en Tabla de Ventas.}
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Nótese que una película puede tener varias funciones y que, debido a la naturaleza de las variables, el rango de valores y el tipo de variables son distintos. Debido a esto, elija un nivel de agregación y transforme las variables de forma que puedan modelar el éxito total en ventas para cada película.</p></li>
+<li><p>El equipo escogió como variable dependiente el logaritmo de la suma de los ingresos de las funciones para cada película y generó dos modelos distintos, entregando los siguientes resultados:</p></li>
+</ol>
+<table class=" lightable-classic lightable-striped" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead>
+<tr>
+<th style="empty-cells: hide;" colspan="1">
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="TRUE">
+Modelo 1
+</div>
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="TRUE">
+Modelo 2
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Coeficiente
+</th>
+<th style="text-align:center;">
+p-valor
+</th>
+<th style="text-align:center;">
+Coeficiente
+</th>
+<th style="text-align:center;">
+p-valor
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Intercepto
+</td>
+<td style="text-align:center;">
+-15.2
+</td>
+<td style="text-align:center;">
+0.704
+</td>
+<td style="text-align:center;">
+3.1
+</td>
+<td style="text-align:center;">
+0.704
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Duración
+</td>
+<td style="text-align:center;">
+-1.04
+</td>
+<td style="text-align:center;">
+0.452
+</td>
+<td style="text-align:center;">
+-0.23
+</td>
+<td style="text-align:center;">
+0.452
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+log(Presupuesto)
+</td>
+<td style="text-align:center;">
+0.62
+</td>
+<td style="text-align:center;">
+0.005
+</td>
+<td style="text-align:center;">
+1.15
+</td>
+<td style="text-align:center;">
+0.005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Edad.TE
+</td>
+<td style="text-align:center;">
+4.5
+</td>
+<td style="text-align:center;">
+0.058
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+0.058
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Edad.TE+7
+</td>
+<td style="text-align:center;">
+6.71
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Edad.MA+14
+</td>
+<td style="text-align:center;">
+5.16
+</td>
+<td style="text-align:center;">
+0.017
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+0.017
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Edad.MA+18
+</td>
+<td style="text-align:center;">
+4.04
+</td>
+<td style="text-align:center;">
+0.009
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+0.009
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tipo.Acción
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+4.05
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tipo.Comedia
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+1.63
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tipo.Romance
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+2.11
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tipo.Drama
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+-1.52
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tipo.Terror
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+6.72
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estudio.Dis
+</td>
+<td style="text-align:center;">
+5.12
+</td>
+<td style="text-align:center;">
+0.004
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+0.004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estudio.WB
+</td>
+<td style="text-align:center;">
+4.09
+</td>
+<td style="text-align:center;">
+0.24
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+0.24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estudio.Uni
+</td>
+<td style="text-align:center;">
+3.14
+</td>
+<td style="text-align:center;">
+0.104
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+0.104
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estudio.Para
+</td>
+<td style="text-align:center;">
+-0.63
+</td>
+<td style="text-align:center;">
+0.186
+</td>
+<td style="text-align:center;">
+<ul>
+<li></td>
+<td style="text-align:center;">
+0.186
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LL
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+-644
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+-650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+1,304
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+1,295
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+1,366
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+1,350
+</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\textbf{Tabla 3: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
+\]</span></p>
+<p>A partir de los datos entregados elija cuál modelos es mejor para predecir el número de entradas vendidas para una película y entregue 3 argumentos de porqué lo considera mejor.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Interprete los coeficientes de cada modelo. Según cada modelo,¿qué tipo de películas debería presentar el cine para tener mayores ingresos?</p></li>
+<li><p>Suponga que en su base de datos posee también la variable independiente <span class="math inline">\(NFun\)</span> que representa el número de funciones que recibió la película en el cine. Proponga un modelo de regresión lineal que considere siguientes condiciones:</p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Se debe considerar el efecto marginal por parte de las variables Presupuesto, Duración, Edad, Tipo, Estudio y <span class="math inline">\(NFun\)</span>.</p></li>
+<li><p>Existe un efecto en las ventas que depende simultaneamente del estudio y el Tipo de película (Por ejemplo, el estudio WB puede tener más exito con películas de terror, mientras que Dis lo puede tener con aquellas de acción).</p></li>
+<li><p>El éxito de la películas apropiadas para niños (Edad <span class="math inline">\(\in\)</span> {TE, TE+7}) depende de su duración.</p></li>
+</ol>
+</div>
+<div id="solución-1" class="section level3 unnumbered hasAnchor">
+<h3>Solución<a href="modelos-de-regresión.html#solución-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Para evaluar el ingreso total en ventas obtenido por una película se deben considerar los ingresos a nível película. De modo que se define el ingreso para la película <span class="math inline">\(j\)</span> como la suma del éxito de todas sus funciones <span class="math inline">\(i\)</span>:</li>
+</ol>
+<p><span class="math display">\[
+Ingreso_{j} = \sum_i Ingreso_i \cdot \textbf{1}_{[Nombre_i = j]}
+\]</span>
+Cabe notar que las características de la película (<span class="math inline">\(Presupuesto_i ,Duración_i ,Tipo_i ,Edad_i ,Estudio_i\)</span>) se mantienen para cada función <span class="math inline">\(i\)</span> de la película <span class="math inline">\(j\)</span> de modo que <span class="math inline">\(Presupuesto_j = Presupuesto_i\)</span> para toda función de la película <span class="math inline">\(j\)</span> (lo mismo para las demás carácteristicas). De este modo, tenemos un vector de características por película (<span class="math inline">\(Presupuesto_j ,Duración_j ,Tipo_j ,Edad_j ,Estudio_j\)</span>)</p>
+<p>Finalmente, notemos que los valores de <span class="math inline">\(Ingreso\)</span> y <span class="math inline">\(Presupuesto\)</span> son muy elevados en comparación con la variable <span class="math inline">\(Duración\)</span>. Similarmente, el rango no se compara con el valor de las variables dummy generadas por las categorías <span class="math inline">\(Tipo\)</span>,<span class="math inline">\(Edad\)</span> y <span class="math inline">\(Estudio\)</span>. Debido a esto, decidimos estudiar el comportamiento del logaritmo de estos montos: <span class="math inline">\(\ln(Ingreso)\)</span> y <span class="math inline">\(\ln(Presupuesto_j)\)</span>.</p>
+<p>Para ser más claros, la tabla con las transformaciones apropiadas tendría los 6 registros mostrados anteriormente de la siguiente manera:</p>
+<table class=" lightable-classic lightable-striped" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Película_j
+</th>
+<th style="text-align:right;">
+Duración_j
+</th>
+<th style="text-align:left;">
+Tipo_j
+</th>
+<th style="text-align:left;">
+Edad_j
+</th>
+<th style="text-align:left;">
+Estudio_j
+</th>
+<th style="text-align:right;">
+log.Presupuesto_j.
+</th>
+<th style="text-align:right;">
+log.Ingreso_j.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Odín 4
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:left;">
+Acción
+</td>
+<td style="text-align:left;">
+TE+7
+</td>
+<td style="text-align:left;">
+Dis
+</td>
+<td style="text-align:right;">
+8.55
+</td>
+<td style="text-align:right;">
+6.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chillido 5
+</td>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:left;">
+Terror
+</td>
+<td style="text-align:left;">
+MA+18
+</td>
+<td style="text-align:left;">
+Para
+</td>
+<td style="text-align:right;">
+8.13
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Desafiar Barreras
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+Romance
+</td>
+<td style="text-align:left;">
+MA+14
+</td>
+<td style="text-align:left;">
+WB
+</td>
+<td style="text-align:right;">
+7.97
+</td>
+<td style="text-align:right;">
+6.01
+</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: decimal">
+<li>El modelo que explica de manera más efectiva el comportamiento es el modelo 2. Se pueden considerara varias razones para esto, algunas de estas razones son:</li>
+</ol>
+<ul>
+<li>A pesar del modelo 1 tener una mejor log-verosimilitud, el BIC del modelo 2 es mejor que el modelo 1.</li>
+<li>La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por lo que podríamos argumentar que preferimos el modelo 2 por su parsimonia (argumento se refuerza mirando la métrica BIC).</li>
+<li>Una gran parte de los coeficientes del modelo 1 son no significativos a un 5% de confianza, mientras que los coeficientes del modelo 2 tienden a ser &lt;5%</li>
+<li>La significancia de las variables que ambos modelos comparten poseen un p-valor menor en el modelo 2, de modo que sus intervalos de confianza deberían ser más acotados. Lo anterior, a pesar de algunas variables no ser significativas al 5%, es un hecho positivo respecto al modelo 2.<br />
+</li>
+<li>Pensando en la interpretación, el modelo 1 posee algunos comportamientos discutibles: esperaríamos, por ejemplo, que la duración tenga un efecto negativo y significativo en los ingresos. Sin embargo, el modelo la considera no significativa.</li>
+<li>Los valores de intercepto en el modelo 1 está demasiado desviado en magnitud respecto al resto de coeficientes. Lo anterior podría dar indicios de incluso algún error en cuánto al escalamiento de las variables al momento de calibrar el modelo.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Primero observamos aquellos coeficientes con mayor significancia estadística. Para eso consideramos aquellos cuyo p-valor sea menor a 0.01.</li>
+</ol>
+<p>Para el modelo 1 se tienen las variables <span class="math inline">\(\log(Presupuesto)\)</span>, <span class="math inline">\(Edad.MA+18\)</span> y <span class="math inline">\(Estudio.Dis\)</span>. De acuerdo al signo de los coeficientes podemos concluir que las películas que generan un mayor ingreso son aquellas con un mayor presupuesto, para mayores de 18 años producidas por Dis.</p>
+<p>En cambio, para el modelo 2, las variables a considerar son <span class="math inline">\(Duración\)</span>, <span class="math inline">\(\log(Presupuesto)\)</span> y <span class="math inline">\(Género.Terror\)</span>. Por el signo de los coeficientes, se deben proyectar películas de terror cortas con un alto presupuesto.</p>
+<p><strong>Observación</strong>:</p>
+<ul>
+<li>En el modelo 1, sería deseable considerar la variable <span class="math inline">\(Duración\)</span>. Sin embargo, su p-valor alto refleja que no es una variable significativa en este modelo.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>La condición (a) muestra que se deben incluir las variables Presupuesto, Duración, Edad, Género, Estudio y Nfun en el modelo, con sus propios coeficientes. La condición (b) nos dice que se debe agregar además, las variables de estudio condicionada al género. Finalmente, la condición (c) dice que queremos conocer el impacto de la duración en las películas cuya variable Edad es TE y TE+7.</li>
+</ol>
+<p>Recordemos que, para variables categóricas, se deben generar variables <span class="math inline">\(dummy\)</span> para cada categoría Sea <span class="math inline">\(E = \{ TE,TE+7,MA+14,MA+18 \}\)</span>, $T = {Acción, Comedia,Romance,Drama,Terror} $ y <span class="math inline">\(S = \{ Dis,WB,Uni,Para \}\)</span>. A partir de estos conjuntos, podemos definir las variables <span class="math inline">\(dummy\)</span>:</p>
+<ul>
+<li><span class="math inline">\(Edad_i,e = 1\)</span> si para la película <span class="math inline">\(i\)</span>, <span class="math inline">\(Edad_i=e\)</span> para <span class="math inline">\(e \in E\)</span>.</li>
+<li><span class="math inline">\(Tipo_i,t = 1\)</span> si para la película <span class="math inline">\(i\)</span>, <span class="math inline">\(Tipo_i=t\)</span> para <span class="math inline">\(t \in T\)</span>.</li>
+<li><span class="math inline">\(Tipo_i,s = 1\)</span> si para la película <span class="math inline">\(i\)</span>, <span class="math inline">\(Estudio_i=s\)</span> para <span class="math inline">\(s \in S\)</span>.</li>
+</ul>
+<p>De este modo, el modelo que cumple las condiciones mencionadas sería</p>
+<p><span class="math display">\[
+\log(Ingreso_i) = \beta_1 \log(Presupuesto_i) + \beta_2 Duración_i + \sum_{e \in E} \beta_e Edad_{i,e} + \sum_{t \in T} \beta_t Tipo_{i,t} + \sum_{s \in S} \beta_s Estudio_{i,S} + \beta_3 Nfun_i\\
++ \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} Tipo_{i,t} \times Estudio_{i,S} \\
++  \sum_{e \in \{TE,TE+7\}} \delta_e  Edad_{i,e} \times Duración_i
+\]</span>
+Se puede realizar una notación vectorial de los coeficientes para tener una notación más concisa, pero se debe tener en cuenta los índices de estos coeficientes.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="formulas-utiles.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelos-probabilísticos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-regresion.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

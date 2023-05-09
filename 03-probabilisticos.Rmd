@@ -1,0 +1,289 @@
+```{r echo=FALSE, warning=FALSE}
+library(rmarkdown)
+library(latex2exp)
+library(kableExtra)
+```
+
+# Modelos Probabilísticos
+
+## Introducción
+En este capítulo se abarcarán problemas con un enfoque probabilístico, esto es, que se asume que los tomadores de decisiones se comportan de manera aleatoria. Esto permite abordar una gran cantidad de problemas asociados al Marketing, los cuales se pueden caracterizar en tres tipos de modelos básicos: 
+
+- *Duración*: La pregunta clave es ¿Cuándo?  Son situaciones ligadas a la duración de una determinada conducta del cliente, como por ejemplo: tiempo de permanencia en una compañía, tiempo de adopción de un cierto producto innovador, entre otros. Puede ser con tiempo continuo, o discreto.
+
+- *Conteo*: La pregunta clave es ¿Cuántos?  Son situaciones ligadas al estudio de llegadas de clientes y contabilización de una determinada conducta, como por ejemplo: número de visitas a un portal web y la cantidad de productos comprados en una tienda de retail.
+
+- *Elección*: La pregunta clave es ¿Cuál? Son situaciones asociadas a las decisiones de elección de un determinado cliente, como por ejemplo: clientes que eligen responder (o no) a una campaña publicitaria y la elección de cambiar (o no) de canal de televisión.
+
+Cada uno se estos modelos tiene muchas aplicaciones dentro de diversas situaciones en la vida real. Comportamientos más complejos pueden ser descritos usando combinaciones de los modelos básicos. No obstante, nos centraremos en la resolución de problemas utilizando alguno de estos tres.  
+
+## Metodología
+
+Dicho enfoque posee una metodología de modelamiento sugerida, que comparten los modelos vistos a lo largo del curso.
+
+La metodología consiste en:
+
+1. Determinar el problema de decisión a estudiar y la información requerida.
+
+2. Identificar el comportamiento observable de interés a nivel individual. Típicamente, se denota con una $x$.
+
+3. Seleccionar la distribución de probabilidad que caracterice el comportamiento individual. Se consideran los parámetros de esta distribución, como características latentes a nivel individual. Típicamente, se denota con $f(x|\theta)$. 
+
+4. Escoger la distribución que caracterice cómo las características latentes están distribuidas en la población. Se le llama distribución mixta o heterogénea. Típicamente, se denota con $g(\theta)$
+
+5. Derivar la distribución agregada, o distribución observable, del comportamiento de interés. 
+
+\begin{array}{cc}
+
+f(x) = \int f(x|\theta) g(\theta) d\theta & \text{, para el caso continuo.}\\
+ p(x) = \sum_{i} f(x|\theta)Pr(\theta = \theta_{i}) & \text{ 
+ , para el caso discreto.}
+
+\end{array}
+
+6. Estimar los parámetros del modelo (de la distribución mixta), mediante el ajuste de la distribución agregada a los datos observados.
+
+7. Usar los resultados para tomar una decisión sobre el problema de marketing en cuestión.
+
+
+## Problemas 
+
+### Problema 1 {-}
+
+Hippi es una empresa nacional dedicada a la fabricación de productos para alta montaña. La
+empresa cuenta con una base de datos que registra la compras que sus clientes en cada temporada
+y busca estudiar el numero de parkas que los clientes compraran en la temporada. Para esto, se ha
+formulado un modelo probabilístico donde el comportamiento de los clientes se describe como:
+
+- Cada cliente compra un numero de parkas X que sigue una distribución geométrica. Esto es,condicional en el parámetro p de cada cliente, la función de probabilidad esta dada por:
+
+$$Pr(X = x|p) = p(1-p)^x$$
+- Los clientes son heterogéneos en su parámetro p el que esta distribuido en la población de acuerdo a una distribución Beta:
+
+$$g(p|\alpha,\beta) = \frac{1}{B(\alpha,\beta)} p^{\alpha - 1}(1-p)^{\beta-1}$$
+
+Se puede mostrar que la distribución de el número de compras para un cliente en la población, y su respectiva esperanza están dadas por:
+
+$$Pr(X=x) = \frac{B(\alpha + 1, \beta + x)}{B(\alpha,\beta)} \qquad \mathbb{E}(X) = \frac{\alpha}{\beta - 1}$$
+
+Siguiendo la convención adoptada en el curso, llamamos a este modelo Beta-Geométrico. 
+
+1.  Muestre que la penetración de mercado (fracción de clientes que compró al menos una unidad) puede expresarse como $\frac{\beta}{\alpha+\beta}$.
+
+2. Usando el método de los momentos, estime los parámetros del modelo. Para ello considere que la penetración de mercado es del 60 \% y que el numero promedio de parkas que compra un cliente (incluyendo aquellos que no compraron) es igual a 2.5.
+
+3. Se desea extender el modelo para que además incluya un segmento de clientes que nunca compra. Para este segmento de clientes, $Pr(X = 0) = 1$. Sea $\pi$ la proporción de estos clientes en la población, y $(1-\pi)$ el segmento de clientes que se comporta de acuerdo al modelo Beta-Geométrico descrito anteriormente. Suponga que conoce $x_i$, el numero de compras hechas por cada cliente i en la base de datos (i = 1, ..., n). Deduzca la función de verosimilitud que utilizaría para estimar el modelo.
+
+### Solución {-}
+
+1. Muestre que la penetración de mercado (fracción de clientes que compró al menos una unidad) puede expresarse como $\frac{\beta}{\alpha+\beta}$.
+
+Respuesta:
+
+La penetración p viene dada por: 
+
+\begin{align*}
+        p_0 &= 1 - Pr(X = 0) \\
+            &= 1 -  \frac{B(\alpha + 1, \beta)}{\alpha,\beta}\\
+            &= 1 - \frac{\Gamma(\alpha +1)\Gamma(\beta)}{(\alpha+ 1 +\beta)} \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\\
+            &= 1 - \frac{\alpha\Gamma(\alpha) \Gamma(\beta)}{\alpha+\beta) \Gamma(\alpha+\beta)}\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\\
+            &= 1 - \frac{\alpha}{\alpha + \beta} = \frac{\beta}{\alpha + \beta}
+\end{align*}
+
+
+2. Usando el método de los momentos, estime los parámetros del modelo. Para ello considere que la penetración de mercado es del 60 \% y que el numero promedio de parkas que compra un cliente (incluyendo aquellos que no compraron) es igual a 2.5.
+
+Respuesta:
+
+Resolvemos el siguiente sistema: 
+
+\begin{eqnarray}
+        0,6 &= \frac{\beta}{\alpha + \beta} \\
+        2,5 &= \frac{\alpha}{\beta-1}
+\end{eqnarray}
+
+Resolviendo el sistema:
+
+$$\hat{\alpha} = \frac{10}{11} \qquad \hat{\beta} = \frac{15}{11}$$
+
+3. Se desea extender el modelo para que además incluya un segmento de clientes que nunca compra. Para este segmento de clientes, $Pr(X = 0) = 1$. Sea $\pi$ la proporción de estos clientes en la población, y $(1 - \pi)$ el segmento de clientes que se comporta de acuerdo al modelo Beta-Geométrico descrito anteriormente. Suponga que conoce $x_i$, el numero de compras hechas por cada cliente i en la base de datos (i = 1, ..., n). Deduzca la función de verosimilitud que utilizaría para estimar el modelo.
+
+Sea $n_x$ el número de clientes que compra x parkas. Entonces, la verosimilitud puede escribirse como:
+
+$$L(\alpha,\beta,\pi |x) = \prod_{x=1}^{\infty} Pr = (X=x|\alpha,\beta,\pi)^{n_x}$$
+
+donde,
+\begin{array}{cc}
+Pr(X=x|\alpha,\beta,\pi) & = \pi Pr(X=x|\text{ no adopta}) + (1 - \pi) Pr (X = x |\text{ puede adoptar})\\
+  & =   \begin{cases}
+  \pi + (1-\pi) \frac{B(\alpha+1,\beta)}{B(\alpha,\beta)} & x=0 \\
+  (1-\pi)\frac{B(\alpha+1,\beta+x)}{B(\alpha,\beta)} & x>0
+  \end{cases}
+\end{array}
+
+
+### Problema 2 {-}
+
+La startup chilena "NotComida" es una exitosa empresa enfocada en el diseño y manufactura de productos alimenticios basados en plantas que funcionan como sucedáneos cercanos a otros productos de origen animal (leche, helado, carne). El área de Marketing está interesada en conocer el comportamiento de compra de sus clientes. Para esto, cuenta con un panel de datos que describe las instncias de compra durante los últimos 12 meses:
+
+
+```{r echo= FALSE}
+data.notcomida <- data.frame( "Variable" =c("IdCliente","Mes", "Año","Catgoría", "Tienda","Edad", "Mujer","Ingreso","Zona Oriente", "NCompras")
+                         ,"Descripción" =c("Identificador de cliente", "Mes {enero,febrero,...,diciembre} ","Año","Categoría de productos {Hamburguesas, Leche, Helados} ", "Identificador de la tienda dónde se realizó la compra","Edad del panelista", "1 si la panelista se identifica como mujer" , "Ingreso mensual declarado por el panelista [millones CLP]", "1 si el panelista vive en la zona oriente de Santiago" , "Número de compras en esa categoría y mes")
+                         , "Media" = c("-","-","-","-","-", 31.3,0.51,0.56,0.11,2.34))
+#add caption: "Tabla : Descripción base de ventas NotComida"
+kbl(data.notcomida)%>%
+  kable_classic("striped")
+```
+
+$$
+\textbf{Tabla 1: } \text{Descripción base de ventas NotComida.}
+$$
+
+
+1. Proponga un modelo de regresión de Poisson en que lla tasa de compra depende de cada individuo, categoría, tienda y semana. Escriba la log-verosimilitud del problema considerando que $n_{icst}$ es el número de unidades compradas por el cliente $i$ en la categoría $c$ en la tienda $s$ el mes $t$. Para esto, considere que:
+
+(a) Existe un efecto fijo por categoría y uno por tienda.
+
+(b) El género induce diferencias relevantes en las ventas y el efecto del género es distinto para la zona oriente de la capital.
+
+(c) Existe una tendencia creciente en las ventas. Como el crecimiento es relativamente pequeño, puede modelarse con un efecto fijo a nivel de año.
+
+(d) Aunque en el consumo es relativamente constante, a lo largo del año, hay dos categorías que presentan una estacionalidad relevante. Mientras los helados tienen un patrón marcadamente diferente en los meses de diciembre, enero y febrero, las hamburguesas declinan sus ventas en el mes de septiembre.
+
+2. Suponga que, para la categoría $c = Hamburguesas$, existen dos clases latentes. Un segmento de alto consumo y otro de consumo ocasional. Para acomodar esta regularidad, se propone un modelo sencillo en que la tasa de compra de un cliente $i$, independiente del mes, viene dado por:
+
+$$log(\lambda_i)= \beta_{0i}+ \beta_1 MUJER_i + \beta_2 INGRESO_i $$
+
+Donde $\beta_{0i}$ toma el valor $-1$ con probabilidad $0.4$ u el valor $0.5$ con probabilidad $0.6$. En otras palabras, el tamaño del segmento 1 de los clientes ocasionales representa al 40% de la población mientras que los clientes activos representan el 60% de la población. ¿Cuál es la probabilidad de que un cliente hombre, con un ingreso de MM\$1 que no compra en un mes ($n_i=0$) pertenezca al segmento 1?
+
+### Solución {-}
+
+1. Sea $N_{icst}$ la variable aleatoria que define la cantidad que de productos que compra el cliente $i$ en la categoría $c$ en la tienda $s$ el mes $t$, y sea $\lambda_{icst}$ la tasa de compras asociada a la variable anterior. Al ser un modelo de regresión de Poisson, su distribución es:
+
+$$
+Pr(N_{icst}= n_{icst}) = \frac{\lambda_{icst}^{n_{icst}}e^{-\lambda_{icst}} }{n_{icst}!}
+$$
+Donde la tasa $\lambda_{icst}$ viene dada por una regresión lineal. El objetivo es especificar esta tasa. Según las consideraciones pedidas (en específico, las condiciones (c) y (d)), definimos:
+
+- $\delta_{ta}=1$ si el mes $t$ pertenece al año $a$.
+- $\Delta_{ct}^1 =1$ si $c=Helado$ y $t \in \{ Diciembre, Enero,Febrero \}$.
+- $\Delta_{ct}^2 = 1$ si $c=Hamburguesa$ y $t=Septiembre$.
+
+Entonces, la tasa de compra puede escribirse como
+
+$$
+\lambda_{icst} = \alpha_c + \alpha_s + \beta_1 MUJER_i + \beta_2 MUJER_i \cdot ZORIENTE_s + \sum_{a} \gamma_a \delta_{ta} + \theta_1 \Delta_{ct}^1 + \theta_2 \Delta_{ct}^2
+$$
+Con esto, la log-verosimilitud viene dada por:_
+
+$$
+LL = \sum_{i,c,s,t} \ln(Pr(N_{icst}=n_{icst}))= \sum_{i,c,s,t} \ln \left( \frac{\lambda_{icst}^{n_{icst}}e^{-\lambda_{icst}} }{n_{icst}!}\right)
+$$
+2. Las tasas de compra de los dos segmentos vienen dadas por:
+
+$$
+log(\lambda_{i1}) = -1 + \beta_1 MUJER_i + \beta_2 INGRESO_i = -1 + 0 + \beta_2 \Rightarrow \lambda_{i1} = e^{\beta_2 -1}\\
+
+log(\lambda_{i2}) = 0.5 + \beta_1 MUJER_i + \beta_2 INGRESO_i = 0.5 + 0 + \beta_2 \Rightarrow \lambda_{i1} = e^{\beta_2 +0.5}
+$$
+Por lo tanto, aplicando la distribución de Poisson, la probabilidad de no comprar en cada segmento viene dados por:
+
+$$
+\Pr(n_i = 0 | s_1) = \lambda_{i1}e^{-\lambda_{i1}} = e^{(\beta_2 -1)} \exp(-e^{(\beta_2 -1)})
+\\
+\Pr(n_i = 0 | s_2) = \lambda_{i2} e^{-\lambda_{i2}} =e^{(\beta_2 +0.5)} \exp(-e^{(\beta_2 +0.5)}) 
+$$
+Entonces. aplicando la regla de Bayes:
+
+$$
+\Pr(s_1|n_i = 0) = \frac{\Pr(n_i = 0 | s_1) \Pr(s_1)}{\Pr(n_i = 0 | s_1) \Pr(s_1) + \Pr(n_i = 0 | s_2) \Pr(s_2)}
+$$
+
+Donde $\Pr(s_1) = 0.4$ y $\Pr(s_2)=0.6$.
+
+### Problema 3 {-}
+
+1. Para revitalizar el interés de los usuarios, Pokémon Go está pensando introducir 7 nuevos personajes Pokémon en las comunas de Melipilla, Talagante, Pirque, Colina, Alhue, Paine, Lampa y Buin. Para estudiar el impacto en el atractivo del juego, los desarrolladores han estado realizando pruebas para ver el interés de los jugadores en estos nuevos personajes. Las pruebas se han desarrollado sobre una muestra de jugadores de acuerdo a los números desplegados en la siguietne tabla:
+
+
+
+```{r echo=FALSE}
+pok_n <- data.frame("Pokemon" = c("Wigglytuff","Slowbrow","Lickitung","Chansley","Tangela","Ditto","Phanpy"), "Melipilla" = c(5,24,101,198,79,69,138),"Talagante" = c(834,975,651,517,990,587,969),"Pirque"=c(504,8,200,960,756,96,971),"Colina"=c(117,342,993,788,868,365,890),"Alhue"=c(763,715,562,441,210,182,586),"Paine"=c(424,362,614,844,944,634,764),"Lampa"=c(387,788,691,836,509,373,585),"Buin"=c(683,793,595,438,233,419,361),"Total"=c("3,717","4,007","4,407","5,022","4,589","2,725","5,264"))
+
+pok_n %>%
+  kbl() %>%
+  kable_styling()
+```
+
+$$
+\textbf{Tabla 2: } \text{Número de veces que un determinado pokemón fue mostrado a un jugador.}
+$$
+Hay dos parámetros relevantes para entender el grado de interacción entre jugadores y personajes. El primer parámetro corresponde a $q_{k}$ que corresponde a la probabilidad de atrapar a un personaje, condicional de que un jugador intente atraparlo. Aunque est probabilidad es relevante para saber en qué medida los usuarios aumentan su mazo, el parámestro es ajusatado internamente en la plataforma y por tanto no hay incertidumbre desde el punto de vista de los usuarios. El segundo parámetro que denominamos como $p_k$, mide la probabilidad que un usuario intente atrapar un personaje $k$ si este le aparee disponible en la aplicación móvil. Desde el punto de vista de la jugabilidad es importante disponibilizar personajes que los usuarios quieran atrapar. Para entender el comportamiento de esta intención de atrapar personajes, la Tabla despliega el número de intentos para los personajes y comunas que forman parte del estudio piloto:
+
+```{r echo=FALSE}
+pok_x <- data.frame("Pokemon" = c("Wigglytuff","Slowbrow","Lickitung","Chansley","Tangela","Ditto","Phanpy"), "Melipilla" = c(0,8,8,49,14,14,4),"Talagante" = c(218,186,47,31,294,180,19),"Pirque"=c(98,4,13,274,71,14,66),"Colina"=c(39,110,98,24,35,110,189),"Alhue"=c(31,393,183,48,59,33,9),"Paine"=c(63,79,180,91,304,84,37),"Lampa"=c(26,240,219,205,116,0,92),"Buin"=c(43,113,60,42,2,10,33),"Total"=c(518,"1,133",808,764,895,445,449))
+
+
+kable(pok_x) %>%
+  kable_styling()
+```
+
+$$
+\textbf{Tabla 3: } \text{Número de veces que un jugador intentó atrapar a un determinado pokemón.}
+$$
+A partir de los datos presentados:
+
+1. Use el método de los momentos para estimar un modelo binomial sin heterogeneidad que caracterice la probabilidad que un usuario intente atrapar a wigglytuff.
+
+2. Escriba ahora un modelo que incorpore heterogeneidad para caracterizar la probabilidad que un número de usuarios intente atrapar a un pokemón $k$ en una comuna $c$.
+
+3. Escriba la log-verosimilitud del modelo anterior, para entender la popularidad de cada uno de los personajes del estudio.
+
+
+
+### Solución {-}
+
+1. Definimos una variable aleatoria que signifique lo buscado
+
+$$
+X_{w} := \text{# de usuarios que intentan atrapar a wigglytuf}
+$$
+
+Tenemos un número de experimentos Bernoulli (# de personas a las que se les muestra wigglytuf) y un número de "éxitos" entre estos experimentos (# de personas que intentan atrapar a wigglytuf cuando se les muestra) que ocurren con alguna probabilidad desconocidad $p_w$ fija, ya que nos piden el caso homogéneo (único valor). Por lo tanto, tenemosq ue la probabilidad que queremos caracterizar sería de la forma:
+
+$$
+P(X_w = x_w) =  {n_w \choose x_w} p_{w}^{x_w} (1-p_w)^{n_w - x_w}
+$$
+
+Donde $n_w$ es la cantidad de personas alas que se les mostró el pokemón (dato en la primera Tabla). Esdecir, $X_w \thicksim Bin(n_w,p_w)$. Sabemos que el primer momento de una distribución es su media y que la media de una binomial es $n_w p_W$. Por otro lado, estimamos el valor de la media con algún promedio muestras (con muestras del mismo tamaño) de número de personas que intentaron atrapar a wigglytuf, pero en este caso este númer es único, por lo que usamos este valor (total de personas que intentaron atrapar a wigglytuf de la Tabla 5), en este caso 518. Por lo tanto, odemos obtener la probabilidad $p_w$ con la igualdad del primer momento:
+
+$$
+518 = n_w p_w \\
+518 = 3717 p_w \\
+p_w \approx 0,1393
+$$
+
+Esto tiene mucho sentido, ya que estamos obteniendo la probabilidad de manera empírica con la fracción de personas que intentaron atraparlo y el número de personas a las que se les mostró.
+
+2. Como debemos considerar heterogeneidad, ahora el parámetro de la distribución que nos intersa, $p_k$, n lo asumimos com único, sino que sigue una distribución. Como el parámetro es una probabilidad ($p_k \in [0,1]$), utilizamos la distribución a priori $Beta(\alpha_k,\beta_k)$, con $\alpha_k$ y $\beta_k$ parámetros a estimar ($p_k \thicksim Beta(\alpha_k , \beta_k)$, por eso el sub $k$, ya que cada pokemón tiene un probabilidad $p_k$ asociada, y no tienen por qué seguir la misma distribución). Luego, tenemos que cada comuna nos va a estar aportando en realidad datos sobre la heterogeneidad existente para cada pokemón (sería el equivalente a tener distintas observaciones para distintos individuos). Así, la probabilidad quedaría, para cada pokemón y comuna, con la v.a. anterior, pero segmentando por comuna:
+
+$$
+P(X_{k,c} = x_{k,c}) = \int_0^1 P(X_{k,c} = x_{k,c} | p_k)Beta(p_k|\alpha_k, \beta_k) dp_k \\
+= \int_0^1 \left( {n_{k,c} \choose x_{k,c}} p_{k}^{x_{k,c}} (1-p_{k})^{n_{k,c} - x_{k,c}}\right)   \left(\frac{p_k^{\alpha_k -1} (1-p_k)^{\beta_k -1}}{B(\alpha_k,\beta_k)} \right) dp_k\\
+={n_{k,c} \choose x_{k,c}} \frac{B(\alpha_k + x_{k,c},\beta_k + n_{k,c}- x_{k,c})}{B(\alpha_k,\beta_k)}
+$$
+
+3. Nos interesa analizar cada personaje por separado, por lo tanto vamos a tener una expresión de la log-verosimilitud del parámetro $p_k$ para cada pokemón. Luego, la muestra que tenemos de la v.a. en cuestión para cada pokemón $k$ es de la forma $\{ x_{k,1},x_{k,2},...,x_{k,7} \}$, donde el segundo índice es para cada una de las comunas. Sigue que la log-verosimilitud es el logaritmo de la función de verosimilitud con esta muestra para cada pokemón:
+
+$$
+\ell (p_k |  x_{k,1}, ...,  x_{k,7}) = \ln (\mathcal{L}(p_k |  x_{k,1}, ...,  x_{k,7})) \\
+= \ln(P(X_{k,1}=x_{k,1}, ...,X_{k,7}=x_{k,7} |p_k)) \\
+= \ln \left( \prod_{c=1}^7 P(X_{x,c} = x_{x,c}|p_k) \right) \\
+= \sum_{c=1}^7 \ln(P(X_{k,c}=x_{k,c}|p_k)) \\
+= \sum_{c=1}^7 \ln \left( {n_{k,c} \choose x_{k,c}}\frac{B(\alpha_k + x_{k,c},\beta_k + n_{k,c}- x_{k,c})}{B(\alpha_k,\beta_k)} \right)
+$$
+
+Esta es la expresión pedida de la log-verosimilitud para cada pokemón k. En el tercer paso asumimos indepndencia de las v.a. entre columnas y en el último paso reemplazamos por la expresión encontrada en la parte anterior.
+
+

@@ -1,0 +1,233 @@
+```{r echo=FALSE, warning=FALSE}
+library(rmarkdown)
+library(latex2exp)
+library(kableExtra)
+```
+
+# Modelos de Regresión
+
+## Introducción
+
+En este capítulo se abarcarán problemas relacionados a modelos de regresión; es decir, aquellos modelos donde la variable dependiente $y$ se escribe como:
+
+$$
+y = f(\textbf{X})= \beta^´X + \varepsilon 
+$$
+donde $\textbf{X}$ corresponde a las variables explicativas, $\beta^´$ son los parámetros que buscamos para estudiar la influencia de las vairables explicativas en la variable dependiente; o mejor dicho, la influencia de las variaciones en las variables explicativas en las variaciones de la variable depndiente, y $\varepsilon$ es el error aleatorio.
+
+Los modelos de regresión tienen la ventaja de ser fáciles de implementar e interpretar, pero se debe tener cuidado al momento de construir, evaluar e interpretar estos modelos. A partir de los datos que uno observa, existen infinitos modelos de regresión para explicar una variable $y$. Un buen modelo encuentra el balance entre su complejidad y poder explicativo.
+
+## Metodología
+
+Como mencionabámos anteriormente, para poder crear y utilizar los modelos de regresión que nos permite responder de la manera más informada las preguntas de 
+
+
+
+1. Definir el nivel de agregación de las variables apropiado para el problema en cuestión, ya sea una agregación temporal (datos diarios, semanales, mensuales,anuales) o lógicos (agregación por producto, categoría, marca, tienda), como también definir los índices de los parámetros del modelo
+
+2. Elegir las variables explicativas a considerar para el modelo, realizar las transformaciones según lo solicitado por el problema de gestión. 
+
+3. Decidir si se incluirán interacciones entre las variables explicativas, como también si posee un efecto fijo (como también definir los índices de estos efectos).
+
+4. Evaluar los modelos a partir de distintas métricas, ya sean genéricas ($R^2$, $MAE$, $MAPE$, $RMS$) o de verosimilitud ($\text{Likelihood Ratio}$, $AIC$, $BIC$), escogiendo aquél que, a partir de las métricas mencionadas, tengan una buena calibración y una alta capacidad de predicción.
+
+5. Interpretar los coeficientes más significativas de un modelo, para responder la pregunta de gestión original.
+
+
+## Problemas
+
+
+### Problema 1 {-}
+
+Un reconocido grupo empresarial que manefactura productos de aseo y limpieza de diversa índole le pide a usted evaluar el impacto de la pandemia en sus ventas a partir del registro obtenido por distintas tiendas distribuidas a lo largo del país.
+
+El foco del análisis se en la variable $q_{ist}$, la cual corresponde al número de unidades vendidas del producto $i$ en la tienda $s$ en el día $t$. Junto a las ventas se cuenta con un vector de características $z_{t}$ que describe cada día $t$, entre ellas $FDS_t$ que indica si es un fin de semana y $FER_t$ que indica si el día fue feriado. También, se tiene el vector $x_{ist}$ con características que varían según producto, tienda y día, entre ellas $PRECIO_{ist}$ (precio del producto), $QUAR_{st}$ (si la comunda donde se encuentra la tienda estaba en caurentena o no).
+
+1. Formule un modelo de regresión lineal que capture los siguientes factores:
+
+(a) Existe un efecto fijo por producto y por tienda, es decir, la linea base de las ventas es distinto para cada producto dependiendo de la tienda.
+(b) Si un producto no se vende en una tienda en un día dado es probable que aya un quiebre de stock y si un día hay quiebre, es probable que el día siguiente el producto siga quebrado.
+(c) El conjunto $\mathcal{PN}$ registra todos los productos de la firma que son de primera necesidad. Las cuarentenass no tienen efecto en os productos de primera necesidad.
+(d) El efecto de las cuarentenas puede ser distinto para las ventas de un día de semana con respecto a un fin de semana.
+(e) El nivel de progresión de las infecciones ($InfMV_{st}$) afecta el nivel de ventas.
+(f) El nivel de progresión de las infecciones afecta el nivel de ventas a través de cuñanto han variado las infecciones con respecto a una semana. Por ejemplo, si hoy hay 100 casos nuevos y hace una semana había solo 800, entonces ese aumento de 200 casos capturarían una fracción relevante de la relación entre la progresión de la pandemia y als ventas de los productos de la firma.
+
+2. Considere los siguientes dos modelos, los cuales contienen variables mencionadas anteriormente, junto con otras que no vale la pena nombrar:
+
+```{r echo= FALSE}
+modelos.p1 <- data.frame( "M1" =c("...","-0.06 (0.02)", "0.11 (0.03)","0.14 (0.02)", "0.07 (0.02)","0.06 (0.03)", 23, 0.63 , 0.62, 0.34,0.34)
+                         ,"M2" =c("...", "-0.07 (0.01)","0.12 (0.02)","0.13 (0.02)", "0.06 (0.03)","0.08 (0.01)", 27 , 0.69, 0.61, 0.33, 0.38))
+
+rownames(modelos.p1) <- c( "...","Quar","FER","FDS","Quar x FER","Quar x FDS", "Npar","R**2","Adj. R**2","RMSE train","RMSE test")
+kbl(modelos.p1, align = "c",vline= "|") %>%
+  kable_classic("striped", full_width = F) %>%
+      pack_rows(" ", 7,7) %>%
+      pack_rows(" ", 8, 11) %>% 
+      column_spec (2:2,border_left = T, border_right = T) 
+```
+
+$$
+\textbf{Tabla 1: } \text{Fragmento de parámetros y métricas de ajuste para dos modelos alternativos. Para los parámetros se  }\\
+\text{reporta el estimador de mínimos cuadrados y en paréntesis el error estándar. En la tabla, tanto } R^2 \text{ como } Adj. R^2 \\ \text{ han sido calculados sobre la base de entrenamiento.}
+$$
+
+Además de incluir el valor de los coeficientes, se entrega para cada modelo 4 métricas de ajuste. ¿Cuál de los dos modelos recomendaría usar para ver el efecto de las cuarentenas en las ventas?
+
+
+3. Inspeccionando los resultados del modelo de regresión lineal que consideró en la parte anterior, ¿cómo describiría el rol que han jugado las cuarentenas en las ventas de la firma?
+
+### Solución {-}
+
+1. Agregamos progresivamente un término adicional a la regresión:
+
+$$
+q_{ist} = \alpha_{is}  \\
++ \beta_1 \cdot \textbf{1}_{[q_{ist-1}= 0]} \\
++ \beta_2 \cdot QUAR_{st} \times \textbf{1}_{[i \notin \mathcal{PN}]} \\
++ \beta_3 \cdot QUAR_{st} \times FDS_t \\
++ \beta_4 \cdot InfMV_{st} \\
++ \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
+$$
+
+$\textbf{Observación:}$ El modelo anterior puede permitir algunas variantes. Por ejemplo, aunque la condición (a) indique que existe un factor fijo por tienda y producto, una variante (no tan correcta) es considerar por separador los factores. Esto es, en vez de tomar $\alpha_{is}$ se elige $(\alpha_{i}+\alpha_{s})$.
+
+También, al considerar la condición (c) al momento de abordar el factor en (d), se puede decir que el efecto de las cuarentenas en los fines de semana no afecta a los productos de primera necesidad (como lo dice la condición (c)). De este modo, este factor se puede considerar como $\beta_3 \cdot QUAR_{st} \times FDS_t \times \textbf{1}_{[i \notin \mathcal{PN}]}$.
+
+2. El modelo 1 es mejor que el modelo 2 en casi todas las métricas relevantes, excepto en la métrica de $R^2$. Esto se explica porque tiene más parámetros y queda corregido al mirar el coeficiente Adj. $R^2$.
+
+3. Para el modelo preferido (1) todos los coeficientes asociados a las cuarentenas y sus interacciones son significativos y por lo tanto mirar los estimadores nos dan una razonable primera aproximación. Acá vemos que las cuarentenas tienen un efecto negativo siginificativo en reducir las ventas. Sin embargo, este efecto solo se da en los días de semana. Tanto para feriados como fines de semana el efecto se va a cero los fines de semana y (marginalmente) positivo para feriados.
+
+
+### Problema 2 {-}
+
+Un cine pequeño quiere impulsar la venta de entradas para este verano. Para atraer de manera eficiente a los clientes deciden ser selectivos en las películas que tendrán en cartelera. Para ello, desean determinar las características de las películas que provocan un mayor ingreso. El equipo de ventas dispone de un panel de datos con el historial de las 3,800 funciones del año de las 1,250 películas presentadas con los siguientes datos:
+
+```{r echo= FALSE}
+data.cine <- data.frame( "Variable" =c("IdFunción","Fecha","Hora","Película", "Duración","Tipo", "Edad","Estudio","Presupuesto", "Ingreso")
+                         ,"Descripción" =c("Identificador de la función", "Fecha de la función","Hora de la función","Nombre de la película a proyectar", "Duración de la película presentada [en Minutos]","Tipo de película presentada  {Acción, Comedia, Romance, Drama, Terror} ", "Restricción de edad de la película {TE, TE+7, MA+14, MA+18} " , "Estudio que produjo la película {Dis, WB, Para, Uni} ","Presupuesto de la película [en CLP]", "Ingreso recibido por las entradas vendidas en la función [en CLP]")
+                         , "Media" = c("-","-","-","-",103.32, "-","-","-","160,200,000","714,500"))
+#add caption: "Tabla : Descripción base de ventas Cine"
+kbl(data.cine)%>%
+  kable_classic("striped")
+```
+$$
+\textbf{Tabla 2: } \text{Resumen de ventas para cada función.}
+$$
+Para tener una mejor idea de cómo se ven los datos, se pueden observar estos 6 registros:
+
+```{r echo= FALSE}
+ej.cine <- data.frame( "IdFunción_i" = c("14156","14157","14158","14159","14160","14161")
+                       ,"Fecha_i" = c("23/07/2022","23/07/2022","24/07/2022","24/07/2022","24/07/2022","25/07/2022")
+                       ,"Hora_i" = c("19:00","22:00","11:00","15:30","20:15", "11:00")
+                       ,"Película_i" = c("Odín 4", "Chillido 5", "Odín 4", "Desafiar Barreras", "Odín 4", "Desafiar Barreras")
+                       , "Duración_i" = c( 105, 132, 105, 158, 105, 158)
+                       ,"Tipo_i" = c("Acción","Terror","Acción","Romance","Acción","Romance")
+                       , "Edad_i" = c("TE+7","MA+18","TE+7","MA+14","TE+7","MA+14")
+                       ,"Estudio_i" = c("Dis","Para","Dis","WB","Dis","WB")
+                       ,"Presupuesto_i" = c("354,970,000","135,600,000","354,970,000","94,500,000","354,970,000","94,500,000")
+                       ,"Ingreso_i" = c("948,640","804,300","893,000","569,200","832,150","452,900"))
+
+kbl(ej.cine)%>%
+  kable_classic("striped")
+```
+$$
+\textbf{Tabla 3: } \text{Ejemplo de 6 registro en Tabla de Ventas.}
+$$
+
+
+1. Nótese que una película puede tener varias funciones y que, debido a la naturaleza de las variables, el rango de valores y el tipo de variables son distintos. Debido a esto, elija un nivel de agregación y transforme las variables de forma que puedan modelar el éxito total en ventas para cada película.
+
+2. El equipo escogió como variable dependiente el logaritmo de la suma de los ingresos de las funciones para cada película y generó dos modelos distintos, entregando los siguientes resultados:
+
+```{r echo= FALSE}
+modelos.cine <- data.frame( "Coeficiente" =c(-15.2, -1.04, 0.62, 4.5 , 6.71, 5.16, 4.04 , "-","-","-","-","-", 5.12, 4.09, 3.14,-0.63," "," "," ")
+                          ,"p-valor" =c(0.704,0.452,0.005,0.058, 0.020,0.017,0.009,"-","-","-","-","-",0.004,0.240,0.104,0.186, -644 , "1,304","1,366")
+                          ,"Coeficiente" =c(3.1, -0.23, 1.15, "-" , "-","-", "-" , 4.05,1.63,2.11,-1.52,6.72, "-", "-" , "-" , "-"," "," "," ")
+                          ,"p-valor" =c(0.704,0.452,0.005,0.058, 0.020,0.017,0.009,"-","-","-","-","-",0.004,0.240,0.104,0.186, -650, "1,295","1,350"))
+
+rownames(modelos.cine) <- c( "Intercepto","Duración","log(Presupuesto)","Edad.TE","Edad.TE+7","Edad.MA+14","Edad.MA+18","Tipo.Acción","Tipo.Comedia","Tipo.Romance","Tipo.Drama","Tipo.Terror","Estudio.Dis","Estudio.WB","Estudio.Uni","Estudio.Para","LL","AIC","BIC")
+kbl(modelos.cine, align = "c",col.names = c("Coeficiente","p-valor","Coeficiente","p-valor")) %>%
+  kable_classic("striped", full_width = F) %>%
+  add_header_above(c(" " = 1, "Modelo 1" = 2, "Modelo 2" = 2))
+
+```
+
+$$
+\textbf{Tabla 3: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
+$$
+
+A partir de los datos entregados elija cuál modelos es mejor para predecir el número de entradas vendidas para una película y entregue 3 argumentos de porqué lo considera mejor.
+
+3. Interprete los coeficientes de cada modelo. Según cada modelo,¿qué tipo de películas debería presentar el cine para tener mayores ingresos?
+
+4. Suponga que en su base de datos posee también la variable independiente $NFun$ que representa el número de funciones que recibió la película en el cine. Proponga un modelo de regresión lineal que considere siguientes condiciones:
+
+(a) Se debe considerar el efecto marginal por parte de las variables Presupuesto, Duración, Edad, Tipo, Estudio y $NFun$.
+
+(b) Existe un efecto en las ventas que depende simultaneamente del estudio y el Tipo de película (Por ejemplo, el estudio WB puede tener más exito con películas de terror, mientras que Dis lo puede tener con aquellas de acción).
+
+(c) El éxito de la películas apropiadas para niños (Edad $\in$ {TE, TE+7}) depende de su duración.
+
+### Solución {-}
+
+1. Para evaluar el ingreso total en ventas obtenido por una película se deben considerar los ingresos a nível película. De modo que se define el ingreso para la película $j$ como la suma del éxito de todas sus funciones $i$:
+
+$$
+Ingreso_{j} = \sum_i Ingreso_i \cdot \textbf{1}_{[Nombre_i = j]}
+$$
+Cabe notar que las características de la película ($Presupuesto_i ,Duración_i ,Tipo_i ,Edad_i ,Estudio_i$) se mantienen para cada función $i$ de la película $j$ de modo que $Presupuesto_j = Presupuesto_i$ para toda función de la película $j$ (lo mismo para las demás carácteristicas). De este modo, tenemos un vector de características por película ($Presupuesto_j ,Duración_j ,Tipo_j ,Edad_j ,Estudio_j$)
+
+Finalmente, notemos que los valores de $Ingreso$ y $Presupuesto$ son muy elevados en comparación con la variable $Duración$. Similarmente, el rango no se compara con el valor de las variables dummy generadas por las categorías $Tipo$,$Edad$ y $Estudio$. Debido a esto, decidimos estudiar el comportamiento del logaritmo de estos montos: $\ln(Ingreso)$ y $\ln(Presupuesto_j)$.
+
+Para ser más claros, la tabla con las transformaciones apropiadas tendría los 6 registros mostrados anteriormente de la siguiente manera:
+
+```{r echo= FALSE}
+ej.cine <- data.frame( "Película_j" = c("Odín 4", "Chillido 5", "Desafiar Barreras" )
+                       , "Duración_j" = c( 105, 132, 158)
+                       ,"Tipo_j" = c("Acción","Terror","Romance")
+                       , "Edad_j" = c("TE+7","MA+18","MA+14")
+                       ,"Estudio_j" = c("Dis","Para","WB")
+                       ,"log(Presupuesto_j)" = c(8.55,8.13,7.97)
+                       ,"log(Ingreso_j)" = c(6.43,5.91,6.01))
+
+kbl(ej.cine)%>%
+  kable_classic("striped")
+```
+
+
+2. El modelo que explica de manera más efectiva el comportamiento es el modelo 2. Se pueden considerara varias razones para esto, algunas de estas razones son:
+- A pesar del modelo 1  tener una mejor log-verosimilitud, el BIC del modelo 2 es mejor que el modelo 1.
+- La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por lo que podríamos argumentar que preferimos el modelo 2 por su parsimonia (argumento se refuerza mirando la métrica BIC).
+- Una gran parte de los coeficientes del modelo 1 son no significativos a un 5% de confianza, mientras que los coeficientes del modelo 2 tienden a ser <5%
+- La significancia de las variables que ambos modelos comparten poseen un p-valor menor en el modelo 2, de modo que sus intervalos de confianza deberían ser más acotados. Lo anterior, a pesar de algunas variables no ser significativas al 5%, es un hecho positivo respecto al modelo 2.  
+- Pensando en la interpretación, el modelo 1 posee algunos comportamientos discutibles: esperaríamos, por ejemplo, que la duración tenga un efecto negativo y significativo en los ingresos. Sin embargo, el modelo la considera no significativa.
+- Los valores de intercepto en el modelo 1 está demasiado desviado en magnitud respecto al resto de coeficientes. Lo anterior podría dar indicios de incluso algún error en cuánto al escalamiento de las variables al momento de calibrar el modelo.
+
+
+3. Primero observamos aquellos coeficientes con mayor significancia estadística. Para eso consideramos aquellos cuyo p-valor sea menor a 0.01.
+
+Para el modelo 1 se tienen las variables $\log(Presupuesto)$, $Edad.MA+18$ y $Estudio.Dis$. De acuerdo al signo de los coeficientes podemos concluir que las películas que generan un mayor ingreso son aquellas con un mayor presupuesto, para mayores de 18 años producidas por Dis.
+
+En cambio, para el modelo 2, las variables a considerar son $Duración$, $\log(Presupuesto)$ y $Género.Terror$. Por el signo de los coeficientes, se deben proyectar películas de terror cortas con un alto presupuesto.
+
+**Observación**: 
+
+- En el modelo 1, sería deseable considerar la variable $Duración$. Sin embargo, su p-valor alto refleja que no es una variable significativa en este modelo.
+
+
+4. La condición (a) muestra que se deben incluir las variables Presupuesto, Duración, Edad, Género, Estudio y Nfun en el modelo, con sus propios coeficientes. La condición (b) nos dice que se debe agregar además, las variables de estudio condicionada al género. Finalmente, la condición (c) dice que queremos conocer el impacto de la duración en las películas cuya variable Edad es TE y TE+7. 
+
+Recordemos que, para variables categóricas, se deben generar variables $dummy$ para cada categoría Sea $E = \{ TE,TE+7,MA+14,MA+18 \}$, $T = \{Acción, Comedia,Romance,Drama,Terror\} $ y $S = \{ Dis,WB,Uni,Para \}$. A partir de estos conjuntos, podemos definir las variables $dummy$:
+
+- $Edad_i,e = 1$ si para la película $i$, $Edad_i=e$ para $e \in E$.
+- $Tipo_i,t = 1$ si para la película $i$, $Tipo_i=t$ para $t \in T$.
+- $Tipo_i,s = 1$ si para la película $i$, $Estudio_i=s$ para $s \in S$.
+
+De este modo, el modelo que cumple las condiciones mencionadas sería
+
+$$
+\log(Ingreso_i) = \beta_1 \log(Presupuesto_i) + \beta_2 Duración_i + \sum_{e \in E} \beta_e Edad_{i,e} + \sum_{t \in T} \beta_t Tipo_{i,t} + \sum_{s \in S} \beta_s Estudio_{i,S} + \beta_3 Nfun_i\\
++ \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} Tipo_{i,t} \times Estudio_{i,S} \\
++  \sum_{e \in \{TE,TE+7\}} \delta_e  Edad_{i,e} \times Duración_i
+$$
+Se puede realizar una notación vectorial de los coeficientes para tener una notación más concisa, pero se debe tener en cuenta los índices de estos coeficientes.
