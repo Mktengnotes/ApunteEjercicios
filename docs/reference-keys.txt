@@ -9,3 +9,14 @@ introducción-1
 problemas-1
 soluciones-1
 formulas-utiles
+modelos-de-regresión
+metodología-1
+introducción-2
+problemas-2
+soluciones-2
+solución
+solución-1
+solución-2
+solución-3
+problema-3
+solución-4
