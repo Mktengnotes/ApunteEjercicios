@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2023-05-08" />
+<meta name="date" content="2023-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -97,11 +97,11 @@
 <li class="chapter" data-level="3.3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problemas-1"><i class="fa fa-check"></i><b>3.3</b> Problemas</a>
 <ul>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-1-1"><i class="fa fa-check"></i>Problema 1</a></li>
-<li class="chapter" data-level="3.3.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-2"><i class="fa fa-check"></i><b>3.3.1</b> Solución</a></li>
+<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-2"><i class="fa fa-check"></i>Solución</a></li>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-2-1"><i class="fa fa-check"></i>Problema 2</a></li>
-<li class="chapter" data-level="3.3.2" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-3"><i class="fa fa-check"></i><b>3.3.2</b> Solución</a></li>
+<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-3"><i class="fa fa-check"></i>Problema 3</a></li>
-<li class="chapter" data-level="3.3.3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-4"><i class="fa fa-check"></i><b>3.3.3</b> Solución</a></li>
+<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-4"><i class="fa fa-check"></i>Solución</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
@@ -1119,13 +1119,14 @@ BIC
 <div id="solución-1" class="section level3 unnumbered hasAnchor">
 <h3>Solución<a href="modelos-de-regresión.html#solución-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Para evaluar el ingreso total en ventas obtenido por una película se deben considerar los ingresos a nível película. De modo que se define el ingreso para la película <span class="math inline">\(j\)</span> como la suma del éxito de todas sus funciones <span class="math inline">\(i\)</span>:</li>
+<li>Nótese que una película puede tener varias funciones y que, debido a la naturaleza de las variables, el rango de valores y el tipo de variables son distintos. Debido a esto, elija un nivel de agregación y transforme las variables de forma que puedan modelar el éxito total en ventas para cada película.</li>
 </ol>
+<p>Para evaluar el ingreso total en ventas obtenido por una película se deben considerar los ingresos a nível película. De modo que se define el ingreso para la película <span class="math inline">\(j\)</span> como la suma del éxito de todas sus funciones <span class="math inline">\(i\)</span>:</p>
 <p><span class="math display">\[
 Ingreso_{j} = \sum_i Ingreso_i \cdot \textbf{1}_{[Nombre_i = j]}
 \]</span>
 Cabe notar que las características de la película (<span class="math inline">\(Presupuesto_i ,Duración_i ,Tipo_i ,Edad_i ,Estudio_i\)</span>) se mantienen para cada función <span class="math inline">\(i\)</span> de la película <span class="math inline">\(j\)</span> de modo que <span class="math inline">\(Presupuesto_j = Presupuesto_i\)</span> para toda función de la película <span class="math inline">\(j\)</span> (lo mismo para las demás carácteristicas). De este modo, tenemos un vector de características por película (<span class="math inline">\(Presupuesto_j ,Duración_j ,Tipo_j ,Edad_j ,Estudio_j\)</span>)</p>
-<p>Finalmente, notemos que los valores de <span class="math inline">\(Ingreso\)</span> y <span class="math inline">\(Presupuesto\)</span> son muy elevados en comparación con la variable <span class="math inline">\(Duración\)</span>. Similarmente, el rango no se compara con el valor de las variables dummy generadas por las categorías <span class="math inline">\(Tipo\)</span>,<span class="math inline">\(Edad\)</span> y <span class="math inline">\(Estudio\)</span>. Debido a esto, decidimos estudiar el comportamiento del logaritmo de estos montos: <span class="math inline">\(\ln(Ingreso)\)</span> y <span class="math inline">\(\ln(Presupuesto_j)\)</span>.</p>
+<p>Finalmente, notemos que los valores de <span class="math inline">\(Ingreso_j\)</span> y <span class="math inline">\(Presupuesto_j\)</span> son muy elevados en comparación con la variable <span class="math inline">\(Duración_j\)</span>. Similarmente, el rango no se compara con el valor de las variables dummy generadas por las categorías <span class="math inline">\(Tipo_j\)</span>,<span class="math inline">\(Edad_j\)</span> y <span class="math inline">\(Estudio_j\)</span>. Debido a esto, decidimos estudiar el comportamiento del logaritmo de estos montos: <span class="math inline">\(\log(Ingreso)\)</span> y <span class="math inline">\(\log(Presupuesto_j)\)</span>.</p>
 <p>Para ser más claros, la tabla con las transformaciones apropiadas tendría los 6 registros mostrados anteriormente de la siguiente manera:</p>
 <table class=" lightable-classic lightable-striped" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1226,9 +1227,10 @@ WB
 </tbody>
 </table>
 <ol start="2" style="list-style-type: decimal">
-<li>El modelo que explica de manera más efectiva el comportamiento es el modelo 2. Se pueden considerara varias razones para esto, algunas de estas razones son:</li>
+<li>A partir de los datos entregados elija cuál modelos es mejor para predecir el número de entradas vendidas para una película y entregue 3 argumentos de porqué lo considera mejor.</li>
 </ol>
-<ul>
+<p>El modelo que explica de manera más efectiva el comportamiento es el modelo 2. Se pueden considerara varias razones para esto, algunas de estas razones son:</p>
+<ol style="list-style-type: lower-alpha">
 <li>A pesar del modelo 1 tener una mejor log-verosimilitud, el BIC del modelo 2 es mejor que el modelo 1.</li>
 <li>La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por lo que podríamos argumentar que preferimos el modelo 2 por su parsimonia (argumento se refuerza mirando la métrica BIC).</li>
 <li>Una gran parte de los coeficientes del modelo 1 son no significativos a un 5% de confianza, mientras que los coeficientes del modelo 2 tienden a ser &lt;5%</li>
@@ -1236,10 +1238,11 @@ WB
 </li>
 <li>Pensando en la interpretación, el modelo 1 posee algunos comportamientos discutibles: esperaríamos, por ejemplo, que la duración tenga un efecto negativo y significativo en los ingresos. Sin embargo, el modelo la considera no significativa.</li>
 <li>Los valores de intercepto en el modelo 1 está demasiado desviado en magnitud respecto al resto de coeficientes. Lo anterior podría dar indicios de incluso algún error en cuánto al escalamiento de las variables al momento de calibrar el modelo.</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>Primero observamos aquellos coeficientes con mayor significancia estadística. Para eso consideramos aquellos cuyo p-valor sea menor a 0.01.</li>
 </ol>
+<ol start="3" style="list-style-type: decimal">
+<li>Interprete los coeficientes de cada modelo. Según cada modelo,¿qué tipo de películas debería presentar el cine para tener mayores ingresos?</li>
+</ol>
+<p>Primero observamos aquellos coeficientes con mayor significancia estadística. Para eso consideramos aquellos cuyo p-valor sea menor a 0.01.</p>
 <p>Para el modelo 1 se tienen las variables <span class="math inline">\(\log(Presupuesto)\)</span>, <span class="math inline">\(Edad.MA+18\)</span> y <span class="math inline">\(Estudio.Dis\)</span>. De acuerdo al signo de los coeficientes podemos concluir que las películas que generan un mayor ingreso son aquellas con un mayor presupuesto, para mayores de 18 años producidas por Dis.</p>
 <p>En cambio, para el modelo 2, las variables a considerar son <span class="math inline">\(Duración\)</span>, <span class="math inline">\(\log(Presupuesto)\)</span> y <span class="math inline">\(Género.Terror\)</span>. Por el signo de los coeficientes, se deben proyectar películas de terror cortas con un alto presupuesto.</p>
 <p><strong>Observación</strong>:</p>
@@ -1247,21 +1250,27 @@ WB
 <li>En el modelo 1, sería deseable considerar la variable <span class="math inline">\(Duración\)</span>. Sin embargo, su p-valor alto refleja que no es una variable significativa en este modelo.</li>
 </ul>
 <ol start="4" style="list-style-type: decimal">
-<li>La condición (a) muestra que se deben incluir las variables Presupuesto, Duración, Edad, Género, Estudio y Nfun en el modelo, con sus propios coeficientes. La condición (b) nos dice que se debe agregar además, las variables de estudio condicionada al género. Finalmente, la condición (c) dice que queremos conocer el impacto de la duración en las películas cuya variable Edad es TE y TE+7.</li>
+<li>Suponga que en su base de datos posee también la variable independiente <span class="math inline">\(NFun\)</span> que representa el número de funciones que recibió la película en el cine. Proponga un modelo de regresión lineal que considere siguientes condiciones:</li>
 </ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Se debe considerar el efecto marginal por parte de las variables Presupuesto, Duración, Edad, Tipo, Estudio y <span class="math inline">\(NFun\)</span>.</p></li>
+<li><p>Existe un efecto en las ventas que depende simultaneamente del estudio y el Tipo de película (Por ejemplo, el estudio WB puede tener más exito con películas de terror, mientras que Dis lo puede tener con aquellas de acción).</p></li>
+<li><p>El éxito de la películas apropiadas para niños (Edad <span class="math inline">\(\in\)</span> {TE, TE+7}) depende de su duración.</p></li>
+</ol>
+<p>La condición (a) muestra que se deben incluir las variables Presupuesto, Duración, Edad, Género, Estudio y Nfun en el modelo, con sus propios coeficientes. La condición (b) nos dice que se debe agregar además, las variables de estudio condicionada al género. Finalmente, la condición (c) dice que queremos conocer el impacto de la duración en las películas cuya variable Edad es TE y TE+7.</p>
 <p>Recordemos que, para variables categóricas, se deben generar variables <span class="math inline">\(dummy\)</span> para cada categoría Sea <span class="math inline">\(E = \{ TE,TE+7,MA+14,MA+18 \}\)</span>, $T = {Acción, Comedia,Romance,Drama,Terror} $ y <span class="math inline">\(S = \{ Dis,WB,Uni,Para \}\)</span>. A partir de estos conjuntos, podemos definir las variables <span class="math inline">\(dummy\)</span>:</p>
 <ul>
-<li><span class="math inline">\(Edad_i,e = 1\)</span> si para la película <span class="math inline">\(i\)</span>, <span class="math inline">\(Edad_i=e\)</span> para <span class="math inline">\(e \in E\)</span>.</li>
-<li><span class="math inline">\(Tipo_i,t = 1\)</span> si para la película <span class="math inline">\(i\)</span>, <span class="math inline">\(Tipo_i=t\)</span> para <span class="math inline">\(t \in T\)</span>.</li>
-<li><span class="math inline">\(Tipo_i,s = 1\)</span> si para la película <span class="math inline">\(i\)</span>, <span class="math inline">\(Estudio_i=s\)</span> para <span class="math inline">\(s \in S\)</span>.</li>
+<li><span class="math inline">\(Edad_j,e = 1\)</span> si para la película <span class="math inline">\(j\)</span>, <span class="math inline">\(Edad_j=e\)</span> para <span class="math inline">\(e \in E\)</span>.</li>
+<li><span class="math inline">\(Tipo_j,t = 1\)</span> si para la película <span class="math inline">\(j\)</span>, <span class="math inline">\(Tipo_j=t\)</span> para <span class="math inline">\(t \in T\)</span>.</li>
+<li><span class="math inline">\(Tipo_j,s = 1\)</span> si para la película <span class="math inline">\(j\)</span>, <span class="math inline">\(Estudio_j=s\)</span> para <span class="math inline">\(s \in S\)</span>.</li>
 </ul>
 <p>De este modo, el modelo que cumple las condiciones mencionadas sería</p>
 <p><span class="math display">\[
-\log(Ingreso_i) = \beta_1 \log(Presupuesto_i) + \beta_2 Duración_i + \sum_{e \in E} \beta_e Edad_{i,e} + \sum_{t \in T} \beta_t Tipo_{i,t} + \sum_{s \in S} \beta_s Estudio_{i,S} + \beta_3 Nfun_i\\
-+ \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} Tipo_{i,t} \times Estudio_{i,S} \\
-+  \sum_{e \in \{TE,TE+7\}} \delta_e  Edad_{i,e} \times Duración_i
+\log(Ingreso_j) = \beta_1 \log(Presupuesto_j) + \beta_2 Duración_j + \sum_{e \in E} \beta_e Edad_{j,e} + \sum_{t \in T} \beta_t Tipo_{j,t} + \sum_{s \in S} \beta_s Estudio_{j,S} + \beta_3 Nfun_j\\
++ \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} Tipo_{j,t} \times Estudio_{j,S} \\
++  \sum_{e \in \{TE,TE+7\}} \delta_e  Edad_{j,e} \times Duración_j
 \]</span>
-Se puede realizar una notación vectorial de los coeficientes para tener una notación más concisa, pero se debe tener en cuenta los índices de estos coeficientes.</p>
+Se puede realizar una notación vectorial de los coeficientes para tener una notación más concisa, pero se debe tener en cuenta los índices de estos coeficientes, de modo que el largo del vector sea la cantidad de coeficientes a buscar.</p>
 
 </div>
 </div>
