@@ -170,14 +170,16 @@ A partir de los datos entregados elija cuál modelos es mejor para predecir el n
 
 ### Solución {-}
 
-1. Para evaluar el ingreso total en ventas obtenido por una película se deben considerar los ingresos a nível película. De modo que se define el ingreso para la película $j$ como la suma del éxito de todas sus funciones $i$:
+1. Nótese que una película puede tener varias funciones y que, debido a la naturaleza de las variables, el rango de valores y el tipo de variables son distintos. Debido a esto, elija un nivel de agregación y transforme las variables de forma que puedan modelar el éxito total en ventas para cada película.
+
+Para evaluar el ingreso total en ventas obtenido por una película se deben considerar los ingresos a nível película. De modo que se define el ingreso para la película $j$ como la suma del éxito de todas sus funciones $i$:
 
 $$
 Ingreso_{j} = \sum_i Ingreso_i \cdot \textbf{1}_{[Nombre_i = j]}
 $$
 Cabe notar que las características de la película ($Presupuesto_i ,Duración_i ,Tipo_i ,Edad_i ,Estudio_i$) se mantienen para cada función $i$ de la película $j$ de modo que $Presupuesto_j = Presupuesto_i$ para toda función de la película $j$ (lo mismo para las demás carácteristicas). De este modo, tenemos un vector de características por película ($Presupuesto_j ,Duración_j ,Tipo_j ,Edad_j ,Estudio_j$)
 
-Finalmente, notemos que los valores de $Ingreso$ y $Presupuesto$ son muy elevados en comparación con la variable $Duración$. Similarmente, el rango no se compara con el valor de las variables dummy generadas por las categorías $Tipo$,$Edad$ y $Estudio$. Debido a esto, decidimos estudiar el comportamiento del logaritmo de estos montos: $\ln(Ingreso)$ y $\ln(Presupuesto_j)$.
+Finalmente, notemos que los valores de $Ingreso_j$ y $Presupuesto_j$ son muy elevados en comparación con la variable $Duración_j$. Similarmente, el rango no se compara con el valor de las variables dummy generadas por las categorías $Tipo_j$,$Edad_j$ y $Estudio_j$. Debido a esto, decidimos estudiar el comportamiento del logaritmo de estos montos: $\log(Ingreso)$ y $\log(Presupuesto_j)$.
 
 Para ser más claros, la tabla con las transformaciones apropiadas tendría los 6 registros mostrados anteriormente de la siguiente manera:
 
@@ -195,16 +197,20 @@ kbl(ej.cine)%>%
 ```
 
 
-2. El modelo que explica de manera más efectiva el comportamiento es el modelo 2. Se pueden considerara varias razones para esto, algunas de estas razones son:
-- A pesar del modelo 1  tener una mejor log-verosimilitud, el BIC del modelo 2 es mejor que el modelo 1.
-- La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por lo que podríamos argumentar que preferimos el modelo 2 por su parsimonia (argumento se refuerza mirando la métrica BIC).
-- Una gran parte de los coeficientes del modelo 1 son no significativos a un 5% de confianza, mientras que los coeficientes del modelo 2 tienden a ser <5%
-- La significancia de las variables que ambos modelos comparten poseen un p-valor menor en el modelo 2, de modo que sus intervalos de confianza deberían ser más acotados. Lo anterior, a pesar de algunas variables no ser significativas al 5%, es un hecho positivo respecto al modelo 2.  
-- Pensando en la interpretación, el modelo 1 posee algunos comportamientos discutibles: esperaríamos, por ejemplo, que la duración tenga un efecto negativo y significativo en los ingresos. Sin embargo, el modelo la considera no significativa.
-- Los valores de intercepto en el modelo 1 está demasiado desviado en magnitud respecto al resto de coeficientes. Lo anterior podría dar indicios de incluso algún error en cuánto al escalamiento de las variables al momento de calibrar el modelo.
+2. A partir de los datos entregados elija cuál modelos es mejor para predecir el número de entradas vendidas para una película y entregue 3 argumentos de porqué lo considera mejor.
 
+El modelo que explica de manera más efectiva el comportamiento es el modelo 2. Se pueden considerara varias razones para esto, algunas de estas razones son:
 
-3. Primero observamos aquellos coeficientes con mayor significancia estadística. Para eso consideramos aquellos cuyo p-valor sea menor a 0.01.
+a.  A pesar del modelo 1  tener una mejor log-verosimilitud, el BIC del modelo 2 es mejor que el modelo 1.
+b.  La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por lo que podríamos argumentar que preferimos el modelo 2 por su parsimonia (argumento se refuerza mirando la métrica BIC).
+c.  Una gran parte de los coeficientes del modelo 1 son no significativos a un 5% de confianza, mientras que los coeficientes del modelo 2 tienden a ser <5%
+d.  La significancia de las variables que ambos modelos comparten poseen un p-valor menor en el modelo 2, de modo que sus intervalos de confianza deberían ser más acotados. Lo anterior, a pesar de algunas variables no ser significativas al 5%, es un hecho positivo respecto al modelo 2.  
+e.  Pensando en la interpretación, el modelo 1 posee algunos comportamientos discutibles: esperaríamos, por ejemplo, que la duración tenga un efecto negativo y significativo en los ingresos. Sin embargo, el modelo la considera no significativa.
+f.  Los valores de intercepto en el modelo 1 está demasiado desviado en magnitud respecto al resto de coeficientes. Lo anterior podría dar indicios de incluso algún error en cuánto al escalamiento de las variables al momento de calibrar el modelo.
+
+3. Interprete los coeficientes de cada modelo. Según cada modelo,¿qué tipo de películas debería presentar el cine para tener mayores ingresos?
+
+Primero observamos aquellos coeficientes con mayor significancia estadística. Para eso consideramos aquellos cuyo p-valor sea menor a 0.01.
 
 Para el modelo 1 se tienen las variables $\log(Presupuesto)$, $Edad.MA+18$ y $Estudio.Dis$. De acuerdo al signo de los coeficientes podemos concluir que las películas que generan un mayor ingreso son aquellas con un mayor presupuesto, para mayores de 18 años producidas por Dis.
 
@@ -215,19 +221,27 @@ En cambio, para el modelo 2, las variables a considerar son $Duración$, $\log(P
 - En el modelo 1, sería deseable considerar la variable $Duración$. Sin embargo, su p-valor alto refleja que no es una variable significativa en este modelo.
 
 
-4. La condición (a) muestra que se deben incluir las variables Presupuesto, Duración, Edad, Género, Estudio y Nfun en el modelo, con sus propios coeficientes. La condición (b) nos dice que se debe agregar además, las variables de estudio condicionada al género. Finalmente, la condición (c) dice que queremos conocer el impacto de la duración en las películas cuya variable Edad es TE y TE+7. 
+4. Suponga que en su base de datos posee también la variable independiente $NFun$ que representa el número de funciones que recibió la película en el cine. Proponga un modelo de regresión lineal que considere siguientes condiciones:
+
+(a) Se debe considerar el efecto marginal por parte de las variables Presupuesto, Duración, Edad, Tipo, Estudio y $NFun$.
+
+(b) Existe un efecto en las ventas que depende simultaneamente del estudio y el Tipo de película (Por ejemplo, el estudio WB puede tener más exito con películas de terror, mientras que Dis lo puede tener con aquellas de acción).
+
+(c) El éxito de la películas apropiadas para niños (Edad $\in$ {TE, TE+7}) depende de su duración.
+
+La condición (a) muestra que se deben incluir las variables Presupuesto, Duración, Edad, Género, Estudio y Nfun en el modelo, con sus propios coeficientes. La condición (b) nos dice que se debe agregar además, las variables de estudio condicionada al género. Finalmente, la condición (c) dice que queremos conocer el impacto de la duración en las películas cuya variable Edad es TE y TE+7. 
 
 Recordemos que, para variables categóricas, se deben generar variables $dummy$ para cada categoría Sea $E = \{ TE,TE+7,MA+14,MA+18 \}$, $T = \{Acción, Comedia,Romance,Drama,Terror\} $ y $S = \{ Dis,WB,Uni,Para \}$. A partir de estos conjuntos, podemos definir las variables $dummy$:
 
-- $Edad_i,e = 1$ si para la película $i$, $Edad_i=e$ para $e \in E$.
-- $Tipo_i,t = 1$ si para la película $i$, $Tipo_i=t$ para $t \in T$.
-- $Tipo_i,s = 1$ si para la película $i$, $Estudio_i=s$ para $s \in S$.
+- $Edad_j,e = 1$ si para la película $j$, $Edad_j=e$ para $e \in E$.
+- $Tipo_j,t = 1$ si para la película $j$, $Tipo_j=t$ para $t \in T$.
+- $Tipo_j,s = 1$ si para la película $j$, $Estudio_j=s$ para $s \in S$.
 
 De este modo, el modelo que cumple las condiciones mencionadas sería
 
 $$
-\log(Ingreso_i) = \beta_1 \log(Presupuesto_i) + \beta_2 Duración_i + \sum_{e \in E} \beta_e Edad_{i,e} + \sum_{t \in T} \beta_t Tipo_{i,t} + \sum_{s \in S} \beta_s Estudio_{i,S} + \beta_3 Nfun_i\\
-+ \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} Tipo_{i,t} \times Estudio_{i,S} \\
-+  \sum_{e \in \{TE,TE+7\}} \delta_e  Edad_{i,e} \times Duración_i
+\log(Ingreso_j) = \beta_1 \log(Presupuesto_j) + \beta_2 Duración_j + \sum_{e \in E} \beta_e Edad_{j,e} + \sum_{t \in T} \beta_t Tipo_{j,t} + \sum_{s \in S} \beta_s Estudio_{j,S} + \beta_3 Nfun_j\\
++ \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} Tipo_{j,t} \times Estudio_{j,S} \\
++  \sum_{e \in \{TE,TE+7\}} \delta_e  Edad_{j,e} \times Duración_j
 $$
-Se puede realizar una notación vectorial de los coeficientes para tener una notación más concisa, pero se debe tener en cuenta los índices de estos coeficientes.
+Se puede realizar una notación vectorial de los coeficientes para tener una notación más concisa, pero se debe tener en cuenta los índices de estos coeficientes, de modo que el largo del vector sea la cantidad de coeficientes a buscar.

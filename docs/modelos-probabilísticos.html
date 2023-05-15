@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2023-05-08" />
+<meta name="date" content="2023-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -217,7 +217,7 @@ formulado un modelo probabilístico donde el comportamiento de los clientes se d
 <li>Se desea extender el modelo para que además incluya un segmento de clientes que nunca compra. Para este segmento de clientes, <span class="math inline">\(Pr(X = 0) = 1\)</span>. Sea <span class="math inline">\(\pi\)</span> la proporción de estos clientes en la población, y <span class="math inline">\((1 - \pi)\)</span> el segmento de clientes que se comporta de acuerdo al modelo Beta-Geométrico descrito anteriormente. Suponga que conoce <span class="math inline">\(x_i\)</span>, el numero de compras hechas por cada cliente i en la base de datos (i = 1, …, n). Deduzca la función de verosimilitud que utilizaría para estimar el modelo.</li>
 </ol>
 <p>Sea <span class="math inline">\(n_x\)</span> el número de clientes que compra x parkas. Entonces, la verosimilitud puede escribirse como:</p>
-<p><span class="math display">\[L(\alpha,\beta,\pi |x) = \prod_{x=1}^{\infty} Pr = (X=x|\alpha,\beta,\pi)^{n_x}\]</span></p>
+<p><span class="math display">\[L(\alpha,\beta,\pi |x) = \prod_{x=0}^{\infty} Pr = (X=x|\alpha,\beta,\pi)^{n_x}\]</span></p>
 donde,
 <span class="math display">\[\begin{array}{cc}
 Pr(X=x|\alpha,\beta,\pi) &amp; = \pi Pr(X=x|\text{ no adopta}) + (1 - \pi) Pr (X = x |\text{ puede adoptar})\\
@@ -377,14 +377,21 @@ Número de compras en esa categoría y mes
 <ol start="2" style="list-style-type: decimal">
 <li>Suponga que, para la categoría <span class="math inline">\(c = Hamburguesas\)</span>, existen dos clases latentes. Un segmento de alto consumo y otro de consumo ocasional. Para acomodar esta regularidad, se propone un modelo sencillo en que la tasa de compra de un cliente <span class="math inline">\(i\)</span>, independiente del mes, viene dado por:</li>
 </ol>
-<p><span class="math display">\[log(\lambda_i)= \beta_{0i}+ \beta_1 MUJER_i + \beta_2 INGRESO_i \]</span></p>
+<p><span class="math display">\[log(\lambda_i)= \beta_{0i}+ \beta_1 MUJER_i + \beta_2 INGRESO_i\]</span></p>
 <p>Donde <span class="math inline">\(\beta_{0i}\)</span> toma el valor <span class="math inline">\(-1\)</span> con probabilidad <span class="math inline">\(0.4\)</span> u el valor <span class="math inline">\(0.5\)</span> con probabilidad <span class="math inline">\(0.6\)</span>. En otras palabras, el tamaño del segmento 1 de los clientes ocasionales representa al 40% de la población mientras que los clientes activos representan el 60% de la población. ¿Cuál es la probabilidad de que un cliente hombre, con un ingreso de MM$1 que no compra en un mes (<span class="math inline">\(n_i=0\)</span>) pertenezca al segmento 1?</p>
 </div>
 <div id="solución-3" class="section level3 unnumbered hasAnchor">
 <h3>Solución<a href="modelos-probabilísticos.html#solución-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Sea <span class="math inline">\(N_{icst}\)</span> la variable aleatoria que define la cantidad que de productos que compra el cliente <span class="math inline">\(i\)</span> en la categoría <span class="math inline">\(c\)</span> en la tienda <span class="math inline">\(s\)</span> el mes <span class="math inline">\(t\)</span>, y sea <span class="math inline">\(\lambda_{icst}\)</span> la tasa de compras asociada a la variable anterior. Al ser un modelo de regresión de Poisson, su distribución es:</li>
+<li>Proponga un modelo de regresión de Poisson en que lla tasa de compra depende de cada individuo, categoría, tienda y semana. Escriba la log-verosimilitud del problema considerando que <span class="math inline">\(n_{icst}\)</span> es el número de unidades compradas por el cliente <span class="math inline">\(i\)</span> en la categoría <span class="math inline">\(c\)</span> en la tienda <span class="math inline">\(s\)</span> el mes <span class="math inline">\(t\)</span>. Para esto, considere que:</li>
 </ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Existe un efecto fijo por categoría y uno por tienda.</p></li>
+<li><p>El género induce diferencias relevantes en las ventas y el efecto del género es distinto para la zona oriente de la capital.</p></li>
+<li><p>Existe una tendencia creciente en las ventas. Como el crecimiento es relativamente pequeño, puede modelarse con un efecto fijo a nivel de año.</p></li>
+<li><p>Aunque en el consumo es relativamente constante, a lo largo del año, hay dos categorías que presentan una estacionalidad relevante. Mientras los helados tienen un patrón marcadamente diferente en los meses de diciembre, enero y febrero, las hamburguesas declinan sus ventas en el mes de septiembre.</p></li>
+</ol>
+<p>Sea <span class="math inline">\(N_{icst}\)</span> la variable aleatoria que define la cantidad que de productos que compra el cliente <span class="math inline">\(i\)</span> en la categoría <span class="math inline">\(c\)</span> en la tienda <span class="math inline">\(s\)</span> el mes <span class="math inline">\(t\)</span>, y sea <span class="math inline">\(\lambda_{icst}\)</span> la tasa de compras asociada a la variable anterior. Al ser un modelo de regresión de Poisson, su distribución es:</p>
 <p><span class="math display">\[
 Pr(N_{icst}= n_{icst}) = \frac{\lambda_{icst}^{n_{icst}}e^{-\lambda_{icst}} }{n_{icst}!}
 \]</span>
@@ -396,22 +403,23 @@ Donde la tasa <span class="math inline">\(\lambda_{icst}\)</span> viene dada por
 </ul>
 <p>Entonces, la tasa de compra puede escribirse como</p>
 <p><span class="math display">\[
-\lambda_{icst} = \alpha_c + \alpha_s + \beta_1 MUJER_i + \beta_2 MUJER_i \cdot ZORIENTE_s + \sum_{a} \gamma_a \delta_{ta} + \theta_1 \Delta_{ct}^1 + \theta_2 \Delta_{ct}^2
+\log(\lambda_{icst}) = \alpha_c + \alpha_s + \beta_1 MUJER_i + \beta_2 MUJER_i \cdot ZORIENTE_s + \sum_{a} \gamma_a \delta_{ta} + \theta_1 \Delta_{ct}^1 + \theta_2 \Delta_{ct}^2
 \]</span>
 Con esto, la log-verosimilitud viene dada por:_</p>
 <p><span class="math display">\[
 LL = \sum_{i,c,s,t} \ln(Pr(N_{icst}=n_{icst}))= \sum_{i,c,s,t} \ln \left( \frac{\lambda_{icst}^{n_{icst}}e^{-\lambda_{icst}} }{n_{icst}!}\right)
 \]</span>
-2. Las tasas de compra de los dos segmentos vienen dadas por:</p>
+2. ¿Cuál es la probabilidad de que un cliente hombre, con un ingreso de MM$1 que no compra en un mes (<span class="math inline">\(n_i=0\)</span>) pertenezca al segmento 1?</p>
+<p>Las tasas de compra de los dos segmentos vienen dadas por:</p>
 <p>$$
 log(_{i1}) = -1 + _1 MUJER_i + _2 INGRESO_i = -1 + 0 + <em>2 </em>{i1} = e^{_2 -1}\</p>
 <p>log(_{i2}) = 0.5 + _1 MUJER_i + _2 INGRESO_i = 0.5 + 0 + <em>2 </em>{i1} = e^{_2 +0.5}
 $$
 Por lo tanto, aplicando la distribución de Poisson, la probabilidad de no comprar en cada segmento viene dados por:</p>
 <p><span class="math display">\[
-\Pr(n_i = 0 | s_1) = \lambda_{i1}e^{-\lambda_{i1}} = e^{(\beta_2 -1)} \exp(-e^{(\beta_2 -1)})
+\Pr(n_i = 0 | s_1) = {\lambda}^0_{i1}e^{-\lambda_{i1}} =  \exp(-e^{(\beta_2 -1)})
 \\
-\Pr(n_i = 0 | s_2) = \lambda_{i2} e^{-\lambda_{i2}} =e^{(\beta_2 +0.5)} \exp(-e^{(\beta_2 +0.5)})
+\Pr(n_i = 0 | s_2) = {\lambda}^0_{i2} e^{-\lambda_{i2}} = \exp(-e^{(\beta_2 +0.5)})
 \]</span>
 Entonces. aplicando la regla de Bayes:</p>
 <p><span class="math display">\[
@@ -965,8 +973,9 @@ A partir de los datos presentados:</p>
 <div id="solución-4" class="section level3 unnumbered hasAnchor">
 <h3>Solución<a href="modelos-probabilísticos.html#solución-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>Definimos una variable aleatoria que signifique lo buscado</li>
+<li>Use el método de los momentos para estimar un modelo binomial sin heterogeneidad que caracterice la probabilidad que un usuario intente atrapar a wigglytuff.</li>
 </ol>
+<p>Definimos una variable aleatoria que signifique lo buscado</p>
 <p><span class="math display">\[
 X_{w} := \text{# de usuarios que intentan atrapar a wigglytuf}
 \]</span></p>
@@ -982,22 +991,24 @@ p_w \approx 0,1393
 \]</span></p>
 <p>Esto tiene mucho sentido, ya que estamos obteniendo la probabilidad de manera empírica con la fracción de personas que intentaron atraparlo y el número de personas a las que se les mostró.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>Como debemos considerar heterogeneidad, ahora el parámetro de la distribución que nos intersa, <span class="math inline">\(p_k\)</span>, n lo asumimos com único, sino que sigue una distribución. Como el parámetro es una probabilidad (<span class="math inline">\(p_k \in [0,1]\)</span>), utilizamos la distribución a priori <span class="math inline">\(Beta(\alpha_k,\beta_k)\)</span>, con <span class="math inline">\(\alpha_k\)</span> y <span class="math inline">\(\beta_k\)</span> parámetros a estimar (<span class="math inline">\(p_k \thicksim Beta(\alpha_k , \beta_k)\)</span>, por eso el sub <span class="math inline">\(k\)</span>, ya que cada pokemón tiene un probabilidad <span class="math inline">\(p_k\)</span> asociada, y no tienen por qué seguir la misma distribución). Luego, tenemos que cada comuna nos va a estar aportando en realidad datos sobre la heterogeneidad existente para cada pokemón (sería el equivalente a tener distintas observaciones para distintos individuos). Así, la probabilidad quedaría, para cada pokemón y comuna, con la v.a. anterior, pero segmentando por comuna:</li>
+<li>Escriba ahora un modelo que incorpore heterogeneidad para caracterizar la probabilidad que un número de usuarios intente atrapar a un pokemón <span class="math inline">\(k\)</span> en una comuna <span class="math inline">\(c\)</span>.</li>
 </ol>
+<p>Como debemos considerar heterogeneidad, ahora el parámetro de la distribución que nos intersa, <span class="math inline">\(p_k\)</span>, n lo asumimos com único, sino que sigue una distribución. Como el parámetro es una probabilidad (<span class="math inline">\(p_k \in [0,1]\)</span>), utilizamos la distribución a priori <span class="math inline">\(Beta(\alpha_k,\beta_k)\)</span>, con <span class="math inline">\(\alpha_k\)</span> y <span class="math inline">\(\beta_k\)</span> parámetros a estimar (<span class="math inline">\(p_k \thicksim Beta(\alpha_k , \beta_k)\)</span>, por eso el sub <span class="math inline">\(k\)</span>, ya que cada pokemón tiene un probabilidad <span class="math inline">\(p_k\)</span> asociada, y no tienen por qué seguir la misma distribución). Luego, tenemos que cada comuna nos va a estar aportando en realidad datos sobre la heterogeneidad existente para cada pokemón (sería el equivalente a tener distintas observaciones para distintos individuos). Así, la probabilidad quedaría, para cada pokemón y comuna, con la v.a. anterior, pero segmentando por comuna:</p>
 <p><span class="math display">\[
 P(X_{k,c} = x_{k,c}) = \int_0^1 P(X_{k,c} = x_{k,c} | p_k)Beta(p_k|\alpha_k, \beta_k) dp_k \\
 = \int_0^1 \left( {n_{k,c} \choose x_{k,c}} p_{k}^{x_{k,c}} (1-p_{k})^{n_{k,c} - x_{k,c}}\right)   \left(\frac{p_k^{\alpha_k -1} (1-p_k)^{\beta_k -1}}{B(\alpha_k,\beta_k)} \right) dp_k\\
 ={n_{k,c} \choose x_{k,c}} \frac{B(\alpha_k + x_{k,c},\beta_k + n_{k,c}- x_{k,c})}{B(\alpha_k,\beta_k)}
 \]</span></p>
 <ol start="3" style="list-style-type: decimal">
-<li>Nos interesa analizar cada personaje por separado, por lo tanto vamos a tener una expresión de la log-verosimilitud del parámetro <span class="math inline">\(p_k\)</span> para cada pokemón. Luego, la muestra que tenemos de la v.a. en cuestión para cada pokemón <span class="math inline">\(k\)</span> es de la forma <span class="math inline">\(\{ x_{k,1},x_{k,2},...,x_{k,7} \}\)</span>, donde el segundo índice es para cada una de las comunas. Sigue que la log-verosimilitud es el logaritmo de la función de verosimilitud con esta muestra para cada pokemón:</li>
+<li>Escriba la log-verosimilitud del modelo anterior, para entender la popularidad de cada uno de los personajes del estudio.</li>
 </ol>
+<p>Nos interesa analizar cada personaje por separado, por lo tanto vamos a tener una expresión de la log-verosimilitud del parámetro <span class="math inline">\(p_k\)</span> para cada pokemón. Luego, la muestra que tenemos de la v.a. en cuestión para cada pokemón <span class="math inline">\(k\)</span> es de la forma <span class="math inline">\(\{ x_{k,1},x_{k,2},...,x_{k,7} \}\)</span>, donde el segundo índice es para cada una de las comunas. Sigue que la log-verosimilitud es el logaritmo de la función de verosimilitud con esta muestra para cada pokemón:</p>
 <p><span class="math display">\[
-\ell (p_k |  x_{k,1}, ...,  x_{k,7}) = \ln (\mathcal{L}(p_k |  x_{k,1}, ...,  x_{k,7})) \\
-= \ln(P(X_{k,1}=x_{k,1}, ...,X_{k,7}=x_{k,7} |p_k)) \\
-= \ln \left( \prod_{c=1}^7 P(X_{x,c} = x_{x,c}|p_k) \right) \\
-= \sum_{c=1}^7 \ln(P(X_{k,c}=x_{k,c}|p_k)) \\
-= \sum_{c=1}^7 \ln \left( {n_{k,c} \choose x_{k,c}}\frac{B(\alpha_k + x_{k,c},\beta_k + n_{k,c}- x_{k,c})}{B(\alpha_k,\beta_k)} \right)
+\ell (p_k |  x_{k,1}, ...,  x_{k,8}) = \ln (\mathcal{L}(p_k |  x_{k,1}, ...,  x_{k,8})) \\
+= \ln(P(X_{k,1}=x_{k,1}, ...,X_{k,8}=x_{k,8} |p_k)) \\
+= \ln \left( \prod_{c=1}^8 P(X_{x,c} = x_{x,c}|p_k) \right) \\
+= \sum_{c=1}^8 \ln(P(X_{k,c}=x_{k,c}|p_k)) \\
+= \sum_{c=1}^8 \ln \left( {n_{k,c} \choose x_{k,c}}\frac{B(\alpha_k + x_{k,c},\beta_k + n_{k,c}- x_{k,c})}{B(\alpha_k,\beta_k)} \right)
 \]</span></p>
 <p>Esta es la expresión pedida de la log-verosimilitud para cada pokemón k. En el tercer paso asumimos indepndencia de las v.a. entre columnas y en el último paso reemplazamos por la expresión encontrada en la parte anterior.</p>
 

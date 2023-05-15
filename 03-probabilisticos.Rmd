@@ -110,7 +110,7 @@ $$\hat{\alpha} = \frac{10}{11} \qquad \hat{\beta} = \frac{15}{11}$$
 
 Sea $n_x$ el número de clientes que compra x parkas. Entonces, la verosimilitud puede escribirse como:
 
-$$L(\alpha,\beta,\pi |x) = \prod_{x=1}^{\infty} Pr = (X=x|\alpha,\beta,\pi)^{n_x}$$
+$$L(\alpha,\beta,\pi |x) = \prod_{x=0}^{\infty} Pr = (X=x|\alpha,\beta,\pi)^{n_x}$$
 
 donde,
 \begin{array}{cc}
@@ -153,13 +153,23 @@ $$
 
 2. Suponga que, para la categoría $c = Hamburguesas$, existen dos clases latentes. Un segmento de alto consumo y otro de consumo ocasional. Para acomodar esta regularidad, se propone un modelo sencillo en que la tasa de compra de un cliente $i$, independiente del mes, viene dado por:
 
-$$log(\lambda_i)= \beta_{0i}+ \beta_1 MUJER_i + \beta_2 INGRESO_i $$
+$$log(\lambda_i)= \beta_{0i}+ \beta_1 MUJER_i + \beta_2 INGRESO_i$$
 
 Donde $\beta_{0i}$ toma el valor $-1$ con probabilidad $0.4$ u el valor $0.5$ con probabilidad $0.6$. En otras palabras, el tamaño del segmento 1 de los clientes ocasionales representa al 40% de la población mientras que los clientes activos representan el 60% de la población. ¿Cuál es la probabilidad de que un cliente hombre, con un ingreso de MM\$1 que no compra en un mes ($n_i=0$) pertenezca al segmento 1?
 
 ### Solución {-}
 
-1. Sea $N_{icst}$ la variable aleatoria que define la cantidad que de productos que compra el cliente $i$ en la categoría $c$ en la tienda $s$ el mes $t$, y sea $\lambda_{icst}$ la tasa de compras asociada a la variable anterior. Al ser un modelo de regresión de Poisson, su distribución es:
+1. Proponga un modelo de regresión de Poisson en que lla tasa de compra depende de cada individuo, categoría, tienda y semana. Escriba la log-verosimilitud del problema considerando que $n_{icst}$ es el número de unidades compradas por el cliente $i$ en la categoría $c$ en la tienda $s$ el mes $t$. Para esto, considere que:
+
+(a) Existe un efecto fijo por categoría y uno por tienda.
+
+(b) El género induce diferencias relevantes en las ventas y el efecto del género es distinto para la zona oriente de la capital.
+
+(c) Existe una tendencia creciente en las ventas. Como el crecimiento es relativamente pequeño, puede modelarse con un efecto fijo a nivel de año.
+
+(d) Aunque en el consumo es relativamente constante, a lo largo del año, hay dos categorías que presentan una estacionalidad relevante. Mientras los helados tienen un patrón marcadamente diferente en los meses de diciembre, enero y febrero, las hamburguesas declinan sus ventas en el mes de septiembre.
+
+Sea $N_{icst}$ la variable aleatoria que define la cantidad que de productos que compra el cliente $i$ en la categoría $c$ en la tienda $s$ el mes $t$, y sea $\lambda_{icst}$ la tasa de compras asociada a la variable anterior. Al ser un modelo de regresión de Poisson, su distribución es:
 
 $$
 Pr(N_{icst}= n_{icst}) = \frac{\lambda_{icst}^{n_{icst}}e^{-\lambda_{icst}} }{n_{icst}!}
@@ -173,14 +183,16 @@ Donde la tasa $\lambda_{icst}$ viene dada por una regresión lineal. El objetivo
 Entonces, la tasa de compra puede escribirse como
 
 $$
-\lambda_{icst} = \alpha_c + \alpha_s + \beta_1 MUJER_i + \beta_2 MUJER_i \cdot ZORIENTE_s + \sum_{a} \gamma_a \delta_{ta} + \theta_1 \Delta_{ct}^1 + \theta_2 \Delta_{ct}^2
+\log(\lambda_{icst}) = \alpha_c + \alpha_s + \beta_1 MUJER_i + \beta_2 MUJER_i \cdot ZORIENTE_s + \sum_{a} \gamma_a \delta_{ta} + \theta_1 \Delta_{ct}^1 + \theta_2 \Delta_{ct}^2
 $$
 Con esto, la log-verosimilitud viene dada por:_
 
 $$
 LL = \sum_{i,c,s,t} \ln(Pr(N_{icst}=n_{icst}))= \sum_{i,c,s,t} \ln \left( \frac{\lambda_{icst}^{n_{icst}}e^{-\lambda_{icst}} }{n_{icst}!}\right)
 $$
-2. Las tasas de compra de los dos segmentos vienen dadas por:
+2. ¿Cuál es la probabilidad de que un cliente hombre, con un ingreso de MM\$1 que no compra en un mes ($n_i=0$) pertenezca al segmento 1?
+
+Las tasas de compra de los dos segmentos vienen dadas por:
 
 $$
 log(\lambda_{i1}) = -1 + \beta_1 MUJER_i + \beta_2 INGRESO_i = -1 + 0 + \beta_2 \Rightarrow \lambda_{i1} = e^{\beta_2 -1}\\
@@ -190,9 +202,9 @@ $$
 Por lo tanto, aplicando la distribución de Poisson, la probabilidad de no comprar en cada segmento viene dados por:
 
 $$
-\Pr(n_i = 0 | s_1) = \lambda_{i1}e^{-\lambda_{i1}} = e^{(\beta_2 -1)} \exp(-e^{(\beta_2 -1)})
+\Pr(n_i = 0 | s_1) = {\lambda}^0_{i1}e^{-\lambda_{i1}} =  \exp(-e^{(\beta_2 -1)})
 \\
-\Pr(n_i = 0 | s_2) = \lambda_{i2} e^{-\lambda_{i2}} =e^{(\beta_2 +0.5)} \exp(-e^{(\beta_2 +0.5)}) 
+\Pr(n_i = 0 | s_2) = {\lambda}^0_{i2} e^{-\lambda_{i2}} = \exp(-e^{(\beta_2 +0.5)}) 
 $$
 Entonces. aplicando la regla de Bayes:
 
@@ -244,7 +256,9 @@ A partir de los datos presentados:
 
 ### Solución {-}
 
-1. Definimos una variable aleatoria que signifique lo buscado
+1. Use el método de los momentos para estimar un modelo binomial sin heterogeneidad que caracterice la probabilidad que un usuario intente atrapar a wigglytuff.
+
+Definimos una variable aleatoria que signifique lo buscado
 
 $$
 X_{w} := \text{# de usuarios que intentan atrapar a wigglytuf}
@@ -266,7 +280,9 @@ $$
 
 Esto tiene mucho sentido, ya que estamos obteniendo la probabilidad de manera empírica con la fracción de personas que intentaron atraparlo y el número de personas a las que se les mostró.
 
-2. Como debemos considerar heterogeneidad, ahora el parámetro de la distribución que nos intersa, $p_k$, n lo asumimos com único, sino que sigue una distribución. Como el parámetro es una probabilidad ($p_k \in [0,1]$), utilizamos la distribución a priori $Beta(\alpha_k,\beta_k)$, con $\alpha_k$ y $\beta_k$ parámetros a estimar ($p_k \thicksim Beta(\alpha_k , \beta_k)$, por eso el sub $k$, ya que cada pokemón tiene un probabilidad $p_k$ asociada, y no tienen por qué seguir la misma distribución). Luego, tenemos que cada comuna nos va a estar aportando en realidad datos sobre la heterogeneidad existente para cada pokemón (sería el equivalente a tener distintas observaciones para distintos individuos). Así, la probabilidad quedaría, para cada pokemón y comuna, con la v.a. anterior, pero segmentando por comuna:
+2. Escriba ahora un modelo que incorpore heterogeneidad para caracterizar la probabilidad que un número de usuarios intente atrapar a un pokemón $k$ en una comuna $c$.
+
+Como debemos considerar heterogeneidad, ahora el parámetro de la distribución que nos intersa, $p_k$, n lo asumimos com único, sino que sigue una distribución. Como el parámetro es una probabilidad ($p_k \in [0,1]$), utilizamos la distribución a priori $Beta(\alpha_k,\beta_k)$, con $\alpha_k$ y $\beta_k$ parámetros a estimar ($p_k \thicksim Beta(\alpha_k , \beta_k)$, por eso el sub $k$, ya que cada pokemón tiene un probabilidad $p_k$ asociada, y no tienen por qué seguir la misma distribución). Luego, tenemos que cada comuna nos va a estar aportando en realidad datos sobre la heterogeneidad existente para cada pokemón (sería el equivalente a tener distintas observaciones para distintos individuos). Así, la probabilidad quedaría, para cada pokemón y comuna, con la v.a. anterior, pero segmentando por comuna:
 
 $$
 P(X_{k,c} = x_{k,c}) = \int_0^1 P(X_{k,c} = x_{k,c} | p_k)Beta(p_k|\alpha_k, \beta_k) dp_k \\
@@ -274,14 +290,16 @@ P(X_{k,c} = x_{k,c}) = \int_0^1 P(X_{k,c} = x_{k,c} | p_k)Beta(p_k|\alpha_k, \be
 ={n_{k,c} \choose x_{k,c}} \frac{B(\alpha_k + x_{k,c},\beta_k + n_{k,c}- x_{k,c})}{B(\alpha_k,\beta_k)}
 $$
 
-3. Nos interesa analizar cada personaje por separado, por lo tanto vamos a tener una expresión de la log-verosimilitud del parámetro $p_k$ para cada pokemón. Luego, la muestra que tenemos de la v.a. en cuestión para cada pokemón $k$ es de la forma $\{ x_{k,1},x_{k,2},...,x_{k,7} \}$, donde el segundo índice es para cada una de las comunas. Sigue que la log-verosimilitud es el logaritmo de la función de verosimilitud con esta muestra para cada pokemón:
+3. Escriba la log-verosimilitud del modelo anterior, para entender la popularidad de cada uno de los personajes del estudio.   
+
+Nos interesa analizar cada personaje por separado, por lo tanto vamos a tener una expresión de la log-verosimilitud del parámetro $p_k$ para cada pokemón. Luego, la muestra que tenemos de la v.a. en cuestión para cada pokemón $k$ es de la forma $\{ x_{k,1},x_{k,2},...,x_{k,7} \}$, donde el segundo índice es para cada una de las comunas. Sigue que la log-verosimilitud es el logaritmo de la función de verosimilitud con esta muestra para cada pokemón:
 
 $$
-\ell (p_k |  x_{k,1}, ...,  x_{k,7}) = \ln (\mathcal{L}(p_k |  x_{k,1}, ...,  x_{k,7})) \\
-= \ln(P(X_{k,1}=x_{k,1}, ...,X_{k,7}=x_{k,7} |p_k)) \\
-= \ln \left( \prod_{c=1}^7 P(X_{x,c} = x_{x,c}|p_k) \right) \\
-= \sum_{c=1}^7 \ln(P(X_{k,c}=x_{k,c}|p_k)) \\
-= \sum_{c=1}^7 \ln \left( {n_{k,c} \choose x_{k,c}}\frac{B(\alpha_k + x_{k,c},\beta_k + n_{k,c}- x_{k,c})}{B(\alpha_k,\beta_k)} \right)
+\ell (p_k |  x_{k,1}, ...,  x_{k,8}) = \ln (\mathcal{L}(p_k |  x_{k,1}, ...,  x_{k,8})) \\
+= \ln(P(X_{k,1}=x_{k,1}, ...,X_{k,8}=x_{k,8} |p_k)) \\
+= \ln \left( \prod_{c=1}^8 P(X_{x,c} = x_{x,c}|p_k) \right) \\
+= \sum_{c=1}^8 \ln(P(X_{k,c}=x_{k,c}|p_k)) \\
+= \sum_{c=1}^8 \ln \left( {n_{k,c} \choose x_{k,c}}\frac{B(\alpha_k + x_{k,c},\beta_k + n_{k,c}- x_{k,c})}{B(\alpha_k,\beta_k)} \right)
 $$
 
 Esta es la expresión pedida de la log-verosimilitud para cada pokemón k. En el tercer paso asumimos indepndencia de las v.a. entre columnas y en el último paso reemplazamos por la expresión encontrada en la parte anterior.
