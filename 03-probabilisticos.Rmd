@@ -196,7 +196,6 @@ Las tasas de compra de los dos segmentos vienen dadas por:
 
 $$
 log(\lambda_{i1}) = -1 + \beta_1 MUJER_i + \beta_2 INGRESO_i = -1 + 0 + \beta_2 \Rightarrow \lambda_{i1} = e^{\beta_2 -1}\\
-
 log(\lambda_{i2}) = 0.5 + \beta_1 MUJER_i + \beta_2 INGRESO_i = 0.5 + 0 + \beta_2 \Rightarrow \lambda_{i1} = e^{\beta_2 +0.5}
 $$
 Por lo tanto, aplicando la distribución de Poisson, la probabilidad de no comprar en cada segmento viene dados por:

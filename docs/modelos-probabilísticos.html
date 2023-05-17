@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2023-05-16" />
+<meta name="date" content="2023-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,10 +411,10 @@ LL = \sum_{i,c,s,t} \ln(Pr(N_{icst}=n_{icst}))= \sum_{i,c,s,t} \ln \left( \frac{
 \]</span>
 2. ¿Cuál es la probabilidad de que un cliente hombre, con un ingreso de MM$1 que no compra en un mes (<span class="math inline">\(n_i=0\)</span>) pertenezca al segmento 1?</p>
 <p>Las tasas de compra de los dos segmentos vienen dadas por:</p>
-<p>$$
-log(_{i1}) = -1 + _1 MUJER_i + _2 INGRESO_i = -1 + 0 + <em>2 </em>{i1} = e^{_2 -1}\</p>
-<p>log(_{i2}) = 0.5 + _1 MUJER_i + _2 INGRESO_i = 0.5 + 0 + <em>2 </em>{i1} = e^{_2 +0.5}
-$$
+<p><span class="math display">\[
+log(\lambda_{i1}) = -1 + \beta_1 MUJER_i + \beta_2 INGRESO_i = -1 + 0 + \beta_2 \Rightarrow \lambda_{i1} = e^{\beta_2 -1}\\
+log(\lambda_{i2}) = 0.5 + \beta_1 MUJER_i + \beta_2 INGRESO_i = 0.5 + 0 + \beta_2 \Rightarrow \lambda_{i1} = e^{\beta_2 +0.5}
+\]</span>
 Por lo tanto, aplicando la distribución de Poisson, la probabilidad de no comprar en cada segmento viene dados por:</p>
 <p><span class="math display">\[
 \Pr(n_i = 0 | s_1) = {\lambda}^0_{i1}e^{-\lambda_{i1}} =  \exp(-e^{(\beta_2 -1)})
