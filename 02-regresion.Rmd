@@ -143,7 +143,7 @@ $$
 modelos.cine <- data.frame( "Coeficiente" =c(-15.2, -1.04, 0.62, 4.5 , 6.71, 5.16, 4.04 , "-","-","-","-","-", 5.12, 4.09, 3.14,-0.63," "," "," ")
                           ,"p-valor" =c(0.704,0.452,0.005,0.058, 0.020,0.017,0.009,"-","-","-","-","-",0.004,0.240,0.104,0.186, -644 , "1,304","1,366")
                           ,"Coeficiente" =c(3.1, -0.23, 1.15, "-" , "-","-", "-" , 4.05,1.63,2.11,-1.52,6.72, "-", "-" , "-" , "-"," "," "," ")
-                          ,"p-valor" =c(0.161,0.004,0.001,"-", "-","-","-",0.520,0.017,0.11,0.025,0.001,"-","-","-","-", -650, "1,295","1,350"))
+                          ,"p-valor" =c(0.161,0.004,0.001,"-", "-","-","-",0.520,0.017,0.110,0.025,0.001,"-","-","-","-", -650, "1,295","1,350"))
 
 rownames(modelos.cine) <- c( "Intercepto","Duración","log(Presupuesto)","Edad.TE","Edad.TE+7","Edad.MA+14","Edad.MA+18","Tipo.Acción","Tipo.Comedia","Tipo.Romance","Tipo.Drama","Tipo.Terror","Estudio.Dis","Estudio.WB","Estudio.Uni","Estudio.Para","LL","AIC","BIC")
 kbl(modelos.cine, align = "c",col.names = c("Coeficiente","p-valor","Coeficiente","p-valor")) %>%
@@ -214,7 +214,7 @@ Primero observamos aquellos coeficientes con mayor significancia estadística. P
 
 Para el modelo 1 se tienen las variables $\log(Presupuesto)$, $Edad.MA+18$ y $Estudio.Dis$. De acuerdo al signo de los coeficientes podemos concluir que las películas que generan un mayor ingreso son aquellas con un mayor presupuesto, para mayores de 18 años producidas por Dis.
 
-En cambio, para el modelo 2, las variables a considerar son $Duración$, $\log(Presupuesto)$ y $Género.Terror$. Por el signo de los coeficientes, se deben proyectar películas de terror cortas con un alto presupuesto.
+En cambio, para el modelo 2, las variables a considerar son $Duración$, $\log(Presupuesto)$ y $Tipo.Terror$. Por el signo de los coeficientes, se deben proyectar películas de terror cortas con un alto presupuesto.
 
 **Observación**: 
 
