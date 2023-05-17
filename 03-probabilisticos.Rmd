@@ -84,9 +84,9 @@ La penetración p viene dada por:
 
 \begin{align*}
         p_0 &= 1 - Pr(X = 0) \\
-            &= 1 -  \frac{B(\alpha + 1, \beta)}{\alpha,\beta}\\
-            &= 1 - \frac{\Gamma(\alpha +1)\Gamma(\beta)}{(\alpha+ 1 +\beta)} \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\\
-            &= 1 - \frac{\alpha\Gamma(\alpha) \Gamma(\beta)}{\alpha+\beta) \Gamma(\alpha+\beta)}\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\\
+            &= 1 -  \frac{B(\alpha + 1, \beta)}{B(\alpha,\beta)}\\
+            &= 1 - \frac{\Gamma(\alpha +1)\Gamma(\beta)}{\Gamma(\alpha+ 1 +\beta)} \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\\
+            &= 1 - \frac{\alpha\Gamma(\alpha) \Gamma(\beta)}{(\alpha+\beta) \Gamma(\alpha+\beta)}\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\\
             &= 1 - \frac{\alpha}{\alpha + \beta} = \frac{\beta}{\alpha + \beta}
 \end{align*}
 
