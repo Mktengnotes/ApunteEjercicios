@@ -363,7 +363,7 @@ $$
 
 Esta es la expresión pedida de la log-verosimilitud para cada pokemón k. En el tercer paso asumimos indepndencia de las v.a. entre columnas y en el último paso reemplazamos por la expresión encontrada en la parte anterior.
 
-### Problema 3
+### Problema 4
 Inmersos en la era digital, los consumidores están cada vez conectados en distintos dispositivos los cuales pueden ser usados como canales durante el proceso de compra. En este contexto, algunas empresas han decidido lanzar aplicaciones móviles que funcionan en base a información georreferenciada de los dispositivos de sus clientes, y que permiten enviarles promociones personalizadas cuando identifica que este se encuentra cercano a un punto de venta.
 
 La aplicación que más éxito ha tenido en el mercado, quiere evaluar la efectividad de las campañas que envían a sus usuarios, y así poder ofrecer un mejor servicio a las empresas que lo contratan. Para esto, cuenta con información de los $m_{i}$ mensajes promocionales que envía al cliente $i$, y el número $x_{i}$ de esos que son efectivamente utilizados por el cliente.
