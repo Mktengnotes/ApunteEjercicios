@@ -393,3 +393,5 @@ c. Justifique cuál de los modelos anteriores es mejor.
 > a. Las variables que son significativas independiente del modelo en el que fueron estimadas, y que permiten explicar el comportamiento de interés, es decir, *Ingreso*, *Promoción*, y *TiendasPropias*.
 b. El parámetro asociado al medio *TarjetaBancaria* fue fijado en cero (para evitar problemas de colinealidad), y como el resto de los parámetros son positivos, es aquel en que menos puntos se acreditan.
 c. La respuesta dependerá del criterio de evaluación. Si se quiere evaluar en cuanto a la capacidad de ajuste, el mejor es aquel con mayor $R^{2}$ Ajustado (M3), pero si se evalúa en cuanto a la capacidad de pronóstico, se prefiere aquel con menor MAPE (M2).
+
+git push ApunteEjercicios main
