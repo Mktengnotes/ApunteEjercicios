@@ -35,8 +35,6 @@ Como mencionabámos anteriormente, para poder crear y utilizar los modelos de re
 
 ## Problemas Teóricos
 
-## Ejercicios teóricos
-
 ### E1: Signo esperado y Significancia
 Al evaluar la inclusión de una variable en base a su signo esperado y significancia estadística, ¿cuál de los siguientes casos NO es una buena recomendación para un modelo de pronóstico?
 
@@ -314,7 +312,7 @@ Se puede realizar una notación vectorial de los coeficientes para tener una not
 
 Debido a la gran variedad de alternativas que tiene el consumidor para satisfacer sus necesidades, empresas desistimos sectores han buscado formas de fidelizar a sus clientes mediante programas de recompensas. Estos programas proponen premiar al consumidor con relación a su nivel de actividad, con el fin de que estos sean más leales a la firma. A continuación, nos proponemos estudiar el comportamiento de los consumidores que están inmersos en un programa de recompensas en el cual se acumulan puntos al comprar en alguna de las tiendas dela cadena, al comprar en alguna alianza comercial asociada, o utilizando la tarjeta del banco aliado a la cadena. Cuando el consumidor tiene una cantidad suficiente de puntos acumulados puede canjear algún producto que se ofrece en un catálogo, o puede hacer uso de sus puntos como medio de pago al momento de comprar cualquier producto disponible en tienda.
 
-Para modelar los comportamientos anteriores, se cuenta con información demográfica de cada consumidor que es actualmente parte del programa, y cada una de las transacciones que ha realizado desde su inicio, como se observa en las Tablas 1 y 2.
+Para modelar los comportamientos anteriores, se cuenta con información demográfica de cada consumidor que es actualmente parte del programa, y cada una de las transacciones que ha realizado desde su inicio, como se observa en las Tablas 1 y 2:
 
  Variable          | Descripción 
 -------------------|---------------------------

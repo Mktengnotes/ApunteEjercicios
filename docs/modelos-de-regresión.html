@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 Modelos de Regresión | Apunte Problemas Resueltos</title>
   <meta name="description" content="Apunte de ejercicios realizados durante el curso de Marketing II" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 Modelos de Regresión | Apunte Problemas Resueltos" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2023-05-16" />
+<meta name="date" content="2024-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,6 +59,10 @@
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -82,32 +86,54 @@
 <ul>
 <li class="chapter" data-level="2.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#introducción"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
 <li class="chapter" data-level="2.2" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#metodología"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
-<li class="chapter" data-level="2.3" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problemas"><i class="fa fa-check"></i><b>2.3</b> Problemas</a>
+<li class="chapter" data-level="2.3" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problemas-teóricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e1-signo-esperado-y-significancia"><i class="fa fa-check"></i><b>2.3.1</b> E1: Signo esperado y Significancia</a></li>
+<li class="chapter" data-level="2.3.2" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e2-regresión-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
+<li class="chapter" data-level="2.3.3" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e3-selección-automática-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
+<li class="chapter" data-level="2.3.4" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e4-regresión-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
+<li class="chapter" data-level="2.3.5" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e5-capturar-efectos"><i class="fa fa-check"></i><b>2.3.5</b> E5: Capturar efectos</a></li>
+<li class="chapter" data-level="2.3.6" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e6-coeficientes-y-parámetros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
+<li class="chapter" data-level="2.3.7" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e7-qué-es-un-modelo-de-regresión"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problemas-aplicados"><i class="fa fa-check"></i><b>2.4</b> Problemas Aplicados</a>
 <ul>
 <li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-1"><i class="fa fa-check"></i>Problema 1</a></li>
 <li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#solución"><i class="fa fa-check"></i>Solución</a></li>
 <li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-2"><i class="fa fa-check"></i>Problema 2</a></li>
 <li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#solución-1"><i class="fa fa-check"></i>Solución</a></li>
+<li class="chapter" data-level="2.4.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-3"><i class="fa fa-check"></i><b>2.4.1</b> Problema 3</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html"><i class="fa fa-check"></i><b>3</b> Modelos Probabilísticos</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#introducción-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
 <li class="chapter" data-level="3.2" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#metodología-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
-<li class="chapter" data-level="3.3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problemas-1"><i class="fa fa-check"></i><b>3.3</b> Problemas</a>
+<li class="chapter" data-level="3.3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problemas-teóricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e1-tasa-de-respuesta"><i class="fa fa-check"></i><b>3.3.1</b> E1: Tasa de respuesta</a></li>
+<li class="chapter" data-level="3.3.2" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e2-distribución-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
+<li class="chapter" data-level="3.3.3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e3-distribución-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
+<li class="chapter" data-level="3.3.4" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e4-modelos-de-duración"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
+<li class="chapter" data-level="3.3.5" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e5-modelo-nbd"><i class="fa fa-check"></i><b>3.3.5</b> E5: Modelo NBD</a></li>
+<li class="chapter" data-level="3.3.6" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e6-modelos-de-conteo"><i class="fa fa-check"></i><b>3.3.6</b> E6: Modelos de Conteo</a></li>
+<li class="chapter" data-level="3.3.7" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e7-tiempo-discreto-en-modelos-de-duración"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problemas-aplicados-1"><i class="fa fa-check"></i><b>3.4</b> Problemas Aplicados</a>
 <ul>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-1-1"><i class="fa fa-check"></i>Problema 1</a></li>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-2"><i class="fa fa-check"></i>Solución</a></li>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-2-1"><i class="fa fa-check"></i>Problema 2</a></li>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
-<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-3"><i class="fa fa-check"></i>Problema 3</a></li>
+<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-3-1"><i class="fa fa-check"></i>Problema 3</a></li>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-4"><i class="fa fa-check"></i>Solución</a></li>
+<li class="chapter" data-level="3.4.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-4"><i class="fa fa-check"></i><b>3.4.1</b> Problema 4</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#introducción-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a></li>
-<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas-2"><i class="fa fa-check"></i><b>4.2</b> Problemas</a></li>
+<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas"><i class="fa fa-check"></i><b>4.2</b> Problemas</a></li>
 <li class="chapter" data-level="4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#soluciones"><i class="fa fa-check"></i><b>4.3</b> Soluciones</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -152,8 +178,86 @@ donde <span class="math inline">\(\textbf{X}\)</span> corresponde a las variable
 <li><p>Interpretar los coeficientes más significativas de un modelo, para responder la pregunta de gestión original.</p></li>
 </ol>
 </div>
-<div id="problemas" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Problemas<a href="modelos-de-regresión.html#problemas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="problemas-teóricos" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Problemas Teóricos<a href="modelos-de-regresión.html#problemas-teóricos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="e1-signo-esperado-y-significancia" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> E1: Signo esperado y Significancia<a href="modelos-de-regresión.html#e1-signo-esperado-y-significancia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Al evaluar la inclusión de una variable en base a su signo esperado y significancia estadística, ¿cuál de los siguientes casos NO es una buena recomendación para un modelo de pronóstico?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Si el parámetro tiene el signo esperado y no es significativo: mantener.</li>
+<li>Si el parámetro no tiene el signo esperado y no es significativo: eliminar.</li>
+<li>Si el parámetro no tiene el signo esperado y es significativo: tratar de hacer ajustes al modelo o juntar más datos y variables.</li>
+<li>El parámetro tiene el signo esperado y es significativo: mantener.</li>
+<li><strong>Ninguna de las anteriores.</strong></li>
+</ol>
+</div>
+<div id="e2-regresión-lineal-vs-de-poisson" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> E2: Regresión Lineal vs de Poisson<a href="modelos-de-regresión.html#e2-regresión-lineal-vs-de-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>¿Qué diferencia un modelo de regresión simple de un modelo de regresión de Poisson? (Puede seleccionar más de una opción).</p>
+<ol style="list-style-type: lower-roman">
+<li><strong>La especificación de la distribución del término de error.</strong></li>
+<li><strong>Los métodos disponibles para estimar el modelo.</strong></li>
+<li><strong>La naturaleza de la variable dependiente.</strong></li>
+<li>La posibilidad de realizar t-tests.</li>
+</ol>
+</div>
+<div id="e3-selección-automática-de-variables" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> E3: Selección automática de variables<a href="modelos-de-regresión.html#e3-selección-automática-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cuál de las siguientes afirmaciones caracterizan adecuadamente a la selección automática de variables para un modelo de regresión lineal (Puede seleccionar más de una opción):</p>
+<ol style="list-style-type: lower-roman">
+<li>Vienen predefinidas en planillas de cálculo.</li>
+<li>Son siempre peores que selección manual.</li>
+<li>Sólo pueden aplicarse sobre el subconjunto de variables continuas.</li>
+<li><strong>No consideran todos los modelos posibles.</strong></li>
+</ol>
+</div>
+<div id="e4-regresión-log-nivel-y-log-log" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> E4: Regresión Log-Nivel y Log-Log<a href="modelos-de-regresión.html#e4-regresión-log-nivel-y-log-log" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dado el modelo <span class="math inline">\(ln(y)=\beta_{0}+\beta_{1}x_{1}+b_{2}ln(x_{2})\)</span>, se puede asegurar que:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Un aumento de una unidad en <span class="math inline">\(x_{1}\)</span> causa un aumento de <span class="math inline">\(\beta_{0}\)</span> unidades en <span class="math inline">\(y\)</span>.</li>
+<li>Un aumento de una unidad en <span class="math inline">\(x_{2}\)</span> causa un aumento de <span class="math inline">\(\beta_{2}\)</span>% unidades en <span class="math inline">\(y\)</span>.</li>
+<li>Un aumento de un 1% en <span class="math inline">\(x_{2}\)</span> causa un aumento de <span class="math inline">\(\beta_{2}\)</span> unidades en <span class="math inline">\(y\)</span>.</li>
+<li>Un aumento de un 1% en <span class="math inline">\(x_{2}\)</span> causa un aumento de <span class="math inline">\(\beta_{2}\)</span>% unidades en <span class="math inline">\(y\)</span>.</li>
+<li><strong>Ninguna de las anteriores.</strong></li>
+</ol>
+</div>
+<div id="e5-capturar-efectos" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> E5: Capturar efectos<a href="modelos-de-regresión.html#e5-capturar-efectos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>¿Cuál de las siguientes especificaciones NO permite capturar que las diferencias en el comportamiento <span class="math inline">\(y\)</span> se van incrementando a medida que aumenta la edad de los sujetos?</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(y=\beta_{0}+\sum_{i}\beta_{i}Dummy_{i},\quad i=\{\text{niños, jóvenes, adultos, ancianos}\}\)</span></li>
+<li><span class="math inline">\(y=\beta_{0}+\beta_{1}ln(edad)\)</span> <strong>(Correcta)</strong></li>
+<li><span class="math inline">\(y=\beta_{0}+\beta_{1}edad+\beta_{2}edad^{2}\)</span></li>
+<li><span class="math inline">\(y=\beta_{0}+\beta_{1}\exp(edad)\)</span></li>
+<li>Ninguna de las anteriores.</li>
+</ol>
+</div>
+<div id="e6-coeficientes-y-parámetros" class="section level3 hasAnchor" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> E6: Coeficientes y Parámetros<a href="modelos-de-regresión.html#e6-coeficientes-y-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se tiene el siguiente modelo lineal de venta de productos</p>
+<p><span class="math display">\[Q_{ist}=\theta_{s}+\mu_{is}P_{ist}+\gamma t+\epsilon_{ist}\]</span>
+Donde <span class="math inline">\(Q_{ist}\)</span> es la cantidad vendida del producto <span class="math inline">\(i\)</span> en la tienda <span class="math inline">\(s\)</span> en el año <span class="math inline">\(t\)</span> y <span class="math inline">\(P_{ist}\)</span> el precio. El set de datos contiene registros para 5 productos y 5 tiendas entre 1960 y 2015. A partir de esto, se puede afirmar que (puede elegir más de una opción):</p>
+<ol style="list-style-type: lower-roman">
+<li>Transformar <span class="math inline">\(\gamma t\)</span> en <span class="math inline">\(\gamma_{t}\)</span> no influye en el modelo ya que son equivalentes.</li>
+<li><strong>Transformar los coeficientes <span class="math inline">\(\mu_{is}\)</span> a <span class="math inline">\(\mu_{i}+\mu_{s}\)</span> implica calcular menos parámetros.</strong></li>
+<li><strong>El modelo no permite capturar comportamiento cíclico de la demanda.</strong></li>
+<li>Los parámetros <span class="math inline">\(\theta_{s}\)</span> y <span class="math inline">\(\mu_{is}\)</span> no pueden estimarse simultáneamente.</li>
+</ol>
+</div>
+<div id="e7-qué-es-un-modelo-de-regresión" class="section level3 hasAnchor" number="2.3.7">
+<h3><span class="header-section-number">2.3.7</span> E7: ¿Qué es un modelo de Regresión?<a href="modelos-de-regresión.html#e7-qué-es-un-modelo-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>¿Cuál(es) es(son) la utilidad de un modelo de regresión?</p>
+<ol style="list-style-type: lower-roman">
+<li><strong>Permite medir correlación entre variables.</strong></li>
+<li><strong>Permite medir la magnitud de una relación causal.</strong></li>
+<li>Permite determinar causalidad entre variables.</li>
+<li>Dependiendo de la especificación puede determinar causalidad o correlación, pero no ambas simultáneamente.</li>
+</ol>
+</div>
+</div>
+<div id="problemas-aplicados" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Problemas Aplicados<a href="modelos-de-regresión.html#problemas-aplicados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="problema-1" class="section level3 unnumbered hasAnchor">
 <h3>Problema 1<a href="modelos-de-regresión.html#problema-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un reconocido grupo empresarial que manefactura productos de aseo y limpieza de diversa índole le pide a usted evaluar el impacto de la pandemia en sus ventas a partir del registro obtenido por distintas tiendas distribuidas a lo largo del país.</p>
@@ -1274,6 +1378,233 @@ WB
 +  \sum_{e \in \{TE,TE+7\}} \delta_e  Edad_{j,e} \times Duración_j
 \]</span>
 Se puede realizar una notación vectorial de los coeficientes para tener una notación más concisa, pero se debe tener en cuenta los índices de estos coeficientes, de modo que el largo del vector sea la cantidad de coeficientes a buscar.</p>
+</div>
+<div id="problema-3" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Problema 3<a href="modelos-de-regresión.html#problema-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Debido a la gran variedad de alternativas que tiene el consumidor para satisfacer sus necesidades, empresas desistimos sectores han buscado formas de fidelizar a sus clientes mediante programas de recompensas. Estos programas proponen premiar al consumidor con relación a su nivel de actividad, con el fin de que estos sean más leales a la firma. A continuación, nos proponemos estudiar el comportamiento de los consumidores que están inmersos en un programa de recompensas en el cual se acumulan puntos al comprar en alguna de las tiendas dela cadena, al comprar en alguna alianza comercial asociada, o utilizando la tarjeta del banco aliado a la cadena. Cuando el consumidor tiene una cantidad suficiente de puntos acumulados puede canjear algún producto que se ofrece en un catálogo, o puede hacer uso de sus puntos como medio de pago al momento de comprar cualquier producto disponible en tienda.</p>
+<p>Para modelar los comportamientos anteriores, se cuenta con información demográfica de cada consumidor que es actualmente parte del programa, y cada una de las transacciones que ha realizado desde su inicio, como se observa en las Tablas 1 y 2:</p>
+<table>
+<colgroup>
+<col width="41%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IDCliente</td>
+<td>Identificador del cliente</td>
+</tr>
+<tr class="even">
+<td>Ingreso</td>
+<td>Ingreso del cliente</td>
+</tr>
+<tr class="odd">
+<td>AñoInicio</td>
+<td>Año en el que el cliente se une al programa</td>
+</tr>
+<tr class="even">
+<td>TamañoHogar</td>
+<td>Número de personas que componen el hogar del cliente</td>
+</tr>
+<tr class="odd">
+<td>Género</td>
+<td>1 si el cliente es hombre</td>
+</tr>
+<tr class="even">
+<td>Edad</td>
+<td>Edad del cliente</td>
+</tr>
+<tr class="odd">
+<td>Categoría</td>
+<td>Silver, Gold o Premium</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\text{Tabla 1: Variables Demográficas}\]</span></p>
+<table>
+<colgroup>
+<col width="41%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IDCliente</td>
+<td>Identificador del cliente</td>
+</tr>
+<tr class="even">
+<td>Año</td>
+<td>Año de la observación</td>
+</tr>
+<tr class="odd">
+<td>Mes</td>
+<td>Mes de la observación</td>
+</tr>
+<tr class="even">
+<td>Acreditación</td>
+<td>Cantidad de puntos acreditados por el cliente en el mes <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="odd">
+<td>Canje</td>
+<td>Cantidad de productos canjeados por el cliente en el mes <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="even">
+<td>TipoAcreditación</td>
+<td>Tiendas Propias, Comercios Asociados o Tarjeta Bancaria</td>
+</tr>
+<tr class="odd">
+<td>TipoCanje</td>
+<td>Producto o Descuento</td>
+</tr>
+<tr class="even">
+<td>Promoción</td>
+<td>1 si hubo promo o descuentos adicionales en el mes <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="odd">
+<td>Mail</td>
+<td>1 si se avisó estado de cuenta al cliente via mail en el mes <span class="math inline">\(t\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\text{Tabla 2: Variables Transaccionales}\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Como primera aproximación, se propone modelar la acreditación (<span class="math inline">\(A_{it}\)</span>) y canje (<span class="math inline">\(C_{it}\)</span>) de cada cliente <span class="math inline">\(i\)</span> en el mes <span class="math inline">\(t\)</span> como:</li>
+</ol>
+<p><span class="math display">\[\begin{align}
+  A_{it}&amp;=\alpha+\alpha_{i}+\alpha_{t}+\beta X_{it}+\dots+\epsilon_{it}\\
+  C_{it}&amp;=\gamma+\gamma_{i}+\gamma_{t}+\rho Z_{it}+\dots+\xi_{it}
+\end{align}\]</span></p>
+<p>Donde <span class="math inline">\(X_{it}\)</span> y <span class="math inline">\(Z_{it}\)</span> son covariables construidas a partir de la información disponible.</p>
+<ol style="list-style-type: lower-alpha">
+<li>¿Cuál es la interpretación de los parámetros <span class="math inline">\(\alpha_{i}\)</span>, <span class="math inline">\(\alpha_{t}\)</span>, <span class="math inline">\(\gamma_{i}\)</span> y <span class="math inline">\(\gamma_{t}\)</span>?</li>
+<li>¿Son los modelos anteriores identificables? En caso de ser su respuesta negativa, ¿cómo se corrige el problema?</li>
+</ol>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>Los parámetros <span class="math inline">\(\alpha_{i}\)</span> y <span class="math inline">\(\gamma_{i}\)</span> representan el efecto fijo de cada consumidor, o el nivel promedio de actividad en creditación y canje, respectivamente, independiente de las demás covariables. Los parámetros <span class="math inline">\(\alpha_{t}\)</span> y <span class="math inline">\(\gamma_{t}\)</span> representan un efecto fijo temporal en los niveles de acreditación y canje, respectivamente, cuya interpretación dependerá de la definición de las variable que acompañe (si las covariables son meses representaría estacionalidad, mientras que si es fecha o año representaría alguna tendencia en los nvieles anteriores).</li>
+<li>Al estar las constantes <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\gamma\)</span>, junto con los parámetros anteriores, se produce un problema de colinealidad y por lo tanto los parámetros no son identificables. Para corregirlo, se debe omitir <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\gamma\)</span>, u omitir <span class="math inline">\(\alpha_{i}\)</span> y <span class="math inline">\(\gamma_{i}\)</span> para un individuo y especificar dummies desde <span class="math inline">\(i=1\)</span> hasta <span class="math inline">\(i=I-1\)</span>.</li>
+</ol>
+</blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>Suponga que se han identificado los modelos anteriores (de requerirlo, con las restricciones necesarias para alcanzar identificación). Derive una expresión que permita calcular el número esperado del saldo de punto de un cliente <span class="math inline">\(i\)</span> en cualquier período de tiempo <span class="math inline">\(t\)</span>.</li>
+</ol>
+<blockquote>
+<p>Sabemos que <span class="math inline">\(\mathbb{E}(Y|X)=X&#39;\hat{\beta}_{OLS}\)</span>. Luego, el balance promedio se obtiene como:
+<span class="math display">\[\mathbb{E}(\sum_{\tau=1}^{t}A_{\tau}-\sum_{\tau=1}^{t}C_{\tau}|X,Z)=\sum_{\tau=1}^{t}(\alpha_{i}+\alpha_{t}+X&#39;\beta)-\sum_{\tau=1}^{t}(\gamma_{i}+\gamma_{t}+Z&#39;\rho)\]</span></p>
+</blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Proponga especificaciones de los modelos de regresión que permitan capturar que:</p>
+<ol style="list-style-type: lower-alpha">
+<li>El impacto que tiene informar el estado de cuenta de los puntos depende del género.</li>
+<li>Los niveles de actividad (acreditación y canje) de un cliente varían significativamente de acuerdo a su categoría.</li>
+<li>El nivel de actividad (acreditación y canje) depende de la antiguedad de los clientes en el programa, pero aquellos que llevan más años tienden a tener un comportamiento similar.</li>
+</ol></li>
+</ol>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>Se debe incorporar una interacción entre las varables de <em>Mail</em> y <em>Género</em>.</li>
+<li>Se debe transformar la variable categórica en dummies y omitir uno de los niveles para no tener variables colineales.</li>
+<li>Se debe construir la variable logaritmo de antiguedad como <span class="math inline">\(ln(Año_{t}-AñoIngreso_{t})\)</span>.</li>
+</ol>
+</blockquote>
+<ol start="4" style="list-style-type: decimal">
+<li>Suponga ahora que se han estimado tres especificaciones para entender el comportamiento de acreditación (<span class="math inline">\(A_{it}\)</span>), donde <span class="math inline">\(f\)</span> representa alguna transformación o función de la información disponible, y cuyos resultados se encuentra en la tabla siguiente:</li>
+</ol>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="21%" />
+<col width="21%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Modelo 1</th>
+<th>Modelo 2</th>
+<th>Modelo 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha_{0}\)</span></td>
+<td><span class="math inline">\(35.9\)</span> <span class="math inline">\((12.8)\)</span></td>
+<td><span class="math inline">\(37.1\)</span> <span class="math inline">\((8.6)\)</span></td>
+<td><span class="math inline">\(32.7\)</span> <span class="math inline">\((11.5)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f\)</span>(Ingreso)</td>
+<td><span class="math inline">\(12.7\)</span> <span class="math inline">\((5.1)\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(10.7\)</span> <span class="math inline">\((2.9)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(f\)</span>(Edad)</td>
+<td><span class="math inline">\(-1.5\)</span> <span class="math inline">\((0.6)\)</span></td>
+<td><span class="math inline">\(-1.2\)</span> <span class="math inline">\((2.3)\)</span></td>
+<td><span class="math inline">\(-0.6\)</span> <span class="math inline">\((0.3)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f\)</span>(Mail)</td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(-0.3\)</span> <span class="math inline">\((0.2)\)</span></td>
+<td><span class="math inline">\(-1.9\)</span> <span class="math inline">\((5.1)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(f\)</span>(Promoción)</td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(15.1\)</span> <span class="math inline">\((6.7)\)</span></td>
+<td><span class="math inline">\(10.9\)</span> <span class="math inline">\((4.2)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f\)</span>(TiendasPropias)</td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(10.1\)</span> <span class="math inline">\((3.7)\)</span></td>
+<td><span class="math inline">\(8.9\)</span> <span class="math inline">\((2.1)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(f\)</span>(ComerciosAsociados)</td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(3.6\)</span> <span class="math inline">\((2.5)\)</span></td>
+<td><span class="math inline">\(2.9\)</span> <span class="math inline">\((2.3)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R^{2}\)</span> Ajustado</td>
+<td><span class="math inline">\(0.34\)</span></td>
+<td><span class="math inline">\(0.53\)</span></td>
+<td><span class="math inline">\(0.55\)</span></td>
+</tr>
+<tr class="odd">
+<td>MAPE</td>
+<td><span class="math inline">\(45.5\%\)</span></td>
+<td><span class="math inline">\(20.9\%\)</span></td>
+<td><span class="math inline">\(23.4\%\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\text{Tabla 3: Resultados Modelos Regresión}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>¿Qué variables ayudan a explicar el comportamiento de acreditación de los consumidores?</li>
+<li>¿Cuál es el medio en que se acreditan o acumulan, en promedio, menos puntos?</li>
+<li>Justifique cuál de los modelos anteriores es mejor.</li>
+</ol>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>Las variables que son significativas independiente del modelo en el que fueron estimadas, y que permiten explicar el comportamiento de interés, es decir, <em>Ingreso</em>, <em>Promoción</em>, y <em>TiendasPropias</em>.</li>
+<li>El parámetro asociado al medio <em>TarjetaBancaria</em> fue fijado en cero (para evitar problemas de colinealidad), y como el resto de los parámetros son positivos, es aquel en que menos puntos se acreditan.</li>
+<li>La respuesta dependerá del criterio de evaluación. Si se quiere evaluar en cuanto a la capacidad de ajuste, el mejor es aquel con mayor <span class="math inline">\(R^{2}\)</span> Ajustado (M3), pero si se evalúa en cuanto a la capacidad de pronóstico, se prefiere aquel con menor MAPE (M2).</li>
+</ol>
+</blockquote>
 
 </div>
 </div>
