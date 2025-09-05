@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 4 Modelos Estructurales | Apunte Problemas Resueltos</title>
   <meta name="description" content="Apunte de ejercicios realizados durante el curso de Marketing II" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 4 Modelos Estructurales | Apunte Problemas Resueltos" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2023-05-22" />
+<meta name="date" content="2025-09-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,9 +52,17 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -74,36 +82,59 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prologo</a></li>
 <li class="chapter" data-level="1" data-path="formulas-utiles.html"><a href="formulas-utiles.html"><i class="fa fa-check"></i><b>1</b> Formulas utiles</a></li>
-<li class="chapter" data-level="2" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html"><i class="fa fa-check"></i><b>2</b> Modelos de Regresión</a>
+<li class="chapter" data-level="2" data-path="04-estructurales.html"><a href="#modelos-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>2</b> Modelos de Regresión</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#introducción"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
-<li class="chapter" data-level="2.2" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#metodología"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
-<li class="chapter" data-level="2.3" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problemas"><i class="fa fa-check"></i><b>2.3</b> Problemas</a>
+<li class="chapter" data-level="2.1" data-path="04-estructurales.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
+<li class="chapter" data-level="2.2" data-path="04-estructurales.html"><a href="#metodolog%C3%ADa"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
+<li class="chapter" data-level="2.3" data-path="04-estructurales.html"><a href="#problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
 <ul>
-<li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-1"><i class="fa fa-check"></i>Problema 1</a></li>
-<li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#solución"><i class="fa fa-check"></i>Solución</a></li>
-<li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-2"><i class="fa fa-check"></i>Problema 2</a></li>
-<li class="chapter" data-level="" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#solución-1"><i class="fa fa-check"></i>Solución</a></li>
+<li class="chapter" data-level="2.3.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html"><i class="fa fa-check"></i><b>2.3.1</b> E1: Signo esperado y Significancia</a></li>
+<li class="chapter" data-level="2.3.2" data-path="04-estructurales.html"><a href="#e2-regresi%C3%B3n-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
+<li class="chapter" data-level="2.3.3" data-path="04-estructurales.html"><a href="#e3-selecci%C3%B3n-autom%C3%A1tica-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
+<li class="chapter" data-level="2.3.4" data-path="04-estructurales.html"><a href="#e4-regresi%C3%B3n-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
+<li class="chapter" data-level="2.3.5" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e5-capturar-efectos"><i class="fa fa-check"></i><b>2.3.5</b> E5: Capturar efectos</a></li>
+<li class="chapter" data-level="2.3.6" data-path="04-estructurales.html"><a href="#e6-coeficientes-y-par%C3%A1metros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
+<li class="chapter" data-level="2.3.7" data-path="04-estructurales.html"><a href="#e7-qu%C3%A9-es-un-modelo-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
+<li class="chapter" data-level="2.3.8" data-path="04-estructurales.html"><a href="#soluci%C3%B3n-problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3.8</b> Solución problemas teóricos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problemas-aplicados"><i class="fa fa-check"></i><b>2.4</b> Problemas Aplicados</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-1"><i class="fa fa-check"></i><b>2.4.1</b> Problema 1</a></li>
+<li class="chapter" data-level="2.4.2" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-2"><i class="fa fa-check"></i><b>2.4.2</b> Problema 2</a></li>
+<li class="chapter" data-level="2.4.3" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-3"><i class="fa fa-check"></i><b>2.4.3</b> Problema 3</a></li>
+<li class="chapter" data-level="2.4.4" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-4"><i class="fa fa-check"></i><b>2.4.4</b> Problema 4</a></li>
+<li class="chapter" data-level="2.4.5" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-5"><i class="fa fa-check"></i><b>2.4.5</b> Problema 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html"><i class="fa fa-check"></i><b>3</b> Modelos Probabilísticos</a>
+<li class="chapter" data-level="3" data-path="04-estructurales.html"><a href="#modelos-probabil%C3%ADsticos"><i class="fa fa-check"></i><b>3</b> Modelos Probabilísticos</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#introducción-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
-<li class="chapter" data-level="3.2" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#metodología-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
-<li class="chapter" data-level="3.3" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problemas-1"><i class="fa fa-check"></i><b>3.3</b> Problemas</a>
+<li class="chapter" data-level="3.1" data-path="04-estructurales.html"><a href="#introducci%C3%B3n-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path="04-estructurales.html"><a href="#metodolog%C3%ADa-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
+<li class="chapter" data-level="3.3" data-path="04-estructurales.html"><a href="#problemas-te%C3%B3ricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html"><i class="fa fa-check"></i><b>3.3.1</b> E1: Tasa de respuesta</a></li>
+<li class="chapter" data-level="3.3.2" data-path="04-estructurales.html"><a href="#e2-distribuci%C3%B3n-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
+<li class="chapter" data-level="3.3.3" data-path="04-estructurales.html"><a href="#e3-distribuci%C3%B3n-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
+<li class="chapter" data-level="3.3.4" data-path="04-estructurales.html"><a href="#e4-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
+<li class="chapter" data-level="3.3.5" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e5-modelo-nbd"><i class="fa fa-check"></i><b>3.3.5</b> E5: Modelo NBD</a></li>
+<li class="chapter" data-level="3.3.6" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e6-modelos-de-conteo"><i class="fa fa-check"></i><b>3.3.6</b> E6: Modelos de Conteo</a></li>
+<li class="chapter" data-level="3.3.7" data-path="04-estructurales.html"><a href="#e7-tiempo-discreto-en-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problemas-aplicados-1"><i class="fa fa-check"></i><b>3.4</b> Problemas Aplicados</a>
 <ul>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-1-1"><i class="fa fa-check"></i>Problema 1</a></li>
-<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-2"><i class="fa fa-check"></i>Solución</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#soluci%C3%B3n"><i class="fa fa-check"></i>Solución</a></li>
 <li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-2-1"><i class="fa fa-check"></i>Problema 2</a></li>
-<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
-<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-3"><i class="fa fa-check"></i>Problema 3</a></li>
-<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#solución-4"><i class="fa fa-check"></i>Solución</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#soluci%C3%B3n-1"><i class="fa fa-check"></i>Solución</a></li>
+<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-3-1"><i class="fa fa-check"></i>Problema 3</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#soluci%C3%B3n-2"><i class="fa fa-check"></i>Solución</a></li>
+<li class="chapter" data-level="3.4.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-4-1"><i class="fa fa-check"></i><b>3.4.1</b> Problema 4</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#introducción-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a></li>
-<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas-2"><i class="fa fa-check"></i><b>4.2</b> Problemas</a></li>
+<li class="chapter" data-level="4.1" data-path="04-estructurales.html"><a href="#introducci%C3%B3n-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a></li>
+<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas"><i class="fa fa-check"></i><b>4.2</b> Problemas</a></li>
 <li class="chapter" data-level="4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#soluciones"><i class="fa fa-check"></i><b>4.3</b> Soluciones</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -129,10 +160,10 @@
 <div id="modelos-estructurales" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Capítulo 4</span> Modelos Estructurales<a href="modelos-estructurales.html#modelos-estructurales" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introducción-2" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Introducción<a href="modelos-estructurales.html#introducción-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.1</span> Introducción<a href="#introducci%C3%B3n-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="problemas-2" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Problemas<a href="modelos-estructurales.html#problemas-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="problemas" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Problemas<a href="modelos-estructurales.html#problemas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
 <div id="soluciones" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Soluciones<a href="modelos-estructurales.html#soluciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -159,46 +190,60 @@
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-estructurales.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/04-estructurales.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
