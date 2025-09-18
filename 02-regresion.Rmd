@@ -1,3 +1,12 @@
+---
+output: 
+  html_document:
+    css: styles.css
+editor_options:
+  markdown:
+    wrap: 72
+---
+
 ```{r echo=FALSE, warning=FALSE}
 library(rmarkdown)
 library(latex2exp)
@@ -8,386 +17,2204 @@ library(kableExtra)
 
 ## Introducción
 
-En este capítulo se abarcarán problemas relacionados a modelos de regresión; es decir, aquellos modelos donde la variable dependiente $y$ se escribe como:
+En este capítulo se abarcarán problemas relacionados a modelos de
+regresión; es decir, aquellos modelos donde la variable dependiente $y$
+se escribe como:
 
 $$
 y = f(\textbf{X})= \beta^´X + \varepsilon 
-$$
-donde $\textbf{X}$ corresponde a las variables explicativas, $\beta^´$ son los parámetros que buscamos para estudiar la influencia de las vairables explicativas en la variable dependiente; o mejor dicho, la influencia de las variaciones en las variables explicativas en las variaciones de la variable depndiente, y $\varepsilon$ es el error aleatorio.
+$$donde $\textbf{X}$ corresponde a las variables explicativas, $\beta^´$
+son los parámetros que buscamos para estudiar la influencia de las
+vairables explicativas en la variable dependiente; o mejor dicho, la
+influencia de las variaciones en las variables explicativas en las
+variaciones de la variable depndiente, y $\varepsilon$ es el error
+aleatorio.
 
-Los modelos de regresión tienen la ventaja de ser fáciles de implementar e interpretar, pero se debe tener cuidado al momento de construir, evaluar e interpretar estos modelos. A partir de los datos que uno observa, existen infinitos modelos de regresión para explicar una variable $y$. Un buen modelo encuentra el balance entre su complejidad y poder explicativo.
+Los modelos de regresión tienen la ventaja de ser fáciles de implementar
+e interpretar, pero se debe tener cuidado al momento de construir,
+evaluar e interpretar estos modelos. A partir de los datos que uno
+observa, existen infinitos modelos de regresión para explicar una
+variable $y$. Un buen modelo encuentra el balance entre su complejidad y
+poder explicativo.
 
 ## Metodología
 
-Como mencionabámos anteriormente, para poder crear y utilizar los modelos de regresión que nos permite responder de la manera más informada las preguntas de 
+Como mencionabámos anteriormente, para poder crear y utilizar los
+modelos de regresión que nos permite responder de la manera más
+informada las preguntas de:
 
+1.  Definir el nivel de agregación de las variables apropiado para el
+    problema en cuestión, ya sea una agregación temporal (datos diarios,
+    semanales, mensuales, anuales) o lógicos (agregación por producto,
+    categoría, marca, tienda), como también definir los índices de los
+    parámetros del modelo
 
+2.  Elegir las variables explicativas a considerar para el modelo,
+    realizar las transformaciones según lo solicitado por el problema de
+    gestión.
 
-1. Definir el nivel de agregación de las variables apropiado para el problema en cuestión, ya sea una agregación temporal (datos diarios, semanales, mensuales,anuales) o lógicos (agregación por producto, categoría, marca, tienda), como también definir los índices de los parámetros del modelo
+3.  Decidir si se incluirán interacciones entre las variables
+    explicativas, como también si posee un efecto fijo (como también
+    definir los índices de estos efectos).
 
-2. Elegir las variables explicativas a considerar para el modelo, realizar las transformaciones según lo solicitado por el problema de gestión. 
+4.  Evaluar los modelos a partir de distintas métricas, ya sean
+    genéricas ($R^2$, $MAE$, $MAPE$, $RMS$) o de verosimilitud
+    ($\text{Likelihood Ratio}$, $AIC$, $BIC$), escogiendo aquél que, a
+    partir de las métricas mencionadas, tengan una buena calibración y
+    una alta capacidad de predicción.
 
-3. Decidir si se incluirán interacciones entre las variables explicativas, como también si posee un efecto fijo (como también definir los índices de estos efectos).
-
-4. Evaluar los modelos a partir de distintas métricas, ya sean genéricas ($R^2$, $MAE$, $MAPE$, $RMS$) o de verosimilitud ($\text{Likelihood Ratio}$, $AIC$, $BIC$), escogiendo aquél que, a partir de las métricas mencionadas, tengan una buena calibración y una alta capacidad de predicción.
-
-5. Interpretar los coeficientes más significativas de un modelo, para responder la pregunta de gestión original.
+5.  Interpretar los coeficientes más significativas de un modelo, para
+    responder la pregunta de gestión original.
 
 ## Problemas Teóricos
 
-### E1: Signo esperado y Significancia
-Al evaluar la inclusión de una variable en base a su signo esperado y significancia estadística, ¿cuál de los siguientes casos NO es una buena recomendación para un modelo de pronóstico?
+### E1: Signo esperado y significancia
 
-a. Si el parámetro tiene el signo esperado y no es significativo: mantener.
-b. Si el parámetro no tiene el signo esperado y no es significativo: eliminar.
-c. Si el parámetro no tiene el signo esperado y es significativo: tratar de hacer ajustes al modelo o juntar más datos y variables.
-d. El parámetro tiene el signo esperado y es significativo: mantener.
-e. **Ninguna de las anteriores.**
+Al evaluar la inclusión de una variable en base a su signo esperado y
+significancia estadística, ¿cuál de los siguientes casos NO es una buena
+recomendación para un modelo de pronóstico?
+
+a.  Si el parámetro tiene el signo esperado y no es significativo:
+    mantener.
+b.  Si el parámetro no tiene el signo esperado y no es significativo:
+    eliminar.
+c.  Si el parámetro no tiene el signo esperado y es significativo:
+    tratar de hacer ajustes al modelo o juntar más datos y variables.
+d.  El parámetro tiene el signo esperado y es significativo: mantener.
+e.  Ninguna de las anteriores.
 
 ### E2: Regresión Lineal vs de Poisson
-¿Qué diferencia un modelo de regresión simple de un modelo de regresión de Poisson? (Puede seleccionar más de una opción).
 
-i. **La especificación de la distribución del término de error.**
-ii. **Los métodos disponibles para estimar el modelo.**
-iii. **La naturaleza de la variable dependiente.**
+¿Qué diferencia un modelo de regresión simple de un modelo de regresión
+de Poisson? (Puede seleccionar más de una opción).
+
+i.  La especificación de la distribución del término de error.
+ii. Los métodos disponibles para estimar el modelo.
+iii. La naturaleza de la variable dependiente.
 iv. La posibilidad de realizar t-tests.
 
 ### E3: Selección automática de variables
-Cuál de las siguientes afirmaciones caracterizan adecuadamente a la selección automática de variables para un modelo de regresión lineal (Puede seleccionar más de una opción):
 
-i. Vienen predefinidas en planillas de cálculo.
+Cuál de las siguientes afirmaciones caracterizan adecuadamente a la
+selección automática de variables para un modelo de regresión lineal
+(Puede seleccionar más de una opción):
+
+i.  Vienen predefinidas en planillas de cálculo.
 ii. Son siempre peores que selección manual.
 iii. Sólo pueden aplicarse sobre el subconjunto de variables continuas.
-iv. **No consideran todos los modelos posibles.**
+iv. No consideran todos los modelos posibles.
 
 ### E4: Regresión Log-Nivel y Log-Log
-Dado el modelo $ln(y)=\beta_{0}+\beta_{1}x_{1}+b_{2}ln(x_{2})$, se puede asegurar que:
 
-a. Un aumento de una unidad en $x_{1}$ causa un aumento de $\beta_{0}$ unidades en $y$.
-b. Un aumento de una unidad en $x_{2}$ causa un aumento de $\beta_{2}$% unidades en $y$.
-c. Un aumento de un 1% en $x_{2}$ causa un aumento de $\beta_{2}$ unidades en $y$.
-d. Un aumento de un 1% en $x_{2}$ causa un aumento de $\beta_{2}$% unidades en $y$.
-e. **Ninguna de las anteriores.**
+Dado el modelo $ln(y)=\beta_{0}+\beta_{1}x_{1}+b_{2}ln(x_{2})$, se puede
+asegurar que:
+
+a.  Un aumento de una unidad en $x_{1}$ causa un aumento de $\beta_{0}$
+    unidades en $y$.
+b.  Un aumento de una unidad en $x_{2}$ causa un aumento de $\beta_{2}$%
+    unidades en $y$.
+c.  Un aumento de un 1% en $x_{2}$ causa un aumento de $\beta_{2}$
+    unidades en $y$.
+d.  Un aumento de un 1% en $x_{2}$ causa un aumento de $\beta_{2}$%
+    unidades en $y$.
+e.  Ninguna de las anteriores.
 
 ### E5: Capturar efectos
-¿Cuál de las siguientes especificaciones NO permite capturar que las diferencias en el comportamiento $y$ se van incrementando a medida que aumenta la edad de los sujetos?
 
-a. $y=\beta_{0}+\sum_{i}\beta_{i}Dummy_{i},\quad i=\{\text{niños, jóvenes, adultos, ancianos}\}$
-b. $y=\beta_{0}+\beta_{1}ln(edad)$ **(Correcta)**
-c. $y=\beta_{0}+\beta_{1}edad+\beta_{2}edad^{2}$
-d. $y=\beta_{0}+\beta_{1}\exp(edad)$
-e. Ninguna de las anteriores.
+¿Cuál de las siguientes especificaciones NO permite capturar que las
+diferencias en el comportamiento $y$ se van incrementando a medida que
+aumenta la edad de los sujetos?
+
+a.  $y=\beta_{0}+\sum_{i}\beta_{i}Dummy_{i},\quad i=\{\text{niños, jóvenes, adultos, ancianos}\}$
+b.  $y=\beta_{0}+\beta_{1}ln(edad)$
+c.  $y=\beta_{0}+\beta_{1}edad+\beta_{2}edad^{2}$
+d.  $y=\beta_{0}+\beta_{1}\exp(edad)$
+e.  Ninguna de las anteriores.
 
 ### E6: Coeficientes y Parámetros
+
 Se tiene el siguiente modelo lineal de venta de productos
 
-$$Q_{ist}=\theta_{s}+\mu_{is}P_{ist}+\gamma t+\epsilon_{ist}$$
-Donde $Q_{ist}$ es la cantidad vendida del producto $i$ en la tienda $s$ en el año $t$ y $P_{ist}$ el precio. El set de datos contiene registros para 5 productos y 5 tiendas entre 1960 y 2015. A partir de esto, se puede afirmar que (puede elegir más de una opción):
+$$Q_{ist}=\theta_{s}+\mu_{is}P_{ist}+\gamma t+\epsilon_{ist}$$ Donde
+$Q_{ist}$ es la cantidad vendida del producto $i$ en la tienda $s$ en el
+año $t$ y $P_{ist}$ el precio. El set de datos contiene registros para 5
+productos y 5 tiendas entre 1960 y 2015. A partir de esto, se puede
+afirmar que (puede elegir más de una opción):
 
-i. Transformar $\gamma t$ en $\gamma_{t}$ no influye en el modelo ya que son equivalentes.
-ii. **Transformar los coeficientes $\mu_{is}$ a $\mu_{i}+\mu_{s}$ implica calcular menos parámetros.**
-iii. **El modelo no permite capturar comportamiento cíclico de la demanda.**
-iv. Los parámetros $\theta_{s}$ y $\mu_{is}$ no pueden estimarse simultáneamente.
+i.  Transformar $\gamma t$ en $\gamma_{t}$ no influye en el modelo ya
+    que son equivalentes.
+ii. Transformar los coeficientes $\mu_{is}$ a $\mu_{i}+\mu_{s}$ implica
+    calcular menos parámetros.
+iii. El modelo no permite capturar comportamiento cíclico de la demanda.
+iv. Los parámetros $\theta_{s}$ y $\mu_{is}$ no pueden estimarse
+    simultáneamente.
 
 ### E7: ¿Qué es un modelo de Regresión?
+
 ¿Cuál(es) es(son) la utilidad de un modelo de regresión?
 
-i. **Permite medir correlación entre variables.**
-ii. **Permite medir la magnitud de una relación causal.**
+i.  Permite medir correlación entre variables.
+ii. Permite medir la magnitud de una relación causal.
 iii. Permite determinar causalidad entre variables.
-iv. Dependiendo de la especificación puede determinar causalidad o correlación, pero no ambas simultáneamente.
+iv. Dependiendo de la especificación puede determinar causalidad o
+    correlación, pero no ambas simultáneamente.
+
+### Solución problemas teóricos
+
+**E1: Signo esperado y Significancia**\
+Respuesta correcta: e.\
+{ Ninguna de las anteriores. Por ejemplo: no tiene signo esperado y no
+es significativo: Mantener}
+
+**E2: Regresión Lineal vs de Poisson**\
+Respuestas correctas: i., ii. y iii.\
+{ La especificación de la distribución del término de error; Los métodos
+disponibles para estimar el modelo; La naturaleza de la variable
+dependiente }
+
+**E3: Selección automática de variables**\
+Respuesta correcta: iv.\
+{ No consideran todos los modelos posibles }
+
+**E4: Regresión Log-Nivel y Log-Log**\
+Respuesta correcta: e.\
+{ Ninguna de las anteriores. Un 1% de aumento en $x_2$ causa un cambio
+en $\beta_2/100$ en y.}
+
+**E5: Capturar efectos**\
+Respuesta correcta: b.\
+{ $y=\beta_{0}+\beta_{1}\ln(edad)$ }
+
+**E6: Coeficientes y Parámetros**\
+Respuestas correctas: ii. y iii.\
+{ Transformar los coeficientes $\mu_{is}$ a $\mu_{i}+\mu_{s}$ implica
+calcular menos parámetros; El modelo no permite capturar comportamiento
+cíclico de la demanda }
+
+**E7: ¿Qué es un modelo de Regresión?**\
+Respuestas correctas: i. y ii.\
+{ Permite medir correlación entre variables; Permite medir la magnitud
+de una relación causal }
 
 ## Problemas Aplicados
 
-### Problema 1 {-}
+### Problema 1
 
-Un reconocido grupo empresarial que manefactura productos de aseo y limpieza de diversa índole le pide a usted evaluar el impacto de la pandemia en sus ventas a partir del registro obtenido por distintas tiendas distribuidas a lo largo del país.
+Un reconocido grupo empresarial que manufactura productos de aseo y
+limpieza de diversa índole le pide a usted evaluar el impacto de la
+pandemia en sus ventas a partir del registro obtenido por distintas
+tiendas distribuidas a lo largo del país.
 
-El foco del análisis se en la variable $q_{ist}$, la cual corresponde al número de unidades vendidas del producto $i$ en la tienda $s$ en el día $t$. Junto a las ventas se cuenta con un vector de características $z_{t}$ que describe cada día $t$, entre ellas $FDS_t$ que indica si es un fin de semana y $FER_t$ que indica si el día fue feriado. También, se tiene el vector $x_{ist}$ con características que varían según producto, tienda y día, entre ellas $PRECIO_{ist}$ (precio del producto), $QUAR_{st}$ (si la comunda donde se encuentra la tienda estaba en caurentena o no).
+El foco del análisis se en la variable $q_{ist}$, la cual corresponde al
+número de unidades vendidas del producto $i$ en la tienda $s$ en el día
+$t$. Junto a las ventas se cuenta con un vector de características
+$z_{t}$ que describe cada día $t$, entre ellas $FDS_t$ que indica si es
+un fin de semana y $FER_t$ que indica si el día fue feriado. También, se
+tiene el vector $x_{ist}$ con características que varían según producto,
+tienda y día, entre ellas $PRECIO_{ist}$ (precio del producto),
+$QUAR_{st}$ (si la comunda donde se encuentra la tienda estaba en
+caurentena o no).
 
-1. Formule un modelo de regresión lineal que capture los siguientes factores:
+1.  Formule un modelo de regresión lineal que capture los siguientes
+    factores:
 
-(a) Existe un efecto fijo por producto y por tienda, es decir, la linea base de las ventas es distinto para cada producto dependiendo de la tienda.
-(b) Si un producto no se vende en una tienda en un día dado es probable que aya un quiebre de stock y si un día hay quiebre, es probable que el día siguiente el producto siga quebrado.
-(c) El conjunto $\mathcal{PN}$ registra todos los productos de la firma que son de primera necesidad. Las cuarentenass no tienen efecto en os productos de primera necesidad.
-(d) El efecto de las cuarentenas puede ser distinto para las ventas de un día de semana con respecto a un fin de semana.
-(e) El nivel de progresión de las infecciones ($InfMV_{st}$) afecta el nivel de ventas.
-(f) El nivel de progresión de las infecciones afecta el nivel de ventas a través de cuñanto han variado las infecciones con respecto a una semana. Por ejemplo, si hoy hay 100 casos nuevos y hace una semana había solo 800, entonces ese aumento de 200 casos capturarían una fracción relevante de la relación entre la progresión de la pandemia y als ventas de los productos de la firma.
+    a.  Existe un efecto fijo por producto y por tienda, es decir, la
+        linea base de las ventas es distinto para cada producto
+        dependiendo de la tienda.
+    b.  Si un producto no se vende en una tienda en un día dado es
+        probable que aya un quiebre de stock y si un día hay quiebre, es
+        probable que el día siguiente el producto siga quebrado.
+    c.  El conjunto $\mathcal{PN}$ registra todos los productos de la
+        firma que son de primera necesidad. Las cuarentenass no tienen
+        efecto en os productos de primera necesidad.
+    d.  El efecto de las cuarentenas puede ser distinto para las ventas
+        de un día de semana con respecto a un fin de semana.
+    e.  El nivel de progresión de las infecciones ($InfMV_{st}$) afecta
+        el nivel de ventas.
+    f.  El nivel de progresión de las infecciones afecta el nivel de
+        ventas a través de cuñanto han variado las infecciones con
+        respecto a una semana. Por ejemplo, si hoy hay 100 casos nuevos
+        y hace una semana había solo 800, entonces ese aumento de 200
+        casos capturarían una fracción relevante de la relación entre la
+        progresión de la pandemia y als ventas de los productos de la
+        firma.
 
-2. Considere los siguientes dos modelos, los cuales contienen variables mencionadas anteriormente, junto con otras que no vale la pena nombrar:
+2.  Considere los siguientes dos modelos, los cuales contienen variables
+    mencionadas anteriormente, junto con otras que no vale la pena
+    nombrar:
 
-```{r echo= FALSE}
-modelos.p1 <- data.frame( "M1" =c("...","-0.06 (0.02)", "0.11 (0.03)","0.14 (0.02)", "0.07 (0.02)","0.06 (0.03)", 23, 0.63 , 0.62, 0.34,0.34)
-                         ,"M2" =c("...", "-0.07 (0.01)","0.12 (0.02)","0.13 (0.02)", "0.06 (0.03)","0.08 (0.01)", 27 , 0.69, 0.61, 0.33, 0.38))
+    |              |      M1      |      M2      |
+    |:------------:|:------------:|:------------:|
+    |     ...      |     ...      |     ...      |
+    |     Quar     | -0.06 (0.02) | -0.07 (0.01) |
+    |     FER      | 0.11 (0.03)  | 0.12 (0.02)  |
+    |     FDS      | 0.14 (0.02)  | 0.13 (0.02)  |
+    |  Quar x FER  | 0.07 (0.02)  | 0.06 (0.03)  |
+    |  Quar x FDS  | 0.06 (0.03)  | 0.08 (0.01)  |
+    |     Npar     |      23      |      27      |
+    |    $R^2$     |     0.63     |     0.69     |
+    | $R_{adj.}^2$ |     0.62     |     0.61     |
+    |  RMSE train  |     0.34     |     0.33     |
+    |  RMSE test   |     0.34     |     0.38     |
 
-rownames(modelos.p1) <- c( "...","Quar","FER","FDS","Quar x FER","Quar x FDS", "Npar","R**2","Adj. R**2","RMSE train","RMSE test")
-kbl(modelos.p1, align = "c",vline= "|") %>%
-  kable_classic("striped", full_width = F) %>%
-      pack_rows(" ", 7,7) %>%
-      pack_rows(" ", 8, 11) %>% 
-      column_spec (2:2,border_left = T, border_right = T) 
-```
+    $$
+    \textbf{Tabla 1: } \text{Fragmento de parámetros y métricas de ajuste para dos modelos alternativos.} \\
+    \text{Para los parámetros se reporta el estimador de mínimos cuadrados y en paréntesis el error estándar.} \\
+    \text{En la tabla, tanto } R^2 \text{ como } Adj. R^2 \text{ han sido calculados sobre la base de entrenamiento.}
+    $$
 
-$$
-\textbf{Tabla 1: } \text{Fragmento de parámetros y métricas de ajuste para dos modelos alternativos. Para los parámetros se  }\\
-\text{reporta el estimador de mínimos cuadrados y en paréntesis el error estándar. En la tabla, tanto } R^2 \text{ como } Adj. R^2 \\ \text{ han sido calculados sobre la base de entrenamiento.}
-$$
+    Además de incluir el valor de los coeficientes, se entrega para cada
+    modelo 4 métricas de ajuste. ¿Cuál de los dos modelos recomendaría
+    usar para ver el efecto de las cuarentenas en las ventas?
 
-Además de incluir el valor de los coeficientes, se entrega para cada modelo 4 métricas de ajuste. ¿Cuál de los dos modelos recomendaría usar para ver el efecto de las cuarentenas en las ventas?
+3.  Inspeccionando los resultados del modelo de regresión lineal que
+    consideró en la parte anterior, ¿cómo describiría el rol que han
+    jugado las cuarentenas en las ventas de la firma?
 
+**Solución**
 
-3. Inspeccionando los resultados del modelo de regresión lineal que consideró en la parte anterior, ¿cómo describiría el rol que han jugado las cuarentenas en las ventas de la firma?
+1.  Agregamos progresivamente un término adicional a la regresión:
 
-### Solución {-}
+    $$
+    q_{ist} = \alpha_{is} + \beta_1 \cdot \textbf{1}_{[q_{ist-1}= 0]} + \beta_2 \cdot QUAR_{st} \times \textbf{1}_{[i \notin \mathcal{PN}]} + \beta_3 \cdot QUAR_{st} \times FDS_t \\ 
+    + \beta_4 \cdot InfMV_{st}
+    + \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
+    $$
 
-1. Agregamos progresivamente un término adicional a la regresión:
+    $\textbf{Observación:}$ El modelo anterior puede permitir algunas
+    variantes. Por ejemplo, aunque la condición (a) indique que existe
+    un factor fijo por tienda y producto, una variante (no tan correcta)
+    es considerar por separador los factores. Esto es, en vez de tomar
+    $\alpha_{is}$ se elige $(\alpha_{i}+\alpha_{s})$.
 
-$$
-q_{ist} = \alpha_{is}  \\
-+ \beta_1 \cdot \textbf{1}_{[q_{ist-1}= 0]} \\
-+ \beta_2 \cdot QUAR_{st} \times \textbf{1}_{[i \notin \mathcal{PN}]} \\
-+ \beta_3 \cdot QUAR_{st} \times FDS_t \\
-+ \beta_4 \cdot InfMV_{st} \\
-+ \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
-$$
+    También, al considerar la condición (c) al momento de abordar el
+    factor en (d), se puede decir que el efecto de las cuarentenas en
+    los fines de semana no afecta a los productos de primera necesidad
+    (como lo dice la condición (c)). De este modo, este factor se puede
+    considerar como
+    $\beta_3 \cdot QUAR_{st} \times FDS_t \times \textbf{1}_{[i \notin \mathcal{PN}]}$.
 
-$\textbf{Observación:}$ El modelo anterior puede permitir algunas variantes. Por ejemplo, aunque la condición (a) indique que existe un factor fijo por tienda y producto, una variante (no tan correcta) es considerar por separador los factores. Esto es, en vez de tomar $\alpha_{is}$ se elige $(\alpha_{i}+\alpha_{s})$.
+2.  El modelo 1 es mejor que el modelo 2 en casi todas las métricas
+    relevantes, excepto en la métrica de $R^2$. Esto se explica porque
+    tiene más parámetros y queda corregido al mirar el coeficiente
+    $R_{adj.}^2$.
 
-También, al considerar la condición (c) al momento de abordar el factor en (d), se puede decir que el efecto de las cuarentenas en los fines de semana no afecta a los productos de primera necesidad (como lo dice la condición (c)). De este modo, este factor se puede considerar como $\beta_3 \cdot QUAR_{st} \times FDS_t \times \textbf{1}_{[i \notin \mathcal{PN}]}$.
+3.  Para el modelo preferido (1) todos los coeficientes asociados a las
+    cuarentenas y sus interacciones son significativos y por lo tanto
+    mirar los estimadores nos dan una razonable primera aproximación.
+    Acá vemos que las cuarentenas tienen un efecto negativo
+    siginificativo en reducir las ventas. Sin embargo, este efecto solo
+    se da en los días de semana. Tanto para feriados como fines de
+    semana el efecto se va a cero los fines de semana y (marginalmente)
+    positivo para feriados.
 
-2. El modelo 1 es mejor que el modelo 2 en casi todas las métricas relevantes, excepto en la métrica de $R^2$. Esto se explica porque tiene más parámetros y queda corregido al mirar el coeficiente Adj. $R^2$.
+------------------------------------------------------------------------
 
-3. Para el modelo preferido (1) todos los coeficientes asociados a las cuarentenas y sus interacciones son significativos y por lo tanto mirar los estimadores nos dan una razonable primera aproximación. Acá vemos que las cuarentenas tienen un efecto negativo siginificativo en reducir las ventas. Sin embargo, este efecto solo se da en los días de semana. Tanto para feriados como fines de semana el efecto se va a cero los fines de semana y (marginalmente) positivo para feriados.
+### Problema 2
 
+Un cine pequeño quiere impulsar la venta de entradas para este verano.
+Para atraer de manera eficiente a los clientes deciden ser selectivos en
+las películas que tendrán en cartelera. Para ello, desean determinar las
+características de las películas que provocan un mayor ingreso. El
+equipo de ventas dispone de un panel de datos con el historial de las
+3,800 funciones del año de las 1,250 películas presentadas con los
+siguientes datos:
 
-### Problema 2 {-}
++----------+------------------------------------------------+----------+
+| Variable | Descripción                                    | Media    |
++:========:+:==============================================:+:========:+
+| I        | Identificador de la función                    | \-       |
+| dFunción |                                                |          |
++----------+------------------------------------------------+----------+
+| Fecha    | Fecha de la función                            | \-       |
++----------+------------------------------------------------+----------+
+| Hora     | Hora de la función                             | \-       |
++----------+------------------------------------------------+----------+
+| Película | Nombre de la película a proyectar              | \-       |
++----------+------------------------------------------------+----------+
+| Duración | Duración de la película presentada [en         | 103.32   |
+|          | Minutos]                                       |          |
++----------+------------------------------------------------+----------+
+| Tipo     | Tipo de película presentada {Acción, Comedia,  | \-       |
+|          | Romance, Drama, Terror}                        |          |
++----------+------------------------------------------------+----------+
+| Edad     | Restricción de edad de la película {TE, TE+7,  | \-       |
+|          | MA+14, MA+18}                                  |          |
++----------+------------------------------------------------+----------+
+| Estudio  | Estudio que produjo la película {Dis, WB,      | \-       |
+|          | Para, Uni}                                     |          |
++----------+------------------------------------------------+----------+
+| Pre      | Presupuesto de la película [en CLP]            | 160      |
+| supuesto |                                                | ,200,000 |
++----------+------------------------------------------------+----------+
+| Ingreso  | Ingreso recibido por las entradas vendidas en  | 714,500  |
+|          | la función [en CLP]                            |          |
++----------+------------------------------------------------+----------+
 
-Un cine pequeño quiere impulsar la venta de entradas para este verano. Para atraer de manera eficiente a los clientes deciden ser selectivos en las películas que tendrán en cartelera. Para ello, desean determinar las características de las películas que provocan un mayor ingreso. El equipo de ventas dispone de un panel de datos con el historial de las 3,800 funciones del año de las 1,250 películas presentadas con los siguientes datos:
-
-```{r echo= FALSE}
-data.cine <- data.frame( "Variable" =c("IdFunción","Fecha","Hora","Película", "Duración","Tipo", "Edad","Estudio","Presupuesto", "Ingreso")
-                         ,"Descripción" =c("Identificador de la función", "Fecha de la función","Hora de la función","Nombre de la película a proyectar", "Duración de la película presentada [en Minutos]","Tipo de película presentada  {Acción, Comedia, Romance, Drama, Terror} ", "Restricción de edad de la película {TE, TE+7, MA+14, MA+18} " , "Estudio que produjo la película {Dis, WB, Para, Uni} ","Presupuesto de la película [en CLP]", "Ingreso recibido por las entradas vendidas en la función [en CLP]")
-                         , "Media" = c("-","-","-","-",103.32, "-","-","-","160,200,000","714,500"))
-#add caption: "Tabla : Descripción base de ventas Cine"
-kbl(data.cine)%>%
-  kable_classic("striped")
-```
 $$
 \textbf{Tabla 2: } \text{Resumen de ventas para cada función.}
-$$
-Para tener una mejor idea de cómo se ven los datos, se pueden observar estos 6 registros:
+$$ Para tener una mejor idea de cómo se ven los datos, se pueden
+observar estos 6 registros:
 
-```{r echo= FALSE}
-ej.cine <- data.frame( "IdFunción_i" = c("14156","14157","14158","14159","14160","14161")
-                       ,"Fecha_i" = c("23/07/2022","23/07/2022","24/07/2022","24/07/2022","24/07/2022","25/07/2022")
-                       ,"Hora_i" = c("19:00","22:00","11:00","15:30","20:15", "11:00")
-                       ,"Película_i" = c("Odín 4", "Chillido 5", "Odín 4", "Desafiar Barreras", "Odín 4", "Desafiar Barreras")
-                       , "Duración_i" = c( 105, 132, 105, 158, 105, 158)
-                       ,"Tipo_i" = c("Acción","Terror","Acción","Romance","Acción","Romance")
-                       , "Edad_i" = c("TE+7","MA+18","TE+7","MA+14","TE+7","MA+14")
-                       ,"Estudio_i" = c("Dis","Para","Dis","WB","Dis","WB")
-                       ,"Presupuesto_i" = c("354,970,000","135,600,000","354,970,000","94,500,000","354,970,000","94,500,000")
-                       ,"Ingreso_i" = c("948,640","804,300","893,000","569,200","832,150","452,900"))
+::: {style="overflow-x:auto;"}
+<table>
+<thead>
+<tr>
+<th><p>IdFunción<sub>i</sub></p></th>
+<th><p>Fecha<sub>i</sub></p></th>
+<th><p>Hora<sub>i</sub></p></th>
+<th><p>Película<sub>i</sub></p></th>
+<th><p>Duración<sub>i</sub></p></th>
+<th><p>Tipo<sub>i</sub></p></th>
+<th><p>Edad<sub>i</sub></p></th>
+<th><p>Estudio<sub>i</sub></p></th>
+<th><p>Presupuesto<sub>i</sub></p></th>
+<th><p>Ingreso<sub>i</sub></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>14156</p></td>
+<td><p>23/07/2022</p></td>
+<td><p>19:00</p></td>
+<td><p>Odín 4</p></td>
+<td><p>105</p></td>
+<td><p>Acción</p></td>
+<td><p>TE+7</p></td>
+<td><p>Dis</p></td>
+<td><p>354,970,000</p></td>
+<td><p>948,640</p></td>
+</tr>
+<tr>
+<td><p>14157</p></td>
+<td><p>23/07/2022</p></td>
+<td><p>22:00</p></td>
+<td><p>Chillido 5</p></td>
+<td><p>132</p></td>
+<td><p>Terror</p></td>
+<td><p>MA+18</p></td>
+<td><p>Para</p></td>
+<td><p>135,600,000</p></td>
+<td><p>804,300</p></td>
+</tr>
+<tr>
+<td><p>14158</p></td>
+<td><p>24/07/2022</p></td>
+<td><p>11:00</p></td>
+<td><p>Odín 4</p></td>
+<td><p>105</p></td>
+<td><p>Acción</p></td>
+<td><p>TE+7</p></td>
+<td><p>Dis</p></td>
+<td><p>354,970,000</p></td>
+<td><p>893,000</p></td>
+</tr>
+<tr>
+<td><p>14159</p></td>
+<td><p>24/07/2022</p></td>
+<td><p>15:30</p></td>
+<td><p>Desafiar Barreras</p></td>
+<td><p>158</p></td>
+<td><p>Romance</p></td>
+<td><p>MA+14</p></td>
+<td><p>WB</p></td>
+<td><p>94,500,000</p></td>
+<td><p>569,200</p></td>
+</tr>
+<tr>
+<td><p>14160</p></td>
+<td><p>24/07/2022</p></td>
+<td><p>20:15</p></td>
+<td><p>Odín 4</p></td>
+<td><p>105</p></td>
+<td><p>Acción</p></td>
+<td><p>TE+7</p></td>
+<td><p>Dis</p></td>
+<td><p>354,970,000</p></td>
+<td><p>832,150</p></td>
+</tr>
+<tr>
+<td><p>14161</p></td>
+<td><p>25/07/2022</p></td>
+<td><p>11:00</p></td>
+<td><p>Desafiar Barreras</p></td>
+<td><p>158</p></td>
+<td><p>Romance</p></td>
+<td><p>MA+14</p></td>
+<td><p>WB</p></td>
+<td><p>94,500,000</p></td>
+<td><p>452,900</p></td>
+</tr>
+</tbody>
+</table>
+:::
 
-kbl(ej.cine)%>%
-  kable_classic("striped")
-```
 $$
 \textbf{Tabla 3: } \text{Ejemplo de 6 registro en Tabla de Ventas.}
 $$
 
+1.  Nótese que una película puede tener varias funciones y que, debido a
+    la naturaleza de las variables, el rango de valores y el tipo de
+    variables son distintos. Debido a esto, elija un nivel de agregación
+    y transforme las variables de forma que puedan modelar el éxito
+    total en ventas para cada película.
 
-1. Nótese que una película puede tener varias funciones y que, debido a la naturaleza de las variables, el rango de valores y el tipo de variables son distintos. Debido a esto, elija un nivel de agregación y transforme las variables de forma que puedan modelar el éxito total en ventas para cada película.
+2.  El equipo escogió como variable dependiente el logaritmo de la suma
+    de los ingresos de las funciones para cada película y generó dos
+    modelos distintos, entregando los siguientes resultados:
 
-2. El equipo escogió como variable dependiente el logaritmo de la suma de los ingresos de las funciones para cada película y generó dos modelos distintos, entregando los siguientes resultados:
+    +-------------+-------------+-------------+-------------+-------------+
+    |             | Modelo 1    | Modelo 1    | Modelo 2    | Modelo 2    |
+    |             | Coeficiente | p-valor     | Coeficiente | p-valor     |
+    +:===========:+:===========:+:===========:+:===========:+:===========:+
+    | Intercepto  | -15.2       | 0.704       | 3.1         | 0.161       |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Duración    | -1.04       | 0.452       | -0.23       | 0.004       |
+    +-------------+-------------+-------------+-------------+-------------+
+    | log(P       | 0.62        | 0.005       | 1.15        | 0.001       |
+    | resupuesto) |             |             |             |             |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Edad.TE     | 4.5         | 0.058       | \-          | \-          |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Edad.TE+7   | 6.71        | 0.020       | \-          | \-          |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Edad.MA+14  | 5.16        | 0.017       | \-          | \-          |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Edad.MA+18  | 4.04        | 0.009       | \-          | \-          |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Tipo.Acción | \-          | \-          | 4.05        | 0.520       |
+    +-------------+-------------+-------------+-------------+-------------+
+    | T           | \-          | \-          | 1.63        | 0.017       |
+    | ipo.Comedia |             |             |             |             |
+    +-------------+-------------+-------------+-------------+-------------+
+    | T           | \-          | \-          | 2.11        | 0.110       |
+    | ipo.Romance |             |             |             |             |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Tipo.Drama  | \-          | \-          | -1.52       | 0.025       |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Tipo.Terror | \-          | \-          | 6.72        | 0.001       |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Estudio.Dis | 5.12        | 0.004       | \-          | \-          |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Estudio.WB  | 4.09        | 0.240       | \-          | \-          |
+    +-------------+-------------+-------------+-------------+-------------+
+    | Estudio.Uni | 3.14        | 0.104       | \-          | \-          |
+    +-------------+-------------+-------------+-------------+-------------+
+    | E           | -0.63       | 0.186       | \-          | \-          |
+    | studio.Para |             |             |             |             |
+    +-------------+-------------+-------------+-------------+-------------+
+    | LL          |             | -644        |             | -650        |
+    +-------------+-------------+-------------+-------------+-------------+
+    | AIC         |             | 1,304       |             | 1,295       |
+    +-------------+-------------+-------------+-------------+-------------+
+    | BIC         |             | 1,366       |             | 1,350       |
+    +-------------+-------------+-------------+-------------+-------------+
 
-```{r echo= FALSE}
-modelos.cine <- data.frame( "Coeficiente" =c(-15.2, -1.04, 0.62, 4.5 , 6.71, 5.16, 4.04 , "-","-","-","-","-", 5.12, 4.09, 3.14,-0.63," "," "," ")
-                          ,"p-valor" =c(0.704,0.452,0.005,0.058, 0.020,0.017,0.009,"-","-","-","-","-",0.004,0.240,0.104,0.186, -644 , "1,304","1,366")
-                          ,"Coeficiente" =c(3.1, -0.23, 1.15, "-" , "-","-", "-" , 4.05,1.63,2.11,-1.52,6.72, "-", "-" , "-" , "-"," "," "," ")
-                          ,"p-valor" =c(0.161,0.004,0.001,"-", "-","-","-",0.520,0.017,0.110,0.025,0.001,"-","-","-","-", -650, "1,295","1,350"))
+    $$
+    \textbf{Tabla 3: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
+    $$
 
-rownames(modelos.cine) <- c( "Intercepto","Duración","log(Presupuesto)","Edad.TE","Edad.TE+7","Edad.MA+14","Edad.MA+18","Tipo.Acción","Tipo.Comedia","Tipo.Romance","Tipo.Drama","Tipo.Terror","Estudio.Dis","Estudio.WB","Estudio.Uni","Estudio.Para","LL","AIC","BIC")
-kbl(modelos.cine, align = "c",col.names = c("Coeficiente","p-valor","Coeficiente","p-valor")) %>%
-  kable_classic("striped", full_width = F) %>%
-  add_header_above(c(" " = 1, "Modelo 1" = 2, "Modelo 2" = 2))
+    A partir de los datos entregados elija cuál modelo es mejor para
+    predecir el número de entradas vendidas para una película y entregue
+    3 argumentos de porqué lo considera mejor.
 
-```
+3.  Interprete los coeficientes de cada modelo. Según cada modelo, ¿qué
+    tipo de películas debería presentar el cine para tener mayores
+    ingresos?
 
-$$
-\textbf{Tabla 3: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
-$$
+4.  Suponga que en su base de datos posee también la variable
+    independiente $NFun$ que representa el número de funciones que
+    recibió la película en el cine. Proponga un modelo de regresión
+    lineal que considere siguientes condiciones:
 
-A partir de los datos entregados elija cuál modelos es mejor para predecir el número de entradas vendidas para una película y entregue 3 argumentos de porqué lo considera mejor.
+    a.  Se debe considerar el efecto marginal por parte de las variables
+        Presupuesto, Duración, Edad, Tipo, Estudio y $NFun$.
 
-3. Interprete los coeficientes de cada modelo. Según cada modelo,¿qué tipo de películas debería presentar el cine para tener mayores ingresos?
+    b.  Existe un efecto en las ventas que depende simultáneamente del
+        estudio y el Tipo de película (Por ejemplo, el estudio WB puede
+        tener más exito con películas de terror, mientras que Dis lo
+        puede tener con aquellas de acción).
 
-4. Suponga que en su base de datos posee también la variable independiente $NFun$ que representa el número de funciones que recibió la película en el cine. Proponga un modelo de regresión lineal que considere siguientes condiciones:
+    c.  El éxito de la películas apropiadas para niños (Edad $\in$ {TE,
+        TE+7}) depende de su duración.
 
-(a) Se debe considerar el efecto marginal por parte de las variables Presupuesto, Duración, Edad, Tipo, Estudio y $NFun$.
+**Solución**
 
-(b) Existe un efecto en las ventas que depende simultaneamente del estudio y el Tipo de película (Por ejemplo, el estudio WB puede tener más exito con películas de terror, mientras que Dis lo puede tener con aquellas de acción).
+1.  Nótese que una película puede tener varias funciones y que, debido a
+    la naturaleza de las variables, el rango de valores y el tipo de
+    variables son distintos. Para evaluar el ingreso total en ventas
+    obtenido por una película, se deben considerar los ingresos a nível
+    película. De modo que se define el ingreso para la película $j$ como
+    la suma del éxito de todas sus funciones $i$:
 
-(c) El éxito de la películas apropiadas para niños (Edad $\in$ {TE, TE+7}) depende de su duración.
+    $$
+    Ingreso_{j} = \sum_i Ingreso_i \cdot \textbf{1}_{[Nombre_i = j]}
+    $$Cabe notar que las características de la película
+    ($Presupuesto_i ,Duración_i ,Tipo_i ,Edad_i ,Estudio_i$) se
+    mantienen para cada función $i$ de la película $j$ de modo que
+    $Presupuesto_j = Presupuesto_i$ para toda función de la película $j$
+    (lo mismo para las demás características). De este modo, tenemos un
+    vector de características por película
+    ($Presupuesto_j ,Duración_j ,Tipo_j ,Edad_j ,Estudio_j$).
 
-### Solución {-}
+    Finalmente, notemos que los valores de $Ingreso_j$ y $Presupuesto_j$
+    son muy elevados en comparación con la variable $Duración_j$.
+    Similarmente, el rango no se compara con el valor de las variables
+    dummy generadas por las categorías $Tipo_j$, $Edad_j$ y $Estudio_j$.
+    Debido a esto, decidimos estudiar el comportamiento del logaritmo de
+    estos montos: $\log(Ingreso)$ y $\log(Presupuesto_j)$.
 
-1. Nótese que una película puede tener varias funciones y que, debido a la naturaleza de las variables, el rango de valores y el tipo de variables son distintos. Debido a esto, elija un nivel de agregación y transforme las variables de forma que puedan modelar el éxito total en ventas para cada película.
+    Para ser más claros, la tabla con las transformaciones apropiadas
+    tendría los 6 registros mostrados anteriormente de la siguiente
+    manera:
 
-Para evaluar el ingreso total en ventas obtenido por una película se deben considerar los ingresos a nível película. De modo que se define el ingreso para la película $j$ como la suma del éxito de todas sus funciones $i$:
+    +---------+---------+---------+---------+---------+---------+---------+
+    | $Pelí   | $Dura   | $       | $       | $Est    | $log(   | $log(   |
+    | cula_j$ | ción_j$ | Tipo_j$ | Edad_j$ | udio_j$ | Pre_j)$ | Ing_j)$ |
+    +:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+
+    | Odín 4  | 105     | Acción  | TE+7    | Dis     | 8.55    | 6.43    |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | C       | 132     | Terror  | MA+18   | Para    | 8.13    | 5.91    |
+    | hillido |         |         |         |         |         |         |
+    | 5       |         |         |         |         |         |         |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | D       | 158     | Romance | MA+14   | WB      | 7.97    | 6.01    |
+    | esafiar |         |         |         |         |         |         |
+    | B       |         |         |         |         |         |         |
+    | arreras |         |         |         |         |         |         |
+    +---------+---------+---------+---------+---------+---------+---------+
 
-$$
-Ingreso_{j} = \sum_i Ingreso_i \cdot \textbf{1}_{[Nombre_i = j]}
-$$
-Cabe notar que las características de la película ($Presupuesto_i ,Duración_i ,Tipo_i ,Edad_i ,Estudio_i$) se mantienen para cada función $i$ de la película $j$ de modo que $Presupuesto_j = Presupuesto_i$ para toda función de la película $j$ (lo mismo para las demás carácteristicas). De este modo, tenemos un vector de características por película ($Presupuesto_j ,Duración_j ,Tipo_j ,Edad_j ,Estudio_j$)
+<!-- -->
 
-Finalmente, notemos que los valores de $Ingreso_j$ y $Presupuesto_j$ son muy elevados en comparación con la variable $Duración_j$. Similarmente, el rango no se compara con el valor de las variables dummy generadas por las categorías $Tipo_j$,$Edad_j$ y $Estudio_j$. Debido a esto, decidimos estudiar el comportamiento del logaritmo de estos montos: $\log(Ingreso)$ y $\log(Presupuesto_j)$.
+2.  El modelo que explica de manera más efectiva el comportamiento es el
+    modelo 2. Se pueden considerara varias razones para esto, algunas de
+    estas razones son:
+    a.  A pesar del modelo 1 tener una mejor log-verosimilitud, el BIC
+        del modelo 2 es mejor que el modelo 1.
+    b.  La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por
+        lo que podríamos argumentar que preferimos el modelo 2 por su
+        parsimonia (argumento se refuerza mirando la métrica BIC).
+    c.  Una gran parte de los coeficientes del modelo 1 son no
+        significativos a un 5% de confianza, mientras que los
+        coeficientes del modelo 2 tienden a ser \<5%
+    d.  La significancia de las variables que ambos modelos comparten
+        poseen un p-valor menor en el modelo 2, de modo que sus
+        intervalos de confianza deberían ser más acotados. Lo anterior,
+        a pesar de algunas variables no ser significativas al 5%, es un
+        hecho positivo respecto al modelo 2.\
+    e.  Pensando en la interpretación, el modelo 1 posee algunos
+        comportamientos discutibles: esperaríamos, por ejemplo, que la
+        duración tenga un efecto negativo y significativo en los
+        ingresos. Sin embargo, el modelo la considera no significativa.
+    f.  Los valores de intercepto en el modelo 1 está demasiado
+        desviados en magnitud respecto al resto de coeficientes. Lo
+        anterior podría dar indicios de algún error en cuánto al
+        escalamiento de las variables al momento de calibrar el modelo.
+3.  Incluye:
+    -   Primero, observamos aquellos coeficientes con mayor
+        significancia estadística. Para eso consideramos aquellos cuyo
+        p-valor sea menor a 0.01.
+    -   Para el modelo 1 se tienen las variables $\log(Presupuesto)$,
+        $Edad.MA+18$ y $Estudio.Dis$. De acuerdo al signo de los
+        coeficientes, podemos concluir que las películas que generan un
+        mayor ingreso son aquellas con un mayor presupuesto, para
+        mayores de 18 años producidas por Dis.
+    -   En cambio, para el modelo 2, las variables a considerar son
+        $Duración$, $\log(Presupuesto)$ y $Tipo.Terror$. Por el signo de
+        los coeficientes, se deben proyectar películas de terror cortas
+        con un alto presupuesto.
+    -   **Observación**: En el modelo 1, sería deseable considerar la
+        variable $Duración$. Sin embargo, su p-valor alto refleja que no
+        es una variable significativa en este modelo.
+4.  Incluye:
+    a.  La condición (a) muestra que se deben incluir las variables
+        Presupuesto, Duración, Edad, Género, Estudio y Nfun en el
+        modelo, con sus propios coeficientes.
 
-Para ser más claros, la tabla con las transformaciones apropiadas tendría los 6 registros mostrados anteriormente de la siguiente manera:
+    b.  La condición (b) nos dice que se debe agregar además, las
+        variables de estudio condicionada al género.
 
-```{r echo= FALSE}
-ej.cine <- data.frame( "Película_j" = c("Odín 4", "Chillido 5", "Desafiar Barreras" )
-                       , "Duración_j" = c( 105, 132, 158)
-                       ,"Tipo_j" = c("Acción","Terror","Romance")
-                       , "Edad_j" = c("TE+7","MA+18","MA+14")
-                       ,"Estudio_j" = c("Dis","Para","WB")
-                       ,"log(Presupuesto_j)" = c(8.55,8.13,7.97)
-                       ,"log(Ingreso_j)" = c(6.43,5.91,6.01))
+    c.  Finalmente, la condición (c) dice que queremos conocer el
+        impacto de la duración en las películas cuya variable Edad es TE
+        y TE+7.
 
-kbl(ej.cine)%>%
-  kable_classic("striped")
-```
+        Recordemos que, para variables categóricas, se deben generar
+        variables $dummy$ para cada categoría. Sea
+        $E = \{TE, TE+7, MA+14, MA+18 \}$, \$T = {Acción, Comedia,
+        Romance, Drama, Terror} \$ y $S = \{Dis, WB, Uni, Para \}$. A
+        partir de estos conjuntos, podemos definir las variables
+        $dummy$:
 
+        -   $Edad_{j,e} = 1$ si para la película $j$, $Edad_j=e$ para
+            $e \in E$.
+        -   $Tipo_{j,t} = 1$ si para la película $j$, $Tipo_j=t$ para
+            $t \in T$.
+        -   $Tipo_{j,s} = 1$ si para la película $j$, $Estudio_j=s$ para
+            $s \in S$.
 
-2. A partir de los datos entregados elija cuál modelos es mejor para predecir el número de entradas vendidas para una película y entregue 3 argumentos de porqué lo considera mejor.
+        De este modo, el modelo que cumple las condiciones mencionadas
+        sería:
 
-El modelo que explica de manera más efectiva el comportamiento es el modelo 2. Se pueden considerara varias razones para esto, algunas de estas razones son:
+        $$
+        \begin{aligned}
+        \log(Ingreso_j) \; &= \; \beta_1 \log(Presupuesto_j) + \beta_2 Duración_j + \sum_{e \in E} \beta_e Edad_{j,e} \\ 
+        &\quad + \sum_{t \in T} \beta_t Tipo_{j,t} + \sum_{s \in S} \beta_s Estudio_{j,S} + \beta_3 Nfun_j \\
+        &\quad + \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} \, (Tipo_{j,t} \times Estudio_{j,s}) \\
+        &\quad + \sum_{e \in \{TE,TE+7\}} \delta_e \, (Edad_{j,e} \times Duración_j)
+        \end{aligned}
+        $$
 
-a.  A pesar del modelo 1  tener una mejor log-verosimilitud, el BIC del modelo 2 es mejor que el modelo 1.
-b.  La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por lo que podríamos argumentar que preferimos el modelo 2 por su parsimonia (argumento se refuerza mirando la métrica BIC).
-c.  Una gran parte de los coeficientes del modelo 1 son no significativos a un 5% de confianza, mientras que los coeficientes del modelo 2 tienden a ser <5%
-d.  La significancia de las variables que ambos modelos comparten poseen un p-valor menor en el modelo 2, de modo que sus intervalos de confianza deberían ser más acotados. Lo anterior, a pesar de algunas variables no ser significativas al 5%, es un hecho positivo respecto al modelo 2.  
-e.  Pensando en la interpretación, el modelo 1 posee algunos comportamientos discutibles: esperaríamos, por ejemplo, que la duración tenga un efecto negativo y significativo en los ingresos. Sin embargo, el modelo la considera no significativa.
-f.  Los valores de intercepto en el modelo 1 está demasiado desviado en magnitud respecto al resto de coeficientes. Lo anterior podría dar indicios de incluso algún error en cuánto al escalamiento de las variables al momento de calibrar el modelo.
+        Se puede realizar una notación vectorial de los coeficientes
+        para tener una notación más concisa, pero se debe tener en
+        cuenta los índices de estos coeficientes, de modo que el largo
+        del vector sea la cantidad de coeficientes a buscar.
 
-3. Interprete los coeficientes de cada modelo. Según cada modelo,¿qué tipo de películas debería presentar el cine para tener mayores ingresos?
-
-Primero observamos aquellos coeficientes con mayor significancia estadística. Para eso consideramos aquellos cuyo p-valor sea menor a 0.01.
-
-Para el modelo 1 se tienen las variables $\log(Presupuesto)$, $Edad.MA+18$ y $Estudio.Dis$. De acuerdo al signo de los coeficientes podemos concluir que las películas que generan un mayor ingreso son aquellas con un mayor presupuesto, para mayores de 18 años producidas por Dis.
-
-En cambio, para el modelo 2, las variables a considerar son $Duración$, $\log(Presupuesto)$ y $Tipo.Terror$. Por el signo de los coeficientes, se deben proyectar películas de terror cortas con un alto presupuesto.
-
-**Observación**: 
-
-- En el modelo 1, sería deseable considerar la variable $Duración$. Sin embargo, su p-valor alto refleja que no es una variable significativa en este modelo.
-
-
-4. Suponga que en su base de datos posee también la variable independiente $NFun$ que representa el número de funciones que recibió la película en el cine. Proponga un modelo de regresión lineal que considere siguientes condiciones:
-
-(a) Se debe considerar el efecto marginal por parte de las variables Presupuesto, Duración, Edad, Tipo, Estudio y $NFun$.
-
-(b) Existe un efecto en las ventas que depende simultaneamente del estudio y el Tipo de película (Por ejemplo, el estudio WB puede tener más exito con películas de terror, mientras que Dis lo puede tener con aquellas de acción).
-
-(c) El éxito de la películas apropiadas para niños (Edad $\in$ {TE, TE+7}) depende de su duración.
-
-La condición (a) muestra que se deben incluir las variables Presupuesto, Duración, Edad, Género, Estudio y Nfun en el modelo, con sus propios coeficientes. La condición (b) nos dice que se debe agregar además, las variables de estudio condicionada al género. Finalmente, la condición (c) dice que queremos conocer el impacto de la duración en las películas cuya variable Edad es TE y TE+7. 
-
-Recordemos que, para variables categóricas, se deben generar variables $dummy$ para cada categoría Sea $E = \{ TE,TE+7,MA+14,MA+18 \}$, $T = \{Acción, Comedia,Romance,Drama,Terror\} $ y $S = \{ Dis,WB,Uni,Para \}$. A partir de estos conjuntos, podemos definir las variables $dummy$:
-
-- $Edad_j,e = 1$ si para la película $j$, $Edad_j=e$ para $e \in E$.
-- $Tipo_j,t = 1$ si para la película $j$, $Tipo_j=t$ para $t \in T$.
-- $Tipo_j,s = 1$ si para la película $j$, $Estudio_j=s$ para $s \in S$.
-
-De este modo, el modelo que cumple las condiciones mencionadas sería
-
-$$
-\log(Ingreso_j) = \beta_1 \log(Presupuesto_j) + \beta_2 Duración_j + \sum_{e \in E} \beta_e Edad_{j,e} + \sum_{t \in T} \beta_t Tipo_{j,t} + \sum_{s \in S} \beta_s Estudio_{j,S} + \beta_3 Nfun_j\\
-+ \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} Tipo_{j,t} \times Estudio_{j,S} \\
-+  \sum_{e \in \{TE,TE+7\}} \delta_e  Edad_{j,e} \times Duración_j
-$$
-Se puede realizar una notación vectorial de los coeficientes para tener una notación más concisa, pero se debe tener en cuenta los índices de estos coeficientes, de modo que el largo del vector sea la cantidad de coeficientes a buscar.
+------------------------------------------------------------------------
 
 ### Problema 3
 
-Debido a la gran variedad de alternativas que tiene el consumidor para satisfacer sus necesidades, empresas desistimos sectores han buscado formas de fidelizar a sus clientes mediante programas de recompensas. Estos programas proponen premiar al consumidor con relación a su nivel de actividad, con el fin de que estos sean más leales a la firma. A continuación, nos proponemos estudiar el comportamiento de los consumidores que están inmersos en un programa de recompensas en el cual se acumulan puntos al comprar en alguna de las tiendas dela cadena, al comprar en alguna alianza comercial asociada, o utilizando la tarjeta del banco aliado a la cadena. Cuando el consumidor tiene una cantidad suficiente de puntos acumulados puede canjear algún producto que se ofrece en un catálogo, o puede hacer uso de sus puntos como medio de pago al momento de comprar cualquier producto disponible en tienda.
+Debido a la gran variedad de alternativas que tiene el consumidor para
+satisfacer sus necesidades, empresas de distintos sectores han buscado
+formas de fidelizar a sus clientes mediante programas de recompensas.
+Estos programas proponen premiar al consumidor con relación a su nivel
+de actividad, con el fin de que estos sean más leales a la firma. A
+continuación, nos proponemos estudiar el comportamiento de los
+consumidores que están inmersos en un programa de recompensas en el cual
+se acumulan puntos al comprar en alguna de las tiendas de la cadena, al
+comprar en alguna alianza comercial asociada, o utilizando la tarjeta
+del banco aliado a la cadena. Cuando el consumidor tiene una cantidad
+suficiente de puntos acumulados puede canjear algún producto que se
+ofrece en un catálogo, o puede hacer uso de sus puntos como medio de
+pago al momento de comprar cualquier producto disponible en tienda.
 
-Para modelar los comportamientos anteriores, se cuenta con información demográfica de cada consumidor que es actualmente parte del programa, y cada una de las transacciones que ha realizado desde su inicio, como se observa en las Tablas 1 y 2:
+Para modelar los comportamientos anteriores, se cuenta con información
+demográfica de cada consumidor que es actualmente parte del programa, y
+cada una de las transacciones que ha realizado desde su inicio, como se
+observa en las Tablas 1 y 2:
 
- Variable          | Descripción 
--------------------|---------------------------
- IDCliente         | Identificador del cliente           
- Ingreso           | Ingreso del cliente           
- AñoInicio         | Año en el que el cliente se une al programa           
- TamañoHogar       | Número de personas que componen el hogar del cliente  
- Género            | 1 si el cliente es hombre   
- Edad              | Edad del cliente  
- Categoría         | Silver, Gold o Premium  
+|  Variable   |                     Descripción                      |
+|:-----------:|:----------------------------------------------------:|
+|  IDCliente  |              Identificador del cliente               |
+|   Ingreso   |                 Ingreso del cliente                  |
+|  AñoInicio  |     Año en el que el cliente se une al programa      |
+| TamañoHogar | Número de personas que componen el hogar del cliente |
+|   Género    |              1 si el cliente es hombre               |
+|    Edad     |                   Edad del cliente                   |
+|  Categoría  |                Silver, Gold o Premium                |
+
 $$\text{Tabla 1: Variables Demográficas}$$
 
-Variable          | Descripción 
--------------------|---------------------------
- IDCliente         | Identificador del cliente           
- Año               | Año de la observación          
- Mes               | Mes de la observación         
- Acreditación      | Cantidad de puntos acreditados por el cliente en el mes $t$  
- Canje             | Cantidad de productos canjeados por el cliente en el mes $t$   
- TipoAcreditación  | Tiendas Propias, Comercios Asociados o Tarjeta Bancaria  
- TipoCanje         | Producto o Descuento
- Promoción         | 1 si hubo promo o descuentos adicionales en el mes $t$
- Mail              | 1 si se avisó estado de cuenta al cliente via mail en el mes $t$
++-----------------------------------+-----------------------------------+
+| Variable                          | Descripción                       |
++:=================================:+:=================================:+
+| IDCliente                         | Identificador del cliente         |
++-----------------------------------+-----------------------------------+
+| Año                               | Año de la observación             |
++-----------------------------------+-----------------------------------+
+| Mes                               | Mes de la observación             |
++-----------------------------------+-----------------------------------+
+| Acreditación                      | Cantidad de puntos acreditados    |
+|                                   | por el cliente en el mes $t$      |
++-----------------------------------+-----------------------------------+
+| Canje                             | Cantidad de productos canjeados   |
+|                                   | por el cliente en el mes $t$      |
++-----------------------------------+-----------------------------------+
+| TipoAcreditación                  | Tiendas Propias, Comercios        |
+|                                   | Asociados o Tarjeta Bancaria      |
++-----------------------------------+-----------------------------------+
+| TipoCanje                         | Producto o Descuento              |
++-----------------------------------+-----------------------------------+
+| Promoción                         | 1 si hubo promo o descuentos      |
+|                                   | adicionales en el mes $t$         |
++-----------------------------------+-----------------------------------+
+| Mail                              | 1 si se avisó estado de cuenta al |
+|                                   | cliente via mail en el mes $t$    |
++-----------------------------------+-----------------------------------+
+
 $$\text{Tabla 2: Variables Transaccionales}$$
 
-1. Como primera aproximación, se propone modelar la acreditación ($A_{it}$) y canje ($C_{it}$) de cada cliente $i$ en el mes $t$ como:
+1.  Como primera aproximación, se propone modelar la acreditación
+    ($A_{it}$) y canje ($C_{it}$) de cada cliente $i$ en el mes $t$
+    como:
 
-$$\begin{align}
-  A_{it}&=\alpha+\alpha_{i}+\alpha_{t}+\beta X_{it}+\dots+\epsilon_{it}\\
-  C_{it}&=\gamma+\gamma_{i}+\gamma_{t}+\rho Z_{it}+\dots+\xi_{it}
-\end{align}$$
+    $$
+    \begin{align}
+      A_{it}&=\alpha+\alpha_{i}+\alpha_{t}+\beta X_{it}+\dots+\epsilon_{it}\\
+      C_{it}&=\gamma+\gamma_{i}+\gamma_{t}+\rho Z_{it}+\dots+\xi_{it}
+    \end{align}
+    $$
 
-Donde $X_{it}$ y $Z_{it}$ son covariables construidas a partir de la información disponible.
+    Donde $X_{it}$ y $Z_{it}$ son covariables construidas a partir de la
+    información disponible.
 
-  a. ¿Cuál es la interpretación de los parámetros $\alpha_{i}$, $\alpha_{t}$, $\gamma_{i}$ y $\gamma_{t}$?
-  b. ¿Son los modelos anteriores identificables? En caso de ser su respuesta negativa, ¿cómo se corrige el problema?
+    a.  ¿Cuál es la interpretación de los parámetros $\alpha_{i}$,
+        $\alpha_{t}$, $\gamma_{i}$ y $\gamma_{t}$?
+    b.  ¿Son los modelos anteriores identificables? En caso de ser su
+        respuesta negativa, ¿cómo se corrige el problema?
 
-> a. Los parámetros $\alpha_{i}$ y $\gamma_{i}$ representan el efecto fijo de cada consumidor, o el nivel promedio de actividad en creditación y canje, respectivamente, independiente de las demás covariables. Los parámetros $\alpha_{t}$ y $\gamma_{t}$ representan un efecto fijo temporal en los niveles de acreditación y canje, respectivamente, cuya interpretación dependerá de la definición de las variable que acompañe (si las covariables son meses representaría estacionalidad, mientras que si es fecha o año representaría alguna tendencia en los nvieles anteriores).
-b. Al estar las constantes $\alpha$ y $\gamma$, junto con los parámetros anteriores, se produce un problema de colinealidad y por lo tanto los parámetros no son identificables. Para corregirlo, se debe omitir $\alpha$ y $\gamma$, u omitir $\alpha_{i}$ y $\gamma_{i}$ para un individuo y especificar dummies desde $i=1$ hasta $i=I-1$.
+<!-- -->
 
-2. Suponga que se han identificado los modelos anteriores (de requerirlo, con las restricciones necesarias para alcanzar identificación). Derive una expresión que permita calcular el número esperado del saldo de punto de un cliente $i$ en cualquier período de tiempo $t$.
+2.  Suponga que se han identificado los modelos anteriores (de
+    requerirlo, con las restricciones necesarias para alcanzar
+    identificación). Derive una expresión que permita calcular el número
+    esperado del saldo de punto de un cliente $i$ en cualquier período
+    de tiempo $t$.
 
-> Sabemos que $\mathbb{E}(Y|X)=X'\hat{\beta}_{OLS}$. Luego, el balance promedio se obtiene como:
-$$\mathbb{E}(\sum_{\tau=1}^{t}A_{\tau}-\sum_{\tau=1}^{t}C_{\tau}|X,Z)=\sum_{\tau=1}^{t}(\alpha_{i}+\alpha_{t}+X'\beta)-\sum_{\tau=1}^{t}(\gamma_{i}+\gamma_{t}+Z'\rho)$$
+3.  Proponga especificaciones de los modelos de regresión que permitan
+    capturar que:
 
-3. Proponga especificaciones de los modelos de regresión que permitan capturar que:
+    a.  El impacto que tiene informar el estado de cuenta de los puntos
+        depende del género.
+    b.  Los niveles de actividad (acreditación y canje) de un cliente
+        varían significativamente de acuerdo a su categoría.
+    c.  El nivel de actividad (acreditación y canje) depende de la
+        antiguedad de los clientes en el programa, pero aquellos que
+        llevan más años tienden a tener un comportamiento similar.
 
-    a. El impacto que tiene informar el estado de cuenta de los puntos depende del género.
-    b. Los niveles de actividad (acreditación y canje) de un cliente varían significativamente de acuerdo a su categoría.
-    c. El nivel de actividad (acreditación y canje) depende de la antiguedad de los clientes en el programa, pero aquellos que llevan más años tienden a tener un comportamiento similar.
+4.  Suponga ahora que se han estimado tres especificaciones para
+    entender el comportamiento de acreditación ($A_{it}$), donde $f$
+    representa alguna transformación o función de la información
+    disponible, y cuyos resultados se encuentra en la tabla siguiente:
 
-> a. Se debe incorporar una interacción entre las varables de *Mail* y *Género*.
-b. Se debe transformar la variable categórica en dummies y omitir uno de los niveles para no tener variables colineales.
-c. Se debe construir la variable logaritmo de antiguedad como $ln(Año_{t}-AñoIngreso_{t})$.
+    +--------------------+---------------+---------------+---------------+
+    | Variable           | Modelo 1      | Modelo 2      | Modelo 3      |
+    +:==================:+:=============:+:=============:+:=============:+
+    | $\alpha_{0}$       | $35.9$        | $37.1$        | $32.7$        |
+    |                    | $(12.8)$      | $(8.6)$       | $(11.5)$      |
+    +--------------------+---------------+---------------+---------------+
+    | $f$(Ingreso)       | $12.7$        | $-$           | $10.7$        |
+    |                    | $(5.1)$       |               | $(2.9)$       |
+    +--------------------+---------------+---------------+---------------+
+    | $f$(Edad)          | $-1.5$        | $-1.2$        | $-0.6$        |
+    |                    | $(0.6)$       | $(2.3)$       | $(0.3)$       |
+    +--------------------+---------------+---------------+---------------+
+    | $f$(Mail)          | $-$           | $-0.3$        | $-1.9$        |
+    |                    |               | $(0.2)$       | $(5.1)$       |
+    +--------------------+---------------+---------------+---------------+
+    | $f$(Promoción)     | $-$           | $15.1$        | $10.9$        |
+    |                    |               | $(6.7)$       | $(4.2)$       |
+    +--------------------+---------------+---------------+---------------+
+    | $                  | $-$           | $10.1$        | $8.9$ $(2.1)$ |
+    | f$(TiendasPropias) |               | $(3.7)$       |               |
+    +--------------------+---------------+---------------+---------------+
+    | $f$(C              | $-$           | $3.6$ $(2.5)$ | $2.9$ $(2.3)$ |
+    | omerciosAsociados) |               |               |               |
+    +--------------------+---------------+---------------+---------------+
+    | $R^{2}$ Ajustado   | $0.34$        | $0.53$        | $0.55$        |
+    +--------------------+---------------+---------------+---------------+
+    | MAPE               | $45.5\%$      | $20.9\%$      | $23.4\%$      |
+    +--------------------+---------------+---------------+---------------+
 
-4. Suponga ahora que se han estimado tres especificaciones para entender el comportamiento de acreditación ($A_{it}$), donde $f$ representa alguna transformación o función de la información disponible, y cuyos resultados se encuentra en la tabla siguiente:
+    $$\text{Tabla 3: Resultados Modelos Regresión}$$
 
- Variable                 | Modelo 1       | Modelo 2       | Modelo 3
---------------------------|----------------|----------------|-----------------
- $\alpha_{0}$             | $35.9$ $(12.8)$| $37.1$ $(8.6)$ | $32.7$ $(11.5)$
- $f$(Ingreso)             | $12.7$ $(5.1)$ | $-$            | $10.7$ $(2.9)$
- $f$(Edad)                | $-1.5$ $(0.6)$ | $-1.2$ $(2.3)$ | $-0.6$ $(0.3)$       
- $f$(Mail)                | $-$            | $-0.3$ $(0.2)$ | $-1.9$ $(5.1)$
- $f$(Promoción)           | $-$            | $15.1$ $(6.7)$ | $10.9$ $(4.2)$
- $f$(TiendasPropias)      | $-$            | $10.1$ $(3.7)$ | $8.9$ $(2.1)$
- $f$(ComerciosAsociados)  | $-$            | $3.6$ $(2.5)$  | $2.9$ $(2.3)$
- $R^{2}$ Ajustado         | $0.34$         | $0.53$         | $0.55$
- MAPE                     | $45.5\%$       | $20.9\%$       | $23.4\%$
- 
- $$\text{Tabla 3: Resultados Modelos Regresión}$$
+    a.  ¿Qué variables ayudan a explicar el comportamiento de
+        acreditación de los consumidores?
+    b.  ¿Cuál es el medio en que se acreditan o acumulan, en promedio,
+        menos puntos?
+    c.  Justifique cuál de los modelos anteriores es mejor.
 
-a. ¿Qué variables ayudan a explicar el comportamiento de acreditación de los consumidores?
-b. ¿Cuál es el medio en que se acreditan o acumulan, en promedio, menos puntos?
-c. Justifique cuál de los modelos anteriores es mejor.
+**Solución**
 
-> a. Las variables que son significativas independiente del modelo en el que fueron estimadas, y que permiten explicar el comportamiento de interés, es decir, *Ingreso*, *Promoción*, y *TiendasPropias*.
-b. El parámetro asociado al medio *TarjetaBancaria* fue fijado en cero (para evitar problemas de colinealidad), y como el resto de los parámetros son positivos, es aquel en que menos puntos se acreditan.
-c. La respuesta dependerá del criterio de evaluación. Si se quiere evaluar en cuanto a la capacidad de ajuste, el mejor es aquel con mayor $R^{2}$ Ajustado (M3), pero si se evalúa en cuanto a la capacidad de pronóstico, se prefiere aquel con menor MAPE (M2).
+1.  Incluye:
+
+    a.  Los parámetros $\alpha_{i}$ y $\gamma_{i}$ representan el efecto
+        fijo de cada consumidor, o el nivel promedio de actividad en
+        creditación y canje, respectivamente, independiente de las demás
+        covariables. Los parámetros $\alpha_{t}$ y $\gamma_{t}$
+        representan un efecto fijo temporal en los niveles de
+        acreditación y canje, respectivamente, cuya interpretación
+        dependerá de la definición de las variable que acompañe (si las
+        covariables son meses representaría estacionalidad, mientras que
+        si es fecha o año representaría alguna tendencia en los nvieles
+        anteriores).
+    b.  Al estar las constantes $\alpha$ y $\gamma$, junto con los
+        parámetros anteriores, se produce un problema de colinealidad y
+        por lo tanto los parámetros no son identificables. Para
+        corregirlo, se debe omitir $\alpha$ y $\gamma$, u omitir
+        $\alpha_{i}$ y $\gamma_{i}$ para un individuo y especificar
+        dummies desde $i=1$ hasta $i=I-1$.
+
+2.  Sabemos que $\mathbb{E}(Y|X)=X'\hat{\beta}_{OLS}$. Luego, el balance
+    promedio se obtiene como:
+    $$\mathbb{E}(\sum_{\tau=1}^{t}A_{\tau}-\sum_{\tau=1}^{t}C_{\tau}|X,Z)=\sum_{\tau=1}^{t}(\alpha_{i}+\alpha_{t}+X'\beta)-\sum_{\tau=1}^{t}(\gamma_{i}+\gamma_{t}+Z'\rho) + \epsilon_{i}$$
+
+3.  Incluye:
+
+    a.  Se debe incorporar una interacción entre las variables de *Mail*
+        y *Género*.
+    b.  Se debe transformar la variable categórica en dummies y omitir
+        uno de los niveles para no tener variables colineales.
+    c.  Se debe construir la variable logaritmo de antigüedad como
+        $ln(Año_{t}-AñoIngreso_{t})$$$ X'\beta = \beta_1 Mail_i Genero_i + \beta_2 1_{[categoria_i = Gold]} + \beta_3 1_{[categoria_i = Premium]} \\
+        + \beta_4 ln(Año_t - AñoIngreso_t) + \epsilon'_i$$
+
+4.  Detalle:
+
+    a.  Las variables que son significativas independiente del modelo en
+        el que fueron estimadas, y que permiten explicar el
+        comportamiento de interés, es decir, *Ingreso*, *Promoción*, y
+        *TiendasPropias*.
+    b.  El parámetro asociado al medio *TarjetaBancaria* fue fijado en
+        cero (para evitar problemas de colinealidad), y como el resto de
+        los parámetros son positivos, es aquel en que menos puntos se
+        acreditan.
+    c.  La respuesta dependerá del criterio de evaluación. Si se quiere
+        evaluar en cuanto a la capacidad de ajuste, el mejor es aquel
+        con mayor $R^{2}$ Ajustado (M3), pero si se evalúa en cuanto a
+        la capacidad de pronóstico, se prefiere aquel con menor MAPE
+        (M2).
+
+------------------------------------------------------------------------
+
+### Problema 4 - P1 Control 1 Primavera 2025
+
+En un contexto de globalización, movilidad laboral y teletrabajo,
+comparar el costo de vida entre países se ha vuelto una preocupación
+frecuente para profesionales y estudiantes. Aunque la fracción de
+ciudadanos chilenos que deciden estudiar en el extranjero son aún
+limitadas, hoy en día existen amplias posibilidades tanto desarrollo
+académico como laboral más allá de nuestras fronteras. Ciertamente, la
+decisión de emigrar es de alto envolvimiento y requiere evaluar una
+multitud de factores. A continuación, nos concentraremos en describir el
+costo del precio de arriendo de propiedades inmobiliarias en distintas
+ciudades del mundo.
+
+Para estudiar las diferencias de precio de arriendos, un grupo de
+investigadores construyó una base de datos internacional de precios de
+propiedades en más de 50 ciudades de América Latina, Norteamérica y
+Europa. La información fue recolectada haciendo un barrido histórico en
+un conjunto amplio de portales especializados de corretaje. La base
+considera los siguientes campos.
+
+-   **ID:** Identificador de la propiedad.
+-   **Ciudad**: ciudad.
+-   **Pais**: país.
+-   **Año**: Año en la que se regista el precio de la propiedad.
+-   **PrecioUSD**: precio publicado de la propiedad en USD.
+-   $M^2$: superficie en metros cuadrados.
+-   **Dorms**: número de dormitorios.
+-   **Baths**: número de baños.
+-   **Centro**: distancia (km) al centro de la ciudad.
+-   **Residencial**: 1 si la propiedad es residencial (0 si es
+    comercial).
+-   **AñoConstrucción**: año de construcción de la propiedad.
+-   **CiudadIPC**: ingreso per cápita promedio de la ciudad (USD PPP).
+-   **CiudadPob**: Población total de la ciudad.
+-   **CiudadSup**: Superficie total de la ciudad.
+
+El objetivo es comparar precios de propiedades entre países y explorar
+diferencias sistemáticas entre países, mientras controlamos por factores
+estructurales de las ciudades y características de las propiedades.
+
+1.  (1.0 puntos) Formule un modelo de regresión para describir el
+    log-precio (en USD) de una propiedad en una ciudad dada, en un
+    instante del tiempo y con una lista de característica definida.
+
+    Para esto considere que:
+
+    a)  Existe un efecto fijo por país-año, que permite establecer si,
+        condicional en las características de la propiedad y la ciudad
+        dónde está emplazada, ciertos países tienen niveles de precios
+        mayores que otros en un año dado.
+    b)  La superficie, la antigüedad, el número de dormitorios y el
+        número de baños afectan linealmente en el log-precio, pero la
+        magnitud en que aumenta el precio al variar estas
+        características es distinta dependiendo de si la propiedad es
+        residencial o comercial.
+
+<!-- -->
+
+2.  (1.0 puntos) Adicional a lo ya expuesto, se considera que la
+    magnitud en que el precio por metro cuadrado aumenta es mayor para
+    ciudades más densamente pobladas. ¿Cómo modificaría el modelo ya
+    propuesto para considerar esta descripción?
+
+3.  (1.0 puntos) Considere ahora que las expectativas de variación de
+    precio importan. Indique cómo modificaría el modelo anterior para
+    considerar que el log-precio se ve afectado linealmente por la
+    variación del precio en los dos años anteriores en esa ciudad. Si
+    necesita crear variables adicionales, explicite cómo se calcularían
+    a partir de la base de datos.
+
+4.  (1.0 puntos) En todos los modelos anteriores se ha usado como
+    variable dependiente el log-precio en USD. Discuta qué limitaciones
+    tiene esa variable para comparar qué tan abordable es la vivienda
+    entre distintos países y proponga al menos una métrica alternativa
+    que pudiera usarse para la comparación.
+
+5.  (1 punto) Considerando que los precios pueden variar año a año,
+    interesa considerar estimadores agregados de varios años. Sea
+    $InP_{kt}$ es el log-precio esperado para una propiedad en el país k
+    en el año t (que se obtiene a través del producto punto entre
+    estimadores máximo-verosímiles y las características promedio de las
+    propiedades del país i en el año t). Explique cómo testearía que los
+    precios de Chile son distintos a los de Argentina considerando los
+    últimos 3 años.
+
+6.  (1 punto) Disconformes con la capacidad de pronóstico de los modelos
+    lineales, se postula que algunos modelos sencillos de aprendizaje de
+    máquina podrían generar mejores resultados. Para ello se considera
+    usar un modelo de k-vecinos más cercanos. Defina una métrica de
+    distancia y determine qué si la propiedad B o la propiedad C es más
+    cercana a la propiedad A.
+
+    +-------------+-------------+-------------+-------------+-------------+
+    | Propiedad   | Tiene       | Tiene       | Tiene       | Ciudad      |
+    |             | Piscina     | Calefacción | Esta        |             |
+    |             |             | Central     | cionamiento |             |
+    +:===========:+:===========:+:===========:+:===========:+:===========:+
+    | A           | Sí          | Sí          | Sí          | Santiago    |
+    +-------------+-------------+-------------+-------------+-------------+
+    | B           | No          | No          | Sí          | Concepción  |
+    +-------------+-------------+-------------+-------------+-------------+
+    | C           | Sí          | Sí          | No          | Antofagasta |
+    +-------------+-------------+-------------+-------------+-------------+
+
+$$\text{Tabla 1: Muestra de datos de 3 propiedades de arriendo en Chile, 2025}$$
+
+**Solución**
+
+1.  (1 punto) Indexemos cada precio como $P_{ijkt}$ representando la
+    observación i del país j en la ciudad k en el año t.
+    -   Para el efecto fijo basta incluir un coeficiente $α_{ij}$
+        asociado a cada combinación país-año. Aunque no es lo que dice
+        el enunciado, se puede dar 0.4 puntos a quienes incluyan un par
+        de coeficientes aditivos $α_i + \alpha_j.$
+
+    -   Para las otras variables agregamos términos lineales, más la
+        interacción con el tipo de propiedad.
+
+$$
+\begin{aligned}
+\ln(P_{ijkt}) \; &= \; \alpha_{it}    + \beta_1 M2_{ijkt}    + \beta_2 Dorms_{ijkt}    + \beta_3 Bath_{ijkt} \\&\quad + \beta_4 M2_{ijkt} \cdot Residencial_{ijkt}    + \beta_5 Dorms_{ijkt} \cdot Residencial_{ijkt} \\&\quad + \beta_6 Bath_{ijkt} \cdot Residencial_{ijkt}    + \varepsilon_{ijkt}
+\end{aligned}
+$$
+
+2.  (1 punto) Tenemos que redefinir los índices $\beta_1$ y $\beta_4$
+    para que dependan de la densidad poblacional.
+
+$$
+\beta_1 \;\to\; \gamma_1 + \gamma_2 \cdot \frac{CiudadPop_{ijkt}}{CiudadSup_{ijkt}} 
+\qquad\text{y}\qquad 
+\beta_4 \;\to\; \gamma_3 + \gamma_4 \cdot \frac{CiudadPop_{ijkt}}{CiudadSup_{ijkt}}
+$$
+
+3.  (1 punto) Para poder ingresar al modelo tenemos que calcular el
+    precio de la ciudad de cada año.\
+    Definimos\
+    $$
+    AVGP_{kt} = \sum_{h=k} P_{ijht},
+    $$\
+    como el precio promedio de la ciudad k en el año t. Con esto, el
+    modelo puede expandirse agregando un término adicional. $$
+    \beta_7 \cdot (AVGP_{kt-1} - AVGP_{kt-2})
+    $$También se considera correcto considerar la diferencia de los dos
+    precios en $t$ y $t-1$ respectivamente.
+
+4.  (1 punto) Hay al menos dos consideraciones a tener en cuenta, aunque
+    con nombrar cualquiera es suficiente:
+
+    -   Los precios pueden estar explicadas por variaciones en el tipo
+        de cambio y no en cambios del costo en las monedas corrientes.
+        En este caso, se podría normalizar por un promedio de tipo de
+        cambio en un horizonte más largo.
+    -   Los precios pueden ser altos en valores absolutos, pero no serlo
+        relativos a los ingresos. En este caso se podría normalizar por
+        los ingresos, i.e usar:\
+        $$
+        \frac{P_{ijkt}}{Ciudad_{ijkt}}.
+        $$
+
+<!-- -->
+
+5.  (1 punto) Por definición $ln P_{kt} = \theta' \bar{x}_{kt}$, en que
+    $\bar{x}_{it}$ son las características promedio de las propiedades
+    del país k en el año t. De acá se infiere que $\ln P_{kt}$ es una
+    función lineal de los parámetros y por tanto podemos testear
+    directamente si
+    $\theta' \bar{x}_{k=Chile,t} - \theta' \bar{x}_{k=Argentina,t} = 0$
+    a través de un test F.
+
+6.  (1 punto) La clave de la pregunta es notar que las variables
+    categóricas siempre pueden transformarse a numéricas a través de la
+    generación de variables dummies (e.g. $Piscina_{ijkt} = 1$, si la
+    propiedad tiene piscina, 0 en caso contrario). Con esto se puede
+    utilizar cualquier medida de distancia (incluyendo euclidiana),
+    aunque la más simple es una distancia de Manhattan o de Hamming que
+    simplemente cuenta en cuantas dimensiones los puntos tienen distinto
+    valor.
+
+    En este caso:\
+    - $d(A,B) = 3$ (A y B difieren en tres atributos)\
+    - $d(A,C) = 1$ (A y C difieren en un atributo)
+
+    por lo que C sería el vecino más cercano a A.
+
+------------------------------------------------------------------------
+
+### Problema 5 - P1 Control Otoño 2025
+
+Las tecnologías tradicionales de búsqueda basadas en texto han sido
+durante mucho tiempo uno de los pilares del comercio electrónico,
+permitiendo a los usuarios ingresar palabras clave para encontrar
+productos. Sin embargo, en un entorno de comercio digital en rápida
+evolución, donde el comportamiento del consumidor se orienta hacia
+experiencias más interactivas y multimedia, están ganando terreno
+tecnologías de búsqueda más avanzadas. En particular, la búsqueda visual
+representa un avance innovador, que permite a los consumidores iniciar
+búsquedas utilizando imágenes en lugar de texto. Al cargar una imagen en
+la herramienta de búsqueda, los algoritmos más avanzados de aprendizaje
+profundo analizan sus características visuales para identificar y
+recuperar productos relevantes. Estos mecanismos sofisticados generan
+sugerencias amplias, que incluyen productos similares y ofertas
+relacionadas de otras marcas.
+
+Las plataformas líderes han sido fundamentales en el desarrollo y
+perfeccionamiento de la búsqueda visual. Pinterest fue pionera en esta
+tecnología en 2014, permitiendo a los usuarios seleccionar segmentos de
+una imagen para encontrar contenido visualmente similar. Otros actores
+relevantes, como Google (con Google Lens) y Bing (con Bing Visual
+Search), han desarrollado tecnologías similares. Grandes minoristas como
+Amazon y Aliexpress también han adoptado esta funcionalidad para mejorar
+la precisión del emparejamiento. La reducción en los costos tecnológicos
+han facilitado su acceso, permitiendo que proveedores emergentes como
+[Impresee](https://impresee.com/) y [Visidea](https://visidea.ai/)
+ofrezcan soluciones de búsqueda visual fácilmente integrables en sitios
+de comercio electrónico.
+
+En este problema buscaremos comparar la búsqueda visual con la búsqueda
+tradicional basada en texto, en términos de comportamiento de clics y
+conversiones. El análisis empírico se basa en un conjunto de datos que
+abarca más de 2 millones de búsquedas realizadas por cerca de 50.000
+usuarios. Complementamos esta base con etiquetas y métricas de similitud
+derivadas de avances recientes en visión computacional, lo que nos
+permite controlar por la complejidad de las imágenes y la similitud
+entre la imagen de entradas y los productos resultantes. Estadísticas
+preliminares indican que, en comparación con las búsquedas por texto,
+las búsquedas por imagen presentan una mayor tasa de clics (CTR), y que
+los clics se concentran más en los resultados mejor posicionados. Este
+patrón podría sugerir que quienes buscan por imagen estarían en etapas
+más avanzadas del proceso de compra, con menor necesidad de explorar
+alternativas. Sin embargo, al analizar las conversiones, el mayor CTR no
+parece traducirse en un aumento de ventas, de modo que las búsquedas por
+texto están asociadas con tasas de conversión más altas.
+
+1.  Plantee un modelo de regresión para describir el número de clics del
+    usuario *i* en el producto *j* en la instancia de búsqueda *k*, que
+    permita entender las diferencias dependiendo de si la búsqueda se
+    realiza usando imágenes o texto. Para eso considere que:
+
+    -   El *ranking* o posición en el listado de búsqueda afecta en los
+        clics de modo que los productos listados primero tienen muchos
+        más clics que aquellos listados después. Notar que la tasa a la
+        que se degradan los clics con el *ranking* es distinta
+        dependiendo de que la búsqueda sea por imágenes o texto.
+
+    -   La complejidad de la búsqueda importa en los clics generados.
+        Para las búsquedas por texto, la complejidad se puede capturar a
+        partir del largo del texto. Para las imágenes se puede medir por
+        el tamaño de la imagen.
+
+    -   Cada producto tiene una propensión a clics base distinta. Hay
+        algunos productos populares que tienen a recibir más clics que
+        otros menos populares, independientemente de los inputs de la
+        búsqueda.
+
+2.  A partir de sus resultados de regresión, ¿Cómo determinaría
+    (explique con sus palabras) si el número total de clics generado por
+    un producto en la quinta posición en una búsqueda por imágenes es
+    mayor que los generados por el producto en la quinta posición de una
+    búsqueda por texto?
+
+3.  Considere que los modelos de regresión confirman que, aunque haya un
+    efecto en clics, este no se traduce en más conversiones. A la luz de
+    este resultado, parece interesante estudiar si las búsquedas de
+    imágenes quizás generan búsquedas adicionales que generen más
+    conversiones. Esto es, que las imágenes sean usadas en una etapa
+    temprana del embudo de compras, ayudando a encontrar la categoría de
+    productos, las que después se refinarían haciendo búsquedas
+    tradicionales de texto. Formule un modelo de regresión que permita
+    identificar si una búsqueda de imagen aumenta o no el número de
+    búsquedas siguientes. Para esto, suponga que para cada instancia de
+    búsqueda *k* del usuario *i*, se puede calcular $NNextSearch_{ik}$,
+    que cuenta el número total de búsquedas hechas por el mismo usuario,
+    dentro de la misma categoría, durante el mismo día de la búsqueda
+    *k*. Para su modelo de regresión considere que, junto con el tipo de
+    búsqueda, debe controlar por:
+
+    -   La categoría de productos, considerando que cada búsqueda se
+        asocia principalmente a una única categoría, y cada categoría de
+        productos tiene una mayor o menor propensión a ser buscadas. Por
+        ejemplo, la categoría *juguetes* en general tiene más búsquedas
+        que la categoría *colchones*.
+
+    -   El número de resultados reportados en la búsqueda *NumResult* y
+        el número de categorías distintas reportadas en la búsqueda
+        *NumProdCat*. Considere que tanto *NumResult* como *NumProdCat*
+        ya están calculados en la base de trabajo.
+
+    -   El número de búsquedas diarias que en promedio hace el cliente
+        *AvgNumSearch* (que puede suponer conocido).
+
+<!-- -->
+
+4.  Suponga que, después de un par de iteraciones, se ha determinado que
+    existen dos especificaciones de modelos lineales que funcionan
+    relativamente bien, como indican los resultados de la [Tabla
+    1](#tabla-1).
+
+    a)  ¿Cómo interpreta los resultados de la variable *NumResult* en el
+        contexto de esta aplicación?\
+
+    b)  ¿Cómo interpreta el dramático aumento en el valor de $R^2_{adj}$
+        entre las especificaciones (1) y (2)?
+
+        $$\text{Variable dependiente: } ln(\text{NumSubsequentSearch}+1)$$
+
+        | **Coefficient** | **(1)** | **(2)** |
+        |:--:|:--:|:--:|
+        | IMAGE | -4.595\*\*\* (0.012) | -0.375\*\*\* (0.007) |
+        | NumResult | -0.081\*\*\* (0.000) | -0.003\*\*\* (0.000) |
+        | NumProdCategory | 0.031\*\*\* (0.001) | 0.00138\*\* (0.000588) |
+        | LogImageSize | -0.075\*\*\* (0.018) | 0.001 (0.010) |
+        | NumImageObject | 0.023\* (0.011) | -0.003 (0.007) |
+        | NumImageLabel | 0.055\*\*\* (0.017) | 0.003 (0.010) |
+        | KeywordLength | -0.018\*\*\* (0.000) | -0.001\*\*\* (0.000) |
+        | AvgNumSearch | 1.85E-6\*\*\* (6.86E-8) | -1.03E-7\*\* (3.28E-8) |
+        | Efecto fijo: User | No | Yes |
+        | Efecto fijo: Product Category | No | Yes |
+        | Observations | 1,715,495 | 1,715,495 |
+        | $R_{adj.}^2$ | 0.19 | 0.825 |
+
+        $$\text{Tabla 1: Resultados de modelos de regresión próximas búsquedas}$$
+
+**Solución**
+
+1.  Detalles de variables:
+
+    -   Incluimos una variable con $Ranking_{ijk}$ y su interacción con
+        el tipo de búsqueda. Notar que hay dos tipos de búsqueda de
+        carácter dummy. Para modelarlo, se debe incorporar un
+        coeficiente para cada tipo (Imagen y texto).
+    -   Hay que incluir el tamaño de la imagen $ImageSize_{ik}$ y el
+        largo del texto $TextLength_{ijk}$.
+    -   Hay que incluir un efecto fijo por producto $\alpha_k$.
+
+    Así, si $C_{ijk}$ es el númeroe de clics que recibe el producto j en
+    la búsqueda k del cliente i, el modelo queda descrito como:
+
+    $$
+    \begin{aligned}
+    C_{ijk} \; &= \; \alpha_k 
+      + \beta_1\, \mathrm{Image}_{ik}
+      + \beta_2\, \mathrm{Rank}_{ijk}
+      + \beta_3\, \mathrm{Image}_{ik}\!\cdot\!\mathrm{Rank}_{ijk} \\
+    &\quad
+      + \beta_4\, \mathrm{Image}_{ik}\!\cdot\!\mathrm{ImageSize}_{ik}
+      + \beta_5\, (1-\mathrm{Image}_{ik})\!\cdot\!\mathrm{TextLength}_{ik}
+      + \varepsilon_{ijk}
+    \end{aligned}
+    $$
+
+2.  Se puede utilizar un test F para evaluar que el grupo de variables
+    de $Image$, $Ranking$ y $(1-Image)$ sean distintos en su conjunto.
+
+3.  Si llamamos a $CAT_{ihk}$ a las dummy que toman el valor 1 si la
+    búsqueda k del usuario i está asociada a la categoría h, entonces el
+    modelo de regresión puede escribirse como:
+
+$$
+NNextSearch_{ik} = (\sum_h \alpha_h CAT_{ihk}) + \beta_1 Image_{ik} + \beta_2 NumResult_{ik} + \beta_3 NumProdCat_{ik} \\ + \beta_4 AvgNumSearch_i + \epsilon_{ik}
+$$
+
+4.  Detalle:
+
+    a.  Los coeficientes son significativamente negativos en ambas
+        especificaciones. En el contexto de la aplicación, esto sugiere
+        que aquellas búsquedas que generan más resultados, están
+        relacionadas a un menor número de búsquedas posteriores.
+    b.  La diferencia entre las especificaciones (1) y (2) es que la
+        segunda tiene efectos fijos, tanto por usuario como por
+        categoría de producto. Como esta segunda especificación tiene un
+        $R^2_{adj}$ mucho mayor, concluimos que la categoría y el
+        usuario explican gran parte de la variabilidad en el número de
+        búsquedas posteriores.
+
+------------------------------------------------------------------------
+
+### Problema 6 - P1 Control Primavera 2024 
+
+Una de las características más relevantes de los ambientes de negocio
+contemporáneos, es la disponibilidad de grandes cantidades de
+información respecto al comportamiento de clientes. Es así como día a
+día aparecen nuevas fuentes de información que las compañías están
+constantemente incorporando a sus plataformas de analítica avanzada.
+*Whileus* es un conglomerado que tiene la representación de varias
+marcas internacionales con un centenar de tiendas en el país y está
+interesado en investigar si los datos derivados del uso de dispositivos
+móviles pueden ayudar a entender el volumen de ventas de las distintas
+tiendas. Para eso ha firmado un acuerdo de colaboración con una
+importante compañía de telecomunicaciones que posee datos de tráfico,
+posición y uso de aplicaciones de varios de millones de clientes en todo
+el territorio nacional, que podría ser informativa respecto la demanda
+de las marcas de *Whileus*. El propósito del acuerdo es evaluar, en el
+plazo de un mes y a través de un prototipo a cargo de la empresa de
+telecomunicaciones, si la incorporación de estas nuevas variables
+permite generar aprendizajes valiosos para el estudio de la demanda de
+las tiendas de *Whileus*.
+
+En la primera semana del piloto y después de una reunión técnica entre
+los equipos de *Whileus* con la empresa de telecomunicaciones se acuerda
+extraer los datos de los data lakes de las respectivas compañías a nivel
+de zona censal. Esto se fundamenta porque la provisión de datos de
+movilidad de individuos específicos podría poner en entredicho el uso de
+información privada de los usuarios. Así, luego de consolidar las bases
+de datos, se han propuesto los siguientes modelos de regresión para
+describir el número de visitas a la tienda k desde la zona censal i en
+la semana t $q_{ikt}$.
+
+$$ q_{ikt} = \alpha_i^1 + \beta_t^1 + \gamma^1 d_{ik} + \theta^1 z_k + \varepsilon_{ikt}^1 \tag{1} $$
+
+$$ q_{ikt} = \alpha_k^2 + \beta_t^2 + \gamma^2 d_{ik} + \theta^2 w_i + \varepsilon_{ikt}^2 \tag{2} $$
+
+En estas especificaciones, $d_{ik}$ corresponde al logaritmo de la
+distancia entre la tienda k y el centroide de la zona censal i, mientras
+que $z_k$ y $w_i$ son un conjunto de características de la tienda k y la
+zona censal i respectivamente. Para esta primera iteración se ha
+considerado que $z_k$ incluye la superficie de la tienda, un conjunto de
+variables binarias para denotar la marca y una última variable binaria
+para indicar si la tienda se encuentra dentro de un centro comercial o
+no. Para las variables de la zona censal, se ha considerado que $w_i$
+incluye el número de habitantes, la comuna en la que habita la zona
+censal, la fracción de usuarios que tienen instalada una app de las
+marcas y una variable binaria para indicar si la zona censal está a
+menos de 250 metros de alguna estación de metro.
+
+1.  Comente las ventajas teóricas de cada una de las formulaciones. Si
+    prefiere, puede responder la pregunta argumentando en qué escenarios
+    prefería una formulación y en cuales preferiría la otra.
+
+2.  En la Tabla 1 se despliegan los resultados de un primer ejercicio de
+    regresión para los dos modelos anteriormente planteados. Por
+    simplicidad, se ha considerado solo una muestra de tiendas y zonas
+    censales. Como el modelo se ha estimado usando una técnica de
+    descentrado, los efectos fijos no se reportan en la Tabla 1.
+
+    a.  ¿Cómo es posible que, usando los mismos datos, las ecuaciones 1
+        y 2 nos reporten distintos estimadores del efecto de la
+        distancia en la demanda de cada zona censal por cada marca?
+
+    b.  ¿Qué información necesita para cnstruir un intervalo de
+        confianza para el efecto que tiene la superficie de la tienda en
+        su demanda? Si fuera posible, reporte el valor numérico de este
+        intervalo de confianza usando los datos de la tabla.
+
+    c.  Si el objetivo del análisis sería tener el pronóstico más
+        preciso de la demanda en cada tienda, ¿cómo elegiría entre estos
+        dos modelos?
+
+    d.  ¿Cómo testearía si hay diferencias significativas en la demanda
+        por marca?
+
+        $$\text{Tabla 1: Resultados modelos alternativos de regresión}$$
+
+        |          Variable          |  Ecuación 1   |  Ecuación 2   |
+        |:--------------------------:|:-------------:|:-------------:|
+        |       Log-Distancia        | -2.123 \*\*\* | -2.817 \*\*\* |
+        |         Superficie         |   0.234 \*    |               |
+        |          Marca A           |    0.245 .    |               |
+        |          Marca B           |  1.567 \*\*   |               |
+        |          Marca C           |    0.453 .    |               |
+        |            Mall            | 2.145 \*\*\*  |               |
+        |        Nhabitantes         |               | 3.234 \*\*\*  |
+        |        Fracusuarios        |               |  0.881 \*\*   |
+        |        Providencia         |               |  1.233 \*\*   |
+        |          Santiago          |               |     0.029     |
+        |           Macul            |               |   -0.913 \*   |
+        |         La Florida         |               |   -0.372 .    |
+        |      Estación Central      |               |   -1.409 \*   |
+        |           Metro            |               | 1.199 \*\*\*  |
+        | Efectos fijos: Zona censal |      Yes      |      No       |
+        |   Efectos fijos: Tienda    |      No       |      Yes      |
+        |           N. Obs           |    34,207     |    34,207     |
+        |           $R^2$            |     0.234     |     0.489     |
+        |        $R_{adj.}^2$        |     0.233     |     0.482     |
+
+3.  Para evaluar la capacidad de los modelos para apoyar la gestión del
+    negocio, el equipo de desarrollo quiere generar algunos pronósticos
+    con la demanda para la próxima semana para cuatro tiendas
+    seleccionadas. Para esto, necesita ajustar la propuesta inicial de
+    modo que los efectos temporales sean controlados por una lista de
+    variables temporales $z_t$ que incluyen un pronóstico del clima,
+    tendencia, estacionalidad mensual, la intensidad de la actividad
+    promocional de la marca, así como la intensidad de la actividad
+    promocional de otras marcas competidoras. Considerando que variables
+    como el clima y la actividad promocional son inciertas, se ha
+    generado un reporte con tres escenarios: uno pesimista, uno neutro y
+    otro optimista. Mientras en el escenario neutro se considera que las
+    variables independientes toman valores típicamente observados, los
+    escenarios pesimistas y optimistas se evalúan en combinaciones más
+    extremas que favorecen y desfavorecen la demanda respectivamente.
+    Los pronósticos generados se despliegan en la Tabla 2.
+
+    $$\text{Tabla 2: Pronóstico de demanda para cuatro tiendas seleccionadas}$$
+
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Tienda  |         | E       |         |         | E       |         |
+    |         |         | cuación |         |         | cuación |         |
+    |         |         | 1       |         |         | 2       |         |
+    +:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+
+    |         | **Pesi  | **N     | **Opti  | **Pesi  | **N     | **Opti  |
+    |         | mista** | eutro** | mista** | mista** | eutro** | mista** |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Tienda  | 316,6   | 345,1   | 392,1   | 318,5   | 352,1   | 387,7   |
+    | A01     | (11,8)  | (7,2)   | (12,1)  | (12,2)  | (6,7)   | (10,9)  |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Tienda  | 555,8   | 578,8   | 602,2   | 547,6   | 566,3   | 607,7   |
+    | A12     | (12,2)  | (8,1)   | (11,8)  | (11,0)  | (9,1)   | (11,6)  |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Tienda  | 834,4   | 888,9   | 965,4   | 811,4   | 874,9   | 954,7   |
+    | B09     | (14,3)  | (9,2)   | (13,3)  | (15,9)  | (8,9)   | (13,8)  |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Tienda  | 733,9   | 786,6   | 822,3   | 728,6   | 791,9   | 817,8   |
+    | B14     | (13,6)  | (8,4)   | (12,8)  | (11,5)  | (8,7)   | (12,6)  |
+    +---------+---------+---------+---------+---------+---------+---------+
+
+    En la tabla anterior, junto con los pronósticos se despliegan los
+    errores estándar de pronóstico (*sef*). Explique por qué los *sef*
+    son en general menores en los escenarios neutros.
+
+4.  Habiendo revisado la primera ronda de resultados, el equipo de
+    desarrollo se inclina por concentrarse en el modelo dado por la
+    ecuación 1. Sin embargo, a partir de la retroalimentación de los
+    gerentes de tienda, se reconoce que hay varios elementos adicionales
+    que deben incorporarse. Formule un modelo de regresión lineal que
+    expanda la ecuación (1) pero que considere los siguientes factores:
+
+    -   Las tiendas en los centros comerciales suelen ser más grandes,
+        por lo que es esperable que la superficie de la tienda tenga una
+        influencia distinta dependiendo si la tienda está o no en un
+        mall.
+    -   Para zonas censales relativamente cercanas, la distancia es un
+        buen indicador del costo de acceder. Sin embargo, si la
+        distancia es mayor que $d*$, entonces es mejor considerar el
+        tiempo de viaje $v_{ik}$.
+    -   El efecto de la cercanía al metro es distinto si la tienda está
+        en un mall o no.
+    -   En la muestra hay marcas que son de destino u otras de
+        conveniencia. Una marca de destino se caracteriza por clientes
+        muy leales dispuestos a viajar con el propósito principal de
+        visitar la tienda de esa marca. Por su parte, las marcas de
+        conveniencia son visitadas principalmente por clientes que se
+        encuentran con la tienda al paso. Considere que, en el modelo,
+        el efecto del tiempo de viaje depende de si la marca es de
+        destino o conveniencia.
+    -   La variable $Fracusuarios_i$ se define como la fracción de
+        habitantes de la zona censal i que tiene instalada alguna app de
+        cualquiera de las marcas de *Whileus* al momento de hacer el
+        pronóstico. Los resultados de la Tabla 2 indican que, entre
+        mayor es el número de usuarios de las aplicaciones móviles,
+        mayor es la demanda de esa zona censal. Sin embargo, es
+        esperable que esta variable sea endógena. Es decir, que no sea
+        el uso de las aplicaciones las que empujan la demanda, sino que
+        es la demanda la que impulsa el uso de las aplicaciones. Sugiera
+        alguna modificación al modelo para aminorar la endogeneidad del
+        uso de las aplicaciones.
+
+**Solución**
+
+1.  La diferencia principal es que uno describe el efecto de
+    características de las tiendas (Ecuación 1), mientras que la otra
+    describe el efecto de las características de la zona censal
+    (Ecuación 2). Es preferible (1) si el foco está en entender qué
+    características de la tienda inciden en el tráfico, y (2) si el foco
+    está en entender qué características de las zonas censales son las
+    que generan más tráfico.
+
+2.  Cada pregunta tiene respuestas bastante directas:
+
+    a.  Los estimadores dan cuenta del valor esperado de la variable
+        dependiente **condicional** en la realización de las otras
+        variables. Cada vez que cambiamos el conjunto de las variables
+        sobre las que se condiciona, es esperable que cambien los
+        estimadores.
+    b.  Necesitamos (una estimación de) los errores estándares. Como no
+        están reportados en la tabla, no podemos calcular su valor
+        numérico.
+    c.  Si el objetivo es pronóstico, habría que calibrar el modelo en
+        una muestra de calibración y evaluarlo en una muestra retenida
+        de validación. La evaluación típicamente consideraría métricas
+        como MAE o MAPE.
+    d.  Por medio de una prueba F. Por ejemplo, si queremos evaluar si
+        hay diferencia entre las marcas A y C, podemos testear la
+        hipótesis lineal $\beta_A - \beta_C = 0$.
+
+3.  Los errores estándares de pronóstico dependen de las variables
+    explicativas. Técnicamente el error de pronóstico considera tanto un
+    error residual como uno de sampleo. Este último crece al alejarse de
+    los valores típicos de sampleo.
+
+4.  La ecuación 1, por extensión puede escribirse como:
+
+    $$ q_{ikt} = \alpha_k^1 + \beta_t^1 + \gamma^1 d_{ik} + \theta^{1'}(\text{Superficie}_k, B_k, C_k, Mall_k) + \varepsilon_{ikt}^1 $$
+
+    Donde el 1 es un superíndice para indicar que provienen del primer
+    modelo, $B_k$ y $C_k$ son variables binarias que indican la marca de
+    cada tienda (para que sea identificable, tenemos que eliminar una
+    marca). Sobre este modelo debemos:
+
+    -   Agregar $\text{Superficie}_k \cdot Mall_k$ en la función que
+        integra $\theta^{1'}$.
+    -   Reemplazar el término de la distancia por
+        $\gamma_1^1 d_{ik} 1_{[d_{ik}<d^*]} + \gamma_2^1 v_{ik} 1_{[d_{ik}>d^*]}$.
+    -   Agregar $Metro_i \cdot Mall_k$.
+    -   Agregar $v_{ik} \cdot Conveniencia_k \cdot 1_{[d_{ik}>d^*]}$
+        (donde $Conveniencia_k = 1$ si marca es de conveniencia) y
+        $v_{ik} \cdot (1-Conveniencia_k) \cdot 1_{[d_{ik} \leq d*]}$.
+
+5.  Aunque hay otras ideas admisibles, el fraseo de la pregunta parece
+    sugerir la solución más directa que es agregar la dinámica de
+    adopción. Esto es, agregar un índice temporal a la variable
+    $Fracusuarios_{it}$ de modo de representar como varía en el tiempo.
+    Así, podemos ver cómo cambia la demanda en periodos de mayor o menor
+    uso de las aplicaciones. Observaciones:
+
+    a.  Un nivel mayor de sofisticación podría sugerir usar
+        $Fracusuarios_{it-1}$ y/o $Fracusuarios_{it-2}$. La inclusión de
+        rezagos presupone que la adopción antecede las compras.
+    b.  Esta especificación puede ayudar a aminorar los problemas de
+        endogeneidad, pero no los soluciona del todo. Si hay un momento
+        específico en que se lanza la app, o si hay algunas campañas
+        específicas que solo se promocionan a través de las apps,
+        podrían dar elementos adicionales para reducir la endogeneidad
+        del constructo.
+
+------------------------------------------------------------------------
+
+### Problema 7 - P1 Control 1 Otoño 2024
+
+Uno de los cambios más relevantes de los últimos años, en ambientes de
+negocio y en la sociedad en su conjunto, ha sido la irrupción de las
+inteligencias artificiales (IA) generativas¹. En simple, las
+inteligencias artificiales generativas son un tipo de inteligencia
+artificial que puede crear contenidos nuevos, incluyendo conversaciones,
+historias, imágenes, videos e incluso música. Entre las ventajas de
+estas tecnologías es su capacidad de comprender matices del lenguaje no
+estructurado que les permite dar respuestas a entornos complejos. A
+continuación, exploraremos el potencial uso de estas tecnologías para
+generar sistemas automatizados de atención de clientes en la industria
+bancaria.
+
+Muchas de las aplicaciones de estas tecnologías de IA generativas se
+basan en modelos fundacionales² que son modelos de machine learning
+entrenados en un amplio espectro de datos generalizados y por tanto son
+capaces de realizar una amplia variedad de tareas generales. Los modelos
+de generative pre-trained transformer (GPT) de OpenAI son precisamente
+un ejemplo de un modelo fundacional. Aunque los modelos fundacionales
+tienen capacidades generales de lenguaje, en general no logran el nivel
+de especificidad requeridos para dar servicio a los clientes. Por
+ejemplo, un modelo de GPT no sabrá cuáles son las políticas internas de
+cada banco para resolver cada tipo de requerimiento de sus clientes.
+Para dotar a las IA generativas de este conocimiento contextual, se
+puede hacer una etapa liviana de entrenamiento o de *fine tuning*³.
+
+En este proyecto, investigamos el rendimiento de diferentes estrategias
+de entrenamiento sobre el desempeño de un asistente virtual basado en IA
+generativas en el contexto de la industria bancaria, donde tener el
+control de las respuestas es especialmente sensible para las empresas.
+En específico se consideraron tres estrategias de entrenamiento:
+
+-   **Prompt 1**: Se instruye al agente con una lista breve y resumida
+    de cómo debe reaccionar a los requerimientos de los usuarios.
+-   **Prompt 2**: Se instruye al agente con una lista detallada de cómo
+    debe reaccionar a los requerimientos de los usuarios.
+-   **Prompt 3**: Se instruye al agente con una lista detallada de cómo
+    debe reaccionar a los requerimientos de los usuarios y se le indica
+    que solo puede responder desde un conjunto acotado de respuestas.
+
+Para entender el desempeño de distintas estrategias de entrenamiento se
+diseñó un experimento en que se le pidió a un grupo de usuarios de
+tarjetas de crédito que, en una serie de escenarios, interactuara
+libremente con un agente basado en IA generativas para resolver
+preguntas asociada a un desconocimiento de transacción. Un
+desconocimiento de transacción ocurre cuando un cliente revisa su
+cartola de cuentas e identifica una transacción que no reconoce como
+propia. Al terminar cada interacción se les preguntó a los participantes
+una serie de preguntas para entender cómo evaluaban la interacción con
+el agente digital.
+
+Como resultado de estas interacciones se generó una base de datos con
+las siguientes columnas:
+
+-   **customer_id**: Identificador del participante dentro del
+    experimento.
+-   **task_id**: Identificador del escenario.
+-   **age**: Edad del participante.
+-   **sex**: Sexo del participante.
+-   **NSE**: Nivel socioeconómico del participante.
+-   **prompt_type**: Tipo de prompt asignado en el experimento.
+-   **resolutivity**: Resolutividad percibida por el participante.
+-   **confidence**: Confianza percibida por el participante en la
+    correctitud de la información.
+-   **experience**: Satisfacción percibida por el participante.
+-   **efficacy_input**: Eficacia de comprensión de mensajes percibida
+    por el participante.
+-   **efficacy_output**: Eficacia de generación de respuestas percibida
+    por el participante.
+-   **interaction_time**: Duración total de la interacción del
+    participante con el agente.
+-   **cus_res_time**: Tiempo promedio que tarda en responder el
+    participante en la interacción.
+-   **agt_res_time**: Tiempo promedio que tarda en responder el agente
+    en la interacción.
+-   **n_messages**: Número de mensajes en la interacción.
+-   **n_words**: Número de palabras promedio por mensaje.
+
+Adicionalmente, considerando las normativas del banco, cada interacción
+fue examinada para determinar el porcentaje de errores cometido por el
+agente. El experimento consideró la participación de 643 clientes a cada
+uno de los cuales se les pidió interactuar con el agente digital en tres
+escenarios distintos con lo que se tiene un total de 1,929 filas en la
+base de datos.
+
+1.  (1 punto) La compañía está considerando usar un(os) modelo(s) de
+    regresión para medir el impacto de distintas estrategias de
+    entrenamiento. Considerando que el sistema está diseñado para dar
+    servicio de atención a los clientes del banco, ¿cuál cree usted que
+    debieran ser las variables dependientes para analizar en un modelo
+    de regresión?
+2.  (2 puntos) Sea $y_{ik}$ la variable de desempeño que usted considera
+    relevante para el participante i ($i \in
+    \{1,\ldots,643\}$) en el escenario k ($k \in \{1,2,3\}$). Formule un
+    modelo de regresión que permita evaluar el desempeño de las
+    distintas estrategias y que considere las siguientes componentes:
+    -   Algunos escenarios podrían ser más fáciles o más difíciles por
+        lo que el agente podría tener desempeños sistemáticamente
+        diferentes por tareas.
+    -   Los usuarios de mayor edad tienden a tener una peor actitud
+        hacia este tipo de tecnología y por tanto hacer peores
+        evaluaciones de desempeño.
+    -   Si la interacción con el agente virtual es muy corta,
+        probablemente los usuarios evalúen el desempeño como
+        insuficiente. Del mismo modo, si la interacción es muy larga los
+        usuarios en general tenderán a tener malas evaluaciones de
+        desempeño.
+    -   Aunque no hay diferencias en los niveles generales de la
+        evaluación de desempeño entre género, en general los hombres
+        tienden a preferir interacciones más cortas que el resto de los
+        géneros.
+
+<!-- -->
+
+3)  (1 punto) ¿Qué limitaciones tiene el modelo anteriormente planteado
+    para el entendimiento de la pregunta de investigación? ¿Como
+    recomendaría corregir estas limitaciones?
+
+4)  Para una parte del análisis, se consideraron tres modelos de
+    regresión que se reportan en la Tabla 1.
+
+    a)  (1 punto) De acuerdo a los resultados de estos modelos de
+        regresión, ¿qué rol juega las distintas estrategias de
+        entrenamiento en el desempeño del agente virtual?
+
+    b)  (1 punto) ¿Cómo podríamos determinar el impacto de la
+        introducción de restricciones en la estrategia de entrenamiento?
+
+    +---------------+---------------+-----------------+-------------------+
+    | Variable      | Experiencia   | Resolutividad   | Porcentaje        |
+    |               | (Coeficiente) | (Coeficiente)   | Errores           |
+    |               |               |                 | (Coeficiente)     |
+    +:=============:+:=============:+:===============:+:=================:+
+    | Intercepto    | 0.025         | 0.146           | 4.675             |
+    +---------------+---------------+-----------------+-------------------+
+    | Prompt 2      | -0.079 \*\*   | -0.157 \*\*\*   | -4.965 \*\*       |
+    +---------------+---------------+-----------------+-------------------+
+    | Prompt 3      | -0.005        | 0.109 \*\*      | -0.262            |
+    +---------------+---------------+-----------------+-------------------+
+    | Eficacia      | 0.174 \*\*\*  | 0.155 \*\*\*    | 0.541             |
+    | entrada       |               |                 |                   |
+    +---------------+---------------+-----------------+-------------------+
+    | Eficacia      | 0.100 \*\*\*  | -0.030          | 1.400             |
+    | salida        |               |                 |                   |
+    +---------------+---------------+-----------------+-------------------+
+    | Confianza     | 0.720 \*\*\*  | 0.786 \*\*\*    | 0.508             |
+    +---------------+---------------+-----------------+-------------------+
+    | Tiempo        | -0.006        | -0.024 \*\*\*   | 0.094             |
+    | Interacción   |               |                 |                   |
+    +---------------+---------------+-----------------+-------------------+
+    | Num Mensajes  | 0.007 \*\*    | 0.020 \*\*\*    | 0.224             |
+    +---------------+---------------+-----------------+-------------------+
+    | Edad          | -0.002        | -0.003 \*\*     | 0.044             |
+    +---------------+---------------+-----------------+-------------------+
+    | Mujer         | 0.027         | -0.038          | 0.030             |
+    +---------------+---------------+-----------------+-------------------+
+    | N. obs        | 1,929         | 1,929           | 126               |
+    +---------------+---------------+-----------------+-------------------+
+    | $R^2$         | 0.798         | 0.709           | 0.220             |
+    +---------------+---------------+-----------------+-------------------+
+    | $R_{adj.}^2$  | 0.796         | 0.707           | 0.105             |
+    +---------------+---------------+-----------------+-------------------+
+
+    $$
+    \text{Tabla 1: Resultados modelos alternativos de regresión.} \\
+    \text{Fuente: Hernández, F. (2024): "Agentes inteligentes basados en Large Language Models} \\
+    \text{para la atención automatizada en canal conversacional online de servicio al cliente en una} \\
+    \text{empresa financiera". Memoria para optar al título de Ingeniero Civil Industrial.}
+    $$
+
+------------------------------------------------------------------------
+
+¹ <https://aws.amazon.com/es/what-is/generative-ai/>\
+² <https://aws.amazon.com/es/what-is/foundation-models/>\
+³ <https://platform.openai.com/docs/guides/fine-tuning>
+
+**Solución**
+
+1)  La respuesta más clara es la satisfacción de los usuarios
+    (Experience). Sin embargo, resulta a todas luces insuficiente. Es
+    necesario tener un acercamiento hacia la reflexión de los siguientes
+    puntos:
+
+    a)  El agente debe seguir un conjunto de procedimientos definidos
+        institucionalmente y por tanto es necesario mirar los errores
+        cometidos. Los agentes de IA son conocidos por alucinar y
+        podrían dejar satisfecho al usuario entregándole respuestas que
+        son inconvenientes por la firma.
+    b)  Uno de los motivos de la automatización es que el agente pueda
+        resolver sin la necesidad de derivar los casos a un agente
+        humano. Desde el punto de vista de la costo-efectividad, también
+        es importante mirar su resolutividad.
+
+2)  El modelo de regresión puede expresarse como:
+
+    $$
+    y_{ik} = \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i 
+           + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i 
+           + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
+    $$
+
+    Donde
+
+    a)  La variable $1_{ei}$ toma el valor 1 si el usuario i es asignado
+        a la estrategia de entrenamiento e y por tanto $\theta_e$
+        captura el efecto que tiene la estrategia de entrenamiento e.
+        Notar que, para que el modelo sea identificable necesitamos
+        excluir una estrategia.
+    b)  El efecto fijo $\alpha_k$ controla por diferencias entre tipos
+        de escenarios.
+    c)  El término $\beta_{1}$ permite controlar que la evaluación
+        dependa de la edad.
+    d)  Los términos $\beta_{2}$ y $\beta_{3}$ permiten capturar el
+        efecto no lineal del largo de la interacción. En esta
+        especificación usamos el número de palabras ($NW_{ik}$), pero el
+        número de mensajes es una alternativa posible.
+    e)  El término $\beta_4$ captura el efecto de ser hombre, sumando al
+        efecto de $\beta_5$ que captura la interacción entre el largo de
+        la interacción y el sexo hombre.
+
+3)  Hay varias limitaciones, pero probablemente se puedan agrupar en las
+    dos siguientes líneas:
+
+    a)  Respecto al diseño de investigación. Por ejemplo, el diseño solo
+        compara tres estrategias específicas, pero no sabemos cuál sería
+        el desempeño de una nueva estrategia de entrenamiento.
+    b)  Respecto al modelo de regresión. Por ejemplo, hay factores que
+        no controlamos como el NSE o, si se considera más de una
+        variable de desempeño, cuál es la relación entre estos factores.
+
+<!-- -->
+
+4)  Las respuestas se derivan directo de las tablas.
+    a)  Los coeficientes del Prompt 2 es significativo en las tres
+        variables de desempeño consideradas y por tanto esa estrategia
+        de entrenamiento tiene peor resolutividad y satisfacción, pero
+        también un menor número de errores procedurales. Similarmente,
+        el Prompt 3 tiene una mayor resolutividad que la estrategia de
+        entrenamiento base, pero las diferencias no son significativas
+        en la satisfacción ni en los errores procedurales.
+    b)  Habría que testear si $\theta_2 = \theta_3$ (por ejemplo, si
+        $\theta_2 > \theta_3$ en la ecuación de satisfacción usuaria,
+        implicaría que incluir restricciones en la estrategia de
+        entrenamiento empeora la evaluación. Como el objeto a testear
+        son restricciones lineales, entonces puede hacerse con una
+        prueba F.
+
+**Nota:** Para los curiosos, los p-valores de los test para las tres
+ecuaciones son (0.066, 0.000 y 0.016) por lo que si consideramos un 95%
+las restricciones solo tendrían un impacto en la resolutividad.
+
+------------------------------------------------------------------------
+
+### Problema 8 - P1 Control Primavera 2023
+
+Con el desarrollo de los canales digitales, muchas industrias han
+*desintermediarizado* la distribución de productos y servicios. Este es
+precisamente el caso de la industria musical en que tanto artistas
+consagrados[¹](https://open.spotify.com/intl-es/artist/06Hl4z0CvFAxyc27GXpf02)
+como
+independientes[²](https://open.spotify.com/intl-es/artist/5eFvIKbhmaxjVEfsOCros)
+pueden subir directamente su música a plataformas como Spotify, Deezer o
+Youtube Music. Junto con el cambio en la estructura de distribución, las
+plataformas digitales proveen información detallada para entender los
+factores que afectan la popularidad de cada canción y artista. En esta
+pregunta usaremos un enfoque de regresión para cuantificar la relación
+entre distintos factores en la audiencia de cada pieza. Para ello, se
+cuenta con los registros históricos de una muestra de 123.456 canciones
+en una plataforma de distribución musical, en la que se observan las
+siguientes variables:
+
+-   **IdSong**: Identificador único para cada canción.
+-   **Date**: Fecha del registro.
+-   **Title**: Título de la canción.
+-   **Artist**: Intérprete de la canción.
+-   **Genre**: Género musical al que pertenece la canción (e.g. Rock,
+    Pop, Indie, etc.)
+-   **Length**: Duración de la canción (medido en segundos).
+-   **LaunchDate**: Fecha en la que fue lanzada la canción.
+-   **Nplay**: Número de veces que ha sido escuchada la canción.
+-   **Tprom**: Tiempo de escucha promedio cada vez que es escuchada una
+    canción.
+-   **Danceability**: Puntaje [0-1] de qué tan bailable es una canción
+    (basada en tiempo y regularidad).
+-   **Energy**: Puntaje [0-1] de qué tan energética es una canción
+    (basada en timbre y volumen).
+-   **PromoExpend**: Monto del gasto en promoción dentro de la
+    plataforma para esa fecha.
+-   **Nfollow**: Seguidores en redes sociales de artista.
+-   **Top50**: 1 si el artista ha tenido alguna vez una canción en el
+    Top 50 del Billboard.
+
+1.  Considere un modelo de regresión lineal genérico
+
+    $$
+    y_i = \beta' x_i + \varepsilon_i
+    $$
+
+    que cuantifica la relación de una medida de la popularidad de una
+    canción $i$ ($y_i$), con un conjunto de variables observables de esa
+    canción ($x_i$). Proponga dos métricas de popularidad. Para cada una
+    de ellas indique una limitación de usar esa variable como indicador
+    del éxito de audiencia de una canción.
+
+    **Observación:** Notar que la base está indexada por la canción y el
+    tiempo, mientras la métrica pedida depende solo de la canción.
+
+2.  Describa un modelo de regresión lineal para estimar la popularidad
+    de una canción. Para la construcción de este modelo de regresión
+    considere que:
+
+    a)  Es importante controlar por la popularidad que típicamente tiene
+        cada artista y que las canciones lanzadas más recientemente
+        tienen acceso a un mayor número de usuarios activos en la
+        plataforma.
+    b)  Las promociones aumentan la popularidad de las canciones, pero
+        este efecto es acumulativo en el tiempo.
+    c)  El efecto de la *danceability* de una canción puede ser positivo
+        para unos géneros, pero negativo para otros.
+    d)  El efecto del largo de una canción es no lineal en la
+        popularidad: mientras temas muy cortos raramente son muy
+        populares, los temas demasiado largos también tienen
+        dificultades en generar audiencias.
+
+    Defina cuidadosamente las variables e indique cómo se obtienen a
+    partir de los registros disponible
+
+3.  Suponga que se estiman tres modelos simples de regresión lineal para
+    describir la popularidad de las canciones dentro de la plataforma.
+    Los resultados de estos dos modelos se reportan en la Tabla 1
+
+    $$\text{Tabla 1: Resultados modelos alternativos de regresión}$$
+
+    +---------+---------+---------+---------+---------+---------+---------+
+    | V       | Modelo  | Modelo  | Modelo  | Modelo  | Modelo  | Modelo  |
+    | ariable | 1       | 1 SE    | 2       | 2 SE    | 3       | 3 SE    |
+    |         | Coef    |         | Coef    |         | Coef    |         |
+    |         | iciente |         | iciente |         | iciente |         |
+    +:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+
+    | $\ln(\  | -0.453  | 0.001   | -0.462  | 0.023   | -0.3983 | 0.024   |
+    | text{le |         |         |         |         |         |         |
+    | ngth})$ |         |         |         |         |         |         |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Promo   | 5.341   | 0.562   | 4.341   | 0.011   | 5.101   | 0.012   |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Energy  | 0.138   | 0.453   | 3.453   | 0.003   | 3.238   | 0.001   |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Dance   | 2.345   | 0.002   | 0.091   | 0.645   | 0.192   | 0.345   |
+    | ability |         |         |         |         |         |         |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | NFollow | 2.323   | 0.011   | 2.421   | 0.016   | 1.933   | 0.008   |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Top50   |         |         |         |         | 1.498   | 0.011   |
+    +---------+---------+---------+---------+---------+---------+---------+
+
+    **Fixed Effects**
+
+    |        | Modelo 1 | Modelo 2 | Modelo 3 |
+    |:------:|:--------:|:--------:|:--------:|
+    | Artist |   Yes    |   Yes    |   Yes    |
+    |  Year  |   Yes    |   Yes    |   Yes    |
+    | Genre  |    No    |   Yes    |   Yes    |
+
+    **Métricas**
+
+    |             | Modelo 1 | Modelo 2 | Modelo 3 |
+    |:-----------:|:--------:|:--------:|:--------:|
+    | Std. Error  |  5.355   |  4.307   |  4.278   |
+    |    $R^2$    |  0.296   |  0.445   |  0.455   |
+    | $R^2_{adj}$ |  0.286   |  0.398   |  0.401   |
+
+    A partir de los resultados anteriores:
+
+    a.  ¿Qué aprendizaje puede derivar a partir de observar los $R^2$?
+
+    b.  ¿Cuál es el intervalo de confianza del 95% para el coeficiente
+        $NFollow$ en el modelo 2?
+
+    c.  ¿Qué puede explicar el cambio de significancia de $Energy$ y
+        $Danceability$ en Modelos 1 y 2?
+
+    d.  ¿Cómo se puede testear que $Danceability$ y $Energy$, de manera
+        conjunta tienen un efecto nulo?
+
+**Solución**
+
+1.  Algunas posibilidades:
+    -   $y_i^0 = \max\{NPlay_{it}\}_t$, que corresponde al máximo de
+        veces que ha sido escuchada una canción.\
+        Una limitación de esta métrica es que las canciones se lanzan en
+        instantes distintos del tiempo y las canciones más antiguas
+        tendrán más escuchas, aunque no sean tan populares.
+
+    -   $y_i^1 = \max\{NPlay_{it}\}_t/(LaunchDate_i)$. Acá, el
+        denominador corresponde al tiempo transcurrido desde el
+        lanzamiento y, por lo tanto, la métrica mide el número de
+        reproducciones por unidad de tiempo. Una limitación de esta
+        métrica es que no considera el ciclo de vida del producto (ciclo
+        de reproducción de las canciones). Las canciones recién lanzadas
+        suelen ser muy escuchadas, pero algunas pasan rápidamente de
+        moda.
+
+    -   $y_i^2 = NPlay_{i, LaunchDate_i + 365}$, que corresponde al
+        número de reproducciones un año después de haber sido lanzado la
+        canción. Una limitación de esta métrica es que las plataformas
+        aumentan sus audiencias y, por tanto, favorece a canciones que
+        han sido lanzadas más recientemente.
+
+        Hay varias otras posibilidades. Por ejemplo, usar el *share* de
+        reproducciones dentro de la categoría, la desviación de
+        reproducciones con respecto a la canción anterior del artista,
+        etc. Notar que hay algunas métricas que no capturan precisamente
+        popularidad. Por ejemplo:
+
+    -   $y_i^3 = \max\{NPlay_{it}\}/\sum_t Promo_{it}$, que mide
+        eficiencia promocional y se indeﬁne para canciones que no han
+        sido promocionadas.
+
+    -   $y_i^4 = \sum\{TProm_{it}\}/\text{mean}\{Length_i\}$, que mide
+        el *envolvimiento o lealtad* con la canción . Una canción podría
+        ser escuchada una vez completa y aunque no diríamos que es
+        popular, tendría el máximo en esta métrica.
+
+<!-- -->
+
+2.  Todas las componentes se agregan más o menos directo en la ecuación
+
+    -   Hay que agregar controles de artista ($Artist_i$) y tiempo de
+        lanzamiento ($LaunchDate_i$).
+    -   Hay que agregar el gasto acumulado en promoción
+        ($\sum_t Promo_{it}$).
+    -   Hay que agregar las interacciones entre danzabilidad y género
+        ($Danceability_i\, Genero_i$).
+    -   Hay que agregar tanto efectos lineales como cuadráticos
+        ($Danceability_i + Danceability_i^2$).
+
+    Con esto el modelo puede expresarse como:
+
+$$
+\begin{aligned}
+y_i \;=\;& \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2 
++ \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
+&+ \beta_2\, Danceability_i + \beta_3\, Genre_i\\
+&+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
++ \beta_4\, Length_i + \beta_5\, Length_i^2
+\end{aligned}
+$$
+
+3.  Cada una de las partes tiene respuestas bastante directas:
+    a.  Al comparar el Modelo 1 con el Modelo 2, vemos que el género
+        explica bastante variabilidad en la popularidad. Al comparar el
+        Modelo 2 con el Modelo 3, vemos que la distinción de $Top50$
+        ayuda a explicar una fracción muy menor de la varianza en
+        popularidad.
+    b.  El intervalo de confianza viene dado por:\
+        $$
+        (2.421 - 1.96 \cdot 0.016,\; 2.421 + 1.96 \cdot 0.016)
+        $$
+    c.  En ambos casos una de las variables es significativa, pero la
+        otra no. Aunque hay otras explicaciones posibles, la más directa
+        es que estas dos variables estén altamente correlacionadas y,
+        por tanto, el efecto conjunto es identificable. Es difícil
+        separar el efecto de una con respecto a la otra.
+    d.  Queremos testear que $\beta_{dance} = 0$ y $\beta_{Energy} = 0$.
+        Este es un sistema de restricciones lineales que puede testearse
+        directamente a través de una prueba F.
+
+------------------------------------------------------------------------
+
+### Problema 9 - P1 Control Otoño 2023
+
+*KornerK* introdujo hace un par de años un modelo de negocio innovador
+en que, a través de una aplicación móvil, los clientes de la industria
+supermercadista podían hacer sus compras remotamente. Para llevar a cabo
+sus compras, los clientes listan el conjunto de productos que desean
+adquirir y ponen una orden a la plataforma, la que contacta a alguno de
+los numerosos *shoppers* que tiene afiliados, los que se encargan de
+recoger los productos desde la sala de supermercado y transportarlo
+hasta el domicilio del cliente. La asignación de *shoppers* se hace
+considerando la cercanía al domicilio del usuario, por lo que la
+compañía se ha preocupado de tener suficientes afiliados disponibles
+para cubrir la demanda en cada geografía y bloque horario.
+
+Después de un par de años de un crecimiento constante, lo que incluye un
+período de crecimiento explosivo durante los confinamientos de la
+pandemia, en los últimos meses se ha visto afectado por importantes
+cambios tanto regulatorios como de los patrones de la demanda. A partir
+de esta coyuntura, *KornerK* se ha visto obligado a rediseñar su
+dotación y ha considerado hacer una reducción de hasta un 20% de los
+*shoppers* en aquellas zonas con mayor caída en la demanda. Con este
+propósito, se han propuesto analizar los patrones de demanda históricos
+para hacer un pronóstico de la demanda.
+
+Para sostener el análisis, se ha preparado un set de datos con las
+ventas agregadas por bloque horario en cada una de las zonas en que
+opera *KornerK*. En esta base, cada fila se compone de las siguientes
+variables:
+
+-   **IdZip**: Identificador de la zona geográfica.
+-   **Date**: Fecha en formato dd/mm/yyyy.
+-   **Hour**: Un entero que representa la hora que define el bloque
+    horario (8, 9, 10, …, 22).
+-   **NOrdersC**: Número de órdenes por servicio que fueron exitosamente
+    completadas.
+-   **NOrdersN**: Número de órdenes por servicio que no pudieron ser
+    completadas por falta de *shoppers*.
+-   **Day**: Día de la semana que se registra la discrepancia (con
+    lunes=1, hasta domingo=7).
+-   **Mes**: Correlativo del número de meses desde inicio de operación
+    (1, 2, 3, …).
+-   **Rain**: 1 si llovió en el bloque horario.
+-   **IMACEC**: Variación del índice mensual de actividad económica.
+
+Como ilustración, se muestran las primeras seis entradas se presentan en
+la Tabla 1.
+
+$$\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias}$$
+
++------+------+------+------+------+------+------+------+------+
+| I    | Date | Hour | NOrd | NOrd | Day  | Mes  | Rain | IM   |
+| dZip |      |      | ersC | ersN |      |      |      | ACEC |
++:====:+:====:+:====:+:====:+:====:+:====:+:====:+:====:+:====:+
+| 1    | 02   | 8    | 248  | 0    | 2    | 1    | 0    | 0.02 |
+| 5217 | /01/ |      |      |      |      |      |      |      |
+|      | 2018 |      |      |      |      |      |      |      |
++------+------+------+------+------+------+------+------+------+
+| 1    | 02   | 9    | 325  | 0    | 2    | 1    | 0    | 0.02 |
+| 5217 | /01/ |      |      |      |      |      |      |      |
+|      | 2018 |      |      |      |      |      |      |      |
++------+------+------+------+------+------+------+------+------+
+| 1    | 02   | 10   | 331  | 13   | 2    | 1    | 0    | 0.02 |
+| 5217 | /01/ |      |      |      |      |      |      |      |
+|      | 2018 |      |      |      |      |      |      |      |
++------+------+------+------+------+------+------+------+------+
+| 2    | 03   | 8    | 1345 | 1    | 3    | 1    | 0    | 0.02 |
+| 3156 | /01/ |      |      |      |      |      |      |      |
+|      | 2018 |      |      |      |      |      |      |      |
++------+------+------+------+------+------+------+------+------+
+| 2    | 03   | 9    | 1221 | 0    | 3    | 1    | 0    | 0.02 |
+| 3156 | /01/ |      |      |      |      |      |      |      |
+|      | 2018 |      |      |      |      |      |      |      |
++------+------+------+------+------+------+------+------+------+
+| 2    | 03   | 10   | 1436 | 54   | 3    | 1    | 0    | 0.02 |
+| 3156 | /01/ |      |      |      |      |      |      |      |
+|      | 2018 |      |      |      |      |      |      |      |
++------+------+------+------+------+------+------+------+------+
+
+1.  Describa un modelo de regresión lineal para estimar la **demanda
+    total** por servicios en cada zona y bloque horario que considere
+    **al menos cuatro** de los siguientes elementos:
+
+    a)  Efectos fijos geográficos para capturar que gran parte de la
+        variabilidad de la demanda se explica por diferencias en los
+        patrones de consumo de las distintas zonas.
+
+    b)  El patrón de demanda a lo largo de día es altamente estacional,
+        por lo que es esperable que la inclusión de efectos fijos por
+        hora sea relevante.
+
+    c)  Aunque hay alguna variación de la demanda dependiendo del día de
+        semana, es despreciable en relación con la diferencia que hay
+        entre días de semana y fin de semana, la que es muy relevante.
+
+    d)  El nivel de actividad económica parece estar positivamente
+        correlacionado con la demanda. Sin embargo, este efecto parece
+        estar rezagado, por lo que parece razonable considerar los
+        valores de actividad económica de los últimos 3 meses.
+
+    e)  La demanda ha ido creciendo sostenidamente a lo largo del
+        tiempo, por lo que se necesita incluir un factor que capture una
+        tendencia de crecimiento lineal de la demanda como función del
+        tiempo.
+
+    f)  La demanda tiende a crecer en los bloques en que llueve. Sin
+        embargo, la magnitud del crecimiento es distinta dependiendo de
+        que si es un día de semana o un fin de semana.
+
+        Defina cuidadosamente las variables dependientes e
+        independientes e indique cómo se obtienen a partir de los
+        registros disponibles en la base de datos.
+
+2.  Suponga que se estiman dos modelos simples de regresión lineal para
+    describir la demanda por servicios de *KornerK*. Los resultados de
+    estos dos modelos se reportan en la Tabla 2.
+
+    $$\text{Tabla 2: Resultados modelos alternativos de regresión}$$
+
+    +---------+---------+---------+---------+---------+---------+---------+
+    | V       | Modelo  | Modelo  | Modelo  | Modelo  | Modelo  | Modelo  |
+    | ariable | 1       | 1       | 2       | 2       | 3       | 3       |
+    |         | Coef    | p-valor | Coef    | p-valor | Coef    | p-valor |
+    |         | iciente |         | iciente |         | iciente |         |
+    +:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+
+    | Int     | 589.415 | 0.000   | \-      | \-      | \-      | \-      |
+    | ercepto |         |         |         |         |         |         |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | FinD    | 120.732 | 0.001   | 89.462  | 0.023   | 88.559  | 0.024   |
+    | eSemana |         |         |         |         |         |         |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | Rain    | 20.341  | 0.562   | 14.341  | 0.011   | 11.101  | 0.012   |
+    +---------+---------+---------+---------+---------+---------+---------+
+    | IMACEC  | 65.323  | 0.011   | 59.021  | 0.016   | 62.774  | 0.019   |
+    +---------+---------+---------+---------+---------+---------+---------+
+
+    **Fixed Effects**
+
+    |      | Modelo 1 | Modelo 2 | Modelo 3 |
+    |:----:|:--------:|:--------:|:--------:|
+    | Zip  |    No    |    No    |   Yes    |
+    | Hour |    No    |   Yes    |   Yes    |
+
+    **Resumen**
+
+    |   Métrica   | Modelo 1 | Modelo 2 | Modelo 3 |
+    |:-----------:|:--------:|:--------:|:--------:|
+    | Std. Error  |  5.355   |  4.307   |  4.278   |
+    |    $R^2$    |  0.196   |  0.445   |  0.544   |
+    | $R^2_{adj}$ |  0.186   |  0.392   |  0.417   |
+
+    A partir de los resultados anteriores:
+
+    a)  ¿Por qué no se reporta un intercepto para los modelos 2 y 3?
+    b)  ¿Qué modelo explica la mayor varianza de la demanda observada?
+    c)  ¿Qué podemos afirmar con respecto al rol de los efectos fijos
+        regionales para describir la variabilidad en la demanda?
+    d)  ¿Qué rol juega la actividad económica en la demanda por
+        servicios de *KornerK*?
+
+3.  Volviendo al problema de gestión al que se enfrenta la compañía,
+    *KornerK* está interesado en evaluar cómo podría impactar la
+    reducción de *shoppers* en la capacidad de responder a la demanda.
+    Para esto, ha elaborado un plan preliminar en que quedarían
+    $N_{ith}$ *shoppers* disponibles para trabajar en el bloque horario
+    $h$ del día $t$ en la zona $i$.
+
+    a)  Usando el modelo 1, calcule el valor esperado de la demanda para
+        un bloque en un día de semana, en que no llueve y en que hay una
+        variabilidad en la actividad económica del 10% ($IMACEC = 0.1$).
+
+    b)  Para el mismo bloque horario de la parte anterior, escriba una
+        expresión para calcular la probabilidad de que la demanda total
+        exceda la capacidad disponible expresada para ese bloque
+        $N_{ith} = 600$.
+
+**Solución**
+
+1.  Primero que todo, tenemos que clarificar que la variable dependiente
+    es la demanda
+    total en una zona i, fecha t y hora h, que corresponde tanto a las
+    órdenes completadas
+    como aquellas que excedieron la capacidad:
+
+    $$
+    DT_{iht}=NOrdersC_{iht}+NOrdersN_{iht}
+    $$
+
+    En el lado derecho de la regresión se pueden considerar cualquiera
+    de los siguientes puntos:
+
+    -   Efectos fijos geográficos: $\alpha_i^1$
+    -   Efectos fijos por hora: $\alpha_h^2$
+    -   Diferencia entre día de semana y fin de semana: $\beta_1 FDS_t$
+        donde $FDS_t = 1_{\{Day \in \{Sábado,Domingo\}\}}$
+    -   El nivel de actividad económica de los últimos 3 meses
+        $\beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} + \beta_4 IMACEC_{t-2}$.
+        Un modelo admisible es suponer que
+        $\beta_2 = \beta_3 = \beta_4$. En vez de tener un parámetro por
+        cada mes, se tiene un único para el promedio de los tres.
+    -   La demanda ha ido creciendo sostenidamente: $\beta_5 MES_t$
+    -   Lluvia y fin de semana:
+        $\beta_6 RAIN_{th} + \beta_7 RAIN_{th}\,FDS_t$
+
+    Así, la ecuación de regresión que considera todos los factores viene
+    dada por:
+
+    $$
+    \begin{align}DT_{iht} &= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\         &\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)\end{align}
+    $$
+
+2.  Incluye:
+
+    a.  Los modelos 2 y 3 tienen efectos fijos y, por tanto, hay un
+        intercepto distinto para
+        cada hora (Modelo 2) o para cada (geografía-hora). En general,
+        los efectos fijos
+        no se reportan porque suelen ser una secuencia larga de dummies
+        por las que solo
+        queremos controlar.
+
+    b.  El $R^2$ captura la varianza explicada. En este caso el modelo
+        con mayor R2 es el
+        modelo 3.
+
+    c.  Al agregar efectos fijos por región, el $R^2$ (varianza
+        explicada) aumenta bastante,
+        por lo que concluimos que una parte relevante de la variación en
+        la demanda se
+        explica porque hay regiones que hay más demanda que en otras.
+
+    d.  En los tres modelos es positiva y significativa p-valor \< 0.05,
+        por lo que pode
+        mos decir que mayor actividad económica correlaciona
+        positivamente con mayor
+        demanda para KornerK.
+
+3.  Detalle:
+
+    a.   El valor esperado viene dado por:
+
+        $$
+        \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
+        $$
+
+    b.  La probabilidad viene dada por:
+
+        $$
+        Pr(DT_{iht} \geq 600)
+        $$
+
+    Donde $DT_{iht}$ se distribuye normal con media $\mu = 595.9$ y
+    varianza $\sigma^2 = (5.355)^2$. Este cálculo se puede hacer
+    directamente en cualquier paquete estadístico. En R:
+
+    $$
+    1 - pnorm(600, mean = 595.9, sd = 5.355)
+    $$
