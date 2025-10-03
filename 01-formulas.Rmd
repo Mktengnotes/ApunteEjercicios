@@ -22,7 +22,7 @@ library(kableExtra)
     $$
 
     $$
-    P(T>t| \theta) = \theta (1 - \theta)^{t-1}
+    P(T>t| \theta) = (1-\theta)^{t}
     $$
 
 -   Modelo beta geométrico desplazado:
