@@ -38,3 +38,14 @@ modelos-estructurales
 introducción-2
 problemas
 soluciones
+modelos-de-regresion
+eq:caso-continuo
+eq:caso-discreto
+modelos-probabilisticos
+problema-1-1
+problema-2-1
+problema-3-1
+problema-5
+problema-6
+problema-7
+problema-8

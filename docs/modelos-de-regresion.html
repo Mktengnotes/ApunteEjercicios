@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 2 Modelos de Regresión | Apunte Problemas Resueltos</title>
+  <title>Capítulo 2 Modelos de Regresion | Apunte Problemas Resueltos</title>
   <meta name="description" content="Apunte de ejercicios realizados durante el curso de Marketing II" />
   <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 2 Modelos de Regresión | Apunte Problemas Resueltos" />
+  <meta property="og:title" content="Capítulo 2 Modelos de Regresion | Apunte Problemas Resueltos" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Apunte de ejercicios realizados durante el curso de Marketing II" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 2 Modelos de Regresión | Apunte Problemas Resueltos" />
+  <meta name="twitter:title" content="Capítulo 2 Modelos de Regresion | Apunte Problemas Resueltos" />
   
   <meta name="twitter:description" content="Apunte de ejercicios realizados durante el curso de Marketing II" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-09-17" />
+<meta name="date" content="2025-10-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="formulas-utiles.html"/>
-<link rel="next" href="modelos-probabilísticos.html"/>
+<link rel="next" href="modelos-probabilisticos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,10 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 
@@ -82,57 +78,58 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prologo</a></li>
 <li class="chapter" data-level="1" data-path="formulas-utiles.html"><a href="formulas-utiles.html"><i class="fa fa-check"></i><b>1</b> Formulas utiles</a></li>
-<li class="chapter" data-level="2" data-path="02-regresion.html"><a href="#modelos-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>2</b> Modelos de Regresión</a>
+<li class="chapter" data-level="2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html"><i class="fa fa-check"></i><b>2</b> Modelos de Regresion</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="02-regresion.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
 <li class="chapter" data-level="2.2" data-path="02-regresion.html"><a href="#metodolog%C3%ADa"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
 <li class="chapter" data-level="2.3" data-path="02-regresion.html"><a href="#problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html"><i class="fa fa-check"></i><b>2.3.1</b> E1: Signo esperado y significancia</a></li>
+<li class="chapter" data-level="2.3.1" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e1-signo-esperado-y-significancia"><i class="fa fa-check"></i><b>2.3.1</b> E1: Signo esperado y significancia</a></li>
 <li class="chapter" data-level="2.3.2" data-path="02-regresion.html"><a href="#e2-regresi%C3%B3n-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
 <li class="chapter" data-level="2.3.3" data-path="02-regresion.html"><a href="#e3-selecci%C3%B3n-autom%C3%A1tica-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
 <li class="chapter" data-level="2.3.4" data-path="02-regresion.html"><a href="#e4-regresi%C3%B3n-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
-<li class="chapter" data-level="2.3.5" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#e5-capturar-efectos"><i class="fa fa-check"></i><b>2.3.5</b> E5: Capturar efectos</a></li>
+<li class="chapter" data-level="2.3.5" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e5-capturar-efectos"><i class="fa fa-check"></i><b>2.3.5</b> E5: Capturar efectos</a></li>
 <li class="chapter" data-level="2.3.6" data-path="02-regresion.html"><a href="#e6-coeficientes-y-par%C3%A1metros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
 <li class="chapter" data-level="2.3.7" data-path="02-regresion.html"><a href="#e7-qu%C3%A9-es-un-modelo-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
 <li class="chapter" data-level="2.3.8" data-path="02-regresion.html"><a href="#soluci%C3%B3n-problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3.8</b> Solución problemas teóricos</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problemas-aplicados"><i class="fa fa-check"></i><b>2.4</b> Problemas Aplicados</a>
+<li class="chapter" data-level="2.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problemas-aplicados"><i class="fa fa-check"></i><b>2.4</b> Problemas Aplicados</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-1"><i class="fa fa-check"></i><b>2.4.1</b> Problema 1</a></li>
-<li class="chapter" data-level="2.4.2" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-2"><i class="fa fa-check"></i><b>2.4.2</b> Problema 2</a></li>
-<li class="chapter" data-level="2.4.3" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-3"><i class="fa fa-check"></i><b>2.4.3</b> Problema 3</a></li>
-<li class="chapter" data-level="2.4.4" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-4---p1-control-1-primavera-2025"><i class="fa fa-check"></i><b>2.4.4</b> Problema 4 - P1 Control 1 Primavera 2025</a></li>
+<li class="chapter" data-level="2.4.1" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-1"><i class="fa fa-check"></i><b>2.4.1</b> Problema 1</a></li>
+<li class="chapter" data-level="2.4.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-2"><i class="fa fa-check"></i><b>2.4.2</b> Problema 2</a></li>
+<li class="chapter" data-level="2.4.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-3"><i class="fa fa-check"></i><b>2.4.3</b> Problema 3</a></li>
+<li class="chapter" data-level="2.4.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-4---p1-control-1-primavera-2025"><i class="fa fa-check"></i><b>2.4.4</b> Problema 4 - P1 Control 1 Primavera 2025</a></li>
 <li class="chapter" data-level="2.4.5" data-path="02-regresion.html"><a href="#problema-5---p1-control-oto%C3%B1o-2025"><i class="fa fa-check"></i><b>2.4.5</b> Problema 5 - P1 Control Otoño 2025</a></li>
-<li class="chapter" data-level="2.4.6" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-6---p1-control-primavera-2024"><i class="fa fa-check"></i><b>2.4.6</b> Problema 6 - P1 Control Primavera 2024</a></li>
+<li class="chapter" data-level="2.4.6" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-6---p1-control-primavera-2024"><i class="fa fa-check"></i><b>2.4.6</b> Problema 6 - P1 Control Primavera 2024</a></li>
 <li class="chapter" data-level="2.4.7" data-path="02-regresion.html"><a href="#problema-7---p1-control-1-oto%C3%B1o-2024"><i class="fa fa-check"></i><b>2.4.7</b> Problema 7 - P1 Control 1 Otoño 2024</a></li>
-<li class="chapter" data-level="2.4.8" data-path="modelos-de-regresión.html"><a href="modelos-de-regresión.html#problema-8---p1-control-primavera-2023"><i class="fa fa-check"></i><b>2.4.8</b> Problema 8 - P1 Control Primavera 2023</a></li>
+<li class="chapter" data-level="2.4.8" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-8---p1-control-primavera-2023"><i class="fa fa-check"></i><b>2.4.8</b> Problema 8 - P1 Control Primavera 2023</a></li>
 <li class="chapter" data-level="2.4.9" data-path="02-regresion.html"><a href="#problema-9---p1-control-oto%C3%B1o-2023"><i class="fa fa-check"></i><b>2.4.9</b> Problema 9 - P1 Control Otoño 2023</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="02-regresion.html"><a href="#modelos-probabil%C3%ADsticos"><i class="fa fa-check"></i><b>3</b> Modelos Probabilísticos</a>
+<li class="chapter" data-level="3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html"><i class="fa fa-check"></i><b>3</b> Modelos Probabilisticos</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="02-regresion.html"><a href="#introducci%C3%B3n-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
 <li class="chapter" data-level="3.2" data-path="02-regresion.html"><a href="#metodolog%C3%ADa-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
 <li class="chapter" data-level="3.3" data-path="02-regresion.html"><a href="#problemas-te%C3%B3ricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html"><i class="fa fa-check"></i><b>3.3.1</b> E1: Tasa de respuesta</a></li>
+<li class="chapter" data-level="3.3.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e1-tasa-de-respuesta"><i class="fa fa-check"></i><b>3.3.1</b> E1: Tasa de respuesta</a></li>
 <li class="chapter" data-level="3.3.2" data-path="02-regresion.html"><a href="#e2-distribuci%C3%B3n-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
 <li class="chapter" data-level="3.3.3" data-path="02-regresion.html"><a href="#e3-distribuci%C3%B3n-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
 <li class="chapter" data-level="3.3.4" data-path="02-regresion.html"><a href="#e4-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
-<li class="chapter" data-level="3.3.5" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e5-modelo-nbd"><i class="fa fa-check"></i><b>3.3.5</b> E5: Modelo NBD</a></li>
-<li class="chapter" data-level="3.3.6" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#e6-modelos-de-conteo"><i class="fa fa-check"></i><b>3.3.6</b> E6: Modelos de Conteo</a></li>
+<li class="chapter" data-level="3.3.5" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e5-modelo-nbd"><i class="fa fa-check"></i><b>3.3.5</b> E5: Modelo NBD</a></li>
+<li class="chapter" data-level="3.3.6" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e6-modelos-de-conteo"><i class="fa fa-check"></i><b>3.3.6</b> E6: Modelos de Conteo</a></li>
 <li class="chapter" data-level="3.3.7" data-path="02-regresion.html"><a href="#e7-tiempo-discreto-en-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problemas-aplicados-1"><i class="fa fa-check"></i><b>3.4</b> Problemas Aplicados</a>
+<li class="chapter" data-level="3.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problemas-aplicados-1"><i class="fa fa-check"></i><b>3.4</b> Problemas Aplicados</a>
 <ul>
-<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-1-1"><i class="fa fa-check"></i>Problema 1</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#soluci%C3%B3n"><i class="fa fa-check"></i>Solución</a></li>
-<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-2-1"><i class="fa fa-check"></i>Problema 2</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#soluci%C3%B3n-1"><i class="fa fa-check"></i>Solución</a></li>
-<li class="chapter" data-level="" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-3-1"><i class="fa fa-check"></i>Problema 3</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#soluci%C3%B3n-2"><i class="fa fa-check"></i>Solución</a></li>
-<li class="chapter" data-level="3.4.1" data-path="modelos-probabilísticos.html"><a href="modelos-probabilísticos.html#problema-4"><i class="fa fa-check"></i><b>3.4.1</b> Problema 4</a></li>
+<li class="chapter" data-level="3.4.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-1-1"><i class="fa fa-check"></i><b>3.4.1</b> Problema 1</a></li>
+<li class="chapter" data-level="3.4.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-2-1"><i class="fa fa-check"></i><b>3.4.2</b> Problema 2</a></li>
+<li class="chapter" data-level="3.4.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-3-1"><i class="fa fa-check"></i><b>3.4.3</b> Problema 3</a></li>
+<li class="chapter" data-level="3.4.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-4"><i class="fa fa-check"></i><b>3.4.4</b> Problema 4</a></li>
+<li class="chapter" data-level="3.4.5" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-5"><i class="fa fa-check"></i><b>3.4.5</b> Problema 5</a></li>
+<li class="chapter" data-level="3.4.6" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-6"><i class="fa fa-check"></i><b>3.4.6</b> Problema 6</a></li>
+<li class="chapter" data-level="3.4.7" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-7"><i class="fa fa-check"></i><b>3.4.7</b> Problema 7</a></li>
+<li class="chapter" data-level="3.4.8" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-8"><i class="fa fa-check"></i><b>3.4.8</b> Problema 8</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
@@ -161,8 +158,8 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="modelos-de-regresión" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Capítulo 2</span> Modelos de Regresión<a href="#modelos-de-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="modelos-de-regresion" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Modelos de Regresion<a href="modelos-de-regresion.html#modelos-de-regresion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introducción" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Introducción<a href="#introducci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En este capítulo se abarcarán problemas relacionados a modelos de
@@ -212,7 +209,7 @@ responder la pregunta de gestión original.</p></li>
 <div id="problemas-teóricos" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Problemas Teóricos<a href="#problemas-te%C3%B3ricos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="e1-signo-esperado-y-significancia" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> E1: Signo esperado y significancia<a href="modelos-de-regresión.html#e1-signo-esperado-y-significancia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.3.1</span> E1: Signo esperado y significancia<a href="modelos-de-regresion.html#e1-signo-esperado-y-significancia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Al evaluar la inclusión de una variable en base a su signo esperado y
 significancia estadística, ¿cuál de los siguientes casos NO es una buena
 recomendación para un modelo de pronóstico?</p>
@@ -267,7 +264,7 @@ unidades en <span class="math inline">\(y\)</span>.</li>
 </ol>
 </div>
 <div id="e5-capturar-efectos" class="section level3 hasAnchor" number="2.3.5">
-<h3><span class="header-section-number">2.3.5</span> E5: Capturar efectos<a href="modelos-de-regresión.html#e5-capturar-efectos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.3.5</span> E5: Capturar efectos<a href="modelos-de-regresion.html#e5-capturar-efectos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>¿Cuál de las siguientes especificaciones NO permite capturar que las
 diferencias en el comportamiento <span class="math inline">\(y\)</span> se van incrementando a medida que
 aumenta la edad de los sujetos?</p>
@@ -341,9 +338,9 @@ de una relación causal }</p>
 </div>
 </div>
 <div id="problemas-aplicados" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Problemas Aplicados<a href="modelos-de-regresión.html#problemas-aplicados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.4</span> Problemas Aplicados<a href="modelos-de-regresion.html#problemas-aplicados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="problema-1" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> Problema 1<a href="modelos-de-regresión.html#problema-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.1</span> Problema 1<a href="modelos-de-regresion.html#problema-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un reconocido grupo empresarial que manufactura productos de aseo y
 limpieza de diversa índole le pide a usted evaluar el impacto de la
 pandemia en sus ventas a partir del registro obtenido por distintas
@@ -498,7 +495,7 @@ positivo para feriados.</p></li>
 <hr />
 </div>
 <div id="problema-2" class="section level3 hasAnchor" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> Problema 2<a href="modelos-de-regresión.html#problema-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.2</span> Problema 2<a href="modelos-de-regresion.html#problema-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un cine pequeño quiere impulsar la venta de entradas para este verano.
 Para atraer de manera eficiente a los clientes deciden ser selectivos en
 las películas que tendrán en cartelera. Para ello, desean determinar las
@@ -506,11 +503,11 @@ características de las películas que provocan un mayor ingreso. El
 equipo de ventas dispone de un panel de datos con el historial de las
 3,800 funciones del año de las 1,250 películas presentadas con los
 siguientes datos:</p>
-<table style="width:99%;">
+<table style="width:100%;">
 <colgroup>
-<col width="15%" />
-<col width="68%" />
-<col width="15%" />
+<col width="19%" />
+<col width="60%" />
+<col width="19%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -521,8 +518,7 @@ siguientes datos:</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">I
-dFunción</td>
+<td align="center">I dFunción</td>
 <td align="center">Identificador de la función</td>
 <td align="center">-</td>
 </tr>
@@ -543,39 +539,32 @@ dFunción</td>
 </tr>
 <tr class="odd">
 <td align="center">Duración</td>
-<td align="center">Duración de la película presentada [en
-Minutos]</td>
+<td align="center">Duración de la película presentada [en Minutos]</td>
 <td align="center">103.32</td>
 </tr>
 <tr class="even">
 <td align="center">Tipo</td>
-<td align="center">Tipo de película presentada {Acción, Comedia,
-Romance, Drama, Terror}</td>
+<td align="center">Tipo de película presentada {Acción, Comedia, Romance, Drama, Terror}</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
 <td align="center">Edad</td>
-<td align="center">Restricción de edad de la película {TE, TE+7,
-MA+14, MA+18}</td>
+<td align="center">Restricción de edad de la película {TE, TE+7, MA+14, MA+18}</td>
 <td align="center">-</td>
 </tr>
 <tr class="even">
 <td align="center">Estudio</td>
-<td align="center">Estudio que produjo la película {Dis, WB,
-Para, Uni}</td>
+<td align="center">Estudio que produjo la película {Dis, WB, Para, Uni}</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
-<td align="center">Pre
-supuesto</td>
+<td align="center">Pre supuesto</td>
 <td align="center">Presupuesto de la película [en CLP]</td>
-<td align="center">160
-,200,000</td>
+<td align="center">160 ,200,000</td>
 </tr>
 <tr class="even">
 <td align="center">Ingreso</td>
-<td align="center">Ingreso recibido por las entradas vendidas en
-la función [en CLP]</td>
+<td align="center">Ingreso recibido por las entradas vendidas en la función [en CLP]</td>
 <td align="center">714,500</td>
 </tr>
 </tbody>
@@ -585,373 +574,105 @@ la función [en CLP]</td>
 \]</span> Para tener una mejor idea de cómo se ven los datos, se pueden
 observar estos 6 registros:</p>
 <div style="overflow-x:auto;">
-<table>
+<table style="width:100%;">
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
 <thead>
-<tr>
-<th>
-<p>
-IdFunción<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Fecha<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Hora<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Película<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Duración<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Tipo<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Edad<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Estudio<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Presupuesto<sub>i</sub>
-</p>
-</th>
-<th>
-<p>
-Ingreso<sub>i</sub>
-</p>
-</th>
+<tr class="header">
+<th>IdFunción<sub>i</sub></th>
+<th>Fecha<sub>i</sub></th>
+<th>Hora<sub>i</sub></th>
+<th>Película<sub>i</sub></th>
+<th>Duración<sub>i</sub></th>
+<th>Tipo<sub>i</sub></th>
+<th>Edad<sub>i</sub></th>
+<th>Estudio<sub>i</sub></th>
+<th>Presupuesto<sub>i</sub></th>
+<th>Ingreso<sub>i</sub></th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
-<p>
-14156
-</p>
-</td>
-<td>
-<p>
-23/07/2022
-</p>
-</td>
-<td>
-<p>
-19:00
-</p>
-</td>
-<td>
-<p>
-Odín 4
-</p>
-</td>
-<td>
-<p>
-105
-</p>
-</td>
-<td>
-<p>
-Acción
-</p>
-</td>
-<td>
-<p>
-TE+7
-</p>
-</td>
-<td>
-<p>
-Dis
-</p>
-</td>
-<td>
-<p>
-354,970,000
-</p>
-</td>
-<td>
-<p>
-948,640
-</p>
-</td>
+<tr class="odd">
+<td>14156</td>
+<td>23/07/2022</td>
+<td>19:00</td>
+<td>Odín 4</td>
+<td>105</td>
+<td>Acción</td>
+<td>TE+7</td>
+<td>Dis</td>
+<td>354,970,000</td>
+<td>948,640</td>
 </tr>
-<tr>
-<td>
-<p>
-14157
-</p>
-</td>
-<td>
-<p>
-23/07/2022
-</p>
-</td>
-<td>
-<p>
-22:00
-</p>
-</td>
-<td>
-<p>
-Chillido 5
-</p>
-</td>
-<td>
-<p>
-132
-</p>
-</td>
-<td>
-<p>
-Terror
-</p>
-</td>
-<td>
-<p>
-MA+18
-</p>
-</td>
-<td>
-<p>
-Para
-</p>
-</td>
-<td>
-<p>
-135,600,000
-</p>
-</td>
-<td>
-<p>
-804,300
-</p>
-</td>
+<tr class="even">
+<td>14157</td>
+<td>23/07/2022</td>
+<td>22:00</td>
+<td>Chillido 5</td>
+<td>132</td>
+<td>Terror</td>
+<td>MA+18</td>
+<td>Para</td>
+<td>135,600,000</td>
+<td>804,300</td>
 </tr>
-<tr>
-<td>
-<p>
-14158
-</p>
-</td>
-<td>
-<p>
-24/07/2022
-</p>
-</td>
-<td>
-<p>
-11:00
-</p>
-</td>
-<td>
-<p>
-Odín 4
-</p>
-</td>
-<td>
-<p>
-105
-</p>
-</td>
-<td>
-<p>
-Acción
-</p>
-</td>
-<td>
-<p>
-TE+7
-</p>
-</td>
-<td>
-<p>
-Dis
-</p>
-</td>
-<td>
-<p>
-354,970,000
-</p>
-</td>
-<td>
-<p>
-893,000
-</p>
-</td>
+<tr class="odd">
+<td>14158</td>
+<td>24/07/2022</td>
+<td>11:00</td>
+<td>Odín 4</td>
+<td>105</td>
+<td>Acción</td>
+<td>TE+7</td>
+<td>Dis</td>
+<td>354,970,000</td>
+<td>893,000</td>
 </tr>
-<tr>
-<td>
-<p>
-14159
-</p>
-</td>
-<td>
-<p>
-24/07/2022
-</p>
-</td>
-<td>
-<p>
-15:30
-</p>
-</td>
-<td>
-<p>
-Desafiar Barreras
-</p>
-</td>
-<td>
-<p>
-158
-</p>
-</td>
-<td>
-<p>
-Romance
-</p>
-</td>
-<td>
-<p>
-MA+14
-</p>
-</td>
-<td>
-<p>
-WB
-</p>
-</td>
-<td>
-<p>
-94,500,000
-</p>
-</td>
-<td>
-<p>
-569,200
-</p>
-</td>
+<tr class="even">
+<td>14159</td>
+<td>24/07/2022</td>
+<td>15:30</td>
+<td>Desafiar Barreras</td>
+<td>158</td>
+<td>Romance</td>
+<td>MA+14</td>
+<td>WB</td>
+<td>94,500,000</td>
+<td>569,200</td>
 </tr>
-<tr>
-<td>
-<p>
-14160
-</p>
-</td>
-<td>
-<p>
-24/07/2022
-</p>
-</td>
-<td>
-<p>
-20:15
-</p>
-</td>
-<td>
-<p>
-Odín 4
-</p>
-</td>
-<td>
-<p>
-105
-</p>
-</td>
-<td>
-<p>
-Acción
-</p>
-</td>
-<td>
-<p>
-TE+7
-</p>
-</td>
-<td>
-<p>
-Dis
-</p>
-</td>
-<td>
-<p>
-354,970,000
-</p>
-</td>
-<td>
-<p>
-832,150
-</p>
-</td>
+<tr class="odd">
+<td>14160</td>
+<td>24/07/2022</td>
+<td>20:15</td>
+<td>Odín 4</td>
+<td>105</td>
+<td>Acción</td>
+<td>TE+7</td>
+<td>Dis</td>
+<td>354,970,000</td>
+<td>832,150</td>
 </tr>
-<tr>
-<td>
-<p>
-14161
-</p>
-</td>
-<td>
-<p>
-25/07/2022
-</p>
-</td>
-<td>
-<p>
-11:00
-</p>
-</td>
-<td>
-<p>
-Desafiar Barreras
-</p>
-</td>
-<td>
-<p>
-158
-</p>
-</td>
-<td>
-<p>
-Romance
-</p>
-</td>
-<td>
-<p>
-MA+14
-</p>
-</td>
-<td>
-<p>
-WB
-</p>
-</td>
-<td>
-<p>
-94,500,000
-</p>
-</td>
-<td>
-<p>
-452,900
-</p>
-</td>
+<tr class="even">
+<td>14161</td>
+<td>25/07/2022</td>
+<td>11:00</td>
+<td>Desafiar Barreras</td>
+<td>158</td>
+<td>Romance</td>
+<td>MA+14</td>
+<td>WB</td>
+<td>94,500,000</td>
+<td>452,900</td>
 </tr>
 </tbody>
 </table>
@@ -968,25 +689,21 @@ total en ventas para cada película.</p></li>
 <li><p>El equipo escogió como variable dependiente el logaritmo de la suma
 de los ingresos de las funciones para cada película y generó dos
 modelos distintos, entregando los siguientes resultados:</p>
-<table style="width:96%;">
+<table>
 <colgroup>
-<col width="19%" />
-<col width="19%" />
-<col width="19%" />
-<col width="19%" />
-<col width="19%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center"></th>
-<th align="center">Modelo 1
-Coeficiente</th>
-<th align="center">Modelo 1
-p-valor</th>
-<th align="center">Modelo 2
-Coeficiente</th>
-<th align="center">Modelo 2
-p-valor</th>
+<th align="center">Modelo 1 Coeficiente</th>
+<th align="center">Modelo 1 p-valor</th>
+<th align="center">Modelo 2 Coeficiente</th>
+<th align="center">Modelo 2 p-valor</th>
 </tr>
 </thead>
 <tbody>
@@ -1005,8 +722,7 @@ p-valor</th>
 <td align="center">0.004</td>
 </tr>
 <tr class="odd">
-<td align="center">log(P
-resupuesto)</td>
+<td align="center">log(P resupuesto)</td>
 <td align="center">0.62</td>
 <td align="center">0.005</td>
 <td align="center">1.15</td>
@@ -1048,16 +764,14 @@ resupuesto)</td>
 <td align="center">0.520</td>
 </tr>
 <tr class="odd">
-<td align="center">T
-ipo.Comedia</td>
+<td align="center">T ipo.Comedia</td>
 <td align="center">-</td>
 <td align="center">-</td>
 <td align="center">1.63</td>
 <td align="center">0.017</td>
 </tr>
 <tr class="even">
-<td align="center">T
-ipo.Romance</td>
+<td align="center">T ipo.Romance</td>
 <td align="center">-</td>
 <td align="center">-</td>
 <td align="center">2.11</td>
@@ -1099,8 +813,7 @@ ipo.Romance</td>
 <td align="center">-</td>
 </tr>
 <tr class="even">
-<td align="center">E
-studio.Para</td>
+<td align="center">E studio.Para</td>
 <td align="center">-0.63</td>
 <td align="center">0.186</td>
 <td align="center">-</td>
@@ -1179,32 +892,30 @@ estos montos: <span class="math inline">\(\log(Ingreso)\)</span> y <span class="
 <p>Para ser más claros, la tabla con las transformaciones apropiadas
 tendría los 6 registros mostrados anteriormente de la siguiente
 manera:</p>
-<table style="width:93%;">
+<table style="width:100%;">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center"><span class="math inline">\(Pelí
-cula_j\)</span></th>
+       cula_j\)</span></th>
 <th align="center"><span class="math inline">\(Dura
-ción_j\)</span></th>
-<th align="center">$
-Tipo_j$</th>
-<th align="center">$
-Edad_j$</th>
+                       ción_j\)</span></th>
+<th align="center">$ Tipo_j$</th>
+<th align="center">$ Edad_j$</th>
 <th align="center"><span class="math inline">\(Est
-udio_j\)</span></th>
+                                                             udio_j\)</span></th>
 <th align="center"><span class="math inline">\(log(
-Pre_j)\)</span></th>
+                                                                       Pre_j)\)</span></th>
 <th align="center"><span class="math inline">\(log(
-Ing_j)\)</span></th>
+                                                                                 Ing_j)\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -1218,9 +929,7 @@ Ing_j)\)</span></th>
 <td align="center">6.43</td>
 </tr>
 <tr class="even">
-<td align="center">C
-hillido
-5</td>
+<td align="center">C hillido 5</td>
 <td align="center">132</td>
 <td align="center">Terror</td>
 <td align="center">MA+18</td>
@@ -1229,10 +938,7 @@ hillido
 <td align="center">5.91</td>
 </tr>
 <tr class="odd">
-<td align="center">D
-esafiar
-B
-arreras</td>
+<td align="center">D esafiar B arreras</td>
 <td align="center">158</td>
 <td align="center">Romance</td>
 <td align="center">MA+14</td>
@@ -1333,7 +1039,7 @@ del vector sea la cantidad de coeficientes a buscar.</p></li>
 <hr />
 </div>
 <div id="problema-3" class="section level3 hasAnchor" number="2.4.3">
-<h3><span class="header-section-number">2.4.3</span> Problema 3<a href="modelos-de-regresión.html#problema-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.3</span> Problema 3<a href="modelos-de-regresion.html#problema-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Debido a la gran variedad de alternativas que tiene el consumidor para
 satisfacer sus necesidades, empresas de distintos sectores han buscado
 formas de fidelizar a sus clientes mediante programas de recompensas.
@@ -1416,18 +1122,15 @@ observa en las Tablas 1 y 2:</p>
 </tr>
 <tr class="even">
 <td align="center">Acreditación</td>
-<td align="center">Cantidad de puntos acreditados
-por el cliente en el mes <span class="math inline">\(t\)</span></td>
+<td align="center">Cantidad de puntos acreditados por el cliente en el mes <span class="math inline">\(t\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Canje</td>
-<td align="center">Cantidad de productos canjeados
-por el cliente en el mes <span class="math inline">\(t\)</span></td>
+<td align="center">Cantidad de productos canjeados por el cliente en el mes <span class="math inline">\(t\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">TipoAcreditación</td>
-<td align="center">Tiendas Propias, Comercios
-Asociados o Tarjeta Bancaria</td>
+<td align="center">Tiendas Propias, Comercios Asociados o Tarjeta Bancaria</td>
 </tr>
 <tr class="odd">
 <td align="center">TipoCanje</td>
@@ -1435,13 +1138,11 @@ Asociados o Tarjeta Bancaria</td>
 </tr>
 <tr class="even">
 <td align="center">Promoción</td>
-<td align="center">1 si hubo promo o descuentos
-adicionales en el mes <span class="math inline">\(t\)</span></td>
+<td align="center">1 si hubo promo o descuentos adicionales en el mes <span class="math inline">\(t\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Mail</td>
-<td align="center">1 si se avisó estado de cuenta al
-cliente via mail en el mes <span class="math inline">\(t\)</span></td>
+<td align="center">1 si se avisó estado de cuenta al cliente via mail en el mes <span class="math inline">\(t\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1487,12 +1188,12 @@ llevan más años tienden a tener un comportamiento similar.</li>
 entender el comportamiento de acreditación (<span class="math inline">\(A_{it}\)</span>), donde <span class="math inline">\(f\)</span>
 representa alguna transformación o función de la información
 disponible, y cuyos resultados se encuentra en la tabla siguiente:</p>
-<table style="width:96%;">
+<table>
 <colgroup>
-<col width="29%" />
-<col width="22%" />
-<col width="22%" />
-<col width="22%" />
+<col width="28%" />
+<col width="23%" />
+<col width="23%" />
+<col width="23%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1505,57 +1206,42 @@ disponible, y cuyos resultados se encuentra en la tabla siguiente:</p>
 <tbody>
 <tr class="odd">
 <td align="center"><span class="math inline">\(\alpha_{0}\)</span></td>
-<td align="center"><span class="math inline">\(35.9\)</span>
-<span class="math inline">\((12.8)\)</span></td>
-<td align="center"><span class="math inline">\(37.1\)</span>
-<span class="math inline">\((8.6)\)</span></td>
-<td align="center"><span class="math inline">\(32.7\)</span>
-<span class="math inline">\((11.5)\)</span></td>
+<td align="center"><span class="math inline">\(35.9\)</span> <span class="math inline">\((12.8)\)</span></td>
+<td align="center"><span class="math inline">\(37.1\)</span> <span class="math inline">\((8.6)\)</span></td>
+<td align="center"><span class="math inline">\(32.7\)</span> <span class="math inline">\((11.5)\)</span></td>
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(f\)</span>(Ingreso)</td>
-<td align="center"><span class="math inline">\(12.7\)</span>
-<span class="math inline">\((5.1)\)</span></td>
+<td align="center"><span class="math inline">\(12.7\)</span> <span class="math inline">\((5.1)\)</span></td>
 <td align="center"><span class="math inline">\(-\)</span></td>
-<td align="center"><span class="math inline">\(10.7\)</span>
-<span class="math inline">\((2.9)\)</span></td>
+<td align="center"><span class="math inline">\(10.7\)</span> <span class="math inline">\((2.9)\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center"><span class="math inline">\(f\)</span>(Edad)</td>
-<td align="center"><span class="math inline">\(-1.5\)</span>
-<span class="math inline">\((0.6)\)</span></td>
-<td align="center"><span class="math inline">\(-1.2\)</span>
-<span class="math inline">\((2.3)\)</span></td>
-<td align="center"><span class="math inline">\(-0.6\)</span>
-<span class="math inline">\((0.3)\)</span></td>
+<td align="center"><span class="math inline">\(-1.5\)</span> <span class="math inline">\((0.6)\)</span></td>
+<td align="center"><span class="math inline">\(-1.2\)</span> <span class="math inline">\((2.3)\)</span></td>
+<td align="center"><span class="math inline">\(-0.6\)</span> <span class="math inline">\((0.3)\)</span></td>
 </tr>
 <tr class="even">
 <td align="center"><span class="math inline">\(f\)</span>(Mail)</td>
 <td align="center"><span class="math inline">\(-\)</span></td>
-<td align="center"><span class="math inline">\(-0.3\)</span>
-<span class="math inline">\((0.2)\)</span></td>
-<td align="center"><span class="math inline">\(-1.9\)</span>
-<span class="math inline">\((5.1)\)</span></td>
+<td align="center"><span class="math inline">\(-0.3\)</span> <span class="math inline">\((0.2)\)</span></td>
+<td align="center"><span class="math inline">\(-1.9\)</span> <span class="math inline">\((5.1)\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center"><span class="math inline">\(f\)</span>(Promoción)</td>
 <td align="center"><span class="math inline">\(-\)</span></td>
-<td align="center"><span class="math inline">\(15.1\)</span>
-<span class="math inline">\((6.7)\)</span></td>
-<td align="center"><span class="math inline">\(10.9\)</span>
-<span class="math inline">\((4.2)\)</span></td>
+<td align="center"><span class="math inline">\(15.1\)</span> <span class="math inline">\((6.7)\)</span></td>
+<td align="center"><span class="math inline">\(10.9\)</span> <span class="math inline">\((4.2)\)</span></td>
 </tr>
 <tr class="even">
-<td align="center">$
-f$(TiendasPropias)</td>
+<td align="center">$ f$(TiendasPropias)</td>
 <td align="center"><span class="math inline">\(-\)</span></td>
-<td align="center"><span class="math inline">\(10.1\)</span>
-<span class="math inline">\((3.7)\)</span></td>
+<td align="center"><span class="math inline">\(10.1\)</span> <span class="math inline">\((3.7)\)</span></td>
 <td align="center"><span class="math inline">\(8.9\)</span> <span class="math inline">\((2.1)\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(f\)</span>(C
-omerciosAsociados)</td>
+<td align="center"><span class="math inline">\(f\)</span>(C omerciosAsociados)</td>
 <td align="center"><span class="math inline">\(-\)</span></td>
 <td align="center"><span class="math inline">\(3.6\)</span> <span class="math inline">\((2.5)\)</span></td>
 <td align="center"><span class="math inline">\(2.9\)</span> <span class="math inline">\((2.3)\)</span></td>
@@ -1637,7 +1323,7 @@ la capacidad de pronóstico, se prefiere aquel con menor MAPE
 <hr />
 </div>
 <div id="problema-4---p1-control-1-primavera-2025" class="section level3 hasAnchor" number="2.4.4">
-<h3><span class="header-section-number">2.4.4</span> Problema 4 - P1 Control 1 Primavera 2025<a href="modelos-de-regresión.html#problema-4---p1-control-1-primavera-2025" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.4</span> Problema 4 - P1 Control 1 Primavera 2025<a href="modelos-de-regresion.html#problema-4---p1-control-1-primavera-2025" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En un contexto de globalización, movilidad laboral y teletrabajo,
 comparar el costo de vida entre países se ha vuelto una preocupación
 frecuente para profesionales y estudiantes. Aunque la fracción de
@@ -1722,25 +1408,20 @@ máquina podrían generar mejores resultados. Para ello se considera
 usar un modelo de k-vecinos más cercanos. Defina una métrica de
 distancia y determine qué si la propiedad B o la propiedad C es más
 cercana a la propiedad A.</p>
-<table style="width:96%;">
+<table>
 <colgroup>
-<col width="19%" />
-<col width="19%" />
-<col width="19%" />
-<col width="19%" />
-<col width="19%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">Propiedad</th>
-<th align="center">Tiene
-Piscina</th>
-<th align="center">Tiene
-Calefacción
-Central</th>
-<th align="center">Tiene
-Esta
-cionamiento</th>
+<th align="center">Tiene Piscina</th>
+<th align="center">Tiene Calefacción Central</th>
+<th align="center">Tiene Esta cionamiento</th>
 <th align="center">Ciudad</th>
 </tr>
 </thead>
@@ -2090,7 +1771,7 @@ búsquedas posteriores.</li>
 <hr />
 </div>
 <div id="problema-6---p1-control-primavera-2024" class="section level3 hasAnchor" number="2.4.6">
-<h3><span class="header-section-number">2.4.6</span> Problema 6 - P1 Control Primavera 2024<a href="modelos-de-regresión.html#problema-6---p1-control-primavera-2024" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.6</span> Problema 6 - P1 Control Primavera 2024<a href="modelos-de-regresion.html#problema-6---p1-control-primavera-2024" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una de las características más relevantes de los ambientes de negocio
 contemporáneos, es la disponibilidad de grandes cantidades de
 información respecto al comportamiento de clientes. Es así como día a
@@ -2279,110 +1960,72 @@ escenarios pesimistas y optimistas se evalúan en combinaciones más
 extremas que favorecen y desfavorecen la demanda respectivamente.
 Los pronósticos generados se despliegan en la Tabla 2.</p>
 <p><span class="math display">\[\text{Tabla 2: Pronóstico de demanda para cuatro tiendas seleccionadas}\]</span></p>
-<table style="width:93%;">
+<table style="width:100%;">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">Tienda</th>
 <th align="center"></th>
-<th align="center">E
-cuación
-1</th>
+<th align="center">E cuación 1</th>
 <th align="center"></th>
 <th align="center"></th>
-<th align="center">E
-cuación
-2</th>
+<th align="center">E cuación 2</th>
 <th align="center"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center"></td>
-<td align="center"><strong>Pesi
-mista</strong></td>
-<td align="center"><strong>N
-eutro</strong></td>
-<td align="center"><strong>Opti
-mista</strong></td>
-<td align="center"><strong>Pesi
-mista</strong></td>
-<td align="center"><strong>N
-eutro</strong></td>
-<td align="center"><strong>Opti
-mista</strong></td>
+<td align="center"><strong>Pesi mista</strong></td>
+<td align="center"><strong>N eutro</strong></td>
+<td align="center"><strong>Opti mista</strong></td>
+<td align="center"><strong>Pesi mista</strong></td>
+<td align="center"><strong>N eutro</strong></td>
+<td align="center"><strong>Opti mista</strong></td>
 </tr>
 <tr class="even">
-<td align="center">Tienda
-A01</td>
-<td align="center">316,6
-(11,8)</td>
-<td align="center">345,1
-(7,2)</td>
-<td align="center">392,1
-(12,1)</td>
-<td align="center">318,5
-(12,2)</td>
-<td align="center">352,1
-(6,7)</td>
-<td align="center">387,7
-(10,9)</td>
+<td align="center">Tienda A01</td>
+<td align="center">316,6 (11,8)</td>
+<td align="center">345,1 (7,2)</td>
+<td align="center">392,1 (12,1)</td>
+<td align="center">318,5 (12,2)</td>
+<td align="center">352,1 (6,7)</td>
+<td align="center">387,7 (10,9)</td>
 </tr>
 <tr class="odd">
-<td align="center">Tienda
-A12</td>
-<td align="center">555,8
-(12,2)</td>
-<td align="center">578,8
-(8,1)</td>
-<td align="center">602,2
-(11,8)</td>
-<td align="center">547,6
-(11,0)</td>
-<td align="center">566,3
-(9,1)</td>
-<td align="center">607,7
-(11,6)</td>
+<td align="center">Tienda A12</td>
+<td align="center">555,8 (12,2)</td>
+<td align="center">578,8 (8,1)</td>
+<td align="center">602,2 (11,8)</td>
+<td align="center">547,6 (11,0)</td>
+<td align="center">566,3 (9,1)</td>
+<td align="center">607,7 (11,6)</td>
 </tr>
 <tr class="even">
-<td align="center">Tienda
-B09</td>
-<td align="center">834,4
-(14,3)</td>
-<td align="center">888,9
-(9,2)</td>
-<td align="center">965,4
-(13,3)</td>
-<td align="center">811,4
-(15,9)</td>
-<td align="center">874,9
-(8,9)</td>
-<td align="center">954,7
-(13,8)</td>
+<td align="center">Tienda B09</td>
+<td align="center">834,4 (14,3)</td>
+<td align="center">888,9 (9,2)</td>
+<td align="center">965,4 (13,3)</td>
+<td align="center">811,4 (15,9)</td>
+<td align="center">874,9 (8,9)</td>
+<td align="center">954,7 (13,8)</td>
 </tr>
 <tr class="odd">
-<td align="center">Tienda
-B14</td>
-<td align="center">733,9
-(13,6)</td>
-<td align="center">786,6
-(8,4)</td>
-<td align="center">822,3
-(12,8)</td>
-<td align="center">728,6
-(11,5)</td>
-<td align="center">791,9
-(8,7)</td>
-<td align="center">817,8
-(12,6)</td>
+<td align="center">Tienda B14</td>
+<td align="center">733,9 (13,6)</td>
+<td align="center">786,6 (8,4)</td>
+<td align="center">822,3 (12,8)</td>
+<td align="center">728,6 (11,5)</td>
+<td align="center">791,9 (8,7)</td>
+<td align="center">817,8 (12,6)</td>
 </tr>
 </tbody>
 </table>
@@ -2620,23 +2263,19 @@ entrenamiento en el desempeño del agente virtual?</p></li>
 <li><p>(1 punto) ¿Cómo podríamos determinar el impacto de la
 introducción de restricciones en la estrategia de entrenamiento?</p></li>
 </ol>
-<table style="width:97%;">
+<table>
 <colgroup>
-<col width="22%" />
-<col width="22%" />
-<col width="25%" />
+<col width="24%" />
+<col width="24%" />
+<col width="24%" />
 <col width="27%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
-<th align="center">Experiencia
-(Coeficiente)</th>
-<th align="center">Resolutividad
-(Coeficiente)</th>
-<th align="center">Porcentaje
-Errores
-(Coeficiente)</th>
+<th align="center">Experiencia (Coeficiente)</th>
+<th align="center">Resolutividad (Coeficiente)</th>
+<th align="center">Porcentaje Errores (Coeficiente)</th>
 </tr>
 </thead>
 <tbody>
@@ -2659,15 +2298,13 @@ Errores
 <td align="center">-0.262</td>
 </tr>
 <tr class="even">
-<td align="center">Eficacia
-entrada</td>
+<td align="center">Eficacia entrada</td>
 <td align="center">0.174 ***</td>
 <td align="center">0.155 ***</td>
 <td align="center">0.541</td>
 </tr>
 <tr class="odd">
-<td align="center">Eficacia
-salida</td>
+<td align="center">Eficacia salida</td>
 <td align="center">0.100 ***</td>
 <td align="center">-0.030</td>
 <td align="center">1.400</td>
@@ -2679,8 +2316,7 @@ salida</td>
 <td align="center">0.508</td>
 </tr>
 <tr class="odd">
-<td align="center">Tiempo
-Interacción</td>
+<td align="center">Tiempo Interacción</td>
 <td align="center">-0.006</td>
 <td align="center">-0.024 ***</td>
 <td align="center">0.094</td>
@@ -2812,7 +2448,7 @@ las restricciones solo tendrían un impacto en la resolutividad.</p>
 <hr />
 </div>
 <div id="problema-8---p1-control-primavera-2023" class="section level3 hasAnchor" number="2.4.8">
-<h3><span class="header-section-number">2.4.8</span> Problema 8 - P1 Control Primavera 2023<a href="modelos-de-regresión.html#problema-8---p1-control-primavera-2023" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.8</span> Problema 8 - P1 Control Primavera 2023<a href="modelos-de-regresion.html#problema-8---p1-control-primavera-2023" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Con el desarrollo de los canales digitales, muchas industrias han
 <em>desintermediarizado</em> la distribución de productos y servicios. Este es
 precisamente el caso de la industria musical en que tanto artistas
@@ -2885,38 +2521,25 @@ partir de los registros disponible</p></li>
 describir la popularidad de las canciones dentro de la plataforma.
 Los resultados de estos dos modelos se reportan en la Tabla 1</p>
 <p><span class="math display">\[\text{Tabla 1: Resultados modelos alternativos de regresión}\]</span></p>
-<table style="width:93%;">
+<table style="width:100%;">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">V
-ariable</th>
-<th align="center">Modelo
-1
-Coef
-iciente</th>
-<th align="center">Modelo
-1 SE</th>
-<th align="center">Modelo
-2
-Coef
-iciente</th>
-<th align="center">Modelo
-2 SE</th>
-<th align="center">Modelo
-3
-Coef
-iciente</th>
-<th align="center">Modelo
-3 SE</th>
+<th align="center">V ariable</th>
+<th align="center">Modelo 1 Coef iciente</th>
+<th align="center">Modelo 1 SE</th>
+<th align="center">Modelo 2 Coef iciente</th>
+<th align="center">Modelo 2 SE</th>
+<th align="center">Modelo 3 Coef iciente</th>
+<th align="center">Modelo 3 SE</th>
 </tr>
 </thead>
 <tbody>
@@ -2950,8 +2573,7 @@ ngth})\)</span></td>
 <td align="center">0.001</td>
 </tr>
 <tr class="even">
-<td align="center">Dance
-ability</td>
+<td align="center">Dance ability</td>
 <td align="center">2.345</td>
 <td align="center">0.002</td>
 <td align="center">0.091</td>
@@ -3181,42 +2803,35 @@ lunes=1, hasta domingo=7).</li>
 <p>Como ilustración, se muestran las primeras seis entradas se presentan en
 la Tabla 1.</p>
 <p><span class="math display">\[\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias}\]</span></p>
-<table style="width:88%;">
+<table>
 <colgroup>
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
+<col width="10%" />
+<col width="18%" />
+<col width="8%" />
+<col width="14%" />
+<col width="14%" />
+<col width="6%" />
+<col width="6%" />
+<col width="8%" />
+<col width="12%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">I
-dZip</th>
+<th align="center">I dZip</th>
 <th align="center">Date</th>
 <th align="center">Hour</th>
-<th align="center">NOrd
-ersC</th>
-<th align="center">NOrd
-ersN</th>
+<th align="center">NOrd ersC</th>
+<th align="center">NOrd ersN</th>
 <th align="center">Day</th>
 <th align="center">Mes</th>
 <th align="center">Rain</th>
-<th align="center">IM
-ACEC</th>
+<th align="center">IM ACEC</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">1
-5217</td>
-<td align="center">02
-/01/
-2018</td>
+<td align="center">1 5217</td>
+<td align="center">02 /01/ 2018</td>
 <td align="center">8</td>
 <td align="center">248</td>
 <td align="center">0</td>
@@ -3226,11 +2841,8 @@ ACEC</th>
 <td align="center">0.02</td>
 </tr>
 <tr class="even">
-<td align="center">1
-5217</td>
-<td align="center">02
-/01/
-2018</td>
+<td align="center">1 5217</td>
+<td align="center">02 /01/ 2018</td>
 <td align="center">9</td>
 <td align="center">325</td>
 <td align="center">0</td>
@@ -3240,11 +2852,8 @@ ACEC</th>
 <td align="center">0.02</td>
 </tr>
 <tr class="odd">
-<td align="center">1
-5217</td>
-<td align="center">02
-/01/
-2018</td>
+<td align="center">1 5217</td>
+<td align="center">02 /01/ 2018</td>
 <td align="center">10</td>
 <td align="center">331</td>
 <td align="center">13</td>
@@ -3254,11 +2863,8 @@ ACEC</th>
 <td align="center">0.02</td>
 </tr>
 <tr class="even">
-<td align="center">2
-3156</td>
-<td align="center">03
-/01/
-2018</td>
+<td align="center">2 3156</td>
+<td align="center">03 /01/ 2018</td>
 <td align="center">8</td>
 <td align="center">1345</td>
 <td align="center">1</td>
@@ -3268,11 +2874,8 @@ ACEC</th>
 <td align="center">0.02</td>
 </tr>
 <tr class="odd">
-<td align="center">2
-3156</td>
-<td align="center">03
-/01/
-2018</td>
+<td align="center">2 3156</td>
+<td align="center">03 /01/ 2018</td>
 <td align="center">9</td>
 <td align="center">1221</td>
 <td align="center">0</td>
@@ -3282,11 +2885,8 @@ ACEC</th>
 <td align="center">0.02</td>
 </tr>
 <tr class="even">
-<td align="center">2
-3156</td>
-<td align="center">03
-/01/
-2018</td>
+<td align="center">2 3156</td>
+<td align="center">03 /01/ 2018</td>
 <td align="center">10</td>
 <td align="center">1436</td>
 <td align="center">54</td>
@@ -3330,47 +2930,30 @@ registros disponibles en la base de datos.</p></li>
 describir la demanda por servicios de <em>KornerK</em>. Los resultados de
 estos dos modelos se reportan en la Tabla 2.</p>
 <p><span class="math display">\[\text{Tabla 2: Resultados modelos alternativos de regresión}\]</span></p>
-<table style="width:93%;">
+<table style="width:100%;">
 <colgroup>
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">V
-ariable</th>
-<th align="center">Modelo
-1
-Coef
-iciente</th>
-<th align="center">Modelo
-1
-p-valor</th>
-<th align="center">Modelo
-2
-Coef
-iciente</th>
-<th align="center">Modelo
-2
-p-valor</th>
-<th align="center">Modelo
-3
-Coef
-iciente</th>
-<th align="center">Modelo
-3
-p-valor</th>
+<th align="center">V ariable</th>
+<th align="center">Modelo 1 Coef iciente</th>
+<th align="center">Modelo 1 p-valor</th>
+<th align="center">Modelo 2 Coef iciente</th>
+<th align="center">Modelo 2 p-valor</th>
+<th align="center">Modelo 3 Coef iciente</th>
+<th align="center">Modelo 3 p-valor</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">Int
-ercepto</td>
+<td align="center">Int ercepto</td>
 <td align="center">589.415</td>
 <td align="center">0.000</td>
 <td align="center">-</td>
@@ -3379,8 +2962,7 @@ ercepto</td>
 <td align="center">-</td>
 </tr>
 <tr class="even">
-<td align="center">FinD
-eSemana</td>
+<td align="center">FinD eSemana</td>
 <td align="center">120.732</td>
 <td align="center">0.001</td>
 <td align="center">89.462</td>
@@ -3492,10 +3074,9 @@ exceda la capacidad disponible expresada para ese bloque
 <p><strong>Solución</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>Primero que todo, tenemos que clarificar que la variable dependiente
-es la demanda
-total en una zona i, fecha t y hora h, que corresponde tanto a las
-órdenes completadas
-como aquellas que excedieron la capacidad:</p>
+es la demanda total en una zona i, fecha t y hora h, que corresponde
+tanto a las órdenes completadas como aquellas que excedieron la
+capacidad:</p>
 <p><span class="math display">\[
 DT_{iht}=NOrdersC_{iht}+NOrdersN_{iht}
 \]</span></p>
@@ -3523,25 +3104,19 @@ dada por:</p>
 <li><p>Incluye:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Los modelos 2 y 3 tienen efectos fijos y, por tanto, hay un
-intercepto distinto para
-cada hora (Modelo 2) o para cada (geografía-hora). En general,
-los efectos fijos
-no se reportan porque suelen ser una secuencia larga de dummies
-por las que solo
-queremos controlar.</p></li>
+intercepto distinto para cada hora (Modelo 2) o para cada
+(geografía-hora). En general, los efectos fijos no se reportan
+porque suelen ser una secuencia larga de dummies por las que
+solo queremos controlar.</p></li>
 <li><p>El <span class="math inline">\(R^2\)</span> captura la varianza explicada. En este caso el modelo
-con mayor R2 es el
-modelo 3.</p></li>
+con mayor R2 es el modelo 3.</p></li>
 <li><p>Al agregar efectos fijos por región, el <span class="math inline">\(R^2\)</span> (varianza
-explicada) aumenta bastante,
-por lo que concluimos que una parte relevante de la variación en
-la demanda se
-explica porque hay regiones que hay más demanda que en otras.</p></li>
+explicada) aumenta bastante, por lo que concluimos que una parte
+relevante de la variación en la demanda se explica porque hay
+regiones que hay más demanda que en otras.</p></li>
 <li><p>En los tres modelos es positiva y significativa p-valor &lt; 0.05,
-por lo que pode
-mos decir que mayor actividad económica correlaciona
-positivamente con mayor
-demanda para KornerK.</p></li>
+por lo que pode mos decir que mayor actividad económica
+correlaciona positivamente con mayor demanda para KornerK.</p></li>
 </ol></li>
 <li><p>Detalle:</p>
 <ol style="list-style-type: lower-alpha">
@@ -3573,7 +3148,7 @@ directamente en cualquier paquete estadístico. En R:</p>
         </div>
       </div>
 <a href="formulas-utiles.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modelos-probabilísticos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modelos-probabilisticos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

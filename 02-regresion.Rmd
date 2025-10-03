@@ -13,7 +13,7 @@ library(latex2exp)
 library(kableExtra)
 ```
 
-# Modelos de Regresión
+# Modelos de Regresion
 
 ## Introducción
 
@@ -320,36 +320,18 @@ equipo de ventas dispone de un panel de datos con el historial de las
 3,800 funciones del año de las 1,250 películas presentadas con los
 siguientes datos:
 
-+----------+------------------------------------------------+----------+
-| Variable | Descripción                                    | Media    |
-+:========:+:==============================================:+:========:+
-| I        | Identificador de la función                    | \-       |
-| dFunción |                                                |          |
-+----------+------------------------------------------------+----------+
-| Fecha    | Fecha de la función                            | \-       |
-+----------+------------------------------------------------+----------+
-| Hora     | Hora de la función                             | \-       |
-+----------+------------------------------------------------+----------+
-| Película | Nombre de la película a proyectar              | \-       |
-+----------+------------------------------------------------+----------+
-| Duración | Duración de la película presentada [en         | 103.32   |
-|          | Minutos]                                       |          |
-+----------+------------------------------------------------+----------+
-| Tipo     | Tipo de película presentada {Acción, Comedia,  | \-       |
-|          | Romance, Drama, Terror}                        |          |
-+----------+------------------------------------------------+----------+
-| Edad     | Restricción de edad de la película {TE, TE+7,  | \-       |
-|          | MA+14, MA+18}                                  |          |
-+----------+------------------------------------------------+----------+
-| Estudio  | Estudio que produjo la película {Dis, WB,      | \-       |
-|          | Para, Uni}                                     |          |
-+----------+------------------------------------------------+----------+
-| Pre      | Presupuesto de la película [en CLP]            | 160      |
-| supuesto |                                                | ,200,000 |
-+----------+------------------------------------------------+----------+
-| Ingreso  | Ingreso recibido por las entradas vendidas en  | 714,500  |
-|          | la función [en CLP]                            |          |
-+----------+------------------------------------------------+----------+
+| Variable | Descripción | Media |
+|:------------:|:-----------------------------------------:|:------------:|
+| I dFunción | Identificador de la función | \- |
+| Fecha | Fecha de la función | \- |
+| Hora | Hora de la función | \- |
+| Película | Nombre de la película a proyectar | \- |
+| Duración | Duración de la película presentada [en Minutos] | 103.32 |
+| Tipo | Tipo de película presentada {Acción, Comedia, Romance, Drama, Terror} | \- |
+| Edad | Restricción de edad de la película {TE, TE+7, MA+14, MA+18} | \- |
+| Estudio | Estudio que produjo la película {Dis, WB, Para, Uni} | \- |
+| Pre supuesto | Presupuesto de la película [en CLP] | 160 ,200,000 |
+| Ingreso | Ingreso recibido por las entradas vendidas en la función [en CLP] | 714,500 |
 
 $$
 \textbf{Tabla 2: } \text{Resumen de ventas para cada función.}
@@ -357,96 +339,14 @@ $$ Para tener una mejor idea de cómo se ven los datos, se pueden
 observar estos 6 registros:
 
 ::: {style="overflow-x:auto;"}
-<table>
-<thead>
-<tr>
-<th><p>IdFunción<sub>i</sub></p></th>
-<th><p>Fecha<sub>i</sub></p></th>
-<th><p>Hora<sub>i</sub></p></th>
-<th><p>Película<sub>i</sub></p></th>
-<th><p>Duración<sub>i</sub></p></th>
-<th><p>Tipo<sub>i</sub></p></th>
-<th><p>Edad<sub>i</sub></p></th>
-<th><p>Estudio<sub>i</sub></p></th>
-<th><p>Presupuesto<sub>i</sub></p></th>
-<th><p>Ingreso<sub>i</sub></p></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><p>14156</p></td>
-<td><p>23/07/2022</p></td>
-<td><p>19:00</p></td>
-<td><p>Odín 4</p></td>
-<td><p>105</p></td>
-<td><p>Acción</p></td>
-<td><p>TE+7</p></td>
-<td><p>Dis</p></td>
-<td><p>354,970,000</p></td>
-<td><p>948,640</p></td>
-</tr>
-<tr>
-<td><p>14157</p></td>
-<td><p>23/07/2022</p></td>
-<td><p>22:00</p></td>
-<td><p>Chillido 5</p></td>
-<td><p>132</p></td>
-<td><p>Terror</p></td>
-<td><p>MA+18</p></td>
-<td><p>Para</p></td>
-<td><p>135,600,000</p></td>
-<td><p>804,300</p></td>
-</tr>
-<tr>
-<td><p>14158</p></td>
-<td><p>24/07/2022</p></td>
-<td><p>11:00</p></td>
-<td><p>Odín 4</p></td>
-<td><p>105</p></td>
-<td><p>Acción</p></td>
-<td><p>TE+7</p></td>
-<td><p>Dis</p></td>
-<td><p>354,970,000</p></td>
-<td><p>893,000</p></td>
-</tr>
-<tr>
-<td><p>14159</p></td>
-<td><p>24/07/2022</p></td>
-<td><p>15:30</p></td>
-<td><p>Desafiar Barreras</p></td>
-<td><p>158</p></td>
-<td><p>Romance</p></td>
-<td><p>MA+14</p></td>
-<td><p>WB</p></td>
-<td><p>94,500,000</p></td>
-<td><p>569,200</p></td>
-</tr>
-<tr>
-<td><p>14160</p></td>
-<td><p>24/07/2022</p></td>
-<td><p>20:15</p></td>
-<td><p>Odín 4</p></td>
-<td><p>105</p></td>
-<td><p>Acción</p></td>
-<td><p>TE+7</p></td>
-<td><p>Dis</p></td>
-<td><p>354,970,000</p></td>
-<td><p>832,150</p></td>
-</tr>
-<tr>
-<td><p>14161</p></td>
-<td><p>25/07/2022</p></td>
-<td><p>11:00</p></td>
-<td><p>Desafiar Barreras</p></td>
-<td><p>158</p></td>
-<td><p>Romance</p></td>
-<td><p>MA+14</p></td>
-<td><p>WB</p></td>
-<td><p>94,500,000</p></td>
-<td><p>452,900</p></td>
-</tr>
-</tbody>
-</table>
+| IdFunción~i~ | Fecha~i~ | Hora~i~ | Película~i~ | Duración~i~ | Tipo~i~ | Edad~i~ | Estudio~i~ | Presupuesto~i~ | Ingreso~i~ |
+|----|----|----|----|----|----|----|----|----|----|
+| 14156 | 23/07/2022 | 19:00 | Odín 4 | 105 | Acción | TE+7 | Dis | 354,970,000 | 948,640 |
+| 14157 | 23/07/2022 | 22:00 | Chillido 5 | 132 | Terror | MA+18 | Para | 135,600,000 | 804,300 |
+| 14158 | 24/07/2022 | 11:00 | Odín 4 | 105 | Acción | TE+7 | Dis | 354,970,000 | 893,000 |
+| 14159 | 24/07/2022 | 15:30 | Desafiar Barreras | 158 | Romance | MA+14 | WB | 94,500,000 | 569,200 |
+| 14160 | 24/07/2022 | 20:15 | Odín 4 | 105 | Acción | TE+7 | Dis | 354,970,000 | 832,150 |
+| 14161 | 25/07/2022 | 11:00 | Desafiar Barreras | 158 | Romance | MA+14 | WB | 94,500,000 | 452,900 |
 :::
 
 $$
@@ -463,52 +363,27 @@ $$
     de los ingresos de las funciones para cada película y generó dos
     modelos distintos, entregando los siguientes resultados:
 
-    +-------------+-------------+-------------+-------------+-------------+
-    |             | Modelo 1    | Modelo 1    | Modelo 2    | Modelo 2    |
-    |             | Coeficiente | p-valor     | Coeficiente | p-valor     |
-    +:===========:+:===========:+:===========:+:===========:+:===========:+
-    | Intercepto  | -15.2       | 0.704       | 3.1         | 0.161       |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Duración    | -1.04       | 0.452       | -0.23       | 0.004       |
-    +-------------+-------------+-------------+-------------+-------------+
-    | log(P       | 0.62        | 0.005       | 1.15        | 0.001       |
-    | resupuesto) |             |             |             |             |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Edad.TE     | 4.5         | 0.058       | \-          | \-          |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Edad.TE+7   | 6.71        | 0.020       | \-          | \-          |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Edad.MA+14  | 5.16        | 0.017       | \-          | \-          |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Edad.MA+18  | 4.04        | 0.009       | \-          | \-          |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Tipo.Acción | \-          | \-          | 4.05        | 0.520       |
-    +-------------+-------------+-------------+-------------+-------------+
-    | T           | \-          | \-          | 1.63        | 0.017       |
-    | ipo.Comedia |             |             |             |             |
-    +-------------+-------------+-------------+-------------+-------------+
-    | T           | \-          | \-          | 2.11        | 0.110       |
-    | ipo.Romance |             |             |             |             |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Tipo.Drama  | \-          | \-          | -1.52       | 0.025       |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Tipo.Terror | \-          | \-          | 6.72        | 0.001       |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Estudio.Dis | 5.12        | 0.004       | \-          | \-          |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Estudio.WB  | 4.09        | 0.240       | \-          | \-          |
-    +-------------+-------------+-------------+-------------+-------------+
-    | Estudio.Uni | 3.14        | 0.104       | \-          | \-          |
-    +-------------+-------------+-------------+-------------+-------------+
-    | E           | -0.63       | 0.186       | \-          | \-          |
-    | studio.Para |             |             |             |             |
-    +-------------+-------------+-------------+-------------+-------------+
-    | LL          |             | -644        |             | -650        |
-    +-------------+-------------+-------------+-------------+-------------+
-    | AIC         |             | 1,304       |             | 1,295       |
-    +-------------+-------------+-------------+-------------+-------------+
-    | BIC         |             | 1,366       |             | 1,350       |
-    +-------------+-------------+-------------+-------------+-------------+
+    |   | Modelo 1 Coeficiente | Modelo 1 p-valor | Modelo 2 Coeficiente | Modelo 2 p-valor |
+    |:------------:|:------------:|:------------:|:------------:|:------------:|
+    | Intercepto | -15.2 | 0.704 | 3.1 | 0.161 |
+    | Duración | -1.04 | 0.452 | -0.23 | 0.004 |
+    | log(P resupuesto) | 0.62 | 0.005 | 1.15 | 0.001 |
+    | Edad.TE | 4.5 | 0.058 | \- | \- |
+    | Edad.TE+7 | 6.71 | 0.020 | \- | \- |
+    | Edad.MA+14 | 5.16 | 0.017 | \- | \- |
+    | Edad.MA+18 | 4.04 | 0.009 | \- | \- |
+    | Tipo.Acción | \- | \- | 4.05 | 0.520 |
+    | T ipo.Comedia | \- | \- | 1.63 | 0.017 |
+    | T ipo.Romance | \- | \- | 2.11 | 0.110 |
+    | Tipo.Drama | \- | \- | -1.52 | 0.025 |
+    | Tipo.Terror | \- | \- | 6.72 | 0.001 |
+    | Estudio.Dis | 5.12 | 0.004 | \- | \- |
+    | Estudio.WB | 4.09 | 0.240 | \- | \- |
+    | Estudio.Uni | 3.14 | 0.104 | \- | \- |
+    | E studio.Para | -0.63 | 0.186 | \- | \- |
+    | LL |  | -644 |  | -650 |
+    | AIC |  | 1,304 |  | 1,295 |
+    | BIC |  | 1,366 |  | 1,350 |
 
     $$
     \textbf{Tabla 3: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
@@ -568,21 +443,16 @@ $$
     tendría los 6 registros mostrados anteriormente de la siguiente
     manera:
 
-    +---------+---------+---------+---------+---------+---------+---------+
-    | $Pelí   | $Dura   | $       | $       | $Est    | $log(   | $log(   |
-    | cula_j$ | ción_j$ | Tipo_j$ | Edad_j$ | udio_j$ | Pre_j)$ | Ing_j)$ |
-    +:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+
-    | Odín 4  | 105     | Acción  | TE+7    | Dis     | 8.55    | 6.43    |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | C       | 132     | Terror  | MA+18   | Para    | 8.13    | 5.91    |
-    | hillido |         |         |         |         |         |         |
-    | 5       |         |         |         |         |         |         |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | D       | 158     | Romance | MA+14   | WB      | 7.97    | 6.01    |
-    | esafiar |         |         |         |         |         |         |
-    | B       |         |         |         |         |         |         |
-    | arreras |         |         |         |         |         |         |
-    +---------+---------+---------+---------+---------+---------+---------+
+    |        $Pelí        
+           cula_j$        |  $Dura  
+                           ción_j$  | \$ Tipo_j\$ | \$ Edad_j\$ |   $Est  
+                                                                 udio_j$  |  $log(  
+                                                                           Pre_j)$  |  $log(  
+                                                                                     Ing_j)$  |
+    |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+    |       Odín 4        |   105   |   Acción    |    TE+7     |   Dis   |  8.55   |  6.43   |
+    |     C hillido 5     |   132   |   Terror    |    MA+18    |  Para   |  8.13   |  5.91   |
+    | D esafiar B arreras |   158   |   Romance   |    MA+14    |   WB    |  7.97   |  6.01   |
 
 <!-- -->
 
@@ -704,32 +574,17 @@ observa en las Tablas 1 y 2:
 
 $$\text{Tabla 1: Variables Demográficas}$$
 
-+-----------------------------------+-----------------------------------+
-| Variable                          | Descripción                       |
-+:=================================:+:=================================:+
-| IDCliente                         | Identificador del cliente         |
-+-----------------------------------+-----------------------------------+
-| Año                               | Año de la observación             |
-+-----------------------------------+-----------------------------------+
-| Mes                               | Mes de la observación             |
-+-----------------------------------+-----------------------------------+
-| Acreditación                      | Cantidad de puntos acreditados    |
-|                                   | por el cliente en el mes $t$      |
-+-----------------------------------+-----------------------------------+
-| Canje                             | Cantidad de productos canjeados   |
-|                                   | por el cliente en el mes $t$      |
-+-----------------------------------+-----------------------------------+
-| TipoAcreditación                  | Tiendas Propias, Comercios        |
-|                                   | Asociados o Tarjeta Bancaria      |
-+-----------------------------------+-----------------------------------+
-| TipoCanje                         | Producto o Descuento              |
-+-----------------------------------+-----------------------------------+
-| Promoción                         | 1 si hubo promo o descuentos      |
-|                                   | adicionales en el mes $t$         |
-+-----------------------------------+-----------------------------------+
-| Mail                              | 1 si se avisó estado de cuenta al |
-|                                   | cliente via mail en el mes $t$    |
-+-----------------------------------+-----------------------------------+
+| Variable | Descripción |
+|:----------------------------------:|:----------------------------------:|
+| IDCliente | Identificador del cliente |
+| Año | Año de la observación |
+| Mes | Mes de la observación |
+| Acreditación | Cantidad de puntos acreditados por el cliente en el mes $t$ |
+| Canje | Cantidad de productos canjeados por el cliente en el mes $t$ |
+| TipoAcreditación | Tiendas Propias, Comercios Asociados o Tarjeta Bancaria |
+| TipoCanje | Producto o Descuento |
+| Promoción | 1 si hubo promo o descuentos adicionales en el mes $t$ |
+| Mail | 1 si se avisó estado de cuenta al cliente via mail en el mes $t$ |
 
 $$\text{Tabla 2: Variables Transaccionales}$$
 
@@ -776,34 +631,17 @@ $$\text{Tabla 2: Variables Transaccionales}$$
     representa alguna transformación o función de la información
     disponible, y cuyos resultados se encuentra en la tabla siguiente:
 
-    +--------------------+---------------+---------------+---------------+
-    | Variable           | Modelo 1      | Modelo 2      | Modelo 3      |
-    +:==================:+:=============:+:=============:+:=============:+
-    | $\alpha_{0}$       | $35.9$        | $37.1$        | $32.7$        |
-    |                    | $(12.8)$      | $(8.6)$       | $(11.5)$      |
-    +--------------------+---------------+---------------+---------------+
-    | $f$(Ingreso)       | $12.7$        | $-$           | $10.7$        |
-    |                    | $(5.1)$       |               | $(2.9)$       |
-    +--------------------+---------------+---------------+---------------+
-    | $f$(Edad)          | $-1.5$        | $-1.2$        | $-0.6$        |
-    |                    | $(0.6)$       | $(2.3)$       | $(0.3)$       |
-    +--------------------+---------------+---------------+---------------+
-    | $f$(Mail)          | $-$           | $-0.3$        | $-1.9$        |
-    |                    |               | $(0.2)$       | $(5.1)$       |
-    +--------------------+---------------+---------------+---------------+
-    | $f$(Promoción)     | $-$           | $15.1$        | $10.9$        |
-    |                    |               | $(6.7)$       | $(4.2)$       |
-    +--------------------+---------------+---------------+---------------+
-    | $                  | $-$           | $10.1$        | $8.9$ $(2.1)$ |
-    | f$(TiendasPropias) |               | $(3.7)$       |               |
-    +--------------------+---------------+---------------+---------------+
-    | $f$(C              | $-$           | $3.6$ $(2.5)$ | $2.9$ $(2.3)$ |
-    | omerciosAsociados) |               |               |               |
-    +--------------------+---------------+---------------+---------------+
-    | $R^{2}$ Ajustado   | $0.34$        | $0.53$        | $0.55$        |
-    +--------------------+---------------+---------------+---------------+
-    | MAPE               | $45.5\%$      | $20.9\%$      | $23.4\%$      |
-    +--------------------+---------------+---------------+---------------+
+    |         Variable         |    Modelo 1     |    Modelo 2    |    Modelo 3     |
+    |:------------------:|:---------------:|:---------------:|:---------------:|
+    |       $\alpha_{0}$       | $35.9$ $(12.8)$ | $37.1$ $(8.6)$ | $32.7$ $(11.5)$ |
+    |       $f$(Ingreso)       | $12.7$ $(5.1)$  |      $-$       | $10.7$ $(2.9)$  |
+    |        $f$(Edad)         | $-1.5$ $(0.6)$  | $-1.2$ $(2.3)$ | $-0.6$ $(0.3)$  |
+    |        $f$(Mail)         |       $-$       | $-0.3$ $(0.2)$ | $-1.9$ $(5.1)$  |
+    |      $f$(Promoción)      |       $-$       | $15.1$ $(6.7)$ | $10.9$ $(4.2)$  |
+    |  \$ f\$(TiendasPropias)  |       $-$       | $10.1$ $(3.7)$ |  $8.9$ $(2.1)$  |
+    | $f$(C omerciosAsociados) |       $-$       | $3.6$ $(2.5)$  |  $2.9$ $(2.3)$  |
+    |     $R^{2}$ Ajustado     |     $0.34$      |     $0.53$     |     $0.55$      |
+    |           MAPE           |    $45.5\%$     |    $20.9\%$    |    $23.4\%$     |
 
     $$\text{Tabla 3: Resultados Modelos Regresión}$$
 
@@ -958,17 +796,11 @@ estructurales de las ciudades y características de las propiedades.
     distancia y determine qué si la propiedad B o la propiedad C es más
     cercana a la propiedad A.
 
-    +-------------+-------------+-------------+-------------+-------------+
-    | Propiedad   | Tiene       | Tiene       | Tiene       | Ciudad      |
-    |             | Piscina     | Calefacción | Esta        |             |
-    |             |             | Central     | cionamiento |             |
-    +:===========:+:===========:+:===========:+:===========:+:===========:+
-    | A           | Sí          | Sí          | Sí          | Santiago    |
-    +-------------+-------------+-------------+-------------+-------------+
-    | B           | No          | No          | Sí          | Concepción  |
-    +-------------+-------------+-------------+-------------+-------------+
-    | C           | Sí          | Sí          | No          | Antofagasta |
-    +-------------+-------------+-------------+-------------+-------------+
+    | Propiedad | Tiene Piscina | Tiene Calefacción Central | Tiene Esta cionamiento | Ciudad |
+    |:------------:|:------------:|:------------:|:------------:|:------------:|
+    | A | Sí | Sí | Sí | Santiago |
+    | B | No | No | Sí | Concepción |
+    | C | Sí | Sí | No | Antofagasta |
 
 $$\text{Tabla 1: Muestra de datos de 3 propiedades de arriendo en Chile, 2025}$$
 
@@ -1045,8 +877,9 @@ $$
     valor.
 
     En este caso:\
-    - $d(A,B) = 3$ (A y B difieren en tres atributos)\
-    - $d(A,C) = 1$ (A y C difieren en un atributo)
+
+    -   $d(A,B) = 3$ (A y B difieren en tres atributos)\
+    -   $d(A,C) = 1$ (A y C difieren en un atributo)
 
     por lo que C sería el vecino más cercano a A.
 
@@ -1242,7 +1075,7 @@ $$
 
 ------------------------------------------------------------------------
 
-### Problema 6 - P1 Control Primavera 2024 
+### Problema 6 - P1 Control Primavera 2024
 
 Una de las características más relevantes de los ambientes de negocio
 contemporáneos, es la disponibilidad de grandes cantidades de
@@ -1359,26 +1192,13 @@ menos de 250 metros de alguna estación de metro.
 
     $$\text{Tabla 2: Pronóstico de demanda para cuatro tiendas seleccionadas}$$
 
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Tienda  |         | E       |         |         | E       |         |
-    |         |         | cuación |         |         | cuación |         |
-    |         |         | 1       |         |         | 2       |         |
-    +:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+
-    |         | **Pesi  | **N     | **Opti  | **Pesi  | **N     | **Opti  |
-    |         | mista** | eutro** | mista** | mista** | eutro** | mista** |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Tienda  | 316,6   | 345,1   | 392,1   | 318,5   | 352,1   | 387,7   |
-    | A01     | (11,8)  | (7,2)   | (12,1)  | (12,2)  | (6,7)   | (10,9)  |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Tienda  | 555,8   | 578,8   | 602,2   | 547,6   | 566,3   | 607,7   |
-    | A12     | (12,2)  | (8,1)   | (11,8)  | (11,0)  | (9,1)   | (11,6)  |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Tienda  | 834,4   | 888,9   | 965,4   | 811,4   | 874,9   | 954,7   |
-    | B09     | (14,3)  | (9,2)   | (13,3)  | (15,9)  | (8,9)   | (13,8)  |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Tienda  | 733,9   | 786,6   | 822,3   | 728,6   | 791,9   | 817,8   |
-    | B14     | (13,6)  | (8,4)   | (12,8)  | (11,5)  | (8,7)   | (12,6)  |
-    +---------+---------+---------+---------+---------+---------+---------+
+    | Tienda |   | E cuación 1 |   |   | E cuación 2 |   |
+    |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+    |  | **Pesi mista** | **N eutro** | **Opti mista** | **Pesi mista** | **N eutro** | **Opti mista** |
+    | Tienda A01 | 316,6 (11,8) | 345,1 (7,2) | 392,1 (12,1) | 318,5 (12,2) | 352,1 (6,7) | 387,7 (10,9) |
+    | Tienda A12 | 555,8 (12,2) | 578,8 (8,1) | 602,2 (11,8) | 547,6 (11,0) | 566,3 (9,1) | 607,7 (11,6) |
+    | Tienda B09 | 834,4 (14,3) | 888,9 (9,2) | 965,4 (13,3) | 811,4 (15,9) | 874,9 (8,9) | 954,7 (13,8) |
+    | Tienda B14 | 733,9 (13,6) | 786,6 (8,4) | 822,3 (12,8) | 728,6 (11,5) | 791,9 (8,7) | 817,8 (12,6) |
 
     En la tabla anterior, junto con los pronósticos se despliegan los
     errores estándar de pronóstico (*sef*). Explique por qué los *sef*
@@ -1620,40 +1440,21 @@ base de datos.
     b)  (1 punto) ¿Cómo podríamos determinar el impacto de la
         introducción de restricciones en la estrategia de entrenamiento?
 
-    +---------------+---------------+-----------------+-------------------+
-    | Variable      | Experiencia   | Resolutividad   | Porcentaje        |
-    |               | (Coeficiente) | (Coeficiente)   | Errores           |
-    |               |               |                 | (Coeficiente)     |
-    +:=============:+:=============:+:===============:+:=================:+
-    | Intercepto    | 0.025         | 0.146           | 4.675             |
-    +---------------+---------------+-----------------+-------------------+
-    | Prompt 2      | -0.079 \*\*   | -0.157 \*\*\*   | -4.965 \*\*       |
-    +---------------+---------------+-----------------+-------------------+
-    | Prompt 3      | -0.005        | 0.109 \*\*      | -0.262            |
-    +---------------+---------------+-----------------+-------------------+
-    | Eficacia      | 0.174 \*\*\*  | 0.155 \*\*\*    | 0.541             |
-    | entrada       |               |                 |                   |
-    +---------------+---------------+-----------------+-------------------+
-    | Eficacia      | 0.100 \*\*\*  | -0.030          | 1.400             |
-    | salida        |               |                 |                   |
-    +---------------+---------------+-----------------+-------------------+
-    | Confianza     | 0.720 \*\*\*  | 0.786 \*\*\*    | 0.508             |
-    +---------------+---------------+-----------------+-------------------+
-    | Tiempo        | -0.006        | -0.024 \*\*\*   | 0.094             |
-    | Interacción   |               |                 |                   |
-    +---------------+---------------+-----------------+-------------------+
-    | Num Mensajes  | 0.007 \*\*    | 0.020 \*\*\*    | 0.224             |
-    +---------------+---------------+-----------------+-------------------+
-    | Edad          | -0.002        | -0.003 \*\*     | 0.044             |
-    +---------------+---------------+-----------------+-------------------+
-    | Mujer         | 0.027         | -0.038          | 0.030             |
-    +---------------+---------------+-----------------+-------------------+
-    | N. obs        | 1,929         | 1,929           | 126               |
-    +---------------+---------------+-----------------+-------------------+
-    | $R^2$         | 0.798         | 0.709           | 0.220             |
-    +---------------+---------------+-----------------+-------------------+
-    | $R_{adj.}^2$  | 0.796         | 0.707           | 0.105             |
-    +---------------+---------------+-----------------+-------------------+
+    | Variable | Experiencia (Coeficiente) | Resolutividad (Coeficiente) | Porcentaje Errores (Coeficiente) |
+    |:---------------:|:---------------:|:---------------:|:-----------------:|
+    | Intercepto | 0.025 | 0.146 | 4.675 |
+    | Prompt 2 | -0.079 \*\* | -0.157 \*\*\* | -4.965 \*\* |
+    | Prompt 3 | -0.005 | 0.109 \*\* | -0.262 |
+    | Eficacia entrada | 0.174 \*\*\* | 0.155 \*\*\* | 0.541 |
+    | Eficacia salida | 0.100 \*\*\* | -0.030 | 1.400 |
+    | Confianza | 0.720 \*\*\* | 0.786 \*\*\* | 0.508 |
+    | Tiempo Interacción | -0.006 | -0.024 \*\*\* | 0.094 |
+    | Num Mensajes | 0.007 \*\* | 0.020 \*\*\* | 0.224 |
+    | Edad | -0.002 | -0.003 \*\* | 0.044 |
+    | Mujer | 0.027 | -0.038 | 0.030 |
+    | N. obs | 1,929 | 1,929 | 126 |
+    | $R^2$ | 0.798 | 0.709 | 0.220 |
+    | $R_{adj.}^2$ | 0.796 | 0.707 | 0.105 |
 
     $$
     \text{Tabla 1: Resultados modelos alternativos de regresión.} \\
@@ -1825,27 +1626,16 @@ siguientes variables:
 
     $$\text{Tabla 1: Resultados modelos alternativos de regresión}$$
 
-    +---------+---------+---------+---------+---------+---------+---------+
-    | V       | Modelo  | Modelo  | Modelo  | Modelo  | Modelo  | Modelo  |
-    | ariable | 1       | 1 SE    | 2       | 2 SE    | 3       | 3 SE    |
-    |         | Coef    |         | Coef    |         | Coef    |         |
-    |         | iciente |         | iciente |         | iciente |         |
-    +:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+
-    | $\ln(\  | -0.453  | 0.001   | -0.462  | 0.023   | -0.3983 | 0.024   |
-    | text{le |         |         |         |         |         |         |
-    | ngth})$ |         |         |         |         |         |         |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Promo   | 5.341   | 0.562   | 4.341   | 0.011   | 5.101   | 0.012   |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Energy  | 0.138   | 0.453   | 3.453   | 0.003   | 3.238   | 0.001   |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Dance   | 2.345   | 0.002   | 0.091   | 0.645   | 0.192   | 0.345   |
-    | ability |         |         |         |         |         |         |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | NFollow | 2.323   | 0.011   | 2.421   | 0.016   | 1.933   | 0.008   |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Top50   |         |         |         |         | 1.498   | 0.011   |
-    +---------+---------+---------+---------+---------+---------+---------+
+    | V ariable | Modelo 1 Coef iciente | Modelo 1 SE | Modelo 2 Coef iciente | Modelo 2 SE | Modelo 3 Coef iciente | Modelo 3 SE |
+    |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+    | $\ln(\
+    text{le
+    ngth})$ | -0.453 | 0.001 | -0.462 | 0.023 | -0.3983 | 0.024 |
+    | Promo | 5.341 | 0.562 | 4.341 | 0.011 | 5.101 | 0.012 |
+    | Energy | 0.138 | 0.453 | 3.453 | 0.003 | 3.238 | 0.001 |
+    | Dance ability | 2.345 | 0.002 | 0.091 | 0.645 | 0.192 | 0.345 |
+    | NFollow | 2.323 | 0.011 | 2.421 | 0.016 | 1.933 | 0.008 |
+    | Top50 |  |  |  |  | 1.498 | 0.011 |
 
     **Fixed Effects**
 
@@ -2010,34 +1800,14 @@ la Tabla 1.
 
 $$\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias}$$
 
-+------+------+------+------+------+------+------+------+------+
-| I    | Date | Hour | NOrd | NOrd | Day  | Mes  | Rain | IM   |
-| dZip |      |      | ersC | ersN |      |      |      | ACEC |
-+:====:+:====:+:====:+:====:+:====:+:====:+:====:+:====:+:====:+
-| 1    | 02   | 8    | 248  | 0    | 2    | 1    | 0    | 0.02 |
-| 5217 | /01/ |      |      |      |      |      |      |      |
-|      | 2018 |      |      |      |      |      |      |      |
-+------+------+------+------+------+------+------+------+------+
-| 1    | 02   | 9    | 325  | 0    | 2    | 1    | 0    | 0.02 |
-| 5217 | /01/ |      |      |      |      |      |      |      |
-|      | 2018 |      |      |      |      |      |      |      |
-+------+------+------+------+------+------+------+------+------+
-| 1    | 02   | 10   | 331  | 13   | 2    | 1    | 0    | 0.02 |
-| 5217 | /01/ |      |      |      |      |      |      |      |
-|      | 2018 |      |      |      |      |      |      |      |
-+------+------+------+------+------+------+------+------+------+
-| 2    | 03   | 8    | 1345 | 1    | 3    | 1    | 0    | 0.02 |
-| 3156 | /01/ |      |      |      |      |      |      |      |
-|      | 2018 |      |      |      |      |      |      |      |
-+------+------+------+------+------+------+------+------+------+
-| 2    | 03   | 9    | 1221 | 0    | 3    | 1    | 0    | 0.02 |
-| 3156 | /01/ |      |      |      |      |      |      |      |
-|      | 2018 |      |      |      |      |      |      |      |
-+------+------+------+------+------+------+------+------+------+
-| 2    | 03   | 10   | 1436 | 54   | 3    | 1    | 0    | 0.02 |
-| 3156 | /01/ |      |      |      |      |      |      |      |
-|      | 2018 |      |      |      |      |      |      |      |
-+------+------+------+------+------+------+------+------+------+
+| I dZip |     Date     | Hour | NOrd ersC | NOrd ersN | Day | Mes | Rain | IM ACEC |
+|:------:|:------------:|:----:|:---------:|:---------:|:---:|:---:|:----:|:-------:|
+| 1 5217 | 02 /01/ 2018 |  8   |    248    |     0     |  2  |  1  |  0   |  0.02   |
+| 1 5217 | 02 /01/ 2018 |  9   |    325    |     0     |  2  |  1  |  0   |  0.02   |
+| 1 5217 | 02 /01/ 2018 |  10  |    331    |    13     |  2  |  1  |  0   |  0.02   |
+| 2 3156 | 03 /01/ 2018 |  8   |   1345    |     1     |  3  |  1  |  0   |  0.02   |
+| 2 3156 | 03 /01/ 2018 |  9   |   1221    |     0     |  3  |  1  |  0   |  0.02   |
+| 2 3156 | 03 /01/ 2018 |  10  |   1436    |    54     |  3  |  1  |  0   |  0.02   |
 
 1.  Describa un modelo de regresión lineal para estimar la **demanda
     total** por servicios en cada zona y bloque horario que considere
@@ -2079,22 +1849,12 @@ $$\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias
 
     $$\text{Tabla 2: Resultados modelos alternativos de regresión}$$
 
-    +---------+---------+---------+---------+---------+---------+---------+
-    | V       | Modelo  | Modelo  | Modelo  | Modelo  | Modelo  | Modelo  |
-    | ariable | 1       | 1       | 2       | 2       | 3       | 3       |
-    |         | Coef    | p-valor | Coef    | p-valor | Coef    | p-valor |
-    |         | iciente |         | iciente |         | iciente |         |
-    +:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+:=======:+
-    | Int     | 589.415 | 0.000   | \-      | \-      | \-      | \-      |
-    | ercepto |         |         |         |         |         |         |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | FinD    | 120.732 | 0.001   | 89.462  | 0.023   | 88.559  | 0.024   |
-    | eSemana |         |         |         |         |         |         |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | Rain    | 20.341  | 0.562   | 14.341  | 0.011   | 11.101  | 0.012   |
-    +---------+---------+---------+---------+---------+---------+---------+
-    | IMACEC  | 65.323  | 0.011   | 59.021  | 0.016   | 62.774  | 0.019   |
-    +---------+---------+---------+---------+---------+---------+---------+
+    | V ariable | Modelo 1 Coef iciente | Modelo 1 p-valor | Modelo 2 Coef iciente | Modelo 2 p-valor | Modelo 3 Coef iciente | Modelo 3 p-valor |
+    |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+    | Int ercepto | 589.415 | 0.000 | \- | \- | \- | \- |
+    | FinD eSemana | 120.732 | 0.001 | 89.462 | 0.023 | 88.559 | 0.024 |
+    | Rain | 20.341 | 0.562 | 14.341 | 0.011 | 11.101 | 0.012 |
+    | IMACEC | 65.323 | 0.011 | 59.021 | 0.016 | 62.774 | 0.019 |
 
     **Fixed Effects**
 
@@ -2139,10 +1899,9 @@ $$\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias
 **Solución**
 
 1.  Primero que todo, tenemos que clarificar que la variable dependiente
-    es la demanda
-    total en una zona i, fecha t y hora h, que corresponde tanto a las
-    órdenes completadas
-    como aquellas que excedieron la capacidad:
+    es la demanda total en una zona i, fecha t y hora h, que corresponde
+    tanto a las órdenes completadas como aquellas que excedieron la
+    capacidad:
 
     $$
     DT_{iht}=NOrdersC_{iht}+NOrdersN_{iht}
@@ -2174,36 +1933,32 @@ $$\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias
 2.  Incluye:
 
     a.  Los modelos 2 y 3 tienen efectos fijos y, por tanto, hay un
-        intercepto distinto para
-        cada hora (Modelo 2) o para cada (geografía-hora). En general,
-        los efectos fijos
-        no se reportan porque suelen ser una secuencia larga de dummies
-        por las que solo
-        queremos controlar.
+        intercepto distinto para cada hora (Modelo 2) o para cada
+        (geografía-hora). En general, los efectos fijos no se reportan
+        porque suelen ser una secuencia larga de dummies por las que
+        solo queremos controlar.
 
     b.  El $R^2$ captura la varianza explicada. En este caso el modelo
-        con mayor R2 es el
-        modelo 3.
+        con mayor R2 es el modelo 3.
 
     c.  Al agregar efectos fijos por región, el $R^2$ (varianza
-        explicada) aumenta bastante,
-        por lo que concluimos que una parte relevante de la variación en
-        la demanda se
-        explica porque hay regiones que hay más demanda que en otras.
+        explicada) aumenta bastante, por lo que concluimos que una parte
+        relevante de la variación en la demanda se explica porque hay
+        regiones que hay más demanda que en otras.
 
     d.  En los tres modelos es positiva y significativa p-valor \< 0.05,
-        por lo que pode
-        mos decir que mayor actividad económica correlaciona
-        positivamente con mayor
-        demanda para KornerK.
+        por lo que pode mos decir que mayor actividad económica
+        correlaciona positivamente con mayor demanda para KornerK.
 
 3.  Detalle:
 
-    a.   El valor esperado viene dado por:
+    a.  El valor esperado viene dado por:
 
-        $$
-        \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
-        $$
+    ```         
+    $$
+    \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
+    $$
+    ```
 
     b.  La probabilidad viene dada por:
 
