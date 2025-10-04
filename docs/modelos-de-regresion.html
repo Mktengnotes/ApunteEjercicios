@@ -449,7 +449,7 @@ nombrar:</p>
 </tbody>
 </table>
 <p><span class="math display">\[
-\textbf{Tabla 1: } \text{Fragmento de parámetros y métricas de ajuste para dos modelos alternativos.} \\
+\textbf{Tabla: } \text{Fragmento de parámetros y métricas de ajuste para dos modelos alternativos.} \\
 \text{Para los parámetros se reporta el estimador de mínimos cuadrados y en paréntesis el error estándar.} \\
 \text{En la tabla, tanto } R^2 \text{ como } Adj. R^2 \text{ han sido calculados sobre la base de entrenamiento.}
 \]</span></p>
@@ -492,7 +492,6 @@ se da en los días de semana. Tanto para feriados como fines de
 semana el efecto se va a cero los fines de semana y (marginalmente)
 positivo para feriados.</p></li>
 </ol>
-<hr />
 </div>
 <div id="problema-2" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Problema 2<a href="modelos-de-regresion.html#problema-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -503,11 +502,11 @@ características de las películas que provocan un mayor ingreso. El
 equipo de ventas dispone de un panel de datos con el historial de las
 3,800 funciones del año de las 1,250 películas presentadas con los
 siguientes datos:</p>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="19%" />
-<col width="60%" />
-<col width="19%" />
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -570,7 +569,7 @@ siguientes datos:</p>
 </tbody>
 </table>
 <p><span class="math display">\[
-\textbf{Tabla 2: } \text{Resumen de ventas para cada función.}
+\textbf{Tabla: } \text{Resumen de ventas para cada función.}
 \]</span> Para tener una mejor idea de cómo se ven los datos, se pueden
 observar estos 6 registros:</p>
 <div style="overflow-x:auto;">
@@ -678,7 +677,7 @@ observar estos 6 registros:</p>
 </table>
 </div>
 <p><span class="math display">\[
-\textbf{Tabla 3: } \text{Ejemplo de 6 registro en Tabla de Ventas.}
+\textbf{Tabla: } \text{Ejemplo de 6 registro en Tabla de Ventas.}
 \]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Nótese que una película puede tener varias funciones y que, debido a
@@ -843,7 +842,7 @@ modelos distintos, entregando los siguientes resultados:</p>
 </tbody>
 </table>
 <p><span class="math display">\[
-\textbf{Tabla 3: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
+\textbf{Tabla: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
 \]</span></p>
 <p>A partir de los datos entregados elija cuál modelo es mejor para
 predecir el número de entradas vendidas para una película y entregue
@@ -948,12 +947,9 @@ manera:</p>
 </tr>
 </tbody>
 </table></li>
-</ol>
-<!-- -->
-<ol start="2" style="list-style-type: decimal">
-<li>El modelo que explica de manera más efectiva el comportamiento es el
+<li><p>El modelo que explica de manera más efectiva el comportamiento es el
 modelo 2. Se pueden considerara varias razones para esto, algunas de
-estas razones son:
+estas razones son:</p>
 <ol style="list-style-type: lower-alpha">
 <li>A pesar del modelo 1 tener una mejor log-verosimilitud, el BIC
 del modelo 2 es mejor que el modelo 1.</li>
@@ -978,7 +974,7 @@ desviados en magnitud respecto al resto de coeficientes. Lo
 anterior podría dar indicios de algún error en cuánto al
 escalamiento de las variables al momento de calibrar el modelo.</li>
 </ol></li>
-<li>Incluye:
+<li><p>Incluye:</p>
 <ul>
 <li>Primero, observamos aquellos coeficientes con mayor
 significancia estadística. Para eso consideramos aquellos cuyo
@@ -996,7 +992,7 @@ con un alto presupuesto.</li>
 variable <span class="math inline">\(Duración\)</span>. Sin embargo, su p-valor alto refleja que no
 es una variable significativa en este modelo.</li>
 </ul></li>
-<li>Incluye:
+<li><p>Incluye:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>La condición (a) muestra que se deben incluir las variables
 Presupuesto, Duración, Edad, Género, Estudio y Nfun en el
@@ -1095,7 +1091,7 @@ observa en las Tablas 1 y 2:</p>
 </tr>
 </tbody>
 </table>
-<p><span class="math display">\[\text{Tabla 1: Variables Demográficas}\]</span></p>
+<p><span class="math display">\[\text{Tabla: Variables Demográficas}\]</span></p>
 <table>
 <colgroup>
 <col width="50%" />
@@ -1146,7 +1142,7 @@ observa en las Tablas 1 y 2:</p>
 </tr>
 </tbody>
 </table>
-<p><span class="math display">\[\text{Tabla 2: Variables Transaccionales}\]</span></p>
+<p><span class="math display">\[\text{Tabla: Variables Transaccionales}\]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Como primera aproximación, se propone modelar la acreditación
 (<span class="math inline">\(A_{it}\)</span>) y canje (<span class="math inline">\(C_{it}\)</span>) de cada cliente <span class="math inline">\(i\)</span> en el mes <span class="math inline">\(t\)</span>
@@ -1165,9 +1161,6 @@ información disponible.</p>
 <li>¿Son los modelos anteriores identificables? En caso de ser su
 respuesta negativa, ¿cómo se corrige el problema?</li>
 </ol></li>
-</ol>
-<!-- -->
-<ol start="2" style="list-style-type: decimal">
 <li><p>Suponga que se han identificado los modelos anteriores (de
 requerirlo, con las restricciones necesarias para alcanzar
 identificación). Derive una expresión que permita calcular el número
@@ -1190,10 +1183,10 @@ representa alguna transformación o función de la información
 disponible, y cuyos resultados se encuentra en la tabla siguiente:</p>
 <table>
 <colgroup>
-<col width="28%" />
-<col width="23%" />
-<col width="23%" />
-<col width="23%" />
+<col width="34%" />
+<col width="22%" />
+<col width="21%" />
+<col width="22%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1260,7 +1253,7 @@ disponible, y cuyos resultados se encuentra en la tabla siguiente:</p>
 </tr>
 </tbody>
 </table>
-<p><span class="math display">\[\text{Tabla 3: Resultados Modelos Regresión}\]</span></p>
+<p><span class="math display">\[\text{Tabla: Resultados Modelos Regresión}\]</span></p>
 <ol style="list-style-type: lower-alpha">
 <li>¿Qué variables ayudan a explicar el comportamiento de
 acreditación de los consumidores?</li>
@@ -1376,9 +1369,6 @@ magnitud en que aumenta el precio al variar estas
 características es distinta dependiendo de si la propiedad es
 residencial o comercial.</li>
 </ol></li>
-</ol>
-<!-- -->
-<ol start="2" style="list-style-type: decimal">
 <li><p>(1.0 puntos) Adicional a lo ya expuesto, se considera que la
 magnitud en que el precio por metro cuadrado aumenta es mayor para
 ciudades más densamente pobladas. ¿Cómo modificaría el modelo ya
@@ -1450,7 +1440,7 @@ cercana a la propiedad A.</p>
 </tbody>
 </table></li>
 </ol>
-<p><span class="math display">\[\text{Tabla 1: Muestra de datos de 3 propiedades de arriendo en Chile, 2025}\]</span></p>
+<p><span class="math display">\[\text{Tabla: Muestra de datos de 3 propiedades de arriendo en Chile, 2025}\]</span></p>
 <p><strong>Solución</strong></p>
 <ol style="list-style-type: decimal">
 <li>(1 punto) Indexemos cada precio como <span class="math inline">\(P_{ijkt}\)</span> representando la
@@ -1504,9 +1494,6 @@ los ingresos, i.e usar:<br />
 \frac{P_{ijkt}}{Ciudad_{ijkt}}.
 \]</span></li>
 </ul></li>
-</ol>
-<!-- -->
-<ol start="5" style="list-style-type: decimal">
 <li><p>(1 punto) Por definición <span class="math inline">\(ln P_{kt} = \theta&#39; \bar{x}_{kt}\)</span>, en que
 <span class="math inline">\(\bar{x}_{it}\)</span> son las características promedio de las propiedades
 del país k en el año t. De acá se infiere que <span class="math inline">\(\ln P_{kt}\)</span> es una
@@ -1630,13 +1617,9 @@ ya están calculados en la base de trabajo.</p></li>
 <li><p>El número de búsquedas diarias que en promedio hace el cliente
 <em>AvgNumSearch</em> (que puede suponer conocido).</p></li>
 </ul></li>
-</ol>
-<!-- -->
-<ol start="4" style="list-style-type: decimal">
 <li><p>Suponga que, después de un par de iteraciones, se ha determinado que
 existen dos especificaciones de modelos lineales que funcionan
-relativamente bien, como indican los resultados de la <a href="#tabla-1">Tabla
-1</a>.</p>
+relativamente bien, como indican los resultados de la tabla.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>¿Cómo interpreta los resultados de la variable <em>NumResult</em> en el
 contexto de esta aplicación?<br />
@@ -1715,7 +1698,7 @@ entre las especificaciones (1) y (2)?</p>
 </tr>
 </tbody>
 </table>
-<p><span class="math display">\[\text{Tabla 1: Resultados de modelos de regresión próximas búsquedas}\]</span></p></li>
+<p><span class="math display">\[\text{Tabla: Resultados de modelos de regresión próximas búsquedas}\]</span></p></li>
 </ol></li>
 </ol>
 <p><strong>Solución</strong></p>
@@ -1835,7 +1818,7 @@ preciso de la demanda en cada tienda, ¿cómo elegiría entre estos
 dos modelos?</p></li>
 <li><p>¿Cómo testearía si hay diferencias significativas en la demanda
 por marca?</p>
-<p><span class="math display">\[\text{Tabla 1: Resultados modelos alternativos de regresión}\]</span></p>
+<p><span class="math display">\[\text{Tabla: Resultados modelos alternativos de regresión}\]</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1958,8 +1941,8 @@ otro optimista. Mientras en el escenario neutro se considera que las
 variables independientes toman valores típicamente observados, los
 escenarios pesimistas y optimistas se evalúan en combinaciones más
 extremas que favorecen y desfavorecen la demanda respectivamente.
-Los pronósticos generados se despliegan en la Tabla 2.</p>
-<p><span class="math display">\[\text{Tabla 2: Pronóstico de demanda para cuatro tiendas seleccionadas}\]</span></p>
+Los pronósticos generados se despliegan en la siguiente tabla.</p>
+<p><span class="math display">\[\text{Tabla: Pronóstico de demanda para cuatro tiendas seleccionadas}\]</span></p>
 <table style="width:100%;">
 <colgroup>
 <col width="14%" />
@@ -2135,7 +2118,6 @@ podrían dar elementos adicionales para reducir la endogeneidad
 del constructo.</li>
 </ol></li>
 </ol>
-<hr />
 </div>
 <div id="problema-7---p1-control-1-otoño-2024" class="section level3 hasAnchor" number="2.4.7">
 <h3><span class="header-section-number">2.4.7</span> Problema 7 - P1 Control 1 Otoño 2024<a href="#problema-7---p1-control-1-oto%C3%B1o-2024" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -2220,17 +2202,17 @@ uno de los cuales se les pidió interactuar con el agente digital en tres
 escenarios distintos con lo que se tiene un total de 1,929 filas en la
 base de datos.</p>
 <ol style="list-style-type: decimal">
-<li>(1 punto) La compañía está considerando usar un(os) modelo(s) de
+<li><p>(1 punto) La compañía está considerando usar un(os) modelo(s) de
 regresión para medir el impacto de distintas estrategias de
 entrenamiento. Considerando que el sistema está diseñado para dar
 servicio de atención a los clientes del banco, ¿cuál cree usted que
 debieran ser las variables dependientes para analizar en un modelo
-de regresión?</li>
-<li>(2 puntos) Sea <span class="math inline">\(y_{ik}\)</span> la variable de desempeño que usted considera
+de regresión?</p></li>
+<li><p>(2 puntos) Sea <span class="math inline">\(y_{ik}\)</span> la variable de desempeño que usted considera
 relevante para el participante i (<span class="math inline">\(i \in
 \{1,\ldots,643\}\)</span>) en el escenario k (<span class="math inline">\(k \in \{1,2,3\}\)</span>). Formule un
 modelo de regresión que permita evaluar el desempeño de las
-distintas estrategias y que considere las siguientes componentes:
+distintas estrategias y que considere las siguientes componentes:</p>
 <ul>
 <li>Algunos escenarios podrían ser más fáciles o más difíciles por
 lo que el agente podría tener desempeños sistemáticamente
@@ -2248,9 +2230,6 @@ evaluación de desempeño entre género, en general los hombres
 tienden a preferir interacciones más cortas que el resto de los
 géneros.</li>
 </ul></li>
-</ol>
-<!-- -->
-<ol start="3" style="list-style-type: decimal">
 <li><p>(1 punto) ¿Qué limitaciones tiene el modelo anteriormente planteado
 para el entendimiento de la pregunta de investigación? ¿Como
 recomendaría corregir estas limitaciones?</p></li>
@@ -2265,10 +2244,10 @@ introducción de restricciones en la estrategia de entrenamiento?</p></li>
 </ol>
 <table>
 <colgroup>
-<col width="24%" />
-<col width="24%" />
-<col width="24%" />
-<col width="27%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2360,13 +2339,12 @@ introducción de restricciones en la estrategia de entrenamiento?</p></li>
 </tbody>
 </table>
 <p><span class="math display">\[
-\text{Tabla 1: Resultados modelos alternativos de regresión.} \\
+\text{Tabla: Resultados modelos alternativos de regresión.} \\
 \text{Fuente: Hernández, F. (2024): &quot;Agentes inteligentes basados en Large Language Models} \\
 \text{para la atención automatizada en canal conversacional online de servicio al cliente en una} \\
 \text{empresa financiera&quot;. Memoria para optar al título de Ingeniero Civil Industrial.}
 \]</span></p></li>
 </ol>
-<hr />
 <p>¹ <a href="https://aws.amazon.com/es/what-is/generative-ai/" class="uri">https://aws.amazon.com/es/what-is/generative-ai/</a><br />
 ² <a href="https://aws.amazon.com/es/what-is/foundation-models/" class="uri">https://aws.amazon.com/es/what-is/foundation-models/</a><br />
 ³ <a href="https://platform.openai.com/docs/guides/fine-tuning" class="uri">https://platform.openai.com/docs/guides/fine-tuning</a></p>
@@ -2422,10 +2400,7 @@ el desempeño de una nueva estrategia de entrenamiento.</li>
 no controlamos como el NSE o, si se considera más de una
 variable de desempeño, cuál es la relación entre estos factores.</li>
 </ol></li>
-</ol>
-<!-- -->
-<ol start="4" style="list-style-type: decimal">
-<li>Las respuestas se derivan directo de las tablas.
+<li><p>Las respuestas se derivan directo de las tablas.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Los coeficientes del Prompt 2 es significativo en las tres
 variables de desempeño consideradas y por tanto esa estrategia
@@ -2445,7 +2420,6 @@ prueba F.</li>
 <p><strong>Nota:</strong> Para los curiosos, los p-valores de los test para las tres
 ecuaciones son (0.066, 0.000 y 0.016) por lo que si consideramos un 95%
 las restricciones solo tendrían un impacto en la resolutividad.</p>
-<hr />
 </div>
 <div id="problema-8---p1-control-primavera-2023" class="section level3 hasAnchor" number="2.4.8">
 <h3><span class="header-section-number">2.4.8</span> Problema 8 - P1 Control Primavera 2023<a href="modelos-de-regresion.html#problema-8---p1-control-primavera-2023" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -2519,8 +2493,9 @@ dificultades en generar audiencias.</li>
 partir de los registros disponible</p></li>
 <li><p>Suponga que se estiman tres modelos simples de regresión lineal para
 describir la popularidad de las canciones dentro de la plataforma.
-Los resultados de estos dos modelos se reportan en la Tabla 1</p>
-<p><span class="math display">\[\text{Tabla 1: Resultados modelos alternativos de regresión}\]</span></p>
+Los resultados de estos dos modelos se reportan en la siguiente
+tabla</p>
+<p><span class="math display">\[\text{Tabla: Resultados modelos alternativos de regresión}\]</span></p>
 <table style="width:100%;">
 <colgroup>
 <col width="14%" />
@@ -2756,7 +2731,6 @@ Este es un sistema de restricciones lineales que puede testearse
 directamente a través de una prueba F.</li>
 </ol></li>
 </ol>
-<hr />
 </div>
 <div id="problema-9---p1-control-otoño-2023" class="section level3 hasAnchor" number="2.4.9">
 <h3><span class="header-section-number">2.4.9</span> Problema 9 - P1 Control Otoño 2023<a href="#problema-9---p1-control-oto%C3%B1o-2023" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -2801,8 +2775,8 @@ lunes=1, hasta domingo=7).</li>
 <li><strong>IMACEC</strong>: Variación del índice mensual de actividad económica.</li>
 </ul>
 <p>Como ilustración, se muestran las primeras seis entradas se presentan en
-la Tabla 1.</p>
-<p><span class="math display">\[\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias}\]</span></p>
+la siguiente tabla.</p>
+<p><span class="math display">\[\text{Tabla: Muestra de los primeros 6 registros de la base de discrepancias}\]</span></p>
 <table>
 <colgroup>
 <col width="10%" />
@@ -2928,8 +2902,8 @@ registros disponibles en la base de datos.</p></li>
 </ol></li>
 <li><p>Suponga que se estiman dos modelos simples de regresión lineal para
 describir la demanda por servicios de <em>KornerK</em>. Los resultados de
-estos dos modelos se reportan en la Tabla 2.</p>
-<p><span class="math display">\[\text{Tabla 2: Resultados modelos alternativos de regresión}\]</span></p>
+estos dos modelos se reportan en la siguiente tabla:</p>
+<p><span class="math display">\[\text{Tabla: Resultados modelos alternativos de regresión}\]</span></p>
 <table style="width:100%;">
 <colgroup>
 <col width="14%" />
@@ -3120,11 +3094,12 @@ correlaciona positivamente con mayor demanda para KornerK.</p></li>
 </ol></li>
 <li><p>Detalle:</p>
 <ol style="list-style-type: lower-alpha">
-<li>El valor esperado viene dado por:</li>
-</ol>
-<pre><code>$$
+<li><p>El valor esperado viene dado por:</p>
+<p><span class="math display">\[
 \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
-$$</code></pre>
+\]</span></p></li>
+</ol>
+<!-- -->
 <ol start="2" style="list-style-type: lower-alpha">
 <li><p>La probabilidad viene dada por:</p>
 <p><span class="math display">\[

@@ -258,7 +258,7 @@ caurentena o no).
     |  RMSE test   |     0.34     |     0.38     |
 
     $$
-    \textbf{Tabla 1: } \text{Fragmento de parámetros y métricas de ajuste para dos modelos alternativos.} \\
+    \textbf{Tabla: } \text{Fragmento de parámetros y métricas de ajuste para dos modelos alternativos.} \\
     \text{Para los parámetros se reporta el estimador de mínimos cuadrados y en paréntesis el error estándar.} \\
     \text{En la tabla, tanto } R^2 \text{ como } Adj. R^2 \text{ han sido calculados sobre la base de entrenamiento.}
     $$
@@ -308,8 +308,6 @@ caurentena o no).
     semana el efecto se va a cero los fines de semana y (marginalmente)
     positivo para feriados.
 
-------------------------------------------------------------------------
-
 ### Problema 2
 
 Un cine pequeño quiere impulsar la venta de entradas para este verano.
@@ -321,7 +319,7 @@ equipo de ventas dispone de un panel de datos con el historial de las
 siguientes datos:
 
 | Variable | Descripción | Media |
-|:------------:|:-----------------------------------------:|:------------:|
+|:--:|:--:|:--:|
 | I dFunción | Identificador de la función | \- |
 | Fecha | Fecha de la función | \- |
 | Hora | Hora de la función | \- |
@@ -334,7 +332,7 @@ siguientes datos:
 | Ingreso | Ingreso recibido por las entradas vendidas en la función [en CLP] | 714,500 |
 
 $$
-\textbf{Tabla 2: } \text{Resumen de ventas para cada función.}
+\textbf{Tabla: } \text{Resumen de ventas para cada función.}
 $$ Para tener una mejor idea de cómo se ven los datos, se pueden
 observar estos 6 registros:
 
@@ -350,7 +348,7 @@ observar estos 6 registros:
 :::
 
 $$
-\textbf{Tabla 3: } \text{Ejemplo de 6 registro en Tabla de Ventas.}
+\textbf{Tabla: } \text{Ejemplo de 6 registro en Tabla de Ventas.}
 $$
 
 1.  Nótese que una película puede tener varias funciones y que, debido a
@@ -364,7 +362,7 @@ $$
     modelos distintos, entregando los siguientes resultados:
 
     |   | Modelo 1 Coeficiente | Modelo 1 p-valor | Modelo 2 Coeficiente | Modelo 2 p-valor |
-    |:------------:|:------------:|:------------:|:------------:|:------------:|
+    |:--:|:--:|:--:|:--:|:--:|
     | Intercepto | -15.2 | 0.704 | 3.1 | 0.161 |
     | Duración | -1.04 | 0.452 | -0.23 | 0.004 |
     | log(P resupuesto) | 0.62 | 0.005 | 1.15 | 0.001 |
@@ -386,7 +384,7 @@ $$
     | BIC |  | 1,366 |  | 1,350 |
 
     $$
-    \textbf{Tabla 3: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
+    \textbf{Tabla: } \text{Parámetros y métricas de ajuste para dos modelos alternativos.}
     $$
 
     A partir de los datos entregados elija cuál modelo es mejor para
@@ -443,22 +441,21 @@ $$
     tendría los 6 registros mostrados anteriormente de la siguiente
     manera:
 
-    |        $Pelí        
-           cula_j$        |  $Dura  
-                           ción_j$  | \$ Tipo_j\$ | \$ Edad_j\$ |   $Est  
-                                                                 udio_j$  |  $log(  
-                                                                           Pre_j)$  |  $log(  
-                                                                                     Ing_j)$  |
-    |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
-    |       Odín 4        |   105   |   Acción    |    TE+7     |   Dis   |  8.55   |  6.43   |
-    |     C hillido 5     |   132   |   Terror    |    MA+18    |  Para   |  8.13   |  5.91   |
-    | D esafiar B arreras |   158   |   Romance   |    MA+14    |   WB    |  7.97   |  6.01   |
-
-<!-- -->
+    | $Pelí
+           cula_j$ | $Dura
+                           ción_j$ | \$ Tipo_j\$ | \$ Edad_j\$ | $Est
+                                                                 udio_j$ | $log(
+                                                                           Pre_j)$ | $log(
+                                                                                     Ing_j)$ |
+    |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+    | Odín 4 | 105 | Acción | TE+7 | Dis | 8.55 | 6.43 |
+    | C hillido 5 | 132 | Terror | MA+18 | Para | 8.13 | 5.91 |
+    | D esafiar B arreras | 158 | Romance | MA+14 | WB | 7.97 | 6.01 |
 
 2.  El modelo que explica de manera más efectiva el comportamiento es el
     modelo 2. Se pueden considerara varias razones para esto, algunas de
     estas razones son:
+
     a.  A pesar del modelo 1 tener una mejor log-verosimilitud, el BIC
         del modelo 2 es mejor que el modelo 1.
     b.  La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por
@@ -480,7 +477,9 @@ $$
         desviados en magnitud respecto al resto de coeficientes. Lo
         anterior podría dar indicios de algún error en cuánto al
         escalamiento de las variables al momento de calibrar el modelo.
+
 3.  Incluye:
+
     -   Primero, observamos aquellos coeficientes con mayor
         significancia estadística. Para eso consideramos aquellos cuyo
         p-valor sea menor a 0.01.
@@ -496,7 +495,9 @@ $$
     -   **Observación**: En el modelo 1, sería deseable considerar la
         variable $Duración$. Sin embargo, su p-valor alto refleja que no
         es una variable significativa en este modelo.
+
 4.  Incluye:
+
     a.  La condición (a) muestra que se deben incluir las variables
         Presupuesto, Duración, Edad, Género, Estudio y Nfun en el
         modelo, con sus propios coeficientes.
@@ -572,10 +573,10 @@ observa en las Tablas 1 y 2:
 |    Edad     |                   Edad del cliente                   |
 |  Categoría  |                Silver, Gold o Premium                |
 
-$$\text{Tabla 1: Variables Demográficas}$$
+$$\text{Tabla: Variables Demográficas}$$
 
 | Variable | Descripción |
-|:----------------------------------:|:----------------------------------:|
+|:--:|:--:|
 | IDCliente | Identificador del cliente |
 | Año | Año de la observación |
 | Mes | Mes de la observación |
@@ -586,7 +587,7 @@ $$\text{Tabla 1: Variables Demográficas}$$
 | Promoción | 1 si hubo promo o descuentos adicionales en el mes $t$ |
 | Mail | 1 si se avisó estado de cuenta al cliente via mail en el mes $t$ |
 
-$$\text{Tabla 2: Variables Transaccionales}$$
+$$\text{Tabla: Variables Transaccionales}$$
 
 1.  Como primera aproximación, se propone modelar la acreditación
     ($A_{it}$) y canje ($C_{it}$) de cada cliente $i$ en el mes $t$
@@ -606,8 +607,6 @@ $$\text{Tabla 2: Variables Transaccionales}$$
         $\alpha_{t}$, $\gamma_{i}$ y $\gamma_{t}$?
     b.  ¿Son los modelos anteriores identificables? En caso de ser su
         respuesta negativa, ¿cómo se corrige el problema?
-
-<!-- -->
 
 2.  Suponga que se han identificado los modelos anteriores (de
     requerirlo, con las restricciones necesarias para alcanzar
@@ -632,7 +631,7 @@ $$\text{Tabla 2: Variables Transaccionales}$$
     disponible, y cuyos resultados se encuentra en la tabla siguiente:
 
     |         Variable         |    Modelo 1     |    Modelo 2    |    Modelo 3     |
-    |:------------------:|:---------------:|:---------------:|:---------------:|
+    |:------------------------:|:---------------:|:--------------:|:---------------:|
     |       $\alpha_{0}$       | $35.9$ $(12.8)$ | $37.1$ $(8.6)$ | $32.7$ $(11.5)$ |
     |       $f$(Ingreso)       | $12.7$ $(5.1)$  |      $-$       | $10.7$ $(2.9)$  |
     |        $f$(Edad)         | $-1.5$ $(0.6)$  | $-1.2$ $(2.3)$ | $-0.6$ $(0.3)$  |
@@ -643,7 +642,7 @@ $$\text{Tabla 2: Variables Transaccionales}$$
     |     $R^{2}$ Ajustado     |     $0.34$      |     $0.53$     |     $0.55$      |
     |           MAPE           |    $45.5\%$     |    $20.9\%$    |    $23.4\%$     |
 
-    $$\text{Tabla 3: Resultados Modelos Regresión}$$
+    $$\text{Tabla: Resultados Modelos Regresión}$$
 
     a.  ¿Qué variables ayudan a explicar el comportamiento de
         acreditación de los consumidores?
@@ -760,8 +759,6 @@ estructurales de las ciudades y características de las propiedades.
         características es distinta dependiendo de si la propiedad es
         residencial o comercial.
 
-<!-- -->
-
 2.  (1.0 puntos) Adicional a lo ya expuesto, se considera que la
     magnitud en que el precio por metro cuadrado aumenta es mayor para
     ciudades más densamente pobladas. ¿Cómo modificaría el modelo ya
@@ -797,12 +794,12 @@ estructurales de las ciudades y características de las propiedades.
     cercana a la propiedad A.
 
     | Propiedad | Tiene Piscina | Tiene Calefacción Central | Tiene Esta cionamiento | Ciudad |
-    |:------------:|:------------:|:------------:|:------------:|:------------:|
+    |:--:|:--:|:--:|:--:|:--:|
     | A | Sí | Sí | Sí | Santiago |
     | B | No | No | Sí | Concepción |
     | C | Sí | Sí | No | Antofagasta |
 
-$$\text{Tabla 1: Muestra de datos de 3 propiedades de arriendo en Chile, 2025}$$
+$$\text{Tabla: Muestra de datos de 3 propiedades de arriendo en Chile, 2025}$$
 
 **Solución**
 
@@ -856,8 +853,6 @@ $$
         $$
         \frac{P_{ijkt}}{Ciudad_{ijkt}}.
         $$
-
-<!-- -->
 
 5.  (1 punto) Por definición $ln P_{kt} = \theta' \bar{x}_{kt}$, en que
     $\bar{x}_{it}$ son las características promedio de las propiedades
@@ -989,12 +984,9 @@ texto están asociadas con tasas de conversión más altas.
     -   El número de búsquedas diarias que en promedio hace el cliente
         *AvgNumSearch* (que puede suponer conocido).
 
-<!-- -->
-
 4.  Suponga que, después de un par de iteraciones, se ha determinado que
     existen dos especificaciones de modelos lineales que funcionan
-    relativamente bien, como indican los resultados de la [Tabla
-    1](#tabla-1).
+    relativamente bien, como indican los resultados de la tabla.
 
     a)  ¿Cómo interpreta los resultados de la variable *NumResult* en el
         contexto de esta aplicación?\
@@ -1019,7 +1011,7 @@ texto están asociadas con tasas de conversión más altas.
         | Observations | 1,715,495 | 1,715,495 |
         | $R_{adj.}^2$ | 0.19 | 0.825 |
 
-        $$\text{Tabla 1: Resultados de modelos de regresión próximas búsquedas}$$
+        $$\text{Tabla: Resultados de modelos de regresión próximas búsquedas}$$
 
 **Solución**
 
@@ -1149,7 +1141,7 @@ menos de 250 metros de alguna estación de metro.
     d.  ¿Cómo testearía si hay diferencias significativas en la demanda
         por marca?
 
-        $$\text{Tabla 1: Resultados modelos alternativos de regresión}$$
+        $$\text{Tabla: Resultados modelos alternativos de regresión}$$
 
         |          Variable          |  Ecuación 1   |  Ecuación 2   |
         |:--------------------------:|:-------------:|:-------------:|
@@ -1188,12 +1180,12 @@ menos de 250 metros de alguna estación de metro.
     variables independientes toman valores típicamente observados, los
     escenarios pesimistas y optimistas se evalúan en combinaciones más
     extremas que favorecen y desfavorecen la demanda respectivamente.
-    Los pronósticos generados se despliegan en la Tabla 2.
+    Los pronósticos generados se despliegan en la siguiente tabla.
 
-    $$\text{Tabla 2: Pronóstico de demanda para cuatro tiendas seleccionadas}$$
+    $$\text{Tabla: Pronóstico de demanda para cuatro tiendas seleccionadas}$$
 
     | Tienda |   | E cuación 1 |   |   | E cuación 2 |   |
-    |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+    |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
     |  | **Pesi mista** | **N eutro** | **Opti mista** | **Pesi mista** | **N eutro** | **Opti mista** |
     | Tienda A01 | 316,6 (11,8) | 345,1 (7,2) | 392,1 (12,1) | 318,5 (12,2) | 352,1 (6,7) | 387,7 (10,9) |
     | Tienda A12 | 555,8 (12,2) | 578,8 (8,1) | 602,2 (11,8) | 547,6 (11,0) | 566,3 (9,1) | 607,7 (11,6) |
@@ -1309,8 +1301,6 @@ menos de 250 metros de alguna estación de metro.
         podrían dar elementos adicionales para reducir la endogeneidad
         del constructo.
 
-------------------------------------------------------------------------
-
 ### Problema 7 - P1 Control 1 Otoño 2024
 
 Uno de los cambios más relevantes de los últimos años, en ambientes de
@@ -1403,11 +1393,13 @@ base de datos.
     servicio de atención a los clientes del banco, ¿cuál cree usted que
     debieran ser las variables dependientes para analizar en un modelo
     de regresión?
+
 2.  (2 puntos) Sea $y_{ik}$ la variable de desempeño que usted considera
     relevante para el participante i ($i \in
     \{1,\ldots,643\}$) en el escenario k ($k \in \{1,2,3\}$). Formule un
     modelo de regresión que permita evaluar el desempeño de las
     distintas estrategias y que considere las siguientes componentes:
+
     -   Algunos escenarios podrían ser más fáciles o más difíciles por
         lo que el agente podría tener desempeños sistemáticamente
         diferentes por tareas.
@@ -1424,13 +1416,11 @@ base de datos.
         tienden a preferir interacciones más cortas que el resto de los
         géneros.
 
-<!-- -->
-
-3)  (1 punto) ¿Qué limitaciones tiene el modelo anteriormente planteado
+3.  (1 punto) ¿Qué limitaciones tiene el modelo anteriormente planteado
     para el entendimiento de la pregunta de investigación? ¿Como
     recomendaría corregir estas limitaciones?
 
-4)  Para una parte del análisis, se consideraron tres modelos de
+4.  Para una parte del análisis, se consideraron tres modelos de
     regresión que se reportan en la Tabla 1.
 
     a)  (1 punto) De acuerdo a los resultados de estos modelos de
@@ -1441,7 +1431,7 @@ base de datos.
         introducción de restricciones en la estrategia de entrenamiento?
 
     | Variable | Experiencia (Coeficiente) | Resolutividad (Coeficiente) | Porcentaje Errores (Coeficiente) |
-    |:---------------:|:---------------:|:---------------:|:-----------------:|
+    |:--:|:--:|:--:|:--:|
     | Intercepto | 0.025 | 0.146 | 4.675 |
     | Prompt 2 | -0.079 \*\* | -0.157 \*\*\* | -4.965 \*\* |
     | Prompt 3 | -0.005 | 0.109 \*\* | -0.262 |
@@ -1457,13 +1447,11 @@ base de datos.
     | $R_{adj.}^2$ | 0.796 | 0.707 | 0.105 |
 
     $$
-    \text{Tabla 1: Resultados modelos alternativos de regresión.} \\
+    \text{Tabla: Resultados modelos alternativos de regresión.} \\
     \text{Fuente: Hernández, F. (2024): "Agentes inteligentes basados en Large Language Models} \\
     \text{para la atención automatizada en canal conversacional online de servicio al cliente en una} \\
     \text{empresa financiera". Memoria para optar al título de Ingeniero Civil Industrial.}
     $$
-
-------------------------------------------------------------------------
 
 ¹ <https://aws.amazon.com/es/what-is/generative-ai/>\
 ² <https://aws.amazon.com/es/what-is/foundation-models/>\
@@ -1523,9 +1511,8 @@ base de datos.
         no controlamos como el NSE o, si se considera más de una
         variable de desempeño, cuál es la relación entre estos factores.
 
-<!-- -->
-
 4)  Las respuestas se derivan directo de las tablas.
+
     a)  Los coeficientes del Prompt 2 es significativo en las tres
         variables de desempeño consideradas y por tanto esa estrategia
         de entrenamiento tiene peor resolutividad y satisfacción, pero
@@ -1543,8 +1530,6 @@ base de datos.
 **Nota:** Para los curiosos, los p-valores de los test para las tres
 ecuaciones son (0.066, 0.000 y 0.016) por lo que si consideramos un 95%
 las restricciones solo tendrían un impacto en la resolutividad.
-
-------------------------------------------------------------------------
 
 ### Problema 8 - P1 Control Primavera 2023
 
@@ -1622,12 +1607,13 @@ siguientes variables:
 
 3.  Suponga que se estiman tres modelos simples de regresión lineal para
     describir la popularidad de las canciones dentro de la plataforma.
-    Los resultados de estos dos modelos se reportan en la Tabla 1
+    Los resultados de estos dos modelos se reportan en la siguiente
+    tabla
 
-    $$\text{Tabla 1: Resultados modelos alternativos de regresión}$$
+    $$\text{Tabla: Resultados modelos alternativos de regresión}$$
 
     | V ariable | Modelo 1 Coef iciente | Modelo 1 SE | Modelo 2 Coef iciente | Modelo 2 SE | Modelo 3 Coef iciente | Modelo 3 SE |
-    |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+    |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
     | $\ln(\
     text{le
     ngth})$ | -0.453 | 0.001 | -0.462 | 0.023 | -0.3983 | 0.024 |
@@ -1749,8 +1735,6 @@ $$
         Este es un sistema de restricciones lineales que puede testearse
         directamente a través de una prueba F.
 
-------------------------------------------------------------------------
-
 ### Problema 9 - P1 Control Otoño 2023
 
 *KornerK* introdujo hace un par de años un modelo de negocio innovador
@@ -1796,9 +1780,9 @@ variables:
 -   **IMACEC**: Variación del índice mensual de actividad económica.
 
 Como ilustración, se muestran las primeras seis entradas se presentan en
-la Tabla 1.
+la siguiente tabla.
 
-$$\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias}$$
+$$\text{Tabla: Muestra de los primeros 6 registros de la base de discrepancias}$$
 
 | I dZip |     Date     | Hour | NOrd ersC | NOrd ersN | Day | Mes | Rain | IM ACEC |
 |:------:|:------------:|:----:|:---------:|:---------:|:---:|:---:|:----:|:-------:|
@@ -1845,12 +1829,12 @@ $$\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias
 
 2.  Suponga que se estiman dos modelos simples de regresión lineal para
     describir la demanda por servicios de *KornerK*. Los resultados de
-    estos dos modelos se reportan en la Tabla 2.
+    estos dos modelos se reportan en la siguiente tabla:
 
-    $$\text{Tabla 2: Resultados modelos alternativos de regresión}$$
+    $$\text{Tabla: Resultados modelos alternativos de regresión}$$
 
     | V ariable | Modelo 1 Coef iciente | Modelo 1 p-valor | Modelo 2 Coef iciente | Modelo 2 p-valor | Modelo 3 Coef iciente | Modelo 3 p-valor |
-    |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+    |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
     | Int ercepto | 589.415 | 0.000 | \- | \- | \- | \- |
     | FinD eSemana | 120.732 | 0.001 | 89.462 | 0.023 | 88.559 | 0.024 |
     | Rain | 20.341 | 0.562 | 14.341 | 0.011 | 11.101 | 0.012 |
@@ -1954,11 +1938,11 @@ $$\text{Tabla 1: Muestra de los primeros 6 registros de la base de discrepancias
 
     a.  El valor esperado viene dado por:
 
-    ```         
-    $$
-    \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
-    $$
-    ```
+        $$
+        \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
+        $$
+
+    <!-- -->
 
     b.  La probabilidad viene dada por:
 
