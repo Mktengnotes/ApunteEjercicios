@@ -91,8 +91,8 @@ library(kableExtra)
 | Modelo                     | Distribución Incondicional                    | Distribución Condicional                                  | Esperanza Condicional                                         |
 |----------------------------|-----------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------|
 | Modelo de Tiempo Discreto  | $\theta \sim \mathrm{Beta}(\alpha,\beta)$     | $\theta \mid t \sim \mathrm{Beta}(\alpha+1,\ \beta+t)$    | $\mathbb{E}[\theta \mid t] = \dfrac{\alpha+1}{\alpha+\beta+t}$ |
-| Modelo de Tiempo Continuo  | $\lambda \sim \mathrm{Gamma}(\alpha,r)$       | $\lambda \mid t \sim \mathrm{Gamma}(\alpha+t,\ r+1)$      | $\mathbb{E}[\lambda \mid t] = \dfrac{r+1}{\alpha+t}$             |
-| Modelo de Conteo           | $\lambda \sim \mathrm{Gamma}(\alpha,r)$       | $\lambda \mid x \sim \mathrm{Gamma}(\alpha+1,\ r+x)$      | $\mathbb{E}[\lambda \mid x] = \dfrac{r+x}{\alpha+1}$             |
+| Modelo de Tiempo Continuo  | $\lambda \sim \mathrm{Gamma}(r,\alpha)$       | $\lambda \mid t \sim \mathrm{Gamma}(r+1,\alpha + t)$      | $\mathbb{E}[\lambda \mid t] = \dfrac{r+1}{\alpha+t}$             |
+| Modelo de Conteo           | $\lambda \sim \mathrm{Gamma}(r,\alpha)$       | $\lambda \mid x, t  \sim \mathrm{Gamma}(r+x,\ \alpha+t)$      | $\mathbb{E}[\lambda \mid x, t] = \dfrac{r+x}{\alpha+t}$             |
 | Modelo de Elección Binaria | $\theta \sim \mathrm{Beta}(\alpha,\beta)$     | $\theta \mid x \sim \mathrm{Beta}(\alpha+x,\ \beta+m-x)$  | $\mathbb{E}[\theta \mid x] = \dfrac{\alpha+x}{\alpha+\beta+m}$   |
 
 :::

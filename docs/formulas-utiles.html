@@ -236,15 +236,15 @@ P(X_s = x_s|m_s,p_s) = \binom{m_s}{x_s} p_s^{x_s}(1-p_s)^{m_s-x_s}
 </tr>
 <tr class="even">
 <td>Modelo de Tiempo Continuo</td>
-<td><span class="math inline">\(\lambda \sim \mathrm{Gamma}(\alpha,r)\)</span></td>
-<td><span class="math inline">\(\lambda \mid t \sim \mathrm{Gamma}(\alpha+t,\ r+1)\)</span></td>
+<td><span class="math inline">\(\lambda \sim \mathrm{Gamma}(r,\alpha)\)</span></td>
+<td><span class="math inline">\(\lambda \mid t \sim \mathrm{Gamma}(r+1,\alpha + t)\)</span></td>
 <td><span class="math inline">\(\mathbb{E}[\lambda \mid t] = \dfrac{r+1}{\alpha+t}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Modelo de Conteo</td>
-<td><span class="math inline">\(\lambda \sim \mathrm{Gamma}(\alpha,r)\)</span></td>
-<td><span class="math inline">\(\lambda \mid x \sim \mathrm{Gamma}(\alpha+1,\ r+x)\)</span></td>
-<td><span class="math inline">\(\mathbb{E}[\lambda \mid x] = \dfrac{r+x}{\alpha+1}\)</span></td>
+<td><span class="math inline">\(\lambda \sim \mathrm{Gamma}(r,\alpha)\)</span></td>
+<td><span class="math inline">\(\lambda \mid x, t  \sim \mathrm{Gamma}(r+x,\ \alpha+t)\)</span></td>
+<td><span class="math inline">\(\mathbb{E}[\lambda \mid x, t] = \dfrac{r+x}{\alpha+t}\)</span></td>
 </tr>
 <tr class="even">
 <td>Modelo de Elección Binaria</td>
