@@ -366,9 +366,9 @@ total de beneficiarios dentro de ese segmento, empresa y trimestre.
 
     b.  Recordar que la esperanza de una $Beta(\alpha,\beta)$ viene dada
         por $\frac{\alpha}{\alpha+\beta}$. Por lo tanto, lo que
-        necesitamos testear es que $\alpha=\frac{alpha}{\alpha+\beta}$,
-        que es una restricción lineal que puede testearse usando un test
-        de ratios de verosimilitud.
+        necesitamos testear es que $\alpha=0.16(\alpha+\beta)$, que es
+        una restricción lineal que puede testearse usando un test de
+        ratios de verosimilitud.
 
 ### Problema 2
 
@@ -953,7 +953,7 @@ internas del equipo".* Antes de cerrar el mensaje, te das el tiempo de
 darle un vistazo rápido al diccionario de datos que viene adjunto:
 
 | Variable | Descripción | Media |
-|:------------------|:----------------------------------|:-----------------:|
+|:------------------|:---------------------------------|:-----------------:|
 | IdCliente | Identificador de cliente | \- |
 | Mes | Mes {enero, febrero, …, diciembre} | \- |
 | Año | Año | \- |
@@ -1149,7 +1149,7 @@ inteligencia artificial, se cuenta con el puntaje de cada contenido en
 tres dimensiones distintos: producción, contenido y novedad.
 
 | Variable | Descripción | Media |
-|:------------------|:----------------------------------|:-----------------:|
+|:------------------|:---------------------------------|:-----------------:|
 | IdCC | Identificador de cliente | \- |
 | IdPost | Identificador del contenido | \- |
 | DatePost | Fecha de publicación del contenido | \- |
