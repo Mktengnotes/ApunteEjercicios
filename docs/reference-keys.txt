@@ -49,3 +49,5 @@ problema-5
 problema-6
 problema-7
 problema-8
+problema-9
+problema-1-control-2-2025-2

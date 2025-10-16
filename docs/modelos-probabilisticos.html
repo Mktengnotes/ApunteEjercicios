@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-10-03" />
+<meta name="date" content="2025-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -122,7 +122,7 @@
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problemas-aplicados-1"><i class="fa fa-check"></i><b>3.4</b> Problemas Aplicados</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-1-1"><i class="fa fa-check"></i><b>3.4.1</b> Problema 1</a></li>
+<li class="chapter" data-level="3.4.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-1-control-2-2025-2"><i class="fa fa-check"></i><b>3.4.1</b> Problema 1 (Control 2 2025-2)</a></li>
 <li class="chapter" data-level="3.4.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-2-1"><i class="fa fa-check"></i><b>3.4.2</b> Problema 2</a></li>
 <li class="chapter" data-level="3.4.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-3-1"><i class="fa fa-check"></i><b>3.4.3</b> Problema 3</a></li>
 <li class="chapter" data-level="3.4.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-4"><i class="fa fa-check"></i><b>3.4.4</b> Problema 4</a></li>
@@ -130,6 +130,7 @@
 <li class="chapter" data-level="3.4.6" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-6"><i class="fa fa-check"></i><b>3.4.6</b> Problema 6</a></li>
 <li class="chapter" data-level="3.4.7" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-7"><i class="fa fa-check"></i><b>3.4.7</b> Problema 7</a></li>
 <li class="chapter" data-level="3.4.8" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-8"><i class="fa fa-check"></i><b>3.4.8</b> Problema 8</a></li>
+<li class="chapter" data-level="3.4.9" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-9"><i class="fa fa-check"></i><b>3.4.9</b> Problema 9</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
@@ -354,8 +355,245 @@ ser más complejo de representar en discreto.</p></li>
 </div>
 <div id="problemas-aplicados-1" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Problemas Aplicados<a href="modelos-probabilisticos.html#problemas-aplicados-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="problema-1-1" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Problema 1<a href="modelos-probabilisticos.html#problema-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="problema-1-control-2-2025-2" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Problema 1 (Control 2 2025-2)<a href="modelos-probabilisticos.html#problema-1-control-2-2025-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>VTV es una empresa aseguradora, en la que una de sus principales líneas
+de negocio consiste en la provisión de cobertura de segunda línea para
+clientes corporativos. En simple, VTV ofrece un seguro de salud que se
+gatilla cuando ocurre un gasto médico, pero que se activa después de que
+operen las coberturas obligatorias de Fonasa o Isapre. El servicio se
+vende a empresas de distintos rubros para que sirvan como beneficio
+complementario para sus trabajadores.</p>
+<p>Recientemente, VTV ha lanzado un nuevo servicio llamado <em>TuBienestar</em>.
+Este servicio ofrece que los empleados de las empresas clientes de VTV
+puedan acceder a una batería de exámenes preventivos que aspiran a
+detectar tempranamente problemas de consideración y así reducir los
+gastos en salud a largo plazo. A continuación, usaremos modelos
+probabilísticos para tener una primera aproximación del valor del
+programa <em>TuBienestar</em>. Para eso, haremos uso de la base histórica de
+gastos que contiene la valorización de todos los eventos de salud,
+incluyendo consultas médicas, hospitalizaciones, exámenes y compra de
+medicamentos. Aunque existe información más detallada de cada evento,
+nos concentraremos en <span class="math inline">\(n_{ijkt}\)</span>, correspondiente al número de eventos
+de salud en el periodo t del beneficiario i, que pertenece al grupo j de
+la empresa k. Notar que en esta base, los eventos están agrupados por
+periodos trimestrales y los beneficiarios de cada empresa están
+separados por segmento, ya que distintos tipos de empleados podrían
+acceder a distintos beneficios.</p>
+<ol style="list-style-type: decimal">
+<li>(2.0 puntos) Actualmente, VTV describe el número de eventos de cada
+beneficiario usando un modelo de Poisson. En este modelo, como los
+eventos de salud no son tan frecuentes, una gran proporción de los
+beneficiarios no registra eventos en un trimestre dado y, por tanto,
+el caso de cero eventos merece un tratamiento especial. Para modelar
+los eventos de gasto, se considera que, si hay un evento, el número
+de eventos se distribuye Poisson, pero que la probabilidad de no
+observar ningún evento es mayor que la de un modelo de Poisson
+tradicional. Escriba la log-verosimilitud de este modelo de conteo
+con ceros inflados. <em><strong>Hint:</strong> Le puede resultar útil conceptualizar
+el modelo pensando que con probabilidad</em> <span class="math inline">\(\pi\)</span> <em>no hay ningún evento
+y que con probabilidad</em> <span class="math inline">\(1-\pi\)</span> <em>el proceso sigue distribución de
+Poisson standard.</em></li>
+<li>Suponga ahora que, en vez de describir el número de eventos de cada
+beneficiario, nos concentramos en el número de beneficiarios que
+registra al menos un evento dentro de cada segmento-compañía. Así,
+como alternativa al modelo existente, se postula describir la
+ocurrencia de eventos de salud como un modelo de elección binaria.
+<ol style="list-style-type: lower-alpha">
+<li>(1.0 puntos) Suponiendo que puede haber segmentos con mayor
+propensión a registrar eventos, escriba la log-verosimilitud de
+un modelo binomial con dos clases latentes.</li>
+<li>(1.0 puntos) Suponga que ha estimado el modelo y los estimadores
+máximos verosímiles vienen dados por
+<span class="math inline">\((\theta_1, \theta_2, \pi) = (0.1, 0.6, 0.5)\)</span>. Considere un
+segmento con 824 beneficiarios que, transcurrido un trimestre,
+evidencia 17 eventos de salud. Escriba una expresión para la
+probabilidad que este segmento corresponda a la clase de mayor
+propensión a registrar eventos.</li>
+</ol></li>
+</ol>
+<p>Para las descripciones anteriores considere que <span class="math inline">\(n_{jkt}\)</span> es el número
+total de beneficiarios que tuvieron algún gasto de salud en el trimestre
+t dentro del segmento j de la empresa k y que <span class="math inline">\(m_{jkt}\)</span> es el número
+total de beneficiarios dentro de ese segmento, empresa y trimestre.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Como último enfoque, se estiman tres versiones de modelos
+beta-binomiales. En los modelos que se incluye heterogeneidad
+observable, se consideran variables asociadas tanto a
+características del segmento como a variables estacionales y de
+tendencia.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Modelo 1</th>
+<th>Modelo 2</th>
+<th>Modelo 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span></td>
+<td>0,127 **</td>
+<td>0,151 **</td>
+<td>0,149 *</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span></td>
+<td>3,503 ***</td>
+<td>3,729 ***</td>
+<td>3,852 ***</td>
+</tr>
+<tr class="odd">
+<td>Sector:Minería</td>
+<td></td>
+<td>1,234 ***</td>
+<td>1,108 ***</td>
+</tr>
+<tr class="even">
+<td>Sector:Construcción</td>
+<td></td>
+<td>2,122 ***</td>
+<td>1,432 **</td>
+</tr>
+<tr class="odd">
+<td>Sector:Salud</td>
+<td></td>
+<td>1,784 ***</td>
+<td>1,665 ***</td>
+</tr>
+<tr class="even">
+<td>Tamaño-Mediana</td>
+<td></td>
+<td>0,145</td>
+<td>-0,004</td>
+</tr>
+<tr class="odd">
+<td>Tamaño-Grande</td>
+<td></td>
+<td>0,372 *</td>
+<td>0,401 *</td>
+</tr>
+<tr class="even">
+<td>AntiguedadContrato</td>
+<td></td>
+<td>0,188 **</td>
+<td>0,193 **</td>
+</tr>
+<tr class="odd">
+<td>TuBienestar</td>
+<td></td>
+<td></td>
+<td>-0,089 **</td>
+</tr>
+<tr class="even">
+<td>Invierno</td>
+<td></td>
+<td>2,921 ***</td>
+<td>2,955 ***</td>
+</tr>
+<tr class="odd">
+<td>Verano</td>
+<td></td>
+<td>-0,539 *</td>
+<td>-0,564 *</td>
+</tr>
+<tr class="even">
+<td>Tendencia</td>
+<td></td>
+<td>0,278 **</td>
+<td>0,305 **</td>
+</tr>
+<tr class="odd">
+<td><strong>N. Obs</strong></td>
+<td>34.825</td>
+<td>34.825</td>
+<td>34.825</td>
+</tr>
+<tr class="even">
+<td><strong>LL</strong></td>
+<td>-51.771,8</td>
+<td>-45.282,1</td>
+<td>-41.321,9</td>
+</tr>
+<tr class="odd">
+<td><strong>AIC</strong></td>
+<td>107.543,6</td>
+<td>90.580,2</td>
+<td>82.665,8</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\text{Tabla 1. Estimadores máximo verosímiles de dos modelos beta-binomiales con variables explicativas.}\)</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>(1.0 puntos) Discuta si el programa <em>TuBienestar</em> ayuda a
+describir el comportamiento de los beneficiarios y si el
+programa <em>TuBienestar</em> es bueno para la salud de los
+beneficiarios.</li>
+<li>(1.0 puntos) En otros mercados el valor esperado de la
+probabilidad que un beneficiario exhiba un evento de salud en un
+trimestre dado es 0.16. ¿Cómo testearía si los datos de Chile
+son distintos a ese valor medio internacional?</li>
+</ol></li>
+</ol>
+<p><strong>Solución</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Siguiendo la indicación, la probabilidad de los eventos viene dada
+por:</p>
+<p><span class="math display">\[
+\Pr(N_{ijkt} = n \mid \lambda, \pi) =
+\begin{cases}
+\pi + (1 - \pi)e^{-\lambda} &amp; n = 0 \\
+(1 - \pi) \dfrac{e^{-\lambda}\lambda^n}{n!} &amp; n &gt; 0
+\end{cases}
+\]</span></p>
+<p>Entonces, la función log-verosimilitud viene dada por:</p>
+<p><span class="math display">\[
+LL = \sum_{i} \sum_{j} \sum_{k} \sum_{t}
+\left[
+    1_{n_{ijkt}=0} \ln\left( \pi + (1 - \pi)e^{-\lambda} \right) +
+    1_{n_{ijkt}&gt;0} \ln\left( (1 - \pi) \dfrac{e^{-\lambda}\lambda^n}{n!} \right)
+\right]
+\]</span></p></li>
+<li><p>Sean <span class="math inline">\(\theta_1\)</span> y <span class="math inline">\(\theta_2\)</span> las probabilidades de registrar un
+evento de las clases 1 y 2 respectivamente.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>La probabilidad de observar exactamente <span class="math inline">\(n\)</span> eventos en el
+segmento de clientes <span class="math inline">\(j\)</span> de la empresa <span class="math inline">\(k\)</span> en el trimestre <span class="math inline">\(t\)</span>
+viene dada por:</p>
+<p><span class="math display">\[ \Pr(n_{ijkt} = n \mid \theta_1, \theta_2, \pi) = \pi \binom{m}{n_{ijkt}} \theta_1^{n_{ijkt}} (1 - \theta_1)^{m - n_{ijkt}} + (1 - \pi) \binom{m}{n_{ijkt}} \theta_2^{n_{ijkt}} (1 - \theta_2)^{m - n_{ijkt}} \]</span>Entonces,
+la log-verosimilitud viene dada por:
+<span class="math display">\[ LL \;=\; \sum_{i}\sum_{j}\sum_{k}\sum_{t} \ln\!\Big( \Pr(n_{ijkt} \mid \theta_1,\theta_2,\pi) \Big) \]</span></p></li>
+<li><p>Aplicamos la fórmula de bayes directamente:
+<span class="math display">\[ \Pr(\lambda=\lambda_2 \mid n_{ijkt}=17) = \frac{\Pr(n_{ijkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)} {\Pr(n_{ijks}=17 \mid \lambda=\lambda_1)\,\Pr(\lambda=\lambda_1) + \Pr(n_{ijkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)}. \]</span>
+Donde:
+<span class="math display">\[ \Pr(n_{ijkt}=17 \mid \lambda=\lambda_1) = \binom{824}{17}\,(0.1)^{17}\,(1-0.1)^{824-17}, \]</span>
+<span class="math display">\[ \Pr(n_{ijkt}=17 \mid \lambda=\lambda_2) = \binom{824}{17}\,(0.6)^{17}\,(1-0.6)^{824-17}, \]</span>
+<span class="math display">\[ \Pr(\lambda=\lambda_1)=\Pr(\lambda=\lambda_2)=\tfrac{1}{2}. \]</span></p></li>
+</ol></li>
+<li><p>La parte a) requiere mirar los resultados de la tabla. La parte b)
+puede contestarse independientemente.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>El AIC del modelo 2 es mayor que el AIC del modelo 3 que solo
+agrega la variable tuBienestar, y por tanto, la variable tiene
+valor explicativo. Se puede argumentar también que el
+coeficiente mismo de la variable es significativo y por tanto
+ayuda a explicar. Respecto al impacto en la salud, como el
+coeficiente es significativo y negativo, diríamos que aquellos
+que participan del programa tienen una menor probabilidad de
+generar eventos y por tanto el programa sería beneficioso. Sería
+deseable discutir que este efecto no es necesariamente causal,
+pero no lo consideraremos necesario.</p></li>
+<li><p>Recordar que la esperanza de una <span class="math inline">\(Beta(\alpha,\beta)\)</span> viene dada
+por <span class="math inline">\(\frac{\alpha}{\alpha+\beta}\)</span>. Por lo tanto, lo que
+necesitamos testear es que <span class="math inline">\(\alpha=\frac{alpha}{\alpha+\beta}\)</span>,
+que es una restricción lineal que puede testearse usando un test
+de ratios de verosimilitud.</p></li>
+</ol></li>
+</ol>
+</div>
+<div id="problema-2-1" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Problema 2<a href="modelos-probabilisticos.html#problema-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En el contexto del marketing B2B (Business to Business) para servicios
 profesionales, las empresas han comenzado a incorporar el marketing de
 contenidos (Content Marketing, CM) como parte integral de sus
@@ -498,7 +736,7 @@ bastante mejor, como indica la <a href="#tbl:loglike"><strong>??</strong></a>.</
 modelo de regresión beta-binomial para que sea preferido en términos
 de AIC?</p></li>
 </ol>
-<p>Solución</p>
+<p><strong>Solución</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>De acuerdo a las solicitudes:</p>
 <ol style="list-style-type: lower-alpha">
@@ -562,8 +800,8 @@ parámetros más y seguiría siendo más preferido que el modelo de
 regresión de Poisson.</p></li>
 </ol>
 </div>
-<div id="problema-2-1" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Problema 2<a href="modelos-probabilisticos.html#problema-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="problema-3-1" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Problema 3<a href="modelos-probabilisticos.html#problema-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Harcor es una importante firma latinoamericana que se concentra en la
 producción y venta de caramelos y snacks. Aunque la compañía tiene una
 estrategia multicanal, gran parte de sus ventas se concentra en el canal
@@ -727,8 +965,8 @@ probabilidad viene dada por</p>
 <p><span class="math display">\[\frac{\alpha + 3}{\alpha + \beta + 3} = 0.842\]</span></p></li>
 </ol>
 </div>
-<div id="problema-3-1" class="section level3 hasAnchor" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> Problema 3<a href="modelos-probabilisticos.html#problema-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="problema-4" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Problema 4<a href="modelos-probabilisticos.html#problema-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En 1972, la <em>National Association of Food Chains</em> (NAFC) impulsó el uso
 de códigos de barras para administrar los precios en las góndolas de los
 supermercados en Estados Unidos. Desde aquel entonces, ha existido una
@@ -1096,8 +1334,8 @@ dadas por:</p>
 </ul></li>
 </ol>
 </div>
-<div id="problema-4" class="section level3 hasAnchor" number="3.4.4">
-<h3><span class="header-section-number">3.4.4</span> Problema 4<a href="modelos-probabilisticos.html#problema-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="problema-5" class="section level3 hasAnchor" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> Problema 5<a href="modelos-probabilisticos.html#problema-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Se acerca el verano (sí, hay que usar la imaginación) y tu última
 práctica profesional. Como has sido una estudiante excepcional, pudiste
 elegir con cuidado dónde realizarla y después de descartar varias
@@ -1122,9 +1360,9 @@ internas del equipo”.</em> Antes de cerrar el mensaje, te das el tiempo de
 darle un vistazo rápido al diccionario de datos que viene adjunto:</p>
 <table>
 <colgroup>
-<col width="24%" />
-<col width="50%" />
-<col width="24%" />
+<col width="26%" />
+<col width="47%" />
+<col width="26%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1363,8 +1601,8 @@ LL(\hat{\theta}) = \sum_{icst} y_{icst} ln\left(\frac{e^{u_{icst}}}{1+e^{u_{icst
 \]</span></p></li>
 </ol>
 </div>
-<div id="problema-5" class="section level3 hasAnchor" number="3.4.5">
-<h3><span class="header-section-number">3.4.5</span> Problema 5<a href="modelos-probabilisticos.html#problema-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="problema-6" class="section level3 hasAnchor" number="3.4.6">
+<h3><span class="header-section-number">3.4.6</span> Problema 6<a href="modelos-probabilisticos.html#problema-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En los últimos 20 años, hemos visto un crecimiento explosivo en el uso
 de redes sociales, con más de 4.4 billones de usuarios a nivel mundial y
 con un promedio de más de 8 cuentas por usuario en las distintas
@@ -1400,9 +1638,9 @@ inteligencia artificial, se cuenta con el puntaje de cada contenido en
 tres dimensiones distintos: producción, contenido y novedad.</p>
 <table>
 <colgroup>
-<col width="24%" />
-<col width="50%" />
-<col width="24%" />
+<col width="26%" />
+<col width="47%" />
+<col width="26%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1576,8 +1814,8 @@ personas simplemente se multiplica.</p></li>
 </ol></li>
 </ol>
 </div>
-<div id="problema-6" class="section level3 hasAnchor" number="3.4.6">
-<h3><span class="header-section-number">3.4.6</span> Problema 6<a href="modelos-probabilisticos.html#problema-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="problema-7" class="section level3 hasAnchor" number="3.4.7">
+<h3><span class="header-section-number">3.4.7</span> Problema 7<a href="modelos-probabilisticos.html#problema-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Hippi es una empresa nacional dedicada a la fabricación de productos
 para alta montaña. La empresa cuenta con una base de datos que registra
 la compras que sus clientes en cada temporada y busca estudiar el numero
@@ -1647,8 +1885,8 @@ L(\alpha,\beta,\pi |x) = \prod_{x=0}^{\infty} \mathbb{P}(X=x|\alpha,\beta,\pi)^{
 \]</span></p></li>
 </ol>
 </div>
-<div id="problema-7" class="section level3 hasAnchor" number="3.4.7">
-<h3><span class="header-section-number">3.4.7</span> Problema 7<a href="modelos-probabilisticos.html#problema-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="problema-8" class="section level3 hasAnchor" number="3.4.8">
+<h3><span class="header-section-number">3.4.8</span> Problema 8<a href="modelos-probabilisticos.html#problema-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para revitalizar el interés de los usuarios, Pokémon Go está pensando
 introducir 7 nuevos personajes Pokémon en las comunas de Melipilla,
 Talagante, Pirque, Colina, Alhue, Paine, Lampa y Buin. Para estudiar el
@@ -1993,8 +2231,8 @@ columnas y en el último paso reemplazamos por la expresión
 encontrada en la parte anterior.</p></li>
 </ol>
 </div>
-<div id="problema-8" class="section level3 hasAnchor" number="3.4.8">
-<h3><span class="header-section-number">3.4.8</span> Problema 8<a href="modelos-probabilisticos.html#problema-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="problema-9" class="section level3 hasAnchor" number="3.4.9">
+<h3><span class="header-section-number">3.4.9</span> Problema 9<a href="modelos-probabilisticos.html#problema-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Inmersos en la era digital, los consumidores están cada vez conectados
 en distintos dispositivos los cuales pueden ser usados como canales
 durante el proceso de compra. En este contexto, algunas empresas han

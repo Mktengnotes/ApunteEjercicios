@@ -213,7 +213,164 @@ E6: b
 
 ## Problemas Aplicados
 
-### Problema 1
+### Problema 1 (Control 2 2025-2)
+
+VTV es una empresa aseguradora, en la que una de sus principales líneas
+de negocio consiste en la provisión de cobertura de segunda línea para
+clientes corporativos. En simple, VTV ofrece un seguro de salud que se
+gatilla cuando ocurre un gasto médico, pero que se activa después de que
+operen las coberturas obligatorias de Fonasa o Isapre. El servicio se
+vende a empresas de distintos rubros para que sirvan como beneficio
+complementario para sus trabajadores.
+
+Recientemente, VTV ha lanzado un nuevo servicio llamado *TuBienestar*.
+Este servicio ofrece que los empleados de las empresas clientes de VTV
+puedan acceder a una batería de exámenes preventivos que aspiran a
+detectar tempranamente problemas de consideración y así reducir los
+gastos en salud a largo plazo. A continuación, usaremos modelos
+probabilísticos para tener una primera aproximación del valor del
+programa *TuBienestar*. Para eso, haremos uso de la base histórica de
+gastos que contiene la valorización de todos los eventos de salud,
+incluyendo consultas médicas, hospitalizaciones, exámenes y compra de
+medicamentos. Aunque existe información más detallada de cada evento,
+nos concentraremos en $n_{ijkt}$, correspondiente al número de eventos
+de salud en el periodo t del beneficiario i, que pertenece al grupo j de
+la empresa k. Notar que en esta base, los eventos están agrupados por
+periodos trimestrales y los beneficiarios de cada empresa están
+separados por segmento, ya que distintos tipos de empleados podrían
+acceder a distintos beneficios.
+
+1.  (2.0 puntos) Actualmente, VTV describe el número de eventos de cada
+    beneficiario usando un modelo de Poisson. En este modelo, como los
+    eventos de salud no son tan frecuentes, una gran proporción de los
+    beneficiarios no registra eventos en un trimestre dado y, por tanto,
+    el caso de cero eventos merece un tratamiento especial. Para modelar
+    los eventos de gasto, se considera que, si hay un evento, el número
+    de eventos se distribuye Poisson, pero que la probabilidad de no
+    observar ningún evento es mayor que la de un modelo de Poisson
+    tradicional. Escriba la log-verosimilitud de este modelo de conteo
+    con ceros inflados. ***Hint:** Le puede resultar útil conceptualizar
+    el modelo pensando que con probabilidad* $\pi$ *no hay ningún evento
+    y que con probabilidad* $1-\pi$ *el proceso sigue distribución de
+    Poisson standard.*
+2.  Suponga ahora que, en vez de describir el número de eventos de cada
+    beneficiario, nos concentramos en el número de beneficiarios que
+    registra al menos un evento dentro de cada segmento-compañía. Así,
+    como alternativa al modelo existente, se postula describir la
+    ocurrencia de eventos de salud como un modelo de elección binaria.
+    a)  (1.0 puntos) Suponiendo que puede haber segmentos con mayor
+        propensión a registrar eventos, escriba la log-verosimilitud de
+        un modelo binomial con dos clases latentes.
+    b)  (1.0 puntos) Suponga que ha estimado el modelo y los estimadores
+        máximos verosímiles vienen dados por
+        $(\theta_1, \theta_2, \pi) = (0.1, 0.6, 0.5)$. Considere un
+        segmento con 824 beneficiarios que, transcurrido un trimestre,
+        evidencia 17 eventos de salud. Escriba una expresión para la
+        probabilidad que este segmento corresponda a la clase de mayor
+        propensión a registrar eventos.
+
+Para las descripciones anteriores considere que $n_{jkt}$ es el número
+total de beneficiarios que tuvieron algún gasto de salud en el trimestre
+t dentro del segmento j de la empresa k y que $m_{jkt}$ es el número
+total de beneficiarios dentro de ese segmento, empresa y trimestre.
+
+3.  Como último enfoque, se estiman tres versiones de modelos
+    beta-binomiales. En los modelos que se incluye heterogeneidad
+    observable, se consideran variables asociadas tanto a
+    características del segmento como a variables estacionales y de
+    tendencia.
+
+    | Variable            | Modelo 1     | Modelo 2     | Modelo 3     |
+    |---------------------|--------------|--------------|--------------|
+    | $\alpha$            | 0,127 \*\*   | 0,151 \*\*   | 0,149 \*     |
+    | $\beta$             | 3,503 \*\*\* | 3,729 \*\*\* | 3,852 \*\*\* |
+    | Sector:Minería      |              | 1,234 \*\*\* | 1,108 \*\*\* |
+    | Sector:Construcción |              | 2,122 \*\*\* | 1,432 \*\*   |
+    | Sector:Salud        |              | 1,784 \*\*\* | 1,665 \*\*\* |
+    | Tamaño-Mediana      |              | 0,145        | -0,004       |
+    | Tamaño-Grande       |              | 0,372 \*     | 0,401 \*     |
+    | AntiguedadContrato  |              | 0,188 \*\*   | 0,193 \*\*   |
+    | TuBienestar         |              |              | -0,089 \*\*  |
+    | Invierno            |              | 2,921 \*\*\* | 2,955 \*\*\* |
+    | Verano              |              | -0,539 \*    | -0,564 \*    |
+    | Tendencia           |              | 0,278 \*\*   | 0,305 \*\*   |
+    | **N. Obs**          | 34.825       | 34.825       | 34.825       |
+    | **LL**              | -51.771,8    | -45.282,1    | -41.321,9    |
+    | **AIC**             | 107.543,6    | 90.580,2     | 82.665,8     |
+
+    $\text{Tabla 1. Estimadores máximo verosímiles de dos modelos beta-binomiales con variables explicativas.}$
+
+    a.  (1.0 puntos) Discuta si el programa *TuBienestar* ayuda a
+        describir el comportamiento de los beneficiarios y si el
+        programa *TuBienestar* es bueno para la salud de los
+        beneficiarios.
+    b.  (1.0 puntos) En otros mercados el valor esperado de la
+        probabilidad que un beneficiario exhiba un evento de salud en un
+        trimestre dado es 0.16. ¿Cómo testearía si los datos de Chile
+        son distintos a ese valor medio internacional?
+
+**Solución**
+
+1.  Siguiendo la indicación, la probabilidad de los eventos viene dada
+    por:
+
+    $$
+    \Pr(N_{ijkt} = n \mid \lambda, \pi) =
+    \begin{cases}
+    \pi + (1 - \pi)e^{-\lambda} & n = 0 \\
+    (1 - \pi) \dfrac{e^{-\lambda}\lambda^n}{n!} & n > 0
+    \end{cases}
+    $$
+
+    Entonces, la función log-verosimilitud viene dada por:
+
+    $$
+    LL = \sum_{i} \sum_{j} \sum_{k} \sum_{t} 
+    \left[
+        1_{n_{ijkt}=0} \ln\left( \pi + (1 - \pi)e^{-\lambda} \right) + 
+        1_{n_{ijkt}>0} \ln\left( (1 - \pi) \dfrac{e^{-\lambda}\lambda^n}{n!} \right)
+    \right]
+    $$
+
+2.  Sean $\theta_1$ y $\theta_2$ las probabilidades de registrar un
+    evento de las clases 1 y 2 respectivamente.
+
+    a.  La probabilidad de observar exactamente $n$ eventos en el
+        segmento de clientes $j$ de la empresa $k$ en el trimestre $t$
+        viene dada por:
+
+        $$ \Pr(n_{ijkt} = n \mid \theta_1, \theta_2, \pi) = \pi \binom{m}{n_{ijkt}} \theta_1^{n_{ijkt}} (1 - \theta_1)^{m - n_{ijkt}} + (1 - \pi) \binom{m}{n_{ijkt}} \theta_2^{n_{ijkt}} (1 - \theta_2)^{m - n_{ijkt}} $$Entonces,
+        la log-verosimilitud viene dada por:
+        $$ LL \;=\; \sum_{i}\sum_{j}\sum_{k}\sum_{t} \ln\!\Big( \Pr(n_{ijkt} \mid \theta_1,\theta_2,\pi) \Big) $$
+
+    b.  Aplicamos la fórmula de bayes directamente:
+        $$ \Pr(\lambda=\lambda_2 \mid n_{ijkt}=17) = \frac{\Pr(n_{ijkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)} {\Pr(n_{ijks}=17 \mid \lambda=\lambda_1)\,\Pr(\lambda=\lambda_1) + \Pr(n_{ijkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)}. $$
+        Donde:
+        $$ \Pr(n_{ijkt}=17 \mid \lambda=\lambda_1) = \binom{824}{17}\,(0.1)^{17}\,(1-0.1)^{824-17}, $$
+        $$ \Pr(n_{ijkt}=17 \mid \lambda=\lambda_2) = \binom{824}{17}\,(0.6)^{17}\,(1-0.6)^{824-17}, $$
+        $$ \Pr(\lambda=\lambda_1)=\Pr(\lambda=\lambda_2)=\tfrac{1}{2}. $$
+
+3.  La parte a) requiere mirar los resultados de la tabla. La parte b)
+    puede contestarse independientemente.
+
+    a.  El AIC del modelo 2 es mayor que el AIC del modelo 3 que solo
+        agrega la variable tuBienestar, y por tanto, la variable tiene
+        valor explicativo. Se puede argumentar también que el
+        coeficiente mismo de la variable es significativo y por tanto
+        ayuda a explicar. Respecto al impacto en la salud, como el
+        coeficiente es significativo y negativo, diríamos que aquellos
+        que participan del programa tienen una menor probabilidad de
+        generar eventos y por tanto el programa sería beneficioso. Sería
+        deseable discutir que este efecto no es necesariamente causal,
+        pero no lo consideraremos necesario.
+
+    b.  Recordar que la esperanza de una $Beta(\alpha,\beta)$ viene dada
+        por $\frac{\alpha}{\alpha+\beta}$. Por lo tanto, lo que
+        necesitamos testear es que $\alpha=\frac{alpha}{\alpha+\beta}$,
+        que es una restricción lineal que puede testearse usando un test
+        de ratios de verosimilitud.
+
+### Problema 2
 
 En el contexto del marketing B2B (Business to Business) para servicios
 profesionales, las empresas han comenzado a incorporar el marketing de
@@ -361,7 +518,7 @@ que contiene las siguientes columnas:
     modelo de regresión beta-binomial para que sea preferido en términos
     de AIC?
 
-Solución
+**Solución**
 
 1.  De acuerdo a las solicitudes:
 
@@ -439,7 +596,7 @@ Solución
     parámetros más y seguiría siendo más preferido que el modelo de
     regresión de Poisson.
 
-### Problema 2
+### Problema 3
 
 Harcor es una importante firma latinoamericana que se concentra en la
 producción y venta de caramelos y snacks. Aunque la compañía tiene una
@@ -592,7 +749,7 @@ $k$ en el programa de capacitación realizado en el año $t$.
 
     $$\frac{\alpha + 3}{\alpha + \beta + 3} = 0.842$$
 
-### Problema 3
+### Problema 4
 
 En 1972, la *National Association of Food Chains* (NAFC) impulsó el uso
 de códigos de barras para administrar los precios en las góndolas de los
@@ -769,7 +926,7 @@ $$ \text{Tabla: Muestra de los primeros 6 registros de la base de discrepancias}
         \Pr(T>3\mid \theta_0,\theta_{\text{Diff}},\theta_{\text{lim}})\;=\;\left(\frac{1}{1+\exp(0.46+0.43\cdot 201+0.87)}\right)^{3}.
         $$
 
-### Problema 4
+### Problema 5
 
 Se acerca el verano (sí, hay que usar la imaginación) y tu última
 práctica profesional. Como has sido una estudiante excepcional, pudiste
@@ -796,7 +953,7 @@ internas del equipo".* Antes de cerrar el mensaje, te das el tiempo de
 darle un vistazo rápido al diccionario de datos que viene adjunto:
 
 | Variable | Descripción | Media |
-|:-----------------|:------------------------------------|:----------------:|
+|:------------------|:----------------------------------|:-----------------:|
 | IdCliente | Identificador de cliente | \- |
 | Mes | Mes {enero, febrero, …, diciembre} | \- |
 | Año | Año | \- |
@@ -953,7 +1110,7 @@ modelo puede estar basado en un modelo de conteo.
     LL(\hat{\theta}) = \sum_{icst} y_{icst} ln\left(\frac{e^{u_{icst}}}{1+e^{u_{icst}}}\right) + (1-y_{icst})ln\left(\frac{1}{1+e^{u_{icst}}}\right)
     $$
 
-### Problema 5
+### Problema 6
 
 En los últimos 20 años, hemos visto un crecimiento explosivo en el uso
 de redes sociales, con más de 4.4 billones de usuarios a nivel mundial y
@@ -992,7 +1149,7 @@ inteligencia artificial, se cuenta con el puntaje de cada contenido en
 tres dimensiones distintos: producción, contenido y novedad.
 
 | Variable | Descripción | Media |
-|:-----------------|:------------------------------------|:----------------:|
+|:------------------|:----------------------------------|:-----------------:|
 | IdCC | Identificador de cliente | \- |
 | IdPost | Identificador del contenido | \- |
 | DatePost | Fecha de publicación del contenido | \- |
@@ -1123,7 +1280,7 @@ $$ \text{Tabla 1: Descripción base de contenidos en la plataforma de creadores.
         comportamiento esperado (distribución beta). Por eso, para 200
         personas simplemente se multiplica.
 
-### Problema 6
+### Problema 7
 
 Hippi es una empresa nacional dedicada a la fabricación de productos
 para alta montaña. La empresa cuenta con una base de datos que registra
@@ -1211,7 +1368,7 @@ Beta-Geométrico.
     \begin{aligned}Pr(X=x \mid \alpha,\beta,\pi) &= \pi \, Pr(X=x \mid \text{no adopta}) + (1 - \pi)\, Pr(X=x \mid \text{puede adoptar}) \\[6pt]&= \begin{cases}\pi + (1-\pi)\dfrac{B(\alpha+1,\beta)}{B(\alpha,\beta)}, & x=0 \\[10pt](1-\pi)\dfrac{B(\alpha+1,\beta+x)}{B(\alpha,\beta)}, & x>0\end{cases}\end{aligned}
     $$
 
-### Problema 7
+### Problema 8
 
 Para revitalizar el interés de los usuarios, Pokémon Go está pensando
 introducir 7 nuevos personajes Pokémon en las comunas de Melipilla,
@@ -1358,7 +1515,7 @@ $$
     columnas y en el último paso reemplazamos por la expresión
     encontrada en la parte anterior.
 
-### Problema 8
+### Problema 9
 
 Inmersos en la era digital, los consumidores están cada vez conectados
 en distintos dispositivos los cuales pueden ser usados como canales
