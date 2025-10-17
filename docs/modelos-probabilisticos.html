@@ -561,14 +561,14 @@ evento de las clases 1 y 2 respectivamente.</p>
 <li><p>La probabilidad de observar exactamente <span class="math inline">\(n\)</span> eventos en el
 segmento de clientes <span class="math inline">\(j\)</span> de la empresa <span class="math inline">\(k\)</span> en el trimestre <span class="math inline">\(t\)</span>
 viene dada por:</p>
-<p><span class="math display">\[ \Pr(n_{ijkt} = n \mid \theta_1, \theta_2, \pi) = \pi \binom{m}{n_{ijkt}} \theta_1^{n_{ijkt}} (1 - \theta_1)^{m - n_{ijkt}} + (1 - \pi) \binom{m}{n_{ijkt}} \theta_2^{n_{ijkt}} (1 - \theta_2)^{m - n_{ijkt}} \]</span>Entonces,
+<p><span class="math display">\[ \Pr(n_{jkt} = n \mid \theta_1, \theta_2, \pi) = \pi \binom{m}{n_{jkt}} \theta_1^{n_{jkt}} (1 - \theta_1)^{m - n_{jkt}} + (1 - \pi) \binom{m}{n_{jkt}} \theta_2^{n_{jkt}} (1 - \theta_2)^{m - n_{jkt}} \]</span>Entonces,
 la log-verosimilitud viene dada por:
-<span class="math display">\[ LL \;=\; \sum_{i}\sum_{j}\sum_{k}\sum_{t} \ln\!\Big( \Pr(n_{ijkt} \mid \theta_1,\theta_2,\pi) \Big) \]</span></p></li>
+<span class="math display">\[ LL \;=\; \sum_{i}\sum_{j}\sum_{k}\sum_{t} \ln\!\Big( \Pr(n_{jkt} \mid \theta_1,\theta_2,\pi) \Big) \]</span></p></li>
 <li><p>Aplicamos la fórmula de bayes directamente:
-<span class="math display">\[ \Pr(\lambda=\lambda_2 \mid n_{ijkt}=17) = \frac{\Pr(n_{ijkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)} {\Pr(n_{ijks}=17 \mid \lambda=\lambda_1)\,\Pr(\lambda=\lambda_1) + \Pr(n_{ijkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)}. \]</span>
+<span class="math display">\[ \Pr(\lambda=\lambda_2 \mid n_{jkt}=17) = \frac{\Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)} {\Pr(n_{jks}=17 \mid \lambda=\lambda_1)\,\Pr(\lambda=\lambda_1) + \Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)}. \]</span>
 Donde:
-<span class="math display">\[ \Pr(n_{ijkt}=17 \mid \lambda=\lambda_1) = \binom{824}{17}\,(0.1)^{17}\,(1-0.1)^{824-17}, \]</span>
-<span class="math display">\[ \Pr(n_{ijkt}=17 \mid \lambda=\lambda_2) = \binom{824}{17}\,(0.6)^{17}\,(1-0.6)^{824-17}, \]</span>
+<span class="math display">\[ \Pr(n_{jkt}=17 \mid \lambda=\lambda_1) = \binom{824}{17}\,(0.1)^{17}\,(1-0.1)^{824-17}, \]</span>
+<span class="math display">\[ \Pr(n_{jkt}=17 \mid \lambda=\lambda_2) = \binom{824}{17}\,(0.6)^{17}\,(1-0.6)^{824-17}, \]</span>
 <span class="math display">\[ \Pr(\lambda=\lambda_1)=\Pr(\lambda=\lambda_2)=\tfrac{1}{2}. \]</span></p></li>
 </ol></li>
 <li><p>La parte a) requiere mirar los resultados de la tabla. La parte b)
@@ -578,12 +578,13 @@ puede contestarse independientemente.</p>
 agrega la variable tuBienestar, y por tanto, la variable tiene
 valor explicativo. Se puede argumentar también que el
 coeficiente mismo de la variable es significativo y por tanto
-ayuda a explicar. Respecto al impacto en la salud, como el
-coeficiente es significativo y negativo, diríamos que aquellos
-que participan del programa tienen una menor probabilidad de
-generar eventos y por tanto el programa sería beneficioso. Sería
-deseable discutir que este efecto no es necesariamente causal,
-pero no lo consideraremos necesario.</p></li>
+ayuda a explicar.</p>
+<p>Respecto al impacto en la salud, como el coeficiente es
+significativo y negativo, diríamos que aquellos que participan
+del programa tienen una menor probabilidad de generar eventos y,
+por tanto, el programa sería beneficioso. Sería deseable
+discutir que este efecto no es necesariamente causal, pero no lo
+consideraremos necesario.</p></li>
 <li><p>Recordar que la esperanza de una <span class="math inline">\(Beta(\alpha,\beta)\)</span> viene dada
 por <span class="math inline">\(\frac{\alpha}{\alpha+\beta}\)</span>. Por lo tanto, lo que
 necesitamos testear es que <span class="math inline">\(\alpha=0.16(\alpha+\beta)\)</span>, que es
