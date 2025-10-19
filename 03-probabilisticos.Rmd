@@ -341,10 +341,10 @@ total de beneficiarios dentro de ese segmento, empresa y trimestre.
 
         $$ \Pr(n_{jkt} = n \mid \theta_1, \theta_2, \pi) = \pi \binom{m}{n_{jkt}} \theta_1^{n_{jkt}} (1 - \theta_1)^{m - n_{jkt}} + (1 - \pi) \binom{m}{n_{jkt}} \theta_2^{n_{jkt}} (1 - \theta_2)^{m - n_{jkt}} $$Entonces,
         la log-verosimilitud viene dada por:
-        $$ LL \;=\; \sum_{i}\sum_{j}\sum_{k}\sum_{t} \ln\!\Big( \Pr(n_{jkt} \mid \theta_1,\theta_2,\pi) \Big) $$
+        $$ LL \;=\; \sum_{j}\sum_{k}\sum_{t} \ln\!\Big( \Pr(n_{jkt} \mid \theta_1,\theta_2,\pi) \Big) $$
 
     b.  Aplicamos la fórmula de bayes directamente:
-        $$ \Pr(\lambda=\lambda_2 \mid n_{jkt}=17) = \frac{\Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)} {\Pr(n_{jks}=17 \mid \lambda=\lambda_1)\,\Pr(\lambda=\lambda_1) + \Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)}. $$
+        $$ \Pr(\lambda=\lambda_2 \mid n_{jkt}=17) = \frac{\Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)} {\Pr(n_{jkt}=17 \mid \lambda=\lambda_1)\,\Pr(\lambda=\lambda_1) + \Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)}. $$
         Donde:
         $$ \Pr(n_{jkt}=17 \mid \lambda=\lambda_1) = \binom{824}{17}\,(0.1)^{17}\,(1-0.1)^{824-17}, $$
         $$ \Pr(n_{jkt}=17 \mid \lambda=\lambda_2) = \binom{824}{17}\,(0.6)^{17}\,(1-0.6)^{824-17}, $$

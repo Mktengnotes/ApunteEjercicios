@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-10-16" />
+<meta name="date" content="2025-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -563,9 +563,9 @@ segmento de clientes <span class="math inline">\(j\)</span> de la empresa <span 
 viene dada por:</p>
 <p><span class="math display">\[ \Pr(n_{jkt} = n \mid \theta_1, \theta_2, \pi) = \pi \binom{m}{n_{jkt}} \theta_1^{n_{jkt}} (1 - \theta_1)^{m - n_{jkt}} + (1 - \pi) \binom{m}{n_{jkt}} \theta_2^{n_{jkt}} (1 - \theta_2)^{m - n_{jkt}} \]</span>Entonces,
 la log-verosimilitud viene dada por:
-<span class="math display">\[ LL \;=\; \sum_{i}\sum_{j}\sum_{k}\sum_{t} \ln\!\Big( \Pr(n_{jkt} \mid \theta_1,\theta_2,\pi) \Big) \]</span></p></li>
+<span class="math display">\[ LL \;=\; \sum_{j}\sum_{k}\sum_{t} \ln\!\Big( \Pr(n_{jkt} \mid \theta_1,\theta_2,\pi) \Big) \]</span></p></li>
 <li><p>Aplicamos la fórmula de bayes directamente:
-<span class="math display">\[ \Pr(\lambda=\lambda_2 \mid n_{jkt}=17) = \frac{\Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)} {\Pr(n_{jks}=17 \mid \lambda=\lambda_1)\,\Pr(\lambda=\lambda_1) + \Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)}. \]</span>
+<span class="math display">\[ \Pr(\lambda=\lambda_2 \mid n_{jkt}=17) = \frac{\Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)} {\Pr(n_{jkt}=17 \mid \lambda=\lambda_1)\,\Pr(\lambda=\lambda_1) + \Pr(n_{jkt}=17 \mid \lambda=\lambda_2)\,\Pr(\lambda=\lambda_2)}. \]</span>
 Donde:
 <span class="math display">\[ \Pr(n_{jkt}=17 \mid \lambda=\lambda_1) = \binom{824}{17}\,(0.1)^{17}\,(1-0.1)^{824-17}, \]</span>
 <span class="math display">\[ \Pr(n_{jkt}=17 \mid \lambda=\lambda_2) = \binom{824}{17}\,(0.6)^{17}\,(1-0.6)^{824-17}, \]</span>
