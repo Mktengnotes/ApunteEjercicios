@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-10-03" />
+<meta name="date" content="2025-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,13 +54,77 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="custom-style.css" type="text/css" />
 </head>
 
 <body>
@@ -73,25 +137,25 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Apunte de Problemas Resueltos</a></li>
+<li><a href="./">Marketing Engineering</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prologo</a></li>
 <li class="chapter" data-level="1" data-path="formulas-utiles.html"><a href="formulas-utiles.html"><i class="fa fa-check"></i><b>1</b> Formulas utiles</a></li>
 <li class="chapter" data-level="2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html"><i class="fa fa-check"></i><b>2</b> Modelos de Regresion</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="02-regresion.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
-<li class="chapter" data-level="2.2" data-path="02-regresion.html"><a href="#metodolog%C3%ADa"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
-<li class="chapter" data-level="2.3" data-path="02-regresion.html"><a href="#problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
+<li class="chapter" data-level="2.1" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#introducción"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
+<li class="chapter" data-level="2.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#metodología"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
+<li class="chapter" data-level="2.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problemas-teóricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e1-signo-esperado-y-significancia"><i class="fa fa-check"></i><b>2.3.1</b> E1: Signo esperado y significancia</a></li>
-<li class="chapter" data-level="2.3.2" data-path="02-regresion.html"><a href="#e2-regresi%C3%B3n-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
-<li class="chapter" data-level="2.3.3" data-path="02-regresion.html"><a href="#e3-selecci%C3%B3n-autom%C3%A1tica-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
-<li class="chapter" data-level="2.3.4" data-path="02-regresion.html"><a href="#e4-regresi%C3%B3n-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
+<li class="chapter" data-level="2.3.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e2-regresión-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
+<li class="chapter" data-level="2.3.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e3-selección-automática-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
+<li class="chapter" data-level="2.3.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e4-regresión-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
 <li class="chapter" data-level="2.3.5" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e5-capturar-efectos"><i class="fa fa-check"></i><b>2.3.5</b> E5: Capturar efectos</a></li>
-<li class="chapter" data-level="2.3.6" data-path="02-regresion.html"><a href="#e6-coeficientes-y-par%C3%A1metros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
-<li class="chapter" data-level="2.3.7" data-path="02-regresion.html"><a href="#e7-qu%C3%A9-es-un-modelo-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
-<li class="chapter" data-level="2.3.8" data-path="02-regresion.html"><a href="#soluci%C3%B3n-problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3.8</b> Solución problemas teóricos</a></li>
+<li class="chapter" data-level="2.3.6" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e6-coeficientes-y-parámetros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
+<li class="chapter" data-level="2.3.7" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e7-qué-es-un-modelo-de-regresión"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
+<li class="chapter" data-level="2.3.8" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#solución-problemas-teóricos"><i class="fa fa-check"></i><b>2.3.8</b> Solución problemas teóricos</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problemas-aplicados"><i class="fa fa-check"></i><b>2.4</b> Problemas Aplicados</a>
 <ul>
@@ -99,30 +163,30 @@
 <li class="chapter" data-level="2.4.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-2"><i class="fa fa-check"></i><b>2.4.2</b> Problema 2</a></li>
 <li class="chapter" data-level="2.4.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-3"><i class="fa fa-check"></i><b>2.4.3</b> Problema 3</a></li>
 <li class="chapter" data-level="2.4.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-4---p1-control-1-primavera-2025"><i class="fa fa-check"></i><b>2.4.4</b> Problema 4 - P1 Control 1 Primavera 2025</a></li>
-<li class="chapter" data-level="2.4.5" data-path="02-regresion.html"><a href="#problema-5---p1-control-oto%C3%B1o-2025"><i class="fa fa-check"></i><b>2.4.5</b> Problema 5 - P1 Control Otoño 2025</a></li>
+<li class="chapter" data-level="2.4.5" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-5---p1-control-otoño-2025"><i class="fa fa-check"></i><b>2.4.5</b> Problema 5 - P1 Control Otoño 2025</a></li>
 <li class="chapter" data-level="2.4.6" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-6---p1-control-primavera-2024"><i class="fa fa-check"></i><b>2.4.6</b> Problema 6 - P1 Control Primavera 2024</a></li>
-<li class="chapter" data-level="2.4.7" data-path="02-regresion.html"><a href="#problema-7---p1-control-1-oto%C3%B1o-2024"><i class="fa fa-check"></i><b>2.4.7</b> Problema 7 - P1 Control 1 Otoño 2024</a></li>
+<li class="chapter" data-level="2.4.7" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-7---p1-control-1-otoño-2024"><i class="fa fa-check"></i><b>2.4.7</b> Problema 7 - P1 Control 1 Otoño 2024</a></li>
 <li class="chapter" data-level="2.4.8" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-8---p1-control-primavera-2023"><i class="fa fa-check"></i><b>2.4.8</b> Problema 8 - P1 Control Primavera 2023</a></li>
-<li class="chapter" data-level="2.4.9" data-path="02-regresion.html"><a href="#problema-9---p1-control-oto%C3%B1o-2023"><i class="fa fa-check"></i><b>2.4.9</b> Problema 9 - P1 Control Otoño 2023</a></li>
+<li class="chapter" data-level="2.4.9" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-9---p1-control-otoño-2023"><i class="fa fa-check"></i><b>2.4.9</b> Problema 9 - P1 Control Otoño 2023</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html"><i class="fa fa-check"></i><b>3</b> Modelos Probabilisticos</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="02-regresion.html"><a href="#introducci%C3%B3n-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
-<li class="chapter" data-level="3.2" data-path="02-regresion.html"><a href="#metodolog%C3%ADa-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
-<li class="chapter" data-level="3.3" data-path="02-regresion.html"><a href="#problemas-te%C3%B3ricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
+<li class="chapter" data-level="3.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#introducción-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#metodología-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
+<li class="chapter" data-level="3.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problemas-teóricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e1-tasa-de-respuesta"><i class="fa fa-check"></i><b>3.3.1</b> E1: Tasa de respuesta</a></li>
-<li class="chapter" data-level="3.3.2" data-path="02-regresion.html"><a href="#e2-distribuci%C3%B3n-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
-<li class="chapter" data-level="3.3.3" data-path="02-regresion.html"><a href="#e3-distribuci%C3%B3n-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
-<li class="chapter" data-level="3.3.4" data-path="02-regresion.html"><a href="#e4-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
+<li class="chapter" data-level="3.3.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e2-distribución-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
+<li class="chapter" data-level="3.3.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e3-distribución-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
+<li class="chapter" data-level="3.3.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e4-modelos-de-duración"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
 <li class="chapter" data-level="3.3.5" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e5-modelo-nbd"><i class="fa fa-check"></i><b>3.3.5</b> E5: Modelo NBD</a></li>
 <li class="chapter" data-level="3.3.6" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e6-modelos-de-conteo"><i class="fa fa-check"></i><b>3.3.6</b> E6: Modelos de Conteo</a></li>
-<li class="chapter" data-level="3.3.7" data-path="02-regresion.html"><a href="#e7-tiempo-discreto-en-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
+<li class="chapter" data-level="3.3.7" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e7-tiempo-discreto-en-modelos-de-duración"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problemas-aplicados-1"><i class="fa fa-check"></i><b>3.4</b> Problemas Aplicados</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-1-1"><i class="fa fa-check"></i><b>3.4.1</b> Problema 1</a></li>
+<li class="chapter" data-level="3.4.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-1-control-2-2025-2"><i class="fa fa-check"></i><b>3.4.1</b> Problema 1 (Control 2 2025-2)</a></li>
 <li class="chapter" data-level="3.4.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-2-1"><i class="fa fa-check"></i><b>3.4.2</b> Problema 2</a></li>
 <li class="chapter" data-level="3.4.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-3-1"><i class="fa fa-check"></i><b>3.4.3</b> Problema 3</a></li>
 <li class="chapter" data-level="3.4.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-4"><i class="fa fa-check"></i><b>3.4.4</b> Problema 4</a></li>
@@ -130,13 +194,43 @@
 <li class="chapter" data-level="3.4.6" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-6"><i class="fa fa-check"></i><b>3.4.6</b> Problema 6</a></li>
 <li class="chapter" data-level="3.4.7" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-7"><i class="fa fa-check"></i><b>3.4.7</b> Problema 7</a></li>
 <li class="chapter" data-level="3.4.8" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-8"><i class="fa fa-check"></i><b>3.4.8</b> Problema 8</a></li>
+<li class="chapter" data-level="3.4.9" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problema-9"><i class="fa fa-check"></i><b>3.4.9</b> Problema 9</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="02-regresion.html"><a href="#introducci%C3%B3n-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a></li>
-<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas"><i class="fa fa-check"></i><b>4.2</b> Problemas</a></li>
-<li class="chapter" data-level="4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#soluciones"><i class="fa fa-check"></i><b>4.3</b> Soluciones</a></li>
+<li class="chapter" data-level="4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#introducción-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-logit"><i class="fa fa-check"></i><b>4.1.1</b> Modelo Logit</a></li>
+<li class="chapter" data-level="4.1.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-probit"><i class="fa fa-check"></i><b>4.1.2</b> Modelo Probit</a></li>
+<li class="chapter" data-level="4.1.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-nested-logit"><i class="fa fa-check"></i><b>4.1.3</b> Modelo Nested Logit</a></li>
+<li class="chapter" data-level="4.1.4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-mixed-logit"><i class="fa fa-check"></i><b>4.1.4</b> Modelo Mixed Logit</a></li>
+<li class="chapter" data-level="4.1.5" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#logit-con-clases-latentes"><i class="fa fa-check"></i><b>4.1.5</b> Logit con Clases Latentes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#metodología-2"><i class="fa fa-check"></i><b>4.2</b> Metodología</a></li>
+<li class="chapter" data-level="4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas-teóricos-2"><i class="fa fa-check"></i><b>4.3</b> Problemas Teóricos</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-1"><i class="fa fa-check"></i><b>4.3.1</b> Pregunta 1</a></li>
+<li class="chapter" data-level="4.3.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-2"><i class="fa fa-check"></i><b>4.3.2</b> Pregunta 2</a></li>
+<li class="chapter" data-level="4.3.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-3"><i class="fa fa-check"></i><b>4.3.3</b> Pregunta 3</a></li>
+<li class="chapter" data-level="4.3.4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-4"><i class="fa fa-check"></i><b>4.3.4</b> Pregunta 4</a></li>
+<li class="chapter" data-level="4.3.5" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-5"><i class="fa fa-check"></i><b>4.3.5</b> Pregunta 5</a></li>
+<li class="chapter" data-level="4.3.6" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-6"><i class="fa fa-check"></i><b>4.3.6</b> Pregunta 6</a></li>
+<li class="chapter" data-level="4.3.7" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#soluciones"><i class="fa fa-check"></i><b>4.3.7</b> Soluciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas-aplicados-2"><i class="fa fa-check"></i><b>4.4</b> Problemas Aplicados</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-1-1"><i class="fa fa-check"></i><b>4.4.1</b> Pregunta 1</a></li>
+<li class="chapter" data-level="4.4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-2-1"><i class="fa fa-check"></i><b>4.4.2</b> Pregunta 2</a></li>
+<li class="chapter" data-level="4.4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-3-1"><i class="fa fa-check"></i><b>4.4.3</b> Pregunta 3</a></li>
+<li class="chapter" data-level="4.4.4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-4-1"><i class="fa fa-check"></i><b>4.4.4</b> Pregunta 4</a></li>
+<li class="chapter" data-level="4.4.5" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-5-1"><i class="fa fa-check"></i><b>4.4.5</b> Pregunta 5</a></li>
+<li class="chapter" data-level="4.4.6" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-6-1"><i class="fa fa-check"></i><b>4.4.6</b> Pregunta 6</a></li>
+<li class="chapter" data-level="4.4.7" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-7"><i class="fa fa-check"></i><b>4.4.7</b> Pregunta 7</a></li>
+<li class="chapter" data-level="4.4.8" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-8"><i class="fa fa-check"></i><b>4.4.8</b> Pregunta 8</a></li>
+<li class="chapter" data-level="4.4.9" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-9"><i class="fa fa-check"></i><b>4.4.9</b> Pregunta 9</a></li>
+<li class="chapter" data-level="4.4.10" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-10"><i class="fa fa-check"></i><b>4.4.10</b> Pregunta 10</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -161,12 +255,12 @@
 <div id="modelos-de-regresion" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Capítulo 2</span> Modelos de Regresion<a href="modelos-de-regresion.html#modelos-de-regresion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introducción" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Introducción<a href="#introducci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.1</span> Introducción<a href="modelos-de-regresion.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En este capítulo se abarcarán problemas relacionados a modelos de
 regresión; es decir, aquellos modelos donde la variable dependiente <span class="math inline">\(y\)</span>
 se escribe como:</p>
 <p><span class="math display">\[
-y = f(\textbf{X})= \beta^´X + \varepsilon
+y = f(\textbf{X})= \beta^´X + \varepsilon 
 \]</span>donde <span class="math inline">\(\textbf{X}\)</span> corresponde a las variables explicativas, <span class="math inline">\(\beta^´\)</span>
 son los parámetros que buscamos para estudiar la influencia de las
 vairables explicativas en la variable dependiente; o mejor dicho, la
@@ -181,7 +275,7 @@ variable <span class="math inline">\(y\)</span>. Un buen modelo encuentra el bal
 poder explicativo.</p>
 </div>
 <div id="metodología" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Metodología<a href="#metodolog%C3%ADa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.2</span> Metodología<a href="modelos-de-regresion.html#metodología" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Como mencionabámos anteriormente, para poder crear y utilizar los
 modelos de regresión que nos permite responder de la manera más
 informada las preguntas de:</p>
@@ -207,7 +301,7 @@ responder la pregunta de gestión original.</p></li>
 </ol>
 </div>
 <div id="problemas-teóricos" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Problemas Teóricos<a href="#problemas-te%C3%B3ricos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.3</span> Problemas Teóricos<a href="modelos-de-regresion.html#problemas-teóricos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="e1-signo-esperado-y-significancia" class="section level3 hasAnchor" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> E1: Signo esperado y significancia<a href="modelos-de-regresion.html#e1-signo-esperado-y-significancia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Al evaluar la inclusión de una variable en base a su signo esperado y
@@ -225,7 +319,7 @@ tratar de hacer ajustes al modelo o juntar más datos y variables.</li>
 </ol>
 </div>
 <div id="e2-regresión-lineal-vs-de-poisson" class="section level3 hasAnchor" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> E2: Regresión Lineal vs de Poisson<a href="#e2-regresi%C3%B3n-lineal-vs-de-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.3.2</span> E2: Regresión Lineal vs de Poisson<a href="modelos-de-regresion.html#e2-regresión-lineal-vs-de-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>¿Qué diferencia un modelo de regresión simple de un modelo de regresión
 de Poisson? (Puede seleccionar más de una opción).</p>
 <ol style="list-style-type: lower-roman">
@@ -236,7 +330,7 @@ de Poisson? (Puede seleccionar más de una opción).</p>
 </ol>
 </div>
 <div id="e3-selección-automática-de-variables" class="section level3 hasAnchor" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> E3: Selección automática de variables<a href="#e3-selecci%C3%B3n-autom%C3%A1tica-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.3.3</span> E3: Selección automática de variables<a href="modelos-de-regresion.html#e3-selección-automática-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Cuál de las siguientes afirmaciones caracterizan adecuadamente a la
 selección automática de variables para un modelo de regresión lineal
 (Puede seleccionar más de una opción):</p>
@@ -248,7 +342,7 @@ selección automática de variables para un modelo de regresión lineal
 </ol>
 </div>
 <div id="e4-regresión-log-nivel-y-log-log" class="section level3 hasAnchor" number="2.3.4">
-<h3><span class="header-section-number">2.3.4</span> E4: Regresión Log-Nivel y Log-Log<a href="#e4-regresi%C3%B3n-log-nivel-y-log-log" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.3.4</span> E4: Regresión Log-Nivel y Log-Log<a href="modelos-de-regresion.html#e4-regresión-log-nivel-y-log-log" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Dado el modelo <span class="math inline">\(ln(y)=\beta_{0}+\beta_{1}x_{1}+b_{2}ln(x_{2})\)</span>, se puede
 asegurar que:</p>
 <ol style="list-style-type: lower-alpha">
@@ -277,7 +371,7 @@ aumenta la edad de los sujetos?</p>
 </ol>
 </div>
 <div id="e6-coeficientes-y-parámetros" class="section level3 hasAnchor" number="2.3.6">
-<h3><span class="header-section-number">2.3.6</span> E6: Coeficientes y Parámetros<a href="#e6-coeficientes-y-par%C3%A1metros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.3.6</span> E6: Coeficientes y Parámetros<a href="modelos-de-regresion.html#e6-coeficientes-y-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Se tiene el siguiente modelo lineal de venta de productos</p>
 <p><span class="math display">\[Q_{ist}=\theta_{s}+\mu_{is}P_{ist}+\gamma t+\epsilon_{ist}\]</span> Donde
 <span class="math inline">\(Q_{ist}\)</span> es la cantidad vendida del producto <span class="math inline">\(i\)</span> en la tienda <span class="math inline">\(s\)</span> en el
@@ -295,7 +389,7 @@ simultáneamente.</li>
 </ol>
 </div>
 <div id="e7-qué-es-un-modelo-de-regresión" class="section level3 hasAnchor" number="2.3.7">
-<h3><span class="header-section-number">2.3.7</span> E7: ¿Qué es un modelo de Regresión?<a href="#e7-qu%C3%A9-es-un-modelo-de-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.3.7</span> E7: ¿Qué es un modelo de Regresión?<a href="modelos-de-regresion.html#e7-qué-es-un-modelo-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>¿Cuál(es) es(son) la utilidad de un modelo de regresión?</p>
 <ol style="list-style-type: lower-roman">
 <li>Permite medir correlación entre variables.</li>
@@ -306,7 +400,7 @@ correlación, pero no ambas simultáneamente.</li>
 </ol>
 </div>
 <div id="solución-problemas-teóricos" class="section level3 hasAnchor" number="2.3.8">
-<h3><span class="header-section-number">2.3.8</span> Solución problemas teóricos<a href="#soluci%C3%B3n-problemas-te%C3%B3ricos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.3.8</span> Solución problemas teóricos<a href="modelos-de-regresion.html#solución-problemas-teóricos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>E1: Signo esperado y Significancia</strong><br />
 Respuesta correcta: e.<br />
 { Ninguna de las anteriores. Por ejemplo: no tiene signo esperado y no
@@ -464,7 +558,7 @@ jugado las cuarentenas en las ventas de la firma?</p></li>
 <ol style="list-style-type: decimal">
 <li><p>Agregamos progresivamente un término adicional a la regresión:</p>
 <p><span class="math display">\[
-q_{ist} = \alpha_{is} + \beta_1 \cdot \textbf{1}_{[q_{ist-1}= 0]} + \beta_2 \cdot QUAR_{st} \times \textbf{1}_{[i \notin \mathcal{PN}]} + \beta_3 \cdot QUAR_{st} \times FDS_t \\
+q_{ist} = \alpha_{is} + \beta_1 \cdot \textbf{1}_{[q_{ist-1}= 0]} + \beta_2 \cdot QUAR_{st} \times \textbf{1}_{[i \notin \mathcal{PN}]} + \beta_3 \cdot QUAR_{st} \times FDS_t \\ 
 + \beta_4 \cdot InfMV_{st}
 + \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
 \]</span></p>
@@ -689,13 +783,6 @@ total en ventas para cada película.</p></li>
 de los ingresos de las funciones para cada película y generó dos
 modelos distintos, entregando los siguientes resultados:</p>
 <table>
-<colgroup>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center"></th>
@@ -903,18 +990,13 @@ manera:</p>
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center"><span class="math inline">\(Pelí
-       cula_j\)</span></th>
-<th align="center"><span class="math inline">\(Dura
-                       ción_j\)</span></th>
+<th align="center"><span class="math inline">\(Pelí  cula_j\)</span></th>
+<th align="center"><span class="math inline">\(Dura  ción_j\)</span></th>
 <th align="center">$ Tipo_j$</th>
 <th align="center">$ Edad_j$</th>
-<th align="center"><span class="math inline">\(Est
-                                                             udio_j\)</span></th>
-<th align="center"><span class="math inline">\(log(
-                                                                       Pre_j)\)</span></th>
-<th align="center"><span class="math inline">\(log(
-                                                                                 Ing_j)\)</span></th>
+<th align="center"><span class="math inline">\(Est  udio_j\)</span></th>
+<th align="center"><span class="math inline">\(log(  Pre_j)\)</span></th>
+<th align="center"><span class="math inline">\(log(  Ing_j)\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -1020,7 +1102,7 @@ partir de estos conjuntos, podemos definir las variables
 sería:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\log(Ingreso_j) \; &amp;= \; \beta_1 \log(Presupuesto_j) + \beta_2 Duración_j + \sum_{e \in E} \beta_e Edad_{j,e} \\
+\log(Ingreso_j) \; &amp;= \; \beta_1 \log(Presupuesto_j) + \beta_2 Duración_j + \sum_{e \in E} \beta_e Edad_{j,e} \\ 
 &amp;\quad + \sum_{t \in T} \beta_t Tipo_{j,t} + \sum_{s \in S} \beta_s Estudio_{j,S} + \beta_3 Nfun_j \\
 &amp;\quad + \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} \, (Tipo_{j,t} \times Estudio_{j,s}) \\
 &amp;\quad + \sum_{e \in \{TE,TE+7\}} \delta_e \, (Edad_{j,e} \times Duración_j)
@@ -1093,10 +1175,6 @@ observa en las Tablas 1 y 2:</p>
 </table>
 <p><span class="math display">\[\text{Tabla: Variables Demográficas}\]</span></p>
 <table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -1182,12 +1260,6 @@ entender el comportamiento de acreditación (<span class="math inline">\(A_{it}\
 representa alguna transformación o función de la información
 disponible, y cuyos resultados se encuentra en la tabla siguiente:</p>
 <table>
-<colgroup>
-<col width="34%" />
-<col width="22%" />
-<col width="21%" />
-<col width="22%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -1464,8 +1536,8 @@ interacción con el tipo de propiedad.</p></li>
 para que dependan de la densidad poblacional.</li>
 </ol>
 <p><span class="math display">\[
-\beta_1 \;\to\; \gamma_1 + \gamma_2 \cdot \frac{CiudadPop_{ijkt}}{CiudadSup_{ijkt}}
-\qquad\text{y}\qquad
+\beta_1 \;\to\; \gamma_1 + \gamma_2 \cdot \frac{CiudadPop_{ijkt}}{CiudadSup_{ijkt}} 
+\qquad\text{y}\qquad 
 \beta_4 \;\to\; \gamma_3 + \gamma_4 \cdot \frac{CiudadPop_{ijkt}}{CiudadSup_{ijkt}}
 \]</span></p>
 <ol start="3" style="list-style-type: decimal">
@@ -1521,7 +1593,7 @@ valor.</p>
 <hr />
 </div>
 <div id="problema-5---p1-control-otoño-2025" class="section level3 hasAnchor" number="2.4.5">
-<h3><span class="header-section-number">2.4.5</span> Problema 5 - P1 Control Otoño 2025<a href="#problema-5---p1-control-oto%C3%B1o-2025" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.5</span> Problema 5 - P1 Control Otoño 2025<a href="modelos-de-regresion.html#problema-5---p1-control-otoño-2025" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Las tecnologías tradicionales de búsqueda basadas en texto han sido
 durante mucho tiempo uno de los pilares del comercio electrónico,
 permitiendo a los usuarios ingresar palabras clave para encontrar
@@ -1717,7 +1789,7 @@ largo del texto <span class="math inline">\(TextLength_{ijk}\)</span>.</li>
 la búsqueda k del cliente i, el modelo queda descrito como:</p>
 <p><span class="math display">\[
 \begin{aligned}
-C_{ijk} \; &amp;= \; \alpha_k
+C_{ijk} \; &amp;= \; \alpha_k 
   + \beta_1\, \mathrm{Image}_{ik}
   + \beta_2\, \mathrm{Rank}_{ijk}
   + \beta_3\, \mathrm{Image}_{ik}\!\cdot\!\mathrm{Rank}_{ijk} \\
@@ -2120,7 +2192,7 @@ del constructo.</li>
 </ol>
 </div>
 <div id="problema-7---p1-control-1-otoño-2024" class="section level3 hasAnchor" number="2.4.7">
-<h3><span class="header-section-number">2.4.7</span> Problema 7 - P1 Control 1 Otoño 2024<a href="#problema-7---p1-control-1-oto%C3%B1o-2024" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.7</span> Problema 7 - P1 Control 1 Otoño 2024<a href="modelos-de-regresion.html#problema-7---p1-control-1-otoño-2024" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Uno de los cambios más relevantes de los últimos años, en ambientes de
 negocio y en la sociedad en su conjunto, ha sido la irrupción de las
 inteligencias artificiales (IA) generativas¹. En simple, las
@@ -2209,8 +2281,7 @@ servicio de atención a los clientes del banco, ¿cuál cree usted que
 debieran ser las variables dependientes para analizar en un modelo
 de regresión?</p></li>
 <li><p>(2 puntos) Sea <span class="math inline">\(y_{ik}\)</span> la variable de desempeño que usted considera
-relevante para el participante i (<span class="math inline">\(i \in
-\{1,\ldots,643\}\)</span>) en el escenario k (<span class="math inline">\(k \in \{1,2,3\}\)</span>). Formule un
+relevante para el participante i (<span class="math inline">\(i \in \{1,\ldots,643\}\)</span>) en el escenario k (<span class="math inline">\(k \in \{1,2,3\}\)</span>). Formule un
 modelo de regresión que permita evaluar el desempeño de las
 distintas estrategias y que considere las siguientes componentes:</p>
 <ul>
@@ -2367,8 +2438,8 @@ es importante mirar su resolutividad.</li>
 </ol></li>
 <li><p>El modelo de regresión puede expresarse como:</p>
 <p><span class="math display">\[
-y_{ik} = \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i
-       + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i
+y_{ik} = \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i 
+       + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i 
        + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
 \]</span></p>
 <p>Donde</p>
@@ -2520,8 +2591,7 @@ tabla</p>
 <tbody>
 <tr class="odd">
 <td align="center"><span class="math inline">\(\ln(\
-text{le
-ngth})\)</span></td>
+text{le ngth})\)</span></td>
 <td align="center">-0.453</td>
 <td align="center">0.001</td>
 <td align="center">-0.462</td>
@@ -2702,7 +2772,7 @@ lanzamiento (<span class="math inline">\(LaunchDate_i\)</span>).</li>
 </ol>
 <p><span class="math display">\[
 \begin{aligned}
-y_i \;=\;&amp; \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
+y_i \;=\;&amp; \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2 
 + \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
 &amp;+ \beta_2\, Danceability_i + \beta_3\, Genre_i\\
 &amp;+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
@@ -2733,7 +2803,7 @@ directamente a través de una prueba F.</li>
 </ol>
 </div>
 <div id="problema-9---p1-control-otoño-2023" class="section level3 hasAnchor" number="2.4.9">
-<h3><span class="header-section-number">2.4.9</span> Problema 9 - P1 Control Otoño 2023<a href="#problema-9---p1-control-oto%C3%B1o-2023" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.9</span> Problema 9 - P1 Control Otoño 2023<a href="modelos-de-regresion.html#problema-9---p1-control-otoño-2023" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><em>KornerK</em> introdujo hace un par de años un modelo de negocio innovador
 en que, a través de una aplicación móvil, los clientes de la industria
 supermercadista podían hacer sus compras remotamente. Para llevar a cabo
@@ -2778,17 +2848,6 @@ lunes=1, hasta domingo=7).</li>
 la siguiente tabla.</p>
 <p><span class="math display">\[\text{Tabla: Muestra de los primeros 6 registros de la base de discrepancias}\]</span></p>
 <table>
-<colgroup>
-<col width="10%" />
-<col width="18%" />
-<col width="8%" />
-<col width="14%" />
-<col width="14%" />
-<col width="6%" />
-<col width="6%" />
-<col width="8%" />
-<col width="12%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">I dZip</th>

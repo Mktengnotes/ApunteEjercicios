@@ -1,0 +1,35 @@
+## Problemas Aplicados
+
+### Pregunta 1
+
+Un administrador de la categoría aceites de una importante retailer nacional, se dispone a analizar datos de panel que reportan $y_{ijt}$ que toma el valor 1 si el hogar $i$ compra la marca-tamaño $j$ en la semana $t$ y 0 en caso contrario ($i = 1, \ldots, N$, $j = 1, \ldots, J$, $t = 1, \ldots, T$). Junto con las elecciones semanales de cada hogar, el panel provee $PRICE_{jt}$ correspondiente al precio por centímetro cúbico de la alternativa $j$ en la semana $t$ y $COUPON_{ijt}$ que toma el valor 1 si el cliente $i$ dispone de un cupón de descuento para la alternativa $j$ en la semana $t$ (aunque el valor de descuento de los cupones varía entre alternativas y de semana a semana, los valores típicamente rondan el 10% del precio de lista).
+
+Después de una reunión de trabajo con administradores de categoría en otras salas se ha acordado que un buen punto de partida es usar un modelo estructural en que la componente determinística de la utilidad de compra viene dada por:
+
+$$v_{ijt} = \alpha_{ij} + \beta_{i1} PRICE_{jt} + \beta_{i2} COUPON_{ijt}$$
+
+Sin embargo, hasta el momento no hay demasiada claridad respecto a cómo introducir heterogeneidad en el modelo, por lo que se barajan varias alternativas.
+
+a) Escriba la log-verosimilitud de un modelo logit con dos clases latentes. La expresión debe quedar expresada directamente en función de los parámetros que ingresarán como variables de decisión en la maximización irrestricta de la log-verosimilitud.
+
+b) Escriba una (aproximación a) la log-verosimilitud de un modelo logit mezclado. Al igual que en el caso anterior, la expresión debe quedar expresada directamente en función de los parámetros que ingresarán como variables de decisión en la maximización irrestricta de la log-verosimilitud. Para ello puede asumir que dispone de una función que le permite samplear desde cualquier distribución de probabilidad generando una muestra de tamaño $R$ del vector de parámetros $\alpha_{ij}$, $\beta_1$ y $\beta_2$.
+
+**Solución:**
+
+a) La función de log-verosimilitud viene dada por:
+   
+   $$LL = \sum_i \sum_j \sum_t y_{ijt} \ln\left[\frac{\exp(\lambda)}{1 + \exp(\lambda)} \frac{\exp(v_{ijt}^1)}{\sum_k \exp(v_{ikt}^1)} + \frac{1}{1 + \exp(\lambda)} \frac{\exp(v_{ijt}^2)}{\sum_k \exp(v_{ikt}^2)}\right]$$
+   
+   donde $v_{ijt}^1$ y $v_{ijt}^2$ son las componentes sistemáticas de la utilidad de los clientes pertenecientes a las clases 1 y 2 respectivamente y vienen dadas por:
+   
+   $$v_{ijt}^1 = \alpha_{ij}^1 + \beta_{i1}^1 PRICE_{jt} + \beta_{i2}^1 COUPON_{ijt}$$
+   $$v_{ijt}^2 = \alpha_{ij}^2 + \beta_{i1}^2 PRICE_{jt} + \beta_{i2}^2 COUPON_{ijt}$$
+   
+   Los parámetros $\alpha_{ij}^1$, $\beta_{i1}^1$ y $\beta_{i2}^1$ corresponden a los parámetros caracterizando a la clase 1 y $\alpha_{ij}^2$, $\beta_{i1}^2$ y $\beta_{i2}^2$ los que caracterizan a la clase 2. El parámetro $\lambda$ determina el tamaño relativo de cada clase y la transformación logística sobre $\lambda$ garantiza que las proporciones estén en el rango [0,1] y sumen 1.
+
+b) La (aproximación de la) función de log-verosimilitud viene dada por:
+   
+   $$LL = \sum_i \sum_j \sum_t y_{ijt} \ln\left(\frac{1}{R} \sum_r \frac{\exp(v_{ijt}^r)}{\sum_k \exp(v_{ikt}^r)}\right)$$
+   
+   donde $v_{ijt}^r$ son las componentes sistemáticas de la utilidad de los clientes si los parámetros toman los valores $\alpha_{ij}^r$, $\beta_1^r$ y $\beta_2^r$.
+
