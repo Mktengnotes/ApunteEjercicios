@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-11-09" />
+<meta name="date" content="2025-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -359,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="pregunta-5" class="section level3 hasAnchor" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Pregunta 5<a href="modelos-estructurales.html#pregunta-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Explique una situación en la que un modelo mixed logit (o de heterogeneidad continua) podría preferirse a un modelo logit con clase latente.</p>
+<p>Explique una situación en la que un modelo mixed logit (o de heterogeneidad continua) podría preferirse en comparación a un modelo logit con clases latentes.</p>
 </div>
 <div id="pregunta-6" class="section level3 hasAnchor" number="4.3.6">
 <h3><span class="header-section-number">4.3.6</span> Pregunta 6<a href="modelos-estructurales.html#pregunta-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -420,7 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li><p>Escriba la función de utilidad si los clientes tienen preferencias dependientes exclusivamente de precio y formato.</p></li>
 <li><p>Escriba la función de utilidad si los clientes tienen preferencias dependientes de precio, marca y formato.</p></li>
-<li><p>Escriba la función de utilidad si se quiere evaluar cómo la influencia que el precio tiene en la utilidad del cliente <span class="math inline">\(n\)</span> depende del nivel de ingreso <span class="math inline">\(ING_n\)</span>.</p></li>
+<li><p>Escriba la función de utilidad si se quiere evaluar cuánto influye la interacción entre el nivel de ingreso <span class="math inline">\(ING_n\)</span> y el precio en la utilidad del cliente <span class="math inline">\(n\)</span>.</p></li>
 </ol></li>
 <li><p>Considere un agente que se enfrenta a la elección entre dos alternativas <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> de modo que las componentes determinísticas de su utilidad vienen dadas por <span class="math inline">\(v_A = v_B = 1\)</span>. Usted como analista ha decidido modelar la elección usando un modelo probit con una matriz de varianza-covarianza completamente general, es decir sobre la cual no se ha impuesto ninguna restricción más allá de la simetría. Calcule explícitamente:</p>
 <p><span class="math display">\[P_A = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \mathbb{1}(v_A + \varepsilon_A &gt; v_B + \varepsilon_B) \phi(\varepsilon_A, \varepsilon_B) d\varepsilon_A d\varepsilon_B\]</span></p>
@@ -452,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>Calcule una medida de lealtad para cada marca y periodo usando un modelo de suavización exponencial con parámetro de factor de alisamiento <span class="math inline">\(\lambda\)</span>. Para ello inicialize las medidas de lealtad en <span class="math inline">\(\frac{1}{2}\)</span> para el periodo 0 en ambas marcas.</p></li>
+<p>Calcule una medida de lealtad para cada marca y periodo usando un modelo de suavización exponencial con parámetro de factor de alisamiento <span class="math inline">\(\lambda\)</span>. Para ello inicialice las medidas de lealtad en <span class="math inline">\(\frac{1}{2}\)</span> para el periodo 0 en ambas marcas.</p></li>
 <li><p>Para analizar el comportamiento de compra de los clientes en un mercado de alimentos enlatados, una importante empresa consultora ha implementado una rutina de maximización de verosimilitud para estimar los parámetros de un modelo logit que se aplica sobre una base de 324 clientes que hacen 3615 compras en la categoría. En la rutina propuesta, los parámetros máximo verosímiles se obtienen usando el comando <code>mymle = optim(par=0.01*rep(1,3), fn=loglikel, hessian=TRUE, method="BFGS")</code>.</p>
 <p>Al terminar la rutina, un analista de la empresa consultora quiere explorar los resultados de la estimación para lo que ejecuta una serie de comandos sencillos en la consola obteniendo los siguientes resultados:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-estructurales.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
@@ -477,12 +477,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>donde <span class="math inline">\(MF_{ij}\)</span> toma el valor 1 si la alternativa <span class="math inline">\(i\)</span> corresponde a la marca-formato <span class="math inline">\(j\)</span>, <span class="math inline">\(PRECIO_{it}\)</span> es el precio de la alternativa <span class="math inline">\(i\)</span> en la oportunidad de compra <span class="math inline">\(t\)</span> y <span class="math inline">\(\varepsilon_{nit}\)</span> independientes e idénticamente distribuidas valor extremo tipo I. Si todas las marcas están disponibles en todos los formatos, entonces tenemos <span class="math inline">\(N = 2 \times 5\)</span> marca-formatos, de los cuales solo podemos identificar <span class="math inline">\(N-1\)</span> interceptos.</p></li>
 </ol></li>
 <li><p>Asumiendo que la utilidad que experimenta un cliente <span class="math inline">\(n\)</span> respecto a la marca <span class="math inline">\(i\)</span> en la ocasión de compra <span class="math inline">\(t\)</span> depende exclusivamente del precio (si dependiera de otros factores simplemente tendríamos que agregar los términos correspondientes), la función de utilidad puede expresarse como:</p>
-<p><span class="math display">\[u_{nit} = (\beta_{0p} + \beta_{1p} ING_n) PRECIO_{it} + \varepsilon_{nit} = \beta_{0p} PRECIO_{it} + \beta_{1p} ING_n \cdot PRECIO_{it} + \varepsilon_{nit}\]</span></p>
+<p><span class="math display">\[u_{nit} = \beta_{0p} + \beta_{1p} ING_n + \beta_{2p} PRECIO_{it} + \beta_{3p} ING_n + PRECIO_{it} + \varepsilon_{nit}\]</span></p>
 <p>donde <span class="math inline">\(PRECIO_{it}\)</span> es el precio de la alternativa <span class="math inline">\(i\)</span> en la oportunidad de compra <span class="math inline">\(t\)</span> y <span class="math inline">\(\varepsilon_{nit}\)</span> independientes e idénticamente distribuidas valor extremo tipo I.</p></li>
 </ol></li>
 <li><p><span class="math inline">\(P_A\)</span> no es más que la probabilidad de elegir la alternativa <span class="math inline">\(A\)</span>. La clave para calcular su valor viene de observar que <span class="math inline">\(v_A = v_B\)</span>. Si las dos alternativas tienen el mismo valor de la componente sistemática, entonces el cálculo de <span class="math inline">\(P_A\)</span> corresponde a la probabilidad de que una componente sea mayor que la otra en una distribución normal bivariada centrada en 0, la que evidentemente toma el valor <span class="math inline">\(\frac{1}{2}\)</span>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probit-bivariado"></span>
-<img src="images/probit_bivariado.png" alt="Plot de variables transformadas logarítmicamente." width="100%" />
+<img src="images/probit_bivariado.png" alt="Plot de variables transformadas logarítmicamente." width="50%" />
 <p class="caption">
 Figure 4.1: Plot de variables transformadas logarítmicamente.
 </p>
@@ -594,7 +594,7 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 </div>
 <div id="pregunta-4-1" class="section level3 hasAnchor" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> Pregunta 4<a href="modelos-estructurales.html#pregunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En el departamento de estudios de una importante multitienda buscan analizar simultáneamente los montos de compra en la tienda y el uso de la tarjeta de crédito de la casa comercial. Para eso la empresa ha recopilado, para cada cliente <span class="math inline">\(n\)</span> una serie de variables que caracterizan su relación con la firma en el último año, como describe la siguiente tabla.</p>
+<p>En el departamento de estudios de una importante multitienda buscan analizar simultáneamente los montos de compra en la tienda y el uso de la tarjeta de crédito de la casa comercial. Para eso la empresa ha recopilado, para cada cliente <span class="math inline">\(n\)</span>, una serie de variables que caracterizan su relación con la firma en el último año, como describe la siguiente tabla.</p>
 <table>
 <thead>
 <tr class="header">
@@ -628,13 +628,13 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 </table>
 <p>Como primera aproximación, los analistas del departamento de estudio han propuesto describir el gasto en tienda usando el siguiente modelo:</p>
 <p><span class="math display">\[y_n = \begin{cases}
-\beta_0 + \beta_1 Mujer_n + \beta_2 Edad_n + \varepsilon_{1n} &amp; \text{si } w_n = 1 \\
-\beta&#39;_0 + \beta&#39;_1 Mujer_n + \beta&#39;_2 Edad_n + \varepsilon_{2n} &amp; \text{si } w_n = 0
+\beta_0 + \beta_1 Mujer_n + \beta_2 Edad_n + \varepsilon_{1n}, &amp; \text{si } w_n = 1 \\
+\beta&#39;_0 + \beta&#39;_1 Mujer_n + \beta&#39;_2 Edad_n + \varepsilon_{2n}, &amp; \text{si } w_n = 0
 \end{cases}\]</span></p>
 <p>Y para la decisión de adquisición de tarjeta:</p>
 <p><span class="math display">\[u_n = \begin{cases}
-\gamma_0 + \gamma_1 Mujer_n + \gamma_2 Edad_n + \varepsilon_{3n} &amp; \text{adquiere tarjeta} \\
-\varepsilon_{4n} &amp; \text{no adquiere}
+\gamma_0 + \gamma_1 Mujer_n + \gamma_2 Edad_n + \varepsilon_{3n}, &amp; \text{adquiere tarjeta} \\
+\varepsilon_{4n}, &amp; \text{no adquiere}
 \end{cases}\]</span></p>
 <ol style="list-style-type: decimal">
 <li><p>Suponga que <span class="math inline">\(\varepsilon_{3n}\)</span> y <span class="math inline">\(\varepsilon_{4n}\)</span> son independientes y están idénticamente distribuidos valor extremo tipo 1. Calcule una expresión para la probabilidad que el cliente <span class="math inline">\(n\)</span> elija adquirir la tarjeta de la tienda.</p></li>
@@ -692,7 +692,7 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <div id="pregunta-5-1" class="section level3 hasAnchor" number="4.4.5">
 <h3><span class="header-section-number">4.4.5</span> Pregunta 5<a href="modelos-estructurales.html#pregunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Con el avenimiento de los espectáculos masivos, las productoras que organizan los eventos han puesto en práctica múltiples tácticas de discriminación de precios. A continuación nos enfocaremos en el estudio del comportamiento de clientes respecto a las ventas anticipadas de tickets o <em>pre-venta</em>, donde los clientes pueden comprar anticipadamente a un precio <span class="math inline">\(p_1\)</span> menor que <span class="math inline">\(p_2\)</span>, el precio de las entradas el día del evento. Para ello, nos enfocaremos exclusivamente en los clientes interesados en comprar tickets, cuyo comportamiento se describirá usando un modelo logit anidado. En este modelo, los clientes primero deciden si comprar anticipadamente o si esperan al día del evento. En el día del evento, los clientes deciden si asistir o no, generando cuatro escenarios como queda descrito en la siguiente figura.</p>
-<p><img src="images/arbol_decision_tickets.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="images/arbol_decision_tickets.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Para completar el modelo se ha propuesto las siguientes especificaciones para las componentes sistemática de la utilidad:</p>
 <p><span class="math display">\[v_{PA} = \alpha_1 - \beta p_1\]</span>
 <span class="math display">\[v_{PN} = \alpha_2 - \beta p_1\]</span>
@@ -881,7 +881,7 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 </div>
 <div id="pregunta-9" class="section level3 hasAnchor" number="4.4.9">
 <h3><span class="header-section-number">4.4.9</span> Pregunta 9<a href="modelos-estructurales.html#pregunta-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Con el reciente sorteo de la Copa América Chile 2015, el comité organizador está interesado en estudiar cómo los hinchas deciden a qué partido asistir. Como primera aproximación se busca un modelo que indique si un hincha decide asistir o no a los partidos que juega su equipo preferido. Suponga que usted tiene total certeza que su equipo favorito llegará a la final. A continuación se presenta los datos con los que dispone.</p>
+<p>Con el reciente sorteo de la Copa América Chile 2015 (cómo pasó tan rápido el tiempo), el comité organizador está interesado en estudiar cómo los hinchas deciden a qué partido asistir. Como primera aproximación se busca un modelo que indique si un hincha decide asistir o no a los partidos que juega su equipo preferido. Suponga que usted tiene total certeza que su equipo favorito llegará a la final. A continuación se presenta los datos con los que dispone.</p>
 <table>
 <colgroup>
 <col width="43%" />

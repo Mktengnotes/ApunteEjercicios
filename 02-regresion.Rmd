@@ -593,12 +593,10 @@ $$\text{Tabla: Variables Transaccionales}$$
     ($A_{it}$) y canje ($C_{it}$) de cada cliente $i$ en el mes $t$
     como:
 
-    $$
     \begin{align}
       A_{it}&=\alpha+\alpha_{i}+\alpha_{t}+\beta X_{it}+\dots+\epsilon_{it}\\
       C_{it}&=\gamma+\gamma_{i}+\gamma_{t}+\rho Z_{it}+\dots+\xi_{it}
     \end{align}
-    $$
 
     Donde $X_{it}$ y $Z_{it}$ son covariables construidas a partir de la
     información disponible.
@@ -1910,9 +1908,10 @@ $$\text{Tabla: Muestra de los primeros 6 registros de la base de discrepancias}$
     Así, la ecuación de regresión que considera todos los factores viene
     dada por:
 
-    $$
-    \begin{align}DT_{iht} &= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\         &\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)\end{align}
-    $$
+    \begin{align}
+    DT_{iht} &= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
+    &\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
+    \end{align}
 
 2.  Incluye:
 

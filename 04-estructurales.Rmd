@@ -160,7 +160,7 @@ Describa cómo incluir que los consumidores eligen usando precios de referencia 
 
 ### Pregunta 5
 
-Explique una situación en la que un modelo mixed logit (o de heterogeneidad continua) podría preferirse a un modelo logit con clase latente.
+Explique una situación en la que un modelo mixed logit (o de heterogeneidad continua) podría preferirse en comparación a un modelo logit con clases latentes.
 
 ### Pregunta 6
 
@@ -245,7 +245,7 @@ b) La (aproximación de la) función de log-verosimilitud viene dada por:
 
    b) Escriba la función de utilidad si los clientes tienen preferencias dependientes de precio, marca y formato.
 
-   c) Escriba la función de utilidad si se quiere evaluar cómo la influencia que el precio tiene en la utilidad del cliente $n$ depende del nivel de ingreso $ING_n$.
+   c) Escriba la función de utilidad si se quiere evaluar cuánto influye la interacción entre el nivel de ingreso $ING_n$ y el precio en la utilidad del cliente $n$.
 
 2. Considere un agente que se enfrenta a la elección entre dos alternativas $A$ y $B$ de modo que las componentes determinísticas de su utilidad vienen dadas por $v_A = v_B = 1$. Usted como analista ha decidido modelar la elección usando un modelo probit con una matriz de varianza-covarianza completamente general, es decir sobre la cual no se ha impuesto ninguna restricción más allá de la simetría. Calcule explícitamente:
 
@@ -261,7 +261,7 @@ b) La (aproximación de la) función de log-verosimilitud viene dada por:
    | 2       | 0       | 1       |
    | 3       | 1       | 0       |
 
-   Calcule una medida de lealtad para cada marca y periodo usando un modelo de suavización exponencial con parámetro de factor de alisamiento $\lambda$. Para ello inicialize las medidas de lealtad en $\frac{1}{2}$ para el periodo 0 en ambas marcas.
+   Calcule una medida de lealtad para cada marca y periodo usando un modelo de suavización exponencial con parámetro de factor de alisamiento $\lambda$. Para ello inicialice las medidas de lealtad en $\frac{1}{2}$ para el periodo 0 en ambas marcas.
 
 4. Para analizar el comportamiento de compra de los clientes en un mercado de alimentos enlatados, una importante empresa consultora ha implementado una rutina de maximización de verosimilitud para estimar los parámetros de un modelo logit que se aplica sobre una base de 324 clientes que hacen 3615 compras en la categoría. En la rutina propuesta, los parámetros máximo verosímiles se obtienen usando el comando `mymle = optim(par=0.01*rep(1,3), fn=loglikel, hessian=TRUE, method="BFGS")`.
 
@@ -300,13 +300,13 @@ b) La (aproximación de la) función de log-verosimilitud viene dada por:
    
    c) Asumiendo que la utilidad que experimenta un cliente $n$ respecto a la marca $i$ en la ocasión de compra $t$ depende exclusivamente del precio (si dependiera de otros factores simplemente tendríamos que agregar los términos correspondientes), la función de utilidad puede expresarse como:
       
-      $$u_{nit} = (\beta_{0p} + \beta_{1p} ING_n) PRECIO_{it} + \varepsilon_{nit} = \beta_{0p} PRECIO_{it} + \beta_{1p} ING_n \cdot PRECIO_{it} + \varepsilon_{nit}$$
+      $$u_{nit} = \beta_{0p} + \beta_{1p} ING_n + \beta_{2p} PRECIO_{it} + \beta_{3p} ING_n + PRECIO_{it} + \varepsilon_{nit}$$
       
       donde $PRECIO_{it}$ es el precio de la alternativa $i$ en la oportunidad de compra $t$ y $\varepsilon_{nit}$ independientes e idénticamente distribuidas valor extremo tipo I.
 
 2. $P_A$ no es más que la probabilidad de elegir la alternativa $A$. La clave para calcular su valor viene de observar que $v_A = v_B$. Si las dos alternativas tienen el mismo valor de la componente sistemática, entonces el cálculo de $P_A$ corresponde a la probabilidad de que una componente sea mayor que la otra en una distribución normal bivariada centrada en 0, la que evidentemente toma el valor $\frac{1}{2}$.
    
-   ```{r probit-bivariado, echo=FALSE, fig.cap="Plot de variables transformadas logarítmicamente.", out.width="100%", fig.align='center'}
+   ```{r probit-bivariado, echo=FALSE, fig.cap="Plot de variables transformadas logarítmicamente.", out.width="50%", fig.align='center'}
    knitr::include_graphics("images/probit_bivariado.png")
    ```
    
@@ -401,15 +401,15 @@ En el departamento de estudios de una importante multitienda buscan analizar sim
 Como primera aproximación, los analistas del departamento de estudio han propuesto describir el gasto en tienda usando el siguiente modelo:
 
 $$y_n = \begin{cases}
-\beta_0 + \beta_1 Mujer_n + \beta_2 Edad_n + \varepsilon_{1n} & \text{si } w_n = 1 \\
-\beta'_0 + \beta'_1 Mujer_n + \beta'_2 Edad_n + \varepsilon_{2n} & \text{si } w_n = 0
+\beta_0 + \beta_1 Mujer_n + \beta_2 Edad_n + \varepsilon_{1n}, & \text{si } w_n = 1 \\
+\beta'_0 + \beta'_1 Mujer_n + \beta'_2 Edad_n + \varepsilon_{2n}, & \text{si } w_n = 0
 \end{cases}$$
 
 Y para la decisión de adquisición de tarjeta:
 
 $$u_n = \begin{cases}
-\gamma_0 + \gamma_1 Mujer_n + \gamma_2 Edad_n + \varepsilon_{3n} & \text{adquiere tarjeta} \\
-\varepsilon_{4n} & \text{no adquiere}
+\gamma_0 + \gamma_1 Mujer_n + \gamma_2 Edad_n + \varepsilon_{3n}, & \text{adquiere tarjeta} \\
+\varepsilon_{4n}, & \text{no adquiere}
 \end{cases}$$
 
 1. Suponga que $\varepsilon_{3n}$ y $\varepsilon_{4n}$ son independientes y están idénticamente distribuidos valor extremo tipo 1. Calcule una expresión para la probabilidad que el cliente $n$ elija adquirir la tarjeta de la tienda.
@@ -455,22 +455,22 @@ La tabla indica los valores de $\chi^2_\nu$ tales que $Pr(\chi^2_\nu \leq \chi^2
 
 ### Pregunta 5
 
-Con el avenimiento de los espectáculos masivos, las productoras que organizan los eventos han puesto en práctica múltiples tácticas de discriminación de precios. A continuación nos enfocaremos en el estudio del comportamiento de clientes respecto a las ventas anticipadas de tickets o *pre-venta*, donde los clientes pueden comprar anticipadamente a un precio $p_1$ menor que $p_2$, el precio de las entradas el día del evento. Para ello, nos enfocaremos exclusivamente en los clientes interesados en comprar tickets, cuyo comportamiento se describirá usando un modelo logit anidado. En este modelo, los clientes primero deciden si comprar anticipadamente o si esperan al día del evento. En el día del evento, los clientes deciden si asistir o no, generando cuatro escenarios como queda descrito en la siguiente figura.
+Con el avenimiento de los espectáculos masivos, las productoras que organizan los eventos han puesto en práctica múltiples tácticas de discriminación de precios. A continuación nos enfocaremos en el estudio del comportamiento de clientes respecto a las ventas anticipadas de tickets o *pre-venta*, donde los clientes pueden comprar anticipadamente a un precio $p_1$ menor que $p_2 el precio de las entradas el día del evento. Para ello, nos enfocaremos exclusivamente en los clientes interesados en comprar tickets, cuyo comportamiento se describirá usando un modelo logit anidado. En este modelo, los clientes primero deciden si comprar anticipadamente o si esperan al día del evento. En el día del evento, los clientes deciden si asistir o no, generando cuatro escenarios, tal como se aprecia en la siguiente figura.
 
-```{r echo=FALSE, fig.align='center', out.width='80%'}
+```{r echo=FALSE, fig.align='center', out.width='90%'}
 knitr::include_graphics("images/arbol_decision_tickets.png")
 ```
 
-Para completar el modelo se ha propuesto las siguientes especificaciones para las componentes sistemática de la utilidad:
+Para completar el modelo, se han propuesto las siguientes especificaciones para las componentes sistemática de la utilidad:
 
 $$v_{PA} = \alpha_1 - \beta p_1$$
 $$v_{PN} = \alpha_2 - \beta p_1$$
 $$v_{EA} = \alpha_3 - \beta p_2$$
 $$v_{EN} = 0$$
 
-1. Escriba una expresión para $P_{EA}$, la probabilidad que un cliente espere sin comprar en la pre-venta y luego decida asistir al evento.
+1. Escriba una expresión para $P_{EA}$, es decir, la probabilidad que un cliente espere sin comprar en la pre-venta y que luego decida asistir al evento.
 
-2. Suponga que observa el comportamiento de $N$ clientes, para cada uno de los cuales se observa $y_{ni}$ que toma valor 1 si el cliente decide la alternativa $i \in \{PA, PN, EA, EN\}$ (0 en caso contrario). Escriba una expresión para la log-verosimilitud $LL(\theta = (\alpha_1, \alpha_2, \alpha_3, \beta, \lambda))$. Para eso asuma conocidas las expresiones de $P_i(\theta)$ $\forall i \in I$.
+2. Suponga que observa el comportamiento de $N$ clientes, para cada uno de los cuales se observa $y_{ni}$, que toma valor 1 si el cliente decide la alternativa $i \in \{PA, PN, EA, EN\}$ y 0 en caso contrario. Escriba una expresión para la log-verosimilitud $LL(\theta = (\alpha_1, \alpha_2, \alpha_3, \beta, \lambda))$. Para eso asuma conocidas las expresiones de $P_i(\theta)$ $\forall i \in I$.
 
 3. Como analista, le interesa investigar las restricciones de comportamiento $\alpha_1 = \alpha_3$ y $\alpha_2 = 0$. Explique qué interpretación podría tener dichas hipótesis y cómo podrían testearse.
 
@@ -482,7 +482,7 @@ $$v_{EN} = 0$$
    
    Luego calculamos la probabilidad de esperar no comprando en la preventa:
    
-   $$P_E = \frac{\exp(\lambda IV_E)}{\exp(\lambda IV_P) + \exp(\lambda IV_E)}$$
+   $$P_E = \frac{\exp(\lambda IV_E)}{\exp(\lambda_P IV_P) + \exp(\lambda_E IV_E)}$$
    
    donde $IV_P$ y $IV_E$ son los valores inclusivos de comprar y no comprar en la preventa respectivamente:
    

@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-11-09" />
+<meta name="date" content="2025-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1225,12 +1225,10 @@ observa en las Tablas 1 y 2:</p>
 <li><p>Como primera aproximación, se propone modelar la acreditación
 (<span class="math inline">\(A_{it}\)</span>) y canje (<span class="math inline">\(C_{it}\)</span>) de cada cliente <span class="math inline">\(i\)</span> en el mes <span class="math inline">\(t\)</span>
 como:</p>
-<p><span class="math display">\[
-\begin{align}
+<p><span class="math display">\[\begin{align}
   A_{it}&amp;=\alpha+\alpha_{i}+\alpha_{t}+\beta X_{it}+\dots+\epsilon_{it}\\
   C_{it}&amp;=\gamma+\gamma_{i}+\gamma_{t}+\rho Z_{it}+\dots+\xi_{it}
-\end{align}
-\]</span></p>
+\end{align}\]</span></p>
 <p>Donde <span class="math inline">\(X_{it}\)</span> y <span class="math inline">\(Z_{it}\)</span> son covariables construidas a partir de la
 información disponible.</p>
 <ol style="list-style-type: lower-alpha">
@@ -3131,9 +3129,10 @@ cada mes, se tiene un único para el promedio de los tres.</li>
 </ul>
 <p>Así, la ecuación de regresión que considera todos los factores viene
 dada por:</p>
-<p><span class="math display">\[
-\begin{align}DT_{iht} &amp;= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\         &amp;\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)\end{align}
-\]</span></p></li>
+<p><span class="math display">\[\begin{align}
+DT_{iht} &amp;= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
+&amp;\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
+\end{align}\]</span></p></li>
 <li><p>Incluye:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Los modelos 2 y 3 tienen efectos fijos y, por tanto, hay un

@@ -531,7 +531,7 @@ que contiene las siguientes columnas:
 
     b.  Se pueden generar dos variables para los niveles de antigüedad
         (porque una de las tres debe ser la de referencia). Se genera
-        $\text{Tenure2_{it}}$, que es equivalente a
+        $\text{Tenure2}_{it}$, que es equivalente a
         $\text{Tenure}_{it}\mathbf{1}\begin{cases} 1 & \text{si } t = 2 \\ 0 & \text{en otro caso} \end{cases}$
         y $\text{Tenure3}_{it}$, equivalente a
         $\text{Tenure}_{it}\mathbf{1}\begin{cases} 1 & \text{si } t \geq 3 \\ 0 & \text{en otro caso} \end{cases}$.
@@ -655,9 +655,7 @@ $k$ en el programa de capacitación realizado en el año $t$.
     |        N |       1,245 |
     |       LL |      -2.583 |
 
-    : $$
-    \textbf{Tabla: } \text{Resumen de ventas para cada función.}
-    $$
+    : **Tabla:** Resumen de ventas para cada función.
 
     a)  La Figura reporta la distribución beta evaluada en los
         estimadores máximos verosímiles de la Tabla. Por inspección de
@@ -665,7 +663,7 @@ $k$ en el programa de capacitación realizado en el año $t$.
         que un cliente no avance al siguiente nivel sea mayor que 0.8
         (usando áreas de triángulos y rectángulos).
 
-        ![$$\textbf{Figura: } \text{Distribución posterior de la probabilidad de no continuar}$$](images/fig_beta_posterior_v2.png){width="60%"
+        ![**Figura:** Distribución posterior de la probabilidad de no continuar](images/fig_beta_posterior_v2.png){width="60%"
         fig-align="center"}
 
     b)  Calcule el intervalo de confianza al 95% del segundo parámetro
@@ -726,7 +724,7 @@ $k$ en el programa de capacitación realizado en el año $t$.
         p \approx 0.2\cdot 2 + 0.2\cdot 2/2 = 0.6.
         $$
 
-        ![$$\text{Figura: Distribución posterior con área sombreada}$$](images/fig_beta_posterior_shaded_08_1.png){fig-align="center"
+        ![**Figura:** Distribución posterior con área sombreada](images/fig_beta_posterior_shaded_08_1.png){fig-align="center"
         width="60%"}
 
         b.  Usando el inverso del hessiano, el ientervalo de confianza
@@ -1440,7 +1438,7 @@ $$ A partir de los datos presentados:
 1.  Definimos una variable aleatoria que signifique lo buscado
 
     $$
-    X_{w} := \text{# de usuarios que intentan atrapar a wigglytuf}
+    X_{w} := \text{\# de usuarios que intentan atrapar a wigglytuf}
     $$Tenemos un número de experimentos Bernoulli (\# de personas a las
     que se les muestra wigglytuf) y un número de "éxitos" entre estos
     experimentos (\# de personas que intentan atrapar a wigglytuf cuando

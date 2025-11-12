@@ -117,42 +117,10 @@ $$h(t) = \frac{f(t)}{1-F(t)} \qquad F(t) = 1- exp(-\int_{0}^{t} h(u)du) $$
 
 -   Métricas de ajuste
 
-    +--------------------------+-------------------------------------+
-    | Métrica de Error         | Métrica de Ajuste / Criterio de     |
-    |                          | Información                         |
-    +:========================:+:===================================:+
-    | \$                       | $$MA                                |
-    | $                        | P                                   |
-    | MAE = \frac{1}{n}\sum_{i | E                                   |
-    | =                        |                                     |
-    | 1                        | = \frac{100}{n} \sum_{i=1}^{n} \lef |
-    | }^                       | t                                   |
-    | {n} |y_i - \hat{y_i}|$\$ | |                                   |
-    |                          | \                                   |
-    |                          | frac{y_i - \hat{y_i}}{y_i}\right|$$ |
-    +--------------------------+-------------------------------------+
-    | \$ \$ MSE =              | $$R^2 = 1 -                         |
-    | \frac{1}{n}\sum\_{i=1    | \                                   |
-    | }\^ {n} (y_i -           | f                                   |
-    | \hat{y_i})\^2\$\$        | r                                   |
-    |                          | ac{\sum_{i=1}^{n} (y_i - \hat{y_i}) |
-    |                          | ^                                   |
-    |                          | 2                                   |
-    |                          | }                                   |
-    |                          | {\sum_{i=1}^{n}(y_i - \bar{y})^2}$$ |
-    +--------------------------+-------------------------------------+
-    | \$\$\chi\^2 =\           | $$LR = 2(LL_{\te                    |
-    | sum\_{i=1}\^{n}          | x                                   |
-    | \frac{(y_i -             | t                                   |
-    |                          | {                                   |
-    | \ha                      | NR}} - LL_{\text{R}}) \sim \chi^2$$ |
-    | t                        |                                     |
-    | {y_i})^2}{\hat{y_i}}\$\$ | \$                                  |
-    |                          | $A                                  |
-    |                          | IC = -2\ln(L(\hat{\theta})) + 2k$\$ |
-    |                          |                                     |
-    |                          | \$\$BIC                             |
-    |                          |                                     |
-    |                          | = -2\ln(L(\hat{\theta})) + k        |
-    |                          | \ln(n)\$\$                          |
-    +--------------------------+-------------------------------------+
+    | Métrica de Error         | Métrica de Ajuste / Criterio de Información                         |
+    |:-------------------------|:---------------------------------------------------------------------|
+    | $MAE = \frac{1}{n}\sum_{i=1}^{n} \lvert y_i - \hat{y_i}\rvert$ | $MAPE = \frac{100}{n} \sum_{i=1}^{n} \left\lvert\frac{y_i - \hat{y_i}}{y_i}\right\rvert$ |
+    | $MSE = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y_i})^2$ | $R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y_i})^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}$ |
+    | $\chi^2 = \sum_{i=1}^{n} \frac{(y_i - \hat{y_i})^2}{\hat{y_i}}$ | $LR = 2(LL_{\text{NR}} - LL_{\text{R}}) \sim \chi^2$ |
+    |  | $AIC = -2\ln(L(\hat{\theta})) + 2k$ |
+    |  | $BIC = -2\ln(L(\hat{\theta})) + k\ln(n)$ |

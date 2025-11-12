@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-11-09" />
+<meta name="date" content="2025-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -840,7 +840,7 @@ corresponde a una zona existente de la base de datos, al igual
 que <span class="math inline">\(h_2\)</span>, que corresponde a una industria existente.</p></li>
 <li><p>Se pueden generar dos variables para los niveles de antigüedad
 (porque una de las tres debe ser la de referencia). Se genera
-<span class="math inline">\(\text{Tenure2_{it}}\)</span>, que es equivalente a
+<span class="math inline">\(\text{Tenure2}_{it}\)</span>, que es equivalente a
 <span class="math inline">\(\text{Tenure}_{it}\mathbf{1}\begin{cases} 1 &amp; \text{si } t = 2 \\ 0 &amp; \text{en otro caso} \end{cases}\)</span>
 y <span class="math inline">\(\text{Tenure3}_{it}\)</span>, equivalente a
 <span class="math inline">\(\text{Tenure}_{it}\mathbf{1}\begin{cases} 1 &amp; \text{si } t \geq 3 \\ 0 &amp; \text{en otro caso} \end{cases}\)</span>.</p></li>
@@ -942,9 +942,7 @@ términos de <span class="math inline">\(x_{ikt}\)</span>, <span class="math inl
 <li><p>Suponga que se estima el modelo usando el método de la máxima
 verosimilitud resultando los valores de la Tabla:</p>
 <table>
-<caption><span class="math display">\[
-\textbf{Tabla: } \text{Resumen de ventas para cada función.}
-\]</span></caption>
+<caption><strong>Tabla:</strong> Resumen de ventas para cada función.</caption>
 <thead>
 <tr class="header">
 <th align="right">Variable</th>
@@ -978,7 +976,7 @@ que un cliente no avance al siguiente nivel sea mayor que 0.8
 (usando áreas de triángulos y rectángulos).</p>
 <div class="figure">
 <img src="images/fig_beta_posterior_v2.png" fig-align="center" style="width:60.0%" alt="" />
-<p class="caption"><span class="math display">\[\textbf{Figura: } \text{Distribución posterior de la probabilidad de no continuar}\]</span></p>
+<p class="caption"><strong>Figura:</strong> Distribución posterior de la probabilidad de no continuar</p>
 </div></li>
 <li><p>Calcule el intervalo de confianza al 95% del segundo parámetro
 <span class="math inline">\(\beta\)</span>. Considere que el inverso del hessiano de la
@@ -1035,7 +1033,7 @@ p \approx 0.2\cdot 2 + 0.2\cdot 2/2 = 0.6.
 \]</span></p>
 <div class="figure">
 <img src="images/fig_beta_posterior_shaded_08_1.png" fig-align="center" style="width:60.0%" alt="" />
-<p class="caption"><span class="math display">\[\text{Figura: Distribución posterior con área sombreada}\]</span></p>
+<p class="caption"><strong>Figura:</strong> Distribución posterior con área sombreada</p>
 </div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Usando el inverso del hessiano, el ientervalo de confianza
@@ -2191,7 +2189,7 @@ popularidad de cada uno de los personajes del estudio.</li>
 <ol style="list-style-type: decimal">
 <li><p>Definimos una variable aleatoria que signifique lo buscado</p>
 <p><span class="math display">\[
-X_{w} := \text{# de usuarios que intentan atrapar a wigglytuf}
+X_{w} := \text{\# de usuarios que intentan atrapar a wigglytuf}
 \]</span>Tenemos un número de experimentos Bernoulli (# de personas a las
 que se les muestra wigglytuf) y un número de “éxitos” entre estos
 experimentos (# de personas que intentan atrapar a wigglytuf cuando

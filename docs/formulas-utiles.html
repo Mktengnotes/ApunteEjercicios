@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-11-09" />
+<meta name="date" content="2025-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -367,64 +367,37 @@ P(X_s = x_s|m_s,p_s) = \binom{m_s}{x_s} p_s^{x_s}(1-p_s)^{m_s-x_s}
 <p><span class="math display">\[h(t) = \frac{f(t)}{1-F(t)} \qquad F(t) = 1- exp(-\int_{0}^{t} h(u)du) \]</span></p>
 <ul>
 <li><p>Métricas de ajuste</p>
-<table style="width:90%;">
+<table>
 <colgroup>
-<col width="37%" />
-<col width="52%" />
+<col width="27%" />
+<col width="72%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">Métrica de Error</th>
-<th align="center">Métrica de Ajuste / Criterio de
-Información</th>
+<th align="left">Métrica de Error</th>
+<th align="left">Métrica de Ajuste / Criterio de Información</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">$
-$
-MAE = _{i
-=
-1
-}^
-{n} |y_i - |$$</td>
-<td align="center"><p>$$MA
-P
-E</p>
-<p>=  _{i=1}^{n} 
-t
-|<br />
-frac{y_i - }{y_i}|$$</p></td>
+<td align="left"><span class="math inline">\(MAE = \frac{1}{n}\sum_{i=1}^{n} \lvert y_i - \hat{y_i}\rvert\)</span></td>
+<td align="left"><span class="math inline">\(MAPE = \frac{100}{n} \sum_{i=1}^{n} \left\lvert\frac{y_i - \hat{y_i}}{y_i}\right\rvert\)</span></td>
 </tr>
 <tr class="even">
-<td align="center">$ $ MSE =
-_{i=1
-}^ {n} (y_i -
-)^2$$</td>
-<td align="center"><span class="math display">\[R^2 = 1 -
-\
-f
-r
-ac{\sum_{i=1}^{n} (y_i - \hat{y_i})
-^
-2
-}
-{\sum_{i=1}^{n}(y_i - \bar{y})^2}\]</span></td>
+<td align="left"><span class="math inline">\(MSE = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y_i})^2\)</span></td>
+<td align="left"><span class="math inline">\(R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y_i})^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center">$$^2 =<br />
-sum_{i=1}^{n}
-$$</td>
-<td align="center"><p><span class="math display">\[LR = 2(LL_{\te
-x
-t
-{
-NR}} - LL_{\text{R}}) \sim \chi^2\]</span></p>
-<p>$
-<span class="math inline">\(A IC = -2\ln(L(\hat{\theta})) + 2k\)</span>$</p>
-<p>$$BIC</p>
-<p>= -2(L()) + k
-(n)$$</p></td>
+<td align="left"><span class="math inline">\(\chi^2 = \sum_{i=1}^{n} \frac{(y_i - \hat{y_i})^2}{\hat{y_i}}\)</span></td>
+<td align="left"><span class="math inline">\(LR = 2(LL_{\text{NR}} - LL_{\text{R}}) \sim \chi^2\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><span class="math inline">\(AIC = -2\ln(L(\hat{\theta})) + 2k\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><span class="math inline">\(BIC = -2\ln(L(\hat{\theta})) + k\ln(n)\)</span></td>
 </tr>
 </tbody>
 </table></li>
