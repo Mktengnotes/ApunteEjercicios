@@ -204,7 +204,144 @@ Suponga que estamos interesados en estudiar el efecto del ingreso de los hogares
 
 ## Problemas Aplicados
 
-### Pregunta 1
+### Pregunta 1 [C3 2025-2]
+
+STUD-IA es una compañía que ofrece cursos de lenguaje y matemáticas con una propuesta de valor centrada en la posibilidad de usar inteligencia artificial para adaptar los contenidos al estilo de aprendizaje de cada estudiante. Para incentivar que los estudiantes se mantengan activos en la plataforma, STUD-IA ha introducido un programa de lealtad que entrega stickers virtuales a los usuarios por cada curso que completan. Los stickers pueden descargarse y coleccionarse y para este año ha considerado cuatro colecciones de stickers: Dragon Ball, superhéroes, Snoopy y memes de Internet. Entre muchos beneficios, una de las ventajas del plan premium es que se acumula el doble de stickers por cada participación.
+
+La compañía está interesada en describir el comportamiento de sus usuarios, por lo que propone usar modelos de elección discreta o de clasificación para describir el estado de sus suscriptores en un trimestre dado. En particular, se busca estudiar cómo el número de stickers recibidos en un semestre afecta las suscripciones del trimestre siguiente. Para eso, STUD-IA ha armado una base de datos que registra el estado de cada cliente en cada trimestre, el que puede tomar tres niveles: suscrito en el plan premium (premium), suscrito en el plan normal (normal) y no suscrito (inactivo), como indica la Tabla 1.
+
+| Idcust | gender | nsnoopy | nsuperhero | ndragon | nmeme | trimestre | precio | preciop | status |
+|--------|--------|---------|------------|---------|-------|-----------|--------|---------|--------|
+| c001 | Male | 0 | 0 | 0 | 0 | Q12024 | 15000 | 20000 | Inactivo |
+| c001 | Male | 0 | 0 | 0 | 0 | Q22024 | 15000 | 20000 | Inactivo |
+| c001 | Male | 0 | 0 | 0 | 0 | Q32024 | 15000 | 20000 | Inactivo |
+| c001 | Male | 0 | 2 | 1 | 0 | Q42024 | 15000 | 20000 | Normal |
+| c001 | Male | 2 | 0 | 1 | 1 | Q12025 | 18000 | 22000 | Normal |
+| c001 | Male | 0 | 1 | 0 | 0 | Q22025 | 18000 | 22000 | Normal |
+| c001 | Male | 0 | 0 | 3 | 0 | Q32025 | 18000 | 22000 | Normal |
+| c002 | Female | 0 | 4 | 0 | 2 | Q12024 | 15000 | 20000 | Premium |
+| c002 | Female | 6 | 0 | 4 | 0 | Q22024 | 15000 | 20000 | Premium |
+
+*Tabla 1: Muestra de la base de datos de STUD-IA*
+
+1. **(2.0 puntos)** Proponga un modelo de utilidad que, además del precio de los planes y un intercepto por cada alternativa, considere:
+   
+   a) Recibir el primer sticker tiene un impacto muy relevante en el comportamiento. En otras palabras, aquellos que han recibido algún sticker en general tienen un comportamiento distinto de aquellos que no han recibido ningún sticker
+   
+   b) La acumulación de stickers tiene retornos decrecientes. Es decir, recibir el n-ésimo sticker retorna una menor utilidad que el (n+1)-ésimo sticker.
+   
+   c) Las preferencias de los distintos tipos de stickers podrían diferir por género. Por ejemplo, a las mujeres les podrían gustar más los stickers de Dragon Ball, mientras que a los hombres les podrían gustar más los stickers de Snoopy.
+   
+   d) A los usuarios del programa les gusta la variedad, es decir prefieren tener un sticker de memes y otro de superhéroes, que recibir dos de superhéroes.
+   
+   Para cada una de las variables usadas en su modelo, explique como las calcularía a partir de la base de datos disponible.
+
+2. **(1.0 puntos)** ¿Cómo incluiría en el modelo que el intercepto de inactivo es menor que el del plan normal y está a su vez menor que el del plan premium?
+
+3. En el contexto del efecto de los stickers en el comportamiento de suscripción discuta:
+   
+   a) **(0.5 puntos)** ¿Se podría justificar la imposición de que un elemento de la matriz de varianza-covarianza de un modelo probit sea cero?
+   
+   b) **(0.5 puntos)** ¿Cómo podría incluir que hay aversión a la pérdida en la acumulación de stickers?
+
+4. **(1.0 puntos)** Suponga que se desea introducir heterogeneidad no observable solo en el coeficiente de precio. Escriba la verosimilitud del modelo con dos clases latentes. Indique cómo se obtiene la probabilidad de que un cliente pertenezca al segmento 1.
+
+5. **(1.0 puntos)** Disconforme con la solución de clases latentes, se postula correr un modelo logit heterogéneo a través del siguiente código computacional, cuyos resultados se despliegan en la Tabla 2.
+
+```r
+stickers <- mlogit(subs ~ price + nsnoopy + ndragon + nsuperhero + nmemes, 
+                   data=datastickers, rpar=c(price='n'))
+```
+
+| Parámetro | Estimador |
+|-----------|-----------|
+| Mixed Logit Normal | 3,452 *** |
+| Premium | 5,435 *** |
+| Price | -2,121* |
+| Nsnoopy | 0,934** |
+| Ndragon | 0,321* |
+| Nsuperhero | 0,821** |
+| Nmemes | 0,192* |
+| Sd(price) | 2,456*** |
+| Num Obs | 18.435 |
+| AIC | 34.216 |
+| RMSE | 0,341 |
+| McFadden R2 | 0,0182 |
+
+*Tabla 2: Resultados de la estimación del modelo logit heterogéneo.*
+
+¿Qué puede concluir respecto al efecto del precio en el comportamiento de suscripción?
+
+**Bonus**
+
+1. **(0.5 puntos)** En un enfoque de Support Vector Machines (SVM), buscamos un hiperplano separador entre las etiquetas de clase, en el que imponemos que todos los puntos queden bien clasificados. En la práctica, es posible que no exista un hiperplano que separe perfectamente a todos los casos. ¿Qué hace un algoritmo de SVM en una situación como esta?
+   
+   a) No puede usarse y se necesita aplicar un enfoque diferente de estimación.
+   
+   b) Eliminar iterativamente los puntos que no pueden separarse hasta alcanzar una solución factible.
+   
+   c) Se aplica una transformación del espacio de variables predictoras.
+   
+   d) Se rota el plano separador para aumentar el soporte de los vectores.
+   
+   e) Ninguna de las anteriores.
+
+2. **(0.5 puntos)** ¿En qué sentido un modelo logit anidado podría ayudar a aliviar las dificultades derivadas de la paradoja de los buses azules y rojos?
+   
+   a) Hace que un problema que es difícil de identificar ahora sea identificable.
+   
+   b) Genera parámetros distintos para el segmento de clientes que usa cada tipo de transporte.
+   
+   c) Rompe con la autocorrelación temporal de las decisiones.
+   
+   d) Permite que haya distintos grados de sustitución entre alternativas dentro y fuera de un nido.
+   
+   e) Ninguna de las anteriores.
+
+**Solución:**
+
+1. Argumentamos cada uno de los puntos de forma independiente y luego escribimos la función de utilidad completa.
+   
+   a) **(0.5 puntos)** Creamos una variable binaria $Primero_{nt}$ que toma el valor 1 si el usuario $n$ ha recibido al menos un sticker en el trimestre $t$. Con esto, agregamos el término $\theta Primero_{nt-1}$.
+   
+   b) **(0.5 puntos)** Los retornos decrecientes se pueden incorporar agregando una función logaritmo. Así, podemos agregar el término $\sum_h \gamma_h \ln(n_{nh,t-1})$ donde $n_{nh,t-1}$ es el número de sticker del tipo $h$ que recibe el usuario en el trimestre anterior.
+   
+   c) **(0.5 puntos)** Para diferenciar las preferencias por género agregamos una variable al coeficiente que multiplica los logaritmos de cantidad $\sum_h (\gamma_h^0 + \gamma_h^F Female_n) \ln(n_{nh,t-1})$.
+   
+   d) **(0.5 puntos)** Finalmente, para considerar variedad necesitamos incluir las interacciones. Aunque hay más de una forma funcional posible, una forma razonable de hacerlo es incluir los términos $\sum_h \sum_{h' \neq h} \mu_h \ln(n_{nh,t-1} \cdot n_{nh',t-1})$. 
+   
+   Con esto, la función de utilidad que deriva el usuario $n$ respecto a la alternativa de suscripción $i$ en el trimestre $t$, puede expresarse como:
+   
+   \begin{align*}
+      u_{nit} &= \alpha_i + \beta \cdot Precio_{nit} + \delta \cdot Primero_{nt-1} \\
+              &\quad + \sum_h (\gamma_h^0 + \gamma_h^F Female_n) \cdot \ln(n_{nh,t-1}) \\
+              &\quad + \sum_h \sum_{h' \neq h} \mu_h \cdot \ln(n_{nh,t-1} \cdot n_{nh',t-1})
+   \end{align*}   
+   En esta expresión todas las variables están directamente disponibles en la base de datos, excepto $Primero_{nt}$ que puede calcularse calculando la suma de todos los stickers recibidos hasta ese periodo y asignando un 1 si la suma es estrictamente mayor que 0.
+
+2. Imponemos directamente que $\alpha_{inactivo} = 0$, $\alpha_{normal} = \exp(\tilde{\alpha}_{normal})$ y que $\alpha_{premium} = \exp(\tilde{\alpha}_{normal}) + \exp(\tilde{\alpha}_{premium})$.
+
+3. Contestamos directamente.
+   
+   a) Como hay tres alternativas y tenemos que fijar una (por ejemplo inactivo), entonces la matriz de varianza-covarianza solo tiene dos elementos identificables. Los elementos de la diagonal evidentemente no pueden imponerse nulos por lo que el único candidato sería imponer que $\sigma_{normal,premium} = 0$. Esta restricción es muy difícil de justificar porque implicaría que no hay nada no observable que haga que al aumentar las suscripciones normales, haga que también aumenten las suscripciones premium.
+   
+   b) Primero habría que construir un punto de referencia para el número de stickers a recibir. Por ejemplo, el número recibido el trimestre anterior, el promedio histórico de stickers recibidos cada trimestre o una combinación de ambos. Con la referencia podemos recodificar el número de stickers en $ngain_{nh,t}$ y en $nloss_{nh,t}$ dependiendo de si el número de stickers recibidos está por encima o por debajo de la referencia. Con esto en los modelos anteriores podemos reemplazar el término $\ln(n_{nh,t-1})$ por $\ln(ngain_{nh,t-1} + \lambda \cdot nloss_{nh,t-1})$.
+
+4. Podemos usar la fórmula de verosimilitud de clases latentes de forma directa:
+   
+   $$LL(\theta_1, \theta_2, \pi) = \sum_n \sum_i \sum_t y_{nit} \ln\left[\pi \frac{\exp(u_{nit}(\theta_1))}{\sum_j \exp(u_{njt}(\theta_1))} + (1-\pi) \frac{\exp(u_{nit}(\theta_2))}{\sum_j \exp(u_{njt}(\theta_2))}\right]$$
+   
+   Donde $\theta_1 = \{\alpha_i, \beta_{clase1}, \delta, \gamma_h^0, \gamma_h^F, \mu_h\}$ y $\theta_2 = \{\alpha_i, \beta_{clase2}, \delta, \gamma_h^0, \gamma_h^F, \mu_h\}$ son el vector de parámetros de la utilidad de las dos clases y $\pi$ es la probabilidad de pertenecer a la clase 1. Notar que $\pi$ debe ser normalizado a $\pi = \frac{\exp(\lambda)}{1 + \exp(\lambda)}$. Esta última fórmula nos permite calcular la probabilidad de pertenecer a la clase 1.
+
+5. La clave para responder esta pregunta es entender que los resultados nos indican tanto el promedio de la elasticidad de precio (con su respectiva precisión) como la dispersión de la heterogeneidad. En simple, los resultados nos indican que:
+   
+   a) **(0.5 puntos)** El valor modal de elasticidad al precio es significativamente negativo con un valor de -2,121.
+   
+   b) **(0.5 puntos)** El valor es bastante heterogéneo con una desviación estándar de 2,456. Por ejemplo, debiéramos esperar que haya un 2.5% de los usuarios que tienen elasticidades de $2.121 + 1.96 \times 2.456 = 2.693$ o más positivas.
+
+**Bonus:** P1-c, P2-d.
+
+### Pregunta 2
 
 Un administrador de la categoría aceites de una sala del centro de Santiago de una importante retailer nacional, se dispone a analizar datos de panel que reportan $y_{ijt}$ que toma el valor 1 si el hogar $i$ compra la marca-tamaño $j$ en la semana $t$ y 0 en caso contrario ($i = 1, \ldots, N$, $j = 1, \ldots, J$, $t = 1, \ldots, T$). Junto con las elecciones semanales de cada hogar, el panel provee $PRICE_{jt}$ correspondiente al precio por centímetro cúbico de la alternativa $j$ en la semana $t$ y $COUPON_{ijt}$ que toma el valor 1 si el cliente $i$ dispone de un cupón de descuento para la alternativa $j$ en la semana $t$ (aunque el valor de descuento de los cupones varía entre alternativas y de semana a semana, los valores típicamente rondan el 10% del precio de lista).
 
@@ -237,7 +374,7 @@ b) La (aproximación de la) función de log-verosimilitud viene dada por:
    
    donde $v_{ijt}^r$ son las componentes sistemáticas de la utilidad de los clientes si los parámetros toman los valores $\alpha_{ij}^r$, $\beta_1^r$ y $\beta_2^r$.
 
-### Pregunta 2
+### Pregunta 3
 
 1. Suponga que un analista propone usar un modelo logit para estudiar el comportamiento de compra de 5 marcas de margarina las que pueden ofrecerse en formato pan o pote.
 
@@ -328,7 +465,7 @@ b) La (aproximación de la) función de log-verosimilitud viene dada por:
    
    $$BIC = -2(-1344.35) + 3 \ln(3615) = 2713.279$$
 
-### Pregunta 3
+### Pregunta 4
 
 Una compañía de telefonía móvil de reciente ingreso al país ha iniciado una fuerte campaña en algunas redes sociales y busca estudiar el perfil de los clientes que han evaluado favorablemente la campaña. Para eso se ha construido una base de datos de 5243 usuarios de facebook que vieron al menos uno de los elementos considerados en la campaña (video, afiche, álbum de fotos, etc.). Junto con información de los usuarios considerados en la muestra, la base de datos contiene una variable $y_n$ que toma el valor 1 si el usuario $n$ le dio un "me gusta" a alguno de las componentes de la campaña. La siguiente tabla contiene una breve descripción de la información disponible en la base.
 
@@ -387,7 +524,7 @@ c) Si fuere usuaria de twitter, basta modificar la componente determinística de
    
    Como el cambio de probabilidad es muy bajo, podemos concluir que ser usuario de twitter no es muy relevante para explicar si una persona le dará un "me gusta" a alguna componente de la campaña (notar que esto se puede inferir directamente de los estimadores máximo verosímiles). Para los próximos elementos de la campaña, probablemente convenga concentrarse en el género y edad de los usuarios.
 
-### Pregunta 4
+### Pregunta 5
 
 En el departamento de estudios de una importante multitienda buscan analizar simultáneamente los montos de compra en la tienda y el uso de la tarjeta de crédito de la casa comercial. Para eso la empresa ha recopilado, para cada cliente $n$, una serie de variables que caracterizan su relación con la firma en el último año, como describe la siguiente tabla.
 
@@ -453,7 +590,7 @@ La tabla indica los valores de $\chi^2_\nu$ tales que $Pr(\chi^2_\nu \leq \chi^2
 5. El enfoque de modelación es útil principalmente para estudiar la interacción entre las decisiones de apertura de tarjeta y gasto. Si asumimos que los errores son independientes entonces podríamos enfrentar el problema simplemente como dos problemas separados. La respuesta esperada es que no hay beneficio en términos de la captura del fenómeno de comportamiento. Argumentar en favor de un modelo integrado en virtud de su escalabilidad y posibilidad de comparar con modelos más complejos son también respuestas correctas.
 
 
-### Pregunta 5
+### Pregunta 6
 
 Con el avenimiento de los espectáculos masivos, las productoras que organizan los eventos han puesto en práctica múltiples tácticas de discriminación de precios. A continuación nos enfocaremos en el estudio del comportamiento de clientes respecto a las ventas anticipadas de tickets o *pre-venta*, donde los clientes pueden comprar anticipadamente a un precio $p_1$ menor que $p_2 el precio de las entradas el día del evento. Para ello, nos enfocaremos exclusivamente en los clientes interesados en comprar tickets, cuyo comportamiento se describirá usando un modelo logit anidado. En este modelo, los clientes primero deciden si comprar anticipadamente o si esperan al día del evento. En el día del evento, los clientes deciden si asistir o no, generando cuatro escenarios, tal como se aprecia en la siguiente figura.
 
@@ -499,7 +636,7 @@ $$v_{EN} = 0$$
 
 3. Imponer que $\alpha_1 = \alpha_3$ implicaría que la utilidad intrínseca que los clientes derivan por asistir al evento es la misma independiente de si compraron en la preventa o no. Del mismo modo, imponer que $\alpha_2 = 0$ implicaría que no hay una pérdida de utilidad por comprar los boletos y no asistir más allá del precio pagado. Para testear cada hipótesis, usamos test de ratios de verosimilitud, lo que implica (i) el cálculo de la log-verosimilitud de los modelos con ($LL_A$) y sin ($LL_B$) restricciones, (ii) el cálculo del estadístico $LR = 2(LL_A - LL_B)$ y (iii) la comparación de dicho estadístico contra el valor crítico una $\chi^2_1$ con un grado de libertad.
 
-### Pregunta 6
+### Pregunta 7
 
 Una empresa busca estudiar el impacto del gasto publicitario en su producto estrella, donde tiene una posición monopólica en un mercado de tamaño conocido. Para ello ha reunido las series de precios ($p_t$), ventas ($q_t$) y gasto publicitario ($ADV_t$) para las últimas 205 semanas y ha propuesto un modelo de elección binaria basado en la siguiente función de utilidad $u_t = \alpha + \beta \ln(p_t) + \gamma ADV_t + \nu_t + \varepsilon_t$, donde $\nu_t$ están normalmente distribuidos con media 0 y $\varepsilon_t$ están distribuidos valor extremo.
 
@@ -544,7 +681,7 @@ Si se mantiene el precio constante en 1 y el gasto publicitario sube de 10 a 20,
    Por lo tanto hay un incremento de $\Delta = 19.6$ puntos porcentuales.
 
 
-### Pregunta 7
+### Pregunta 8
 
 Pizza a Pieza es un servicio de pizzas a domicilio que lleva varios años operando en el sector sur de la capital. Los administradores de la tienda quieren estudiar el comportamiento de compra de sus clientes. Para eso, se proponen calibrar modelos de elección discreta usando una base de clientes registrados en la compañía y que hayan comprado al menos una vez en los últimos 6 meses. La base de datos está compuesta por 763 clientes de los que se conoce su número telefónico, la edad y género del jefe de hogar y si han comprado en cada semana $t$ durante los últimos 6 meses de operación ($y_{nt} = 1$ si el cliente $n$ compró en la semana $t$). Además, para cada semana se conoce el precio de lista de las pizzas (que por políticas de la empresa es el mismo independiente de la variedad de la pizza) y si se repartieron volantes con publicidad.
 
@@ -607,7 +744,7 @@ Discuta si valores de X, Y y Z debieran ser, mayores o menores que los estimador
 
 
 
-### Pregunta 8
+### Pregunta 9
 
 Un retailer nacional está interesado en determinar el impacto de las publicaciones en su sitio web en sus ventas online. Esto es, la evaluación de cómo la promoción de un determinado producto afecta el volumen de sus ventas. Para esto, se ha propuesto un modelo estructural en donde la componente determinística de la utilidad de comprar un producto $i$ de cada cliente $n$ en el día $t$ está dada por (note que es plausible que un cliente compre más de un producto por día):
 
@@ -641,7 +778,7 @@ $$v_{nit} = \alpha_i + \beta_{PR} Precio_{it} + \beta_S Size_{it} + \beta_{POS} 
 
 
 
-### Pregunta 9
+### Pregunta 10
 
 Con el reciente sorteo de la Copa América Chile 2015 (cómo pasó tan rápido el tiempo), el comité organizador está interesado en estudiar cómo los hinchas deciden a qué partido asistir. Como primera aproximación se busca un modelo que indique si un hincha decide asistir o no a los partidos que juega su equipo preferido. Suponga que usted tiene total certeza que su equipo favorito llegará a la final. A continuación se presenta los datos con los que dispone.
 
@@ -707,7 +844,7 @@ d) Aunque se puede elaborar más, es importante reconocer al menos dos factores:
    * El 0 en la esquina superior derecha indica que no hay correlación entre las componentes no observables del primer con el tercer partido.
 
 
-### Pregunta 10
+### Pregunta 11
 
 En cada periodo $t$, una agencia de medios está encargada de seleccionar los soportes publicitarios en que se emitirán las campañas de cada uno de sus $K$ clientes de acuerdo a los requerimientos que ellos indiquen. Por ejemplo una marca puede indicar que quiere distribuir su presupuesto para que las piezas publicitarias sean exhibidas solo en TV o en una mezcla de radio y vallas públicas. Aunque cada cliente puede requerir presencia en cualquier tipo de medio, el 86% de los clientes elige en alguno de los siguiente paquetes:
 
@@ -759,7 +896,7 @@ b) Aplicamos directamente la fórmula del logit, con la única salvedad que el c
 
 c) Escribimos directamente:
    
-   $$LL(\beta_1, \beta_2, \lambda) = \sum_k \sum_i \sum_t \left[\frac{\exp(\lambda)}{1 + \exp(\lambda)} y_{ikt} \ln(p_{ikt}(\beta_1)) + \frac{1}{1 + \exp(\lambda)} \ln(p_{ikt}(\beta_2))\right]$$
+   $$LL(\beta_1, \beta_2, \lambda) = \sum_k \sum_i \sum_t y_{ikt} \left[\frac{\exp(\lambda)}{1 + \exp(\lambda)} \ln(p_{ikt}(\beta_1)) + \frac{1}{1 + \exp(\lambda)} \ln(p_{ikt}(\beta_2))\right]$$
 
 d) La probabilidad de pertenecer al segmento 2 viene dada por:
    

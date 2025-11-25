@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-11-11" />
+<meta name="date" content="2025-11-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -220,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas-aplicados-2"><i class="fa fa-check"></i><b>4.4</b> Problemas Aplicados</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-1-1"><i class="fa fa-check"></i><b>4.4.1</b> Pregunta 1</a></li>
+<li class="chapter" data-level="4.4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-1-c3-2025-2"><i class="fa fa-check"></i><b>4.4.1</b> Pregunta 1 [C3 2025-2]</a></li>
 <li class="chapter" data-level="4.4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-2-1"><i class="fa fa-check"></i><b>4.4.2</b> Pregunta 2</a></li>
 <li class="chapter" data-level="4.4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-3-1"><i class="fa fa-check"></i><b>4.4.3</b> Pregunta 3</a></li>
 <li class="chapter" data-level="4.4.4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-4-1"><i class="fa fa-check"></i><b>4.4.4</b> Pregunta 4</a></li>
@@ -230,6 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.8" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-8"><i class="fa fa-check"></i><b>4.4.8</b> Pregunta 8</a></li>
 <li class="chapter" data-level="4.4.9" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-9"><i class="fa fa-check"></i><b>4.4.9</b> Pregunta 9</a></li>
 <li class="chapter" data-level="4.4.10" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-10"><i class="fa fa-check"></i><b>4.4.10</b> Pregunta 10</a></li>
+<li class="chapter" data-level="4.4.11" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-11"><i class="fa fa-check"></i><b>4.4.11</b> Pregunta 11</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -390,8 +391,271 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="problemas-aplicados-2" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Problemas Aplicados<a href="modelos-estructurales.html#problemas-aplicados-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="pregunta-1-1" class="section level3 hasAnchor" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Pregunta 1<a href="modelos-estructurales.html#pregunta-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-1-c3-2025-2" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Pregunta 1 [C3 2025-2]<a href="modelos-estructurales.html#pregunta-1-c3-2025-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>STUD-IA es una compañía que ofrece cursos de lenguaje y matemáticas con una propuesta de valor centrada en la posibilidad de usar inteligencia artificial para adaptar los contenidos al estilo de aprendizaje de cada estudiante. Para incentivar que los estudiantes se mantengan activos en la plataforma, STUD-IA ha introducido un programa de lealtad que entrega stickers virtuales a los usuarios por cada curso que completan. Los stickers pueden descargarse y coleccionarse y para este año ha considerado cuatro colecciones de stickers: Dragon Ball, superhéroes, Snoopy y memes de Internet. Entre muchos beneficios, una de las ventajas del plan premium es que se acumula el doble de stickers por cada participación.</p>
+<p>La compañía está interesada en describir el comportamiento de sus usuarios, por lo que propone usar modelos de elección discreta o de clasificación para describir el estado de sus suscriptores en un trimestre dado. En particular, se busca estudiar cómo el número de stickers recibidos en un semestre afecta las suscripciones del trimestre siguiente. Para eso, STUD-IA ha armado una base de datos que registra el estado de cada cliente en cada trimestre, el que puede tomar tres niveles: suscrito en el plan premium (premium), suscrito en el plan normal (normal) y no suscrito (inactivo), como indica la Tabla 1.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Idcust</th>
+<th>gender</th>
+<th>nsnoopy</th>
+<th>nsuperhero</th>
+<th>ndragon</th>
+<th>nmeme</th>
+<th>trimestre</th>
+<th>precio</th>
+<th>preciop</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>c001</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>Q12024</td>
+<td>15000</td>
+<td>20000</td>
+<td>Inactivo</td>
+</tr>
+<tr class="even">
+<td>c001</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>Q22024</td>
+<td>15000</td>
+<td>20000</td>
+<td>Inactivo</td>
+</tr>
+<tr class="odd">
+<td>c001</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>Q32024</td>
+<td>15000</td>
+<td>20000</td>
+<td>Inactivo</td>
+</tr>
+<tr class="even">
+<td>c001</td>
+<td>Male</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>Q42024</td>
+<td>15000</td>
+<td>20000</td>
+<td>Normal</td>
+</tr>
+<tr class="odd">
+<td>c001</td>
+<td>Male</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>Q12025</td>
+<td>18000</td>
+<td>22000</td>
+<td>Normal</td>
+</tr>
+<tr class="even">
+<td>c001</td>
+<td>Male</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>Q22025</td>
+<td>18000</td>
+<td>22000</td>
+<td>Normal</td>
+</tr>
+<tr class="odd">
+<td>c001</td>
+<td>Male</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>Q32025</td>
+<td>18000</td>
+<td>22000</td>
+<td>Normal</td>
+</tr>
+<tr class="even">
+<td>c002</td>
+<td>Female</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>Q12024</td>
+<td>15000</td>
+<td>20000</td>
+<td>Premium</td>
+</tr>
+<tr class="odd">
+<td>c002</td>
+<td>Female</td>
+<td>6</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>Q22024</td>
+<td>15000</td>
+<td>20000</td>
+<td>Premium</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabla 1: Muestra de la base de datos de STUD-IA</em></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>(2.0 puntos)</strong> Proponga un modelo de utilidad que, además del precio de los planes y un intercepto por cada alternativa, considere:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Recibir el primer sticker tiene un impacto muy relevante en el comportamiento. En otras palabras, aquellos que han recibido algún sticker en general tienen un comportamiento distinto de aquellos que no han recibido ningún sticker</p></li>
+<li><p>La acumulación de stickers tiene retornos decrecientes. Es decir, recibir el n-ésimo sticker retorna una menor utilidad que el (n+1)-ésimo sticker.</p></li>
+<li><p>Las preferencias de los distintos tipos de stickers podrían diferir por género. Por ejemplo, a las mujeres les podrían gustar más los stickers de Dragon Ball, mientras que a los hombres les podrían gustar más los stickers de Snoopy.</p></li>
+<li><p>A los usuarios del programa les gusta la variedad, es decir prefieren tener un sticker de memes y otro de superhéroes, que recibir dos de superhéroes.</p></li>
+</ol>
+<p>Para cada una de las variables usadas en su modelo, explique como las calcularía a partir de la base de datos disponible.</p></li>
+<li><p><strong>(1.0 puntos)</strong> ¿Cómo incluiría en el modelo que el intercepto de inactivo es menor que el del plan normal y está a su vez menor que el del plan premium?</p></li>
+<li><p>En el contexto del efecto de los stickers en el comportamiento de suscripción discuta:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>(0.5 puntos)</strong> ¿Se podría justificar la imposición de que un elemento de la matriz de varianza-covarianza de un modelo probit sea cero?</p></li>
+<li><p><strong>(0.5 puntos)</strong> ¿Cómo podría incluir que hay aversión a la pérdida en la acumulación de stickers?</p></li>
+</ol></li>
+<li><p><strong>(1.0 puntos)</strong> Suponga que se desea introducir heterogeneidad no observable solo en el coeficiente de precio. Escriba la verosimilitud del modelo con dos clases latentes. Indique cómo se obtiene la probabilidad de que un cliente pertenezca al segmento 1.</p></li>
+<li><p><strong>(1.0 puntos)</strong> Disconforme con la solución de clases latentes, se postula correr un modelo logit heterogéneo a través del siguiente código computacional, cuyos resultados se despliegan en la Tabla 2.</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-estructurales.html#cb1-1" aria-hidden="true" tabindex="-1"></a>stickers <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(subs <span class="sc">~</span> price <span class="sc">+</span> nsnoopy <span class="sc">+</span> ndragon <span class="sc">+</span> nsuperhero <span class="sc">+</span> nmemes, </span>
+<span id="cb1-2"><a href="modelos-estructurales.html#cb1-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data=</span>datastickers, <span class="at">rpar=</span><span class="fu">c</span>(<span class="at">price=</span><span class="st">&#39;n&#39;</span>))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th>Estimador</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mixed Logit Normal</td>
+<td>3,452 ***</td>
+</tr>
+<tr class="even">
+<td>Premium</td>
+<td>5,435 ***</td>
+</tr>
+<tr class="odd">
+<td>Price</td>
+<td>-2,121*</td>
+</tr>
+<tr class="even">
+<td>Nsnoopy</td>
+<td>0,934**</td>
+</tr>
+<tr class="odd">
+<td>Ndragon</td>
+<td>0,321*</td>
+</tr>
+<tr class="even">
+<td>Nsuperhero</td>
+<td>0,821**</td>
+</tr>
+<tr class="odd">
+<td>Nmemes</td>
+<td>0,192*</td>
+</tr>
+<tr class="even">
+<td>Sd(price)</td>
+<td>2,456***</td>
+</tr>
+<tr class="odd">
+<td>Num Obs</td>
+<td>18.435</td>
+</tr>
+<tr class="even">
+<td>AIC</td>
+<td>34.216</td>
+</tr>
+<tr class="odd">
+<td>RMSE</td>
+<td>0,341</td>
+</tr>
+<tr class="even">
+<td>McFadden R2</td>
+<td>0,0182</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabla 2: Resultados de la estimación del modelo logit heterogéneo.</em></p>
+<p>¿Qué puede concluir respecto al efecto del precio en el comportamiento de suscripción?</p>
+<p><strong>Bonus</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>(0.5 puntos)</strong> En un enfoque de Support Vector Machines (SVM), buscamos un hiperplano separador entre las etiquetas de clase, en el que imponemos que todos los puntos queden bien clasificados. En la práctica, es posible que no exista un hiperplano que separe perfectamente a todos los casos. ¿Qué hace un algoritmo de SVM en una situación como esta?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>No puede usarse y se necesita aplicar un enfoque diferente de estimación.</p></li>
+<li><p>Eliminar iterativamente los puntos que no pueden separarse hasta alcanzar una solución factible.</p></li>
+<li><p>Se aplica una transformación del espacio de variables predictoras.</p></li>
+<li><p>Se rota el plano separador para aumentar el soporte de los vectores.</p></li>
+<li><p>Ninguna de las anteriores.</p></li>
+</ol></li>
+<li><p><strong>(0.5 puntos)</strong> ¿En qué sentido un modelo logit anidado podría ayudar a aliviar las dificultades derivadas de la paradoja de los buses azules y rojos?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Hace que un problema que es difícil de identificar ahora sea identificable.</p></li>
+<li><p>Genera parámetros distintos para el segmento de clientes que usa cada tipo de transporte.</p></li>
+<li><p>Rompe con la autocorrelación temporal de las decisiones.</p></li>
+<li><p>Permite que haya distintos grados de sustitución entre alternativas dentro y fuera de un nido.</p></li>
+<li><p>Ninguna de las anteriores.</p></li>
+</ol></li>
+</ol>
+<p><strong>Solución:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Argumentamos cada uno de los puntos de forma independiente y luego escribimos la función de utilidad completa.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>(0.5 puntos)</strong> Creamos una variable binaria <span class="math inline">\(Primero_{nt}\)</span> que toma el valor 1 si el usuario <span class="math inline">\(n\)</span> ha recibido al menos un sticker en el trimestre <span class="math inline">\(t\)</span>. Con esto, agregamos el término <span class="math inline">\(\theta Primero_{nt-1}\)</span>.</p></li>
+<li><p><strong>(0.5 puntos)</strong> Los retornos decrecientes se pueden incorporar agregando una función logaritmo. Así, podemos agregar el término <span class="math inline">\(\sum_h \gamma_h \ln(n_{nh,t-1})\)</span> donde <span class="math inline">\(n_{nh,t-1}\)</span> es el número de sticker del tipo <span class="math inline">\(h\)</span> que recibe el usuario en el trimestre anterior.</p></li>
+<li><p><strong>(0.5 puntos)</strong> Para diferenciar las preferencias por género agregamos una variable al coeficiente que multiplica los logaritmos de cantidad <span class="math inline">\(\sum_h (\gamma_h^0 + \gamma_h^F Female_n) \ln(n_{nh,t-1})\)</span>.</p></li>
+<li><p><strong>(0.5 puntos)</strong> Finalmente, para considerar variedad necesitamos incluir las interacciones. Aunque hay más de una forma funcional posible, una forma razonable de hacerlo es incluir los términos <span class="math inline">\(\sum_h \sum_{h&#39; \neq h} \mu_h \ln(n_{nh,t-1} \cdot n_{nh&#39;,t-1})\)</span>.</p></li>
+</ol>
+<p>Con esto, la función de utilidad que deriva el usuario <span class="math inline">\(n\)</span> respecto a la alternativa de suscripción <span class="math inline">\(i\)</span> en el trimestre <span class="math inline">\(t\)</span>, puede expresarse como:</p>
+<p><span class="math display">\[\begin{align*}
+   u_{nit} &amp;= \alpha_i + \beta \cdot Precio_{nit} + \delta \cdot Primero_{nt-1} \\
+           &amp;\quad + \sum_h (\gamma_h^0 + \gamma_h^F Female_n) \cdot \ln(n_{nh,t-1}) \\
+           &amp;\quad + \sum_h \sum_{h&#39; \neq h} \mu_h \cdot \ln(n_{nh,t-1} \cdot n_{nh&#39;,t-1})
+\end{align*}\]</span><br />
+En esta expresión todas las variables están directamente disponibles en la base de datos, excepto <span class="math inline">\(Primero_{nt}\)</span> que puede calcularse calculando la suma de todos los stickers recibidos hasta ese periodo y asignando un 1 si la suma es estrictamente mayor que 0.</p></li>
+<li><p>Imponemos directamente que <span class="math inline">\(\alpha_{inactivo} = 0\)</span>, <span class="math inline">\(\alpha_{normal} = \exp(\tilde{\alpha}_{normal})\)</span> y que <span class="math inline">\(\alpha_{premium} = \exp(\tilde{\alpha}_{normal}) + \exp(\tilde{\alpha}_{premium})\)</span>.</p></li>
+<li><p>Contestamos directamente.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>(0.5 puntos)</strong> Como hay tres alternativas y tenemos que fijar una (por ejemplo inactivo), entonces la matriz de varianza-covarianza solo tiene dos elementos identificables. Los elementos de la diagonal evidentemente no pueden imponerse nulos por lo que el único candidato sería imponer que <span class="math inline">\(\sigma_{normal,premium} = 0\)</span>. Esta restricción es muy difícil de justificar porque implicaría que no hay nada no observable que haga que al aumentar las suscripciones normales, haga que también aumenten las suscripciones premium.</p></li>
+<li><p>Primero habría que construir un punto de referencia para el número de stickers a recibir. Por ejemplo, el número recibido el trimestre anterior, el promedio histórico de stickers recibidos cada trimestre o una combinación de ambos. Con la referencia podemos recodificar el número de stickers en <span class="math inline">\(ngain_{nh,t}\)</span> y en <span class="math inline">\(nloss_{nh,t}\)</span> dependiendo de si el número de stickers recibidos está por encima o por debajo de la referencia. Con esto en los modelos anteriores podemos reemplazar el término <span class="math inline">\(\ln(n_{nh,t-1})\)</span> por <span class="math inline">\(\ln(ngain_{nh,t-1} + \lambda \cdot nloss_{nh,t-1})\)</span>.</p></li>
+</ol></li>
+<li><p>Podemos usar la fórmula de verosimilitud de clases latentes de forma directa:</p>
+<p><span class="math display">\[LL(\theta_1, \theta_2, \pi) = \sum_n \sum_i \sum_t y_{nit} \ln\left[\pi \frac{\exp(u_{nit}(\theta_1))}{\sum_j \exp(u_{njt}(\theta_1))} + (1-\pi) \frac{\exp(u_{nit}(\theta_2))}{\sum_j \exp(u_{njt}(\theta_2))}\right]\]</span></p>
+<p>Donde <span class="math inline">\(\theta_1 = \{\alpha_i, \beta_{clase1}, \delta, \gamma_h^0, \gamma_h^F, \mu_h\}\)</span> y <span class="math inline">\(\theta_2 = \{\alpha_i, \beta_{clase2}, \delta, \gamma_h^0, \gamma_h^F, \mu_h\}\)</span> son el vector de parámetros de la utilidad de las dos clases y <span class="math inline">\(\pi\)</span> es la probabilidad de pertenecer a la clase 1. Notar que <span class="math inline">\(\pi\)</span> debe ser normalizado a <span class="math inline">\(\pi = \frac{\exp(\lambda)}{1 + \exp(\lambda)}\)</span>. Esta última fórmula nos permite calcular la probabilidad de pertenecer a la clase 1.</p></li>
+<li><p>La clave para responder esta pregunta es entender que los resultados nos indican tanto el promedio de la elasticidad de precio (con su respectiva precisión) como la dispersión de la heterogeneidad. En simple, los resultados nos indican que:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>(0.5 puntos)</strong> El valor modal de elasticidad al precio es significativamente negativo con un valor de -2,121.</p></li>
+<li><p><strong>(0.5 puntos)</strong> El valor es bastante heterogéneo con una desviación estándar de 2,456. Por ejemplo, debiéramos esperar que haya un 2.5% de los usuarios que tienen elasticidades de <span class="math inline">\(2.121 + 1.96 \times 2.456 = 2.693\)</span> o más positivas.</p></li>
+</ol></li>
+</ol>
+<p><strong>Bonus:</strong> P1-c, P2-d.</p>
+</div>
+<div id="pregunta-2-1" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Pregunta 2<a href="modelos-estructurales.html#pregunta-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un administrador de la categoría aceites de una sala del centro de Santiago de una importante retailer nacional, se dispone a analizar datos de panel que reportan <span class="math inline">\(y_{ijt}\)</span> que toma el valor 1 si el hogar <span class="math inline">\(i\)</span> compra la marca-tamaño <span class="math inline">\(j\)</span> en la semana <span class="math inline">\(t\)</span> y 0 en caso contrario (<span class="math inline">\(i = 1, \ldots, N\)</span>, <span class="math inline">\(j = 1, \ldots, J\)</span>, <span class="math inline">\(t = 1, \ldots, T\)</span>). Junto con las elecciones semanales de cada hogar, el panel provee <span class="math inline">\(PRICE_{jt}\)</span> correspondiente al precio por centímetro cúbico de la alternativa <span class="math inline">\(j\)</span> en la semana <span class="math inline">\(t\)</span> y <span class="math inline">\(COUPON_{ijt}\)</span> que toma el valor 1 si el cliente <span class="math inline">\(i\)</span> dispone de un cupón de descuento para la alternativa <span class="math inline">\(j\)</span> en la semana <span class="math inline">\(t\)</span> (aunque el valor de descuento de los cupones varía entre alternativas y de semana a semana, los valores típicamente rondan el 10% del precio de lista).</p>
 <p>Después de una reunión de trabajo con administradores de categoría en otras salas se ha acordado que un buen punto de partida es usar un modelo estructural en que la componente determinística de la utilidad de compra viene dada por:</p>
 <p><span class="math display">\[v_{ijt} = \alpha_{ij} + \beta_{i1} PRICE_{jt} + \beta_{i2} COUPON_{ijt}\]</span></p>
@@ -413,8 +677,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>donde <span class="math inline">\(v_{ijt}^r\)</span> son las componentes sistemáticas de la utilidad de los clientes si los parámetros toman los valores <span class="math inline">\(\alpha_{ij}^r\)</span>, <span class="math inline">\(\beta_1^r\)</span> y <span class="math inline">\(\beta_2^r\)</span>.</p></li>
 </ol>
 </div>
-<div id="pregunta-2-1" class="section level3 hasAnchor" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Pregunta 2<a href="modelos-estructurales.html#pregunta-2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-3-1" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Pregunta 3<a href="modelos-estructurales.html#pregunta-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>Suponga que un analista propone usar un modelo logit para estudiar el comportamiento de compra de 5 marcas de margarina las que pueden ofrecerse en formato pan o pote.</p>
 <ol style="list-style-type: lower-alpha">
@@ -455,10 +719,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Calcule una medida de lealtad para cada marca y periodo usando un modelo de suavización exponencial con parámetro de factor de alisamiento <span class="math inline">\(\lambda\)</span>. Para ello inicialice las medidas de lealtad en <span class="math inline">\(\frac{1}{2}\)</span> para el periodo 0 en ambas marcas.</p></li>
 <li><p>Para analizar el comportamiento de compra de los clientes en un mercado de alimentos enlatados, una importante empresa consultora ha implementado una rutina de maximización de verosimilitud para estimar los parámetros de un modelo logit que se aplica sobre una base de 324 clientes que hacen 3615 compras en la categoría. En la rutina propuesta, los parámetros máximo verosímiles se obtienen usando el comando <code>mymle = optim(par=0.01*rep(1,3), fn=loglikel, hessian=TRUE, method="BFGS")</code>.</p>
 <p>Al terminar la rutina, un analista de la empresa consultora quiere explorar los resultados de la estimación para lo que ejecuta una serie de comandos sencillos en la consola obteniendo los siguientes resultados:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-estructurales.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
-<span id="cb1-2"><a href="modelos-estructurales.html#cb1-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.124</span> <span class="fl">0.486</span> <span class="sc">-</span><span class="fl">2.351</span></span>
-<span id="cb1-3"><a href="modelos-estructurales.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>value</span>
-<span id="cb1-4"><a href="modelos-estructurales.html#cb1-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1344.35</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelos-estructurales.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
+<span id="cb2-2"><a href="modelos-estructurales.html#cb2-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.124</span> <span class="fl">0.486</span> <span class="sc">-</span><span class="fl">2.351</span></span>
+<span id="cb2-3"><a href="modelos-estructurales.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>value</span>
+<span id="cb2-4"><a href="modelos-estructurales.html#cb2-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1344.35</span></span></code></pre></div>
 <p>¿Cuál es el BIC del modelo estimado por la empresa consultora?</p></li>
 </ol>
 <p><strong>Solución:</strong></p>
@@ -526,8 +790,8 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <p><span class="math display">\[BIC = -2(-1344.35) + 3 \ln(3615) = 2713.279\]</span></p></li>
 </ol>
 </div>
-<div id="pregunta-3-1" class="section level3 hasAnchor" number="4.4.3">
-<h3><span class="header-section-number">4.4.3</span> Pregunta 3<a href="modelos-estructurales.html#pregunta-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-4-1" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> Pregunta 4<a href="modelos-estructurales.html#pregunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una compañía de telefonía móvil de reciente ingreso al país ha iniciado una fuerte campaña en algunas redes sociales y busca estudiar el perfil de los clientes que han evaluado favorablemente la campaña. Para eso se ha construido una base de datos de 5243 usuarios de facebook que vieron al menos uno de los elementos considerados en la campaña (video, afiche, álbum de fotos, etc.). Junto con información de los usuarios considerados en la muestra, la base de datos contiene una variable <span class="math inline">\(y_n\)</span> que toma el valor 1 si el usuario <span class="math inline">\(n\)</span> le dio un “me gusta” a alguno de las componentes de la campaña. La siguiente tabla contiene una breve descripción de la información disponible en la base.</p>
 <table>
 <thead>
@@ -564,15 +828,15 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <li>Suponga que para perfilar a los clientes se propone un modelo logit en que el usuario <span class="math inline">\(n\)</span> deriva una utilidad <span class="math inline">\(u_n\)</span> por darle un “me gusta” a alguna de las componentes de la campaña y 0 si no. Escriba la log-verosimilitud del problema asumiendo que la componente determinística de la utilidad depende linealmente de <span class="math inline">\(x_n = (Hombre_n, Twitter_n, Edad_n, Edad_n^2)\)</span>.</li>
 </ol>
 <p>Suponga que analistas dentro de la compañía han codificado la verosimilitud anterior en R en una función <code>loglikel</code> que recibe como primer argumento el intercepto de la función de utilidad y los cuatro siguientes los otros parámetros de la utilidad en el orden antes planteado. Para encontrar los estimadores máximo verosímiles se ha ejecutado el siguiente comando:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelos-estructurales.html#cb2-1" aria-hidden="true" tabindex="-1"></a>mymle <span class="ot">=</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fl">0.01</span><span class="sc">*</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">fn=</span>loglikel, <span class="at">hessian=</span><span class="cn">TRUE</span>, <span class="at">method=</span><span class="st">&quot;BFGS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="modelos-estructurales.html#cb3-1" aria-hidden="true" tabindex="-1"></a>mymle <span class="ot">=</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fl">0.01</span><span class="sc">*</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">fn=</span>loglikel, <span class="at">hessian=</span><span class="cn">TRUE</span>, <span class="at">method=</span><span class="st">&quot;BFGS&quot;</span>)</span></code></pre></div>
 <p>Al terminar la rutina, los analistas quieren hacer inferencia sobre los parámetros para lo que ejecutan el siguiente comandos en la consola generando los resultados correspondientes:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="modelos-estructurales.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(mymle<span class="sc">$</span>par, <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(mymle<span class="sc">$</span>hessian))))</span>
-<span id="cb3-2"><a href="modelos-estructurales.html#cb3-2" aria-hidden="true" tabindex="-1"></a>     [,<span class="dv">1</span>]      [,<span class="dv">2</span>]</span>
-<span id="cb3-3"><a href="modelos-estructurales.html#cb3-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.9623</span>  <span class="fl">0.2069</span></span>
-<span id="cb3-4"><a href="modelos-estructurales.html#cb3-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">3.4340</span>  <span class="fl">0.0518</span></span>
-<span id="cb3-5"><a href="modelos-estructurales.html#cb3-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.0047</span>  <span class="fl">0.0522</span></span>
-<span id="cb3-6"><a href="modelos-estructurales.html#cb3-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.0365</span>  <span class="fl">0.0043</span></span>
-<span id="cb3-7"><a href="modelos-estructurales.html#cb3-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.0048</span>  <span class="fl">0.0025</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelos-estructurales.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(mymle<span class="sc">$</span>par, <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(mymle<span class="sc">$</span>hessian))))</span>
+<span id="cb4-2"><a href="modelos-estructurales.html#cb4-2" aria-hidden="true" tabindex="-1"></a>     [,<span class="dv">1</span>]      [,<span class="dv">2</span>]</span>
+<span id="cb4-3"><a href="modelos-estructurales.html#cb4-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.9623</span>  <span class="fl">0.2069</span></span>
+<span id="cb4-4"><a href="modelos-estructurales.html#cb4-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">3.4340</span>  <span class="fl">0.0518</span></span>
+<span id="cb4-5"><a href="modelos-estructurales.html#cb4-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.0047</span>  <span class="fl">0.0522</span></span>
+<span id="cb4-6"><a href="modelos-estructurales.html#cb4-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.0365</span>  <span class="fl">0.0043</span></span>
+<span id="cb4-7"><a href="modelos-estructurales.html#cb4-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.0048</span>  <span class="fl">0.0025</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li><p>¿Cuál es la probabilidad que una mujer de 20 años que no es usuaria de twitter le de un “me gusta” a la campaña?</p></li>
 <li><p>¿Cómo varía la probabilidad de elección anterior si la mujer sí es usuaria de twitter? Describa que implicancias podría tener su resultado en la elaboración de próximas campañas.</p></li>
@@ -592,8 +856,8 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <p>Como el cambio de probabilidad es muy bajo, podemos concluir que ser usuario de twitter no es muy relevante para explicar si una persona le dará un “me gusta” a alguna componente de la campaña (notar que esto se puede inferir directamente de los estimadores máximo verosímiles). Para los próximos elementos de la campaña, probablemente convenga concentrarse en el género y edad de los usuarios.</p></li>
 </ol>
 </div>
-<div id="pregunta-4-1" class="section level3 hasAnchor" number="4.4.4">
-<h3><span class="header-section-number">4.4.4</span> Pregunta 4<a href="modelos-estructurales.html#pregunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-5-1" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> Pregunta 5<a href="modelos-estructurales.html#pregunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En el departamento de estudios de una importante multitienda buscan analizar simultáneamente los montos de compra en la tienda y el uso de la tarjeta de crédito de la casa comercial. Para eso la empresa ha recopilado, para cada cliente <span class="math inline">\(n\)</span>, una serie de variables que caracterizan su relación con la firma en el último año, como describe la siguiente tabla.</p>
 <table>
 <thead>
@@ -689,18 +953,18 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <li><p>El enfoque de modelación es útil principalmente para estudiar la interacción entre las decisiones de apertura de tarjeta y gasto. Si asumimos que los errores son independientes entonces podríamos enfrentar el problema simplemente como dos problemas separados. La respuesta esperada es que no hay beneficio en términos de la captura del fenómeno de comportamiento. Argumentar en favor de un modelo integrado en virtud de su escalabilidad y posibilidad de comparar con modelos más complejos son también respuestas correctas.</p></li>
 </ol>
 </div>
-<div id="pregunta-5-1" class="section level3 hasAnchor" number="4.4.5">
-<h3><span class="header-section-number">4.4.5</span> Pregunta 5<a href="modelos-estructurales.html#pregunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Con el avenimiento de los espectáculos masivos, las productoras que organizan los eventos han puesto en práctica múltiples tácticas de discriminación de precios. A continuación nos enfocaremos en el estudio del comportamiento de clientes respecto a las ventas anticipadas de tickets o <em>pre-venta</em>, donde los clientes pueden comprar anticipadamente a un precio <span class="math inline">\(p_1\)</span> menor que <span class="math inline">\(p_2\)</span>, el precio de las entradas el día del evento. Para ello, nos enfocaremos exclusivamente en los clientes interesados en comprar tickets, cuyo comportamiento se describirá usando un modelo logit anidado. En este modelo, los clientes primero deciden si comprar anticipadamente o si esperan al día del evento. En el día del evento, los clientes deciden si asistir o no, generando cuatro escenarios como queda descrito en la siguiente figura.</p>
+<div id="pregunta-6-1" class="section level3 hasAnchor" number="4.4.6">
+<h3><span class="header-section-number">4.4.6</span> Pregunta 6<a href="modelos-estructurales.html#pregunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con el avenimiento de los espectáculos masivos, las productoras que organizan los eventos han puesto en práctica múltiples tácticas de discriminación de precios. A continuación nos enfocaremos en el estudio del comportamiento de clientes respecto a las ventas anticipadas de tickets o <em>pre-venta</em>, donde los clientes pueden comprar anticipadamente a un precio <span class="math inline">\(p_1\)</span> menor que $p_2 el precio de las entradas el día del evento. Para ello, nos enfocaremos exclusivamente en los clientes interesados en comprar tickets, cuyo comportamiento se describirá usando un modelo logit anidado. En este modelo, los clientes primero deciden si comprar anticipadamente o si esperan al día del evento. En el día del evento, los clientes deciden si asistir o no, generando cuatro escenarios, tal como se aprecia en la siguiente figura.</p>
 <p><img src="images/arbol_decision_tickets.png" width="90%" style="display: block; margin: auto;" /></p>
-<p>Para completar el modelo se ha propuesto las siguientes especificaciones para las componentes sistemática de la utilidad:</p>
+<p>Para completar el modelo, se han propuesto las siguientes especificaciones para las componentes sistemática de la utilidad:</p>
 <p><span class="math display">\[v_{PA} = \alpha_1 - \beta p_1\]</span>
 <span class="math display">\[v_{PN} = \alpha_2 - \beta p_1\]</span>
 <span class="math display">\[v_{EA} = \alpha_3 - \beta p_2\]</span>
 <span class="math display">\[v_{EN} = 0\]</span></p>
 <ol style="list-style-type: decimal">
-<li><p>Escriba una expresión para <span class="math inline">\(P_{EA}\)</span>, la probabilidad que un cliente espere sin comprar en la pre-venta y luego decida asistir al evento.</p></li>
-<li><p>Suponga que observa el comportamiento de <span class="math inline">\(N\)</span> clientes, para cada uno de los cuales se observa <span class="math inline">\(y_{ni}\)</span> que toma valor 1 si el cliente decide la alternativa <span class="math inline">\(i \in \{PA, PN, EA, EN\}\)</span> (0 en caso contrario). Escriba una expresión para la log-verosimilitud <span class="math inline">\(LL(\theta = (\alpha_1, \alpha_2, \alpha_3, \beta, \lambda))\)</span>. Para eso asuma conocidas las expresiones de <span class="math inline">\(P_i(\theta)\)</span> <span class="math inline">\(\forall i \in I\)</span>.</p></li>
+<li><p>Escriba una expresión para <span class="math inline">\(P_{EA}\)</span>, es decir, la probabilidad que un cliente espere sin comprar en la pre-venta y que luego decida asistir al evento.</p></li>
+<li><p>Suponga que observa el comportamiento de <span class="math inline">\(N\)</span> clientes, para cada uno de los cuales se observa <span class="math inline">\(y_{ni}\)</span>, que toma valor 1 si el cliente decide la alternativa <span class="math inline">\(i \in \{PA, PN, EA, EN\}\)</span> y 0 en caso contrario. Escriba una expresión para la log-verosimilitud <span class="math inline">\(LL(\theta = (\alpha_1, \alpha_2, \alpha_3, \beta, \lambda))\)</span>. Para eso asuma conocidas las expresiones de <span class="math inline">\(P_i(\theta)\)</span> <span class="math inline">\(\forall i \in I\)</span>.</p></li>
 <li><p>Como analista, le interesa investigar las restricciones de comportamiento <span class="math inline">\(\alpha_1 = \alpha_3\)</span> y <span class="math inline">\(\alpha_2 = 0\)</span>. Explique qué interpretación podría tener dichas hipótesis y cómo podrían testearse.</p></li>
 </ol>
 <p><strong>Solución:</strong></p>
@@ -708,7 +972,7 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <li><p>Partimos por calcular la probabilidad condicional de asistir al evento condicional en que esperó. Esta probabilidad viene dada directamente por la fórmula del logit:</p>
 <p><span class="math display">\[P_{A|E} = \frac{\exp(\alpha_3 - \beta p_2)}{\exp(\alpha_3 - \beta p_2) + 1}\]</span></p>
 <p>Luego calculamos la probabilidad de esperar no comprando en la preventa:</p>
-<p><span class="math display">\[P_E = \frac{\exp(\lambda IV_E)}{\exp(\lambda IV_P) + \exp(\lambda IV_E)}\]</span></p>
+<p><span class="math display">\[P_E = \frac{\exp(\lambda IV_E)}{\exp(\lambda_P IV_P) + \exp(\lambda_E IV_E)}\]</span></p>
 <p>donde <span class="math inline">\(IV_P\)</span> y <span class="math inline">\(IV_E\)</span> son los valores inclusivos de comprar y no comprar en la preventa respectivamente:</p>
 <p><span class="math display">\[IV_P = \ln(\exp(\alpha_1 - \beta p_1) + \exp(\alpha_2 - \beta p_1))\]</span>
 <span class="math display">\[IV_E = \ln(\exp(\alpha_3 - \beta p_2) + 1)\]</span></p>
@@ -719,8 +983,8 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <li><p>Imponer que <span class="math inline">\(\alpha_1 = \alpha_3\)</span> implicaría que la utilidad intrínseca que los clientes derivan por asistir al evento es la misma independiente de si compraron en la preventa o no. Del mismo modo, imponer que <span class="math inline">\(\alpha_2 = 0\)</span> implicaría que no hay una pérdida de utilidad por comprar los boletos y no asistir más allá del precio pagado. Para testear cada hipótesis, usamos test de ratios de verosimilitud, lo que implica (i) el cálculo de la log-verosimilitud de los modelos con (<span class="math inline">\(LL_A\)</span>) y sin (<span class="math inline">\(LL_B\)</span>) restricciones, (ii) el cálculo del estadístico <span class="math inline">\(LR = 2(LL_A - LL_B)\)</span> y (iii) la comparación de dicho estadístico contra el valor crítico una <span class="math inline">\(\chi^2_1\)</span> con un grado de libertad.</p></li>
 </ol>
 </div>
-<div id="pregunta-6-1" class="section level3 hasAnchor" number="4.4.6">
-<h3><span class="header-section-number">4.4.6</span> Pregunta 6<a href="modelos-estructurales.html#pregunta-6-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-7" class="section level3 hasAnchor" number="4.4.7">
+<h3><span class="header-section-number">4.4.7</span> Pregunta 7<a href="modelos-estructurales.html#pregunta-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una empresa busca estudiar el impacto del gasto publicitario en su producto estrella, donde tiene una posición monopólica en un mercado de tamaño conocido. Para ello ha reunido las series de precios (<span class="math inline">\(p_t\)</span>), ventas (<span class="math inline">\(q_t\)</span>) y gasto publicitario (<span class="math inline">\(ADV_t\)</span>) para las últimas 205 semanas y ha propuesto un modelo de elección binaria basado en la siguiente función de utilidad <span class="math inline">\(u_t = \alpha + \beta \ln(p_t) + \gamma ADV_t + \nu_t + \varepsilon_t\)</span>, donde <span class="math inline">\(\nu_t\)</span> están normalmente distribuidos con media 0 y <span class="math inline">\(\varepsilon_t\)</span> están distribuidos valor extremo.</p>
 <ol style="list-style-type: decimal">
 <li><p>Muestre que si <span class="math inline">\(s_t\)</span> es la participación de mercado del producto, los parámetros <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> y <span class="math inline">\(\gamma\)</span> pueden estimarse usando un enfoque de mínimos cuadrados ordinarios sobre la siguiente ecuación:</p>
@@ -770,8 +1034,8 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <p>Por lo tanto hay un incremento de <span class="math inline">\(\Delta = 19.6\)</span> puntos porcentuales.</p></li>
 </ol>
 </div>
-<div id="pregunta-7" class="section level3 hasAnchor" number="4.4.7">
-<h3><span class="header-section-number">4.4.7</span> Pregunta 7<a href="modelos-estructurales.html#pregunta-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-8" class="section level3 hasAnchor" number="4.4.8">
+<h3><span class="header-section-number">4.4.8</span> Pregunta 8<a href="modelos-estructurales.html#pregunta-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pizza a Pieza es un servicio de pizzas a domicilio que lleva varios años operando en el sector sur de la capital. Los administradores de la tienda quieren estudiar el comportamiento de compra de sus clientes. Para eso, se proponen calibrar modelos de elección discreta usando una base de clientes registrados en la compañía y que hayan comprado al menos una vez en los últimos 6 meses. La base de datos está compuesta por 763 clientes de los que se conoce su número telefónico, la edad y género del jefe de hogar y si han comprado en cada semana <span class="math inline">\(t\)</span> durante los últimos 6 meses de operación (<span class="math inline">\(y_{nt} = 1\)</span> si el cliente <span class="math inline">\(n\)</span> compró en la semana <span class="math inline">\(t\)</span>). Además, para cada semana se conoce el precio de lista de las pizzas (que por políticas de la empresa es el mismo independiente de la variedad de la pizza) y si se repartieron volantes con publicidad.</p>
 <ol style="list-style-type: decimal">
 <li><p>Suponga que la utilidad que un cliente <span class="math inline">\(n\)</span> deriva por comprar en un semana <span class="math inline">\(t\)</span> puede describirse como <span class="math inline">\(u_{nt} = \beta_0&#39; x_{nt} + \varepsilon_{nt}\)</span>. Si <span class="math inline">\(\{\varepsilon_{nt}\}\)</span> con <span class="math inline">\(n = 1, \ldots, N\)</span> y <span class="math inline">\(t = 1, \ldots, T\)</span> están independiente e idénticamente distribuidos valor extremo tipo I, escriba la log-verosimilitud de un modelo que describa las compras de la base de clientes.</p></li>
@@ -857,8 +1121,8 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <li><p>Como hay más variables explicativas, <span class="math inline">\(-2LL\)</span> debiera ser menor o igual (es decir Y debiera ser menor que 20.17). Como BIC penaliza usar más variables, Z puede subir o bajar. Por último, tal como vimos en clases, X debiera subir. Esto es porque al no controlar por promoción y publicidad, no podremos identificar que a veces clientes relativamente leales dejan de comprar por variaciones en la oferta.</p></li>
 </ol>
 </div>
-<div id="pregunta-8" class="section level3 hasAnchor" number="4.4.8">
-<h3><span class="header-section-number">4.4.8</span> Pregunta 8<a href="modelos-estructurales.html#pregunta-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-9" class="section level3 hasAnchor" number="4.4.9">
+<h3><span class="header-section-number">4.4.9</span> Pregunta 9<a href="modelos-estructurales.html#pregunta-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un retailer nacional está interesado en determinar el impacto de las publicaciones en su sitio web en sus ventas online. Esto es, la evaluación de cómo la promoción de un determinado producto afecta el volumen de sus ventas. Para esto, se ha propuesto un modelo estructural en donde la componente determinística de la utilidad de comprar un producto <span class="math inline">\(i\)</span> de cada cliente <span class="math inline">\(n\)</span> en el día <span class="math inline">\(t\)</span> está dada por (note que es plausible que un cliente compre más de un producto por día):</p>
 <p><span class="math display">\[v_{nit} = \alpha_i + \beta_{PR} Precio_{it} + \beta_S Size_{it} + \beta_{POS} Posicion_{it} + \beta_M Mail_{nt}\]</span></p>
 <ol style="list-style-type: decimal">
@@ -879,8 +1143,8 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <p><span class="math display">\[p_{nit} \approx \frac{1}{R} \sum_{r=1}^R \frac{\exp(v_{nit}(\theta^r))}{1 + \exp(v_{nit}(\theta^r))}\]</span></p></li>
 </ol>
 </div>
-<div id="pregunta-9" class="section level3 hasAnchor" number="4.4.9">
-<h3><span class="header-section-number">4.4.9</span> Pregunta 9<a href="modelos-estructurales.html#pregunta-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-10" class="section level3 hasAnchor" number="4.4.10">
+<h3><span class="header-section-number">4.4.10</span> Pregunta 10<a href="modelos-estructurales.html#pregunta-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Con el reciente sorteo de la Copa América Chile 2015 (cómo pasó tan rápido el tiempo), el comité organizador está interesado en estudiar cómo los hinchas deciden a qué partido asistir. Como primera aproximación se busca un modelo que indique si un hincha decide asistir o no a los partidos que juega su equipo preferido. Suponga que usted tiene total certeza que su equipo favorito llegará a la final. A continuación se presenta los datos con los que dispone.</p>
 <table>
 <colgroup>
@@ -979,8 +1243,8 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 </ul></li>
 </ol>
 </div>
-<div id="pregunta-10" class="section level3 hasAnchor" number="4.4.10">
-<h3><span class="header-section-number">4.4.10</span> Pregunta 10<a href="modelos-estructurales.html#pregunta-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pregunta-11" class="section level3 hasAnchor" number="4.4.11">
+<h3><span class="header-section-number">4.4.11</span> Pregunta 11<a href="modelos-estructurales.html#pregunta-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En cada periodo <span class="math inline">\(t\)</span>, una agencia de medios está encargada de seleccionar los soportes publicitarios en que se emitirán las campañas de cada uno de sus <span class="math inline">\(K\)</span> clientes de acuerdo a los requerimientos que ellos indiquen. Por ejemplo una marca puede indicar que quiere distribuir su presupuesto para que las piezas publicitarias sean exhibidas solo en TV o en una mezcla de radio y vallas públicas. Aunque cada cliente puede requerir presencia en cualquier tipo de medio, el 86% de los clientes elige en alguno de los siguiente paquetes:</p>
 <ul>
 <li><p><strong>Masivo multimedia:</strong> en este paquete la agencia se compromete a alcanzar un cierto nivel de GRP para lo cuál puede hacer uso de cualquier medio. Los promedios históricos sugieren que un 40% se gasta en TV, un 25% en prensa escrita, un 20% en radio y un 10% en medios digitales.</p></li>
@@ -1048,7 +1312,7 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 \frac{\exp(v_{ikt}(\beta))}{\sum_{j=1}^{4} \exp(v_{jkt}(\beta))} &amp; t \in \tau
 \end{cases}\]</span></p></li>
 <li><p>Escribimos directamente:</p>
-<p><span class="math display">\[LL(\beta_1, \beta_2, \lambda) = \sum_k \sum_i \sum_t \left[\frac{\exp(\lambda)}{1 + \exp(\lambda)} y_{ikt} \ln(p_{ikt}(\beta_1)) + \frac{1}{1 + \exp(\lambda)} \ln(p_{ikt}(\beta_2))\right]\]</span></p></li>
+<p><span class="math display">\[LL(\beta_1, \beta_2, \lambda) = \sum_k \sum_i \sum_t y_{ikt} \left[\frac{\exp(\lambda)}{1 + \exp(\lambda)} \ln(p_{ikt}(\beta_1)) + \frac{1}{1 + \exp(\lambda)} \ln(p_{ikt}(\beta_2))\right]\]</span></p></li>
 <li><p>La probabilidad de pertenecer al segmento 2 viene dada por:</p>
 <p><span class="math display">\[s_2 = \frac{1}{1 + \exp(\lambda)} = \frac{1}{2}\]</span></p></li>
 <li><p>Simplemente tomamos el promedio de las 3 muestras:</p>
