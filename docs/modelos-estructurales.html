@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-11-25" />
+<meta name="date" content="2025-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,9 +52,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -92,7 +97,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +110,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -144,18 +149,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="formulas-utiles.html"><a href="formulas-utiles.html"><i class="fa fa-check"></i><b>1</b> Formulas utiles</a></li>
 <li class="chapter" data-level="2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html"><i class="fa fa-check"></i><b>2</b> Modelos de Regresion</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#introducción"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
-<li class="chapter" data-level="2.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#metodología"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
-<li class="chapter" data-level="2.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problemas-teóricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
+<li class="chapter" data-level="2.1" data-path="04-estructurales.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
+<li class="chapter" data-level="2.2" data-path="04-estructurales.html"><a href="#metodolog%C3%ADa"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
+<li class="chapter" data-level="2.3" data-path="04-estructurales.html"><a href="#problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e1-signo-esperado-y-significancia"><i class="fa fa-check"></i><b>2.3.1</b> E1: Signo esperado y significancia</a></li>
-<li class="chapter" data-level="2.3.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e2-regresión-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
-<li class="chapter" data-level="2.3.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e3-selección-automática-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
-<li class="chapter" data-level="2.3.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e4-regresión-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
+<li class="chapter" data-level="2.3.2" data-path="04-estructurales.html"><a href="#e2-regresi%C3%B3n-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
+<li class="chapter" data-level="2.3.3" data-path="04-estructurales.html"><a href="#e3-selecci%C3%B3n-autom%C3%A1tica-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
+<li class="chapter" data-level="2.3.4" data-path="04-estructurales.html"><a href="#e4-regresi%C3%B3n-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
 <li class="chapter" data-level="2.3.5" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e5-capturar-efectos"><i class="fa fa-check"></i><b>2.3.5</b> E5: Capturar efectos</a></li>
-<li class="chapter" data-level="2.3.6" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e6-coeficientes-y-parámetros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
-<li class="chapter" data-level="2.3.7" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e7-qué-es-un-modelo-de-regresión"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
-<li class="chapter" data-level="2.3.8" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#solución-problemas-teóricos"><i class="fa fa-check"></i><b>2.3.8</b> Solución problemas teóricos</a></li>
+<li class="chapter" data-level="2.3.6" data-path="04-estructurales.html"><a href="#e6-coeficientes-y-par%C3%A1metros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
+<li class="chapter" data-level="2.3.7" data-path="04-estructurales.html"><a href="#e7-qu%C3%A9-es-un-modelo-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
+<li class="chapter" data-level="2.3.8" data-path="04-estructurales.html"><a href="#soluci%C3%B3n-problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3.8</b> Solución problemas teóricos</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problemas-aplicados"><i class="fa fa-check"></i><b>2.4</b> Problemas Aplicados</a>
 <ul>
@@ -163,26 +168,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-2"><i class="fa fa-check"></i><b>2.4.2</b> Problema 2</a></li>
 <li class="chapter" data-level="2.4.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-3"><i class="fa fa-check"></i><b>2.4.3</b> Problema 3</a></li>
 <li class="chapter" data-level="2.4.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-4---p1-control-1-primavera-2025"><i class="fa fa-check"></i><b>2.4.4</b> Problema 4 - P1 Control 1 Primavera 2025</a></li>
-<li class="chapter" data-level="2.4.5" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-5---p1-control-otoño-2025"><i class="fa fa-check"></i><b>2.4.5</b> Problema 5 - P1 Control Otoño 2025</a></li>
+<li class="chapter" data-level="2.4.5" data-path="04-estructurales.html"><a href="#problema-5---p1-control-oto%C3%B1o-2025"><i class="fa fa-check"></i><b>2.4.5</b> Problema 5 - P1 Control Otoño 2025</a></li>
 <li class="chapter" data-level="2.4.6" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-6---p1-control-primavera-2024"><i class="fa fa-check"></i><b>2.4.6</b> Problema 6 - P1 Control Primavera 2024</a></li>
-<li class="chapter" data-level="2.4.7" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-7---p1-control-1-otoño-2024"><i class="fa fa-check"></i><b>2.4.7</b> Problema 7 - P1 Control 1 Otoño 2024</a></li>
+<li class="chapter" data-level="2.4.7" data-path="04-estructurales.html"><a href="#problema-7---p1-control-1-oto%C3%B1o-2024"><i class="fa fa-check"></i><b>2.4.7</b> Problema 7 - P1 Control 1 Otoño 2024</a></li>
 <li class="chapter" data-level="2.4.8" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-8---p1-control-primavera-2023"><i class="fa fa-check"></i><b>2.4.8</b> Problema 8 - P1 Control Primavera 2023</a></li>
-<li class="chapter" data-level="2.4.9" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-9---p1-control-otoño-2023"><i class="fa fa-check"></i><b>2.4.9</b> Problema 9 - P1 Control Otoño 2023</a></li>
+<li class="chapter" data-level="2.4.9" data-path="04-estructurales.html"><a href="#problema-9---p1-control-oto%C3%B1o-2023"><i class="fa fa-check"></i><b>2.4.9</b> Problema 9 - P1 Control Otoño 2023</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html"><i class="fa fa-check"></i><b>3</b> Modelos Probabilisticos</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#introducción-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
-<li class="chapter" data-level="3.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#metodología-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
-<li class="chapter" data-level="3.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problemas-teóricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
+<li class="chapter" data-level="3.1" data-path="04-estructurales.html"><a href="#introducci%C3%B3n-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path="04-estructurales.html"><a href="#metodolog%C3%ADa-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
+<li class="chapter" data-level="3.3" data-path="04-estructurales.html"><a href="#problemas-te%C3%B3ricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e1-tasa-de-respuesta"><i class="fa fa-check"></i><b>3.3.1</b> E1: Tasa de respuesta</a></li>
-<li class="chapter" data-level="3.3.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e2-distribución-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
-<li class="chapter" data-level="3.3.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e3-distribución-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
-<li class="chapter" data-level="3.3.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e4-modelos-de-duración"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
+<li class="chapter" data-level="3.3.2" data-path="04-estructurales.html"><a href="#e2-distribuci%C3%B3n-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
+<li class="chapter" data-level="3.3.3" data-path="04-estructurales.html"><a href="#e3-distribuci%C3%B3n-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
+<li class="chapter" data-level="3.3.4" data-path="04-estructurales.html"><a href="#e4-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
 <li class="chapter" data-level="3.3.5" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e5-modelo-nbd"><i class="fa fa-check"></i><b>3.3.5</b> E5: Modelo NBD</a></li>
 <li class="chapter" data-level="3.3.6" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e6-modelos-de-conteo"><i class="fa fa-check"></i><b>3.3.6</b> E6: Modelos de Conteo</a></li>
-<li class="chapter" data-level="3.3.7" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e7-tiempo-discreto-en-modelos-de-duración"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
+<li class="chapter" data-level="3.3.7" data-path="04-estructurales.html"><a href="#e7-tiempo-discreto-en-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problemas-aplicados-1"><i class="fa fa-check"></i><b>3.4</b> Problemas Aplicados</a>
 <ul>
@@ -199,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#introducción-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a>
+<li class="chapter" data-level="4.1" data-path="04-estructurales.html"><a href="#introducci%C3%B3n-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a>
 <ul>
 <li class="chapter" data-level="4.1.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-logit"><i class="fa fa-check"></i><b>4.1.1</b> Modelo Logit</a></li>
 <li class="chapter" data-level="4.1.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-probit"><i class="fa fa-check"></i><b>4.1.2</b> Modelo Probit</a></li>
@@ -207,8 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-mixed-logit"><i class="fa fa-check"></i><b>4.1.4</b> Modelo Mixed Logit</a></li>
 <li class="chapter" data-level="4.1.5" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#logit-con-clases-latentes"><i class="fa fa-check"></i><b>4.1.5</b> Logit con Clases Latentes</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#metodología-2"><i class="fa fa-check"></i><b>4.2</b> Metodología</a></li>
-<li class="chapter" data-level="4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas-teóricos-2"><i class="fa fa-check"></i><b>4.3</b> Problemas Teóricos</a>
+<li class="chapter" data-level="4.2" data-path="04-estructurales.html"><a href="#metodolog%C3%ADa-2"><i class="fa fa-check"></i><b>4.2</b> Metodología</a></li>
+<li class="chapter" data-level="4.3" data-path="04-estructurales.html"><a href="#problemas-te%C3%B3ricos-2"><i class="fa fa-check"></i><b>4.3</b> Problemas Teóricos</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-1"><i class="fa fa-check"></i><b>4.3.1</b> Pregunta 1</a></li>
 <li class="chapter" data-level="4.3.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-2"><i class="fa fa-check"></i><b>4.3.2</b> Pregunta 2</a></li>
@@ -231,6 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.9" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-9"><i class="fa fa-check"></i><b>4.4.9</b> Pregunta 9</a></li>
 <li class="chapter" data-level="4.4.10" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-10"><i class="fa fa-check"></i><b>4.4.10</b> Pregunta 10</a></li>
 <li class="chapter" data-level="4.4.11" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-11"><i class="fa fa-check"></i><b>4.4.11</b> Pregunta 11</a></li>
+<li class="chapter" data-level="4.4.12" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-12"><i class="fa fa-check"></i><b>4.4.12</b> Pregunta 12</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -256,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="modelos-estructurales" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Capítulo 4</span> Modelos Estructurales<a href="modelos-estructurales.html#modelos-estructurales" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introducción-2" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Introducción<a href="modelos-estructurales.html#introducción-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.1</span> Introducción<a href="#introducci%C3%B3n-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los modelos de elección discreta buscan modelar <strong>comportamiento</strong> (toma de decisiones), describiendo la probabilidad de que un agente <span class="math inline">\(n\)</span> elija la alternativa <span class="math inline">\(i\)</span>, es decir, <span class="math inline">\(P_{ni}\)</span>. Se asume que el individuo decide entre las alternativas tal que éste maximiza sus utilidades <span class="math inline">\(u_{ni}\)</span>.</p>
 <p>En general, los modelos de decisión discreta se definen como <span class="math inline">\(u_{ni} = v_{ni} + \varepsilon_{ni}\)</span>, con <span class="math inline">\(v_{ni}\)</span> la componente determinista y <span class="math inline">\(\varepsilon_{ni}\)</span> la componente estocástica.</p>
 <p>A continuación se presentan los modelos estructurales abordados en el curso:</p>
@@ -269,7 +275,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[LL(\beta) = \sum_n \sum_i y_{ni} \ln(P_{ni})\]</span></p>
 <p>Con <span class="math inline">\(x_{ni}\)</span> un conjunto de covariables y <span class="math inline">\(y_{ni} = 1\)</span> si <span class="math inline">\(n\)</span> elige la alternativa <span class="math inline">\(i\)</span>, 0 en caso contrario.</p>
 <div id="persistencia-de-elección-lealtad-y-precios-de-referencia" class="section level4 hasAnchor" number="4.1.1.1">
-<h4><span class="header-section-number">4.1.1.1</span> Persistencia de Elección (Lealtad) y Precios de Referencia<a href="modelos-estructurales.html#persistencia-de-elección-lealtad-y-precios-de-referencia" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.1.1.1</span> Persistencia de Elección (Lealtad) y Precios de Referencia<a href="#persistencia-de-elecci%C3%B3n-lealtad-y-precios-de-referencia" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>En modelos de panel con observaciones repetidas, es posible incorporar efectos dinámicos como la <strong>lealtad</strong> y los <strong>precios de referencia</strong>:</p>
 <p><strong>Lealtad:</strong> Se introduce una variable de lealtad latente <span class="math inline">\(z_{nit}\)</span> que captura la propensión del individuo a repetir elecciones previas:</p>
 <p><span class="math display">\[z_{nit} = \lambda z_{nit-1} + (1-\lambda) y_{nit-1}\]</span></p>
@@ -329,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="metodología-2" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Metodología<a href="modelos-estructurales.html#metodología-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.2</span> Metodología<a href="#metodolog%C3%ADa-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La estimación de los modelos estructurales comparte una metodología:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Especificación de la utilidad:</strong> Definir la función de utilidad <span class="math inline">\(u_{ni}\)</span> con sus componentes determinísticas <span class="math inline">\(v_{ni}\)</span> y estocásticas <span class="math inline">\(\varepsilon_{ni}\)</span>.</p></li>
@@ -341,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="problemas-teóricos-2" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Problemas Teóricos<a href="modelos-estructurales.html#problemas-teóricos-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.3</span> Problemas Teóricos<a href="#problemas-te%C3%B3ricos-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="pregunta-1" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Pregunta 1<a href="modelos-estructurales.html#pregunta-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suponga que dispone de una muestra de tamaño <span class="math inline">\(R\)</span> de los parámetros que definen la utilidad de elección en un modelo logit. Describa cómo estimar la probabilidad que un consumidor <span class="math inline">\(n\)</span> elija la alternativa <span class="math inline">\(i\)</span>.</p>
@@ -396,6 +402,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>STUD-IA es una compañía que ofrece cursos de lenguaje y matemáticas con una propuesta de valor centrada en la posibilidad de usar inteligencia artificial para adaptar los contenidos al estilo de aprendizaje de cada estudiante. Para incentivar que los estudiantes se mantengan activos en la plataforma, STUD-IA ha introducido un programa de lealtad que entrega stickers virtuales a los usuarios por cada curso que completan. Los stickers pueden descargarse y coleccionarse y para este año ha considerado cuatro colecciones de stickers: Dragon Ball, superhéroes, Snoopy y memes de Internet. Entre muchos beneficios, una de las ventajas del plan premium es que se acumula el doble de stickers por cada participación.</p>
 <p>La compañía está interesada en describir el comportamiento de sus usuarios, por lo que propone usar modelos de elección discreta o de clasificación para describir el estado de sus suscriptores en un trimestre dado. En particular, se busca estudiar cómo el número de stickers recibidos en un semestre afecta las suscripciones del trimestre siguiente. Para eso, STUD-IA ha armado una base de datos que registra el estado de cada cliente en cada trimestre, el que puede tomar tres niveles: suscrito en el plan premium (premium), suscrito en el plan normal (normal) y no suscrito (inactivo), como indica la Tabla 1.</p>
 <table>
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="10%" />
+<col width="13%" />
+<col width="10%" />
+<col width="7%" />
+<col width="12%" />
+<col width="8%" />
+<col width="10%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Idcust</th>
@@ -540,8 +558,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong>(1.0 puntos)</strong> Suponga que se desea introducir heterogeneidad no observable solo en el coeficiente de precio. Escriba la verosimilitud del modelo con dos clases latentes. Indique cómo se obtiene la probabilidad de que un cliente pertenezca al segmento 1.</p></li>
 <li><p><strong>(1.0 puntos)</strong> Disconforme con la solución de clases latentes, se postula correr un modelo logit heterogéneo a través del siguiente código computacional, cuyos resultados se despliegan en la Tabla 2.</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-estructurales.html#cb1-1" aria-hidden="true" tabindex="-1"></a>stickers <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(subs <span class="sc">~</span> price <span class="sc">+</span> nsnoopy <span class="sc">+</span> ndragon <span class="sc">+</span> nsuperhero <span class="sc">+</span> nmemes, </span>
-<span id="cb1-2"><a href="modelos-estructurales.html#cb1-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data=</span>datastickers, <span class="at">rpar=</span><span class="fu">c</span>(<span class="at">price=</span><span class="st">&#39;n&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-estructurales.html#cb1-1" tabindex="-1"></a>stickers <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(subs <span class="sc">~</span> price <span class="sc">+</span> nsnoopy <span class="sc">+</span> ndragon <span class="sc">+</span> nsuperhero <span class="sc">+</span> nmemes, </span>
+<span id="cb1-2"><a href="modelos-estructurales.html#cb1-2" tabindex="-1"></a>                   <span class="at">data=</span>datastickers, <span class="at">rpar=</span><span class="fu">c</span>(<span class="at">price=</span><span class="st">&#39;n&#39;</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -640,7 +658,7 @@ En esta expresión todas las variables están directamente disponibles en la bas
 <li><p>Imponemos directamente que <span class="math inline">\(\alpha_{inactivo} = 0\)</span>, <span class="math inline">\(\alpha_{normal} = \exp(\tilde{\alpha}_{normal})\)</span> y que <span class="math inline">\(\alpha_{premium} = \exp(\tilde{\alpha}_{normal}) + \exp(\tilde{\alpha}_{premium})\)</span>.</p></li>
 <li><p>Contestamos directamente.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p><strong>(0.5 puntos)</strong> Como hay tres alternativas y tenemos que fijar una (por ejemplo inactivo), entonces la matriz de varianza-covarianza solo tiene dos elementos identificables. Los elementos de la diagonal evidentemente no pueden imponerse nulos por lo que el único candidato sería imponer que <span class="math inline">\(\sigma_{normal,premium} = 0\)</span>. Esta restricción es muy difícil de justificar porque implicaría que no hay nada no observable que haga que al aumentar las suscripciones normales, haga que también aumenten las suscripciones premium.</p></li>
+<li><p>Como hay tres alternativas y tenemos que fijar una (por ejemplo inactivo), entonces la matriz de varianza-covarianza solo tiene dos elementos identificables. Los elementos de la diagonal evidentemente no pueden imponerse nulos por lo que el único candidato sería imponer que <span class="math inline">\(\sigma_{normal,premium} = 0\)</span>. Esta restricción es muy difícil de justificar porque implicaría que no hay nada no observable que haga que al aumentar las suscripciones normales, haga que también aumenten las suscripciones premium.</p></li>
 <li><p>Primero habría que construir un punto de referencia para el número de stickers a recibir. Por ejemplo, el número recibido el trimestre anterior, el promedio histórico de stickers recibidos cada trimestre o una combinación de ambos. Con la referencia podemos recodificar el número de stickers en <span class="math inline">\(ngain_{nh,t}\)</span> y en <span class="math inline">\(nloss_{nh,t}\)</span> dependiendo de si el número de stickers recibidos está por encima o por debajo de la referencia. Con esto en los modelos anteriores podemos reemplazar el término <span class="math inline">\(\ln(n_{nh,t-1})\)</span> por <span class="math inline">\(\ln(ngain_{nh,t-1} + \lambda \cdot nloss_{nh,t-1})\)</span>.</p></li>
 </ol></li>
 <li><p>Podemos usar la fórmula de verosimilitud de clases latentes de forma directa:</p>
@@ -719,10 +737,10 @@ En esta expresión todas las variables están directamente disponibles en la bas
 <p>Calcule una medida de lealtad para cada marca y periodo usando un modelo de suavización exponencial con parámetro de factor de alisamiento <span class="math inline">\(\lambda\)</span>. Para ello inicialice las medidas de lealtad en <span class="math inline">\(\frac{1}{2}\)</span> para el periodo 0 en ambas marcas.</p></li>
 <li><p>Para analizar el comportamiento de compra de los clientes en un mercado de alimentos enlatados, una importante empresa consultora ha implementado una rutina de maximización de verosimilitud para estimar los parámetros de un modelo logit que se aplica sobre una base de 324 clientes que hacen 3615 compras en la categoría. En la rutina propuesta, los parámetros máximo verosímiles se obtienen usando el comando <code>mymle = optim(par=0.01*rep(1,3), fn=loglikel, hessian=TRUE, method="BFGS")</code>.</p>
 <p>Al terminar la rutina, un analista de la empresa consultora quiere explorar los resultados de la estimación para lo que ejecuta una serie de comandos sencillos en la consola obteniendo los siguientes resultados:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelos-estructurales.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
-<span id="cb2-2"><a href="modelos-estructurales.html#cb2-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.124</span> <span class="fl">0.486</span> <span class="sc">-</span><span class="fl">2.351</span></span>
-<span id="cb2-3"><a href="modelos-estructurales.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>value</span>
-<span id="cb2-4"><a href="modelos-estructurales.html#cb2-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1344.35</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelos-estructurales.html#cb2-1" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
+<span id="cb2-2"><a href="modelos-estructurales.html#cb2-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.124</span> <span class="fl">0.486</span> <span class="sc">-</span><span class="fl">2.351</span></span>
+<span id="cb2-3"><a href="modelos-estructurales.html#cb2-3" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>value</span>
+<span id="cb2-4"><a href="modelos-estructurales.html#cb2-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1344.35</span></span></code></pre></div>
 <p>¿Cuál es el BIC del modelo estimado por la empresa consultora?</p></li>
 </ol>
 <p><strong>Solución:</strong></p>
@@ -794,6 +812,11 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <h3><span class="header-section-number">4.4.4</span> Pregunta 4<a href="modelos-estructurales.html#pregunta-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una compañía de telefonía móvil de reciente ingreso al país ha iniciado una fuerte campaña en algunas redes sociales y busca estudiar el perfil de los clientes que han evaluado favorablemente la campaña. Para eso se ha construido una base de datos de 5243 usuarios de facebook que vieron al menos uno de los elementos considerados en la campaña (video, afiche, álbum de fotos, etc.). Junto con información de los usuarios considerados en la muestra, la base de datos contiene una variable <span class="math inline">\(y_n\)</span> que toma el valor 1 si el usuario <span class="math inline">\(n\)</span> le dio un “me gusta” a alguno de las componentes de la campaña. La siguiente tabla contiene una breve descripción de la información disponible en la base.</p>
 <table>
+<colgroup>
+<col width="30%" />
+<col width="39%" />
+<col width="30%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Variable</th>
@@ -828,15 +851,15 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <li>Suponga que para perfilar a los clientes se propone un modelo logit en que el usuario <span class="math inline">\(n\)</span> deriva una utilidad <span class="math inline">\(u_n\)</span> por darle un “me gusta” a alguna de las componentes de la campaña y 0 si no. Escriba la log-verosimilitud del problema asumiendo que la componente determinística de la utilidad depende linealmente de <span class="math inline">\(x_n = (Hombre_n, Twitter_n, Edad_n, Edad_n^2)\)</span>.</li>
 </ol>
 <p>Suponga que analistas dentro de la compañía han codificado la verosimilitud anterior en R en una función <code>loglikel</code> que recibe como primer argumento el intercepto de la función de utilidad y los cuatro siguientes los otros parámetros de la utilidad en el orden antes planteado. Para encontrar los estimadores máximo verosímiles se ha ejecutado el siguiente comando:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="modelos-estructurales.html#cb3-1" aria-hidden="true" tabindex="-1"></a>mymle <span class="ot">=</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fl">0.01</span><span class="sc">*</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">fn=</span>loglikel, <span class="at">hessian=</span><span class="cn">TRUE</span>, <span class="at">method=</span><span class="st">&quot;BFGS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="modelos-estructurales.html#cb3-1" tabindex="-1"></a>mymle <span class="ot">=</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fl">0.01</span><span class="sc">*</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">fn=</span>loglikel, <span class="at">hessian=</span><span class="cn">TRUE</span>, <span class="at">method=</span><span class="st">&quot;BFGS&quot;</span>)</span></code></pre></div>
 <p>Al terminar la rutina, los analistas quieren hacer inferencia sobre los parámetros para lo que ejecutan el siguiente comandos en la consola generando los resultados correspondientes:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelos-estructurales.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(mymle<span class="sc">$</span>par, <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(mymle<span class="sc">$</span>hessian))))</span>
-<span id="cb4-2"><a href="modelos-estructurales.html#cb4-2" aria-hidden="true" tabindex="-1"></a>     [,<span class="dv">1</span>]      [,<span class="dv">2</span>]</span>
-<span id="cb4-3"><a href="modelos-estructurales.html#cb4-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.9623</span>  <span class="fl">0.2069</span></span>
-<span id="cb4-4"><a href="modelos-estructurales.html#cb4-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">3.4340</span>  <span class="fl">0.0518</span></span>
-<span id="cb4-5"><a href="modelos-estructurales.html#cb4-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.0047</span>  <span class="fl">0.0522</span></span>
-<span id="cb4-6"><a href="modelos-estructurales.html#cb4-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.0365</span>  <span class="fl">0.0043</span></span>
-<span id="cb4-7"><a href="modelos-estructurales.html#cb4-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.0048</span>  <span class="fl">0.0025</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelos-estructurales.html#cb4-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(mymle<span class="sc">$</span>par, <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(mymle<span class="sc">$</span>hessian))))</span>
+<span id="cb4-2"><a href="modelos-estructurales.html#cb4-2" tabindex="-1"></a>     [,<span class="dv">1</span>]      [,<span class="dv">2</span>]</span>
+<span id="cb4-3"><a href="modelos-estructurales.html#cb4-3" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.9623</span>  <span class="fl">0.2069</span></span>
+<span id="cb4-4"><a href="modelos-estructurales.html#cb4-4" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">3.4340</span>  <span class="fl">0.0518</span></span>
+<span id="cb4-5"><a href="modelos-estructurales.html#cb4-5" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.0047</span>  <span class="fl">0.0522</span></span>
+<span id="cb4-6"><a href="modelos-estructurales.html#cb4-6" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.0365</span>  <span class="fl">0.0043</span></span>
+<span id="cb4-7"><a href="modelos-estructurales.html#cb4-7" tabindex="-1"></a>[<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.0048</span>  <span class="fl">0.0025</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li><p>¿Cuál es la probabilidad que una mujer de 20 años que no es usuaria de twitter le de un “me gusta” a la campaña?</p></li>
 <li><p>¿Cómo varía la probabilidad de elección anterior si la mujer sí es usuaria de twitter? Describa que implicancias podría tener su resultado en la elaboración de próximas campañas.</p></li>
@@ -860,6 +883,11 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <h3><span class="header-section-number">4.4.5</span> Pregunta 5<a href="modelos-estructurales.html#pregunta-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En el departamento de estudios de una importante multitienda buscan analizar simultáneamente los montos de compra en la tienda y el uso de la tarjeta de crédito de la casa comercial. Para eso la empresa ha recopilado, para cada cliente <span class="math inline">\(n\)</span>, una serie de variables que caracterizan su relación con la firma en el último año, como describe la siguiente tabla.</p>
 <table>
+<colgroup>
+<col width="30%" />
+<col width="39%" />
+<col width="30%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Variable</th>
@@ -907,6 +935,17 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <li><p>La empresa está especialmente interesada en identificar si hay alguna diferencia en los patrones de gasto entre aquellos clientes que tienen tarjeta con respecto a aquellos que no tienen. Para ello se estima el modelo antes planteado obteniendo una log-verosimilitud <span class="math inline">\(LL_0 = -2.332,57\)</span> y luego otro en que se impone <span class="math inline">\(\beta_0 = \beta&#39;_0\)</span>, <span class="math inline">\(\beta_1 = \beta&#39;_1\)</span>, <span class="math inline">\(\beta_2 = \beta&#39;_2\)</span> con una log-verosimilitud <span class="math inline">\(LL_1 = -2.418,42\)</span>. Basado en el test de ratios de verosimilitud, determine si la tenencia de tarjeta afecta los patrones de gasto en tienda.</p></li>
 </ol>
 <table>
+<colgroup>
+<col width="22%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th><span class="math inline">\(\nu\)</span></th>
@@ -1318,7 +1357,1045 @@ Figure 4.1: Plot de variables transformadas logarítmicamente.
 <li><p>Simplemente tomamos el promedio de las 3 muestras:</p>
 <p><span class="math display">\[p_{ikt} = \frac{1}{R} \sum_r p_{ikt}^r = \frac{0.2 + 0.3 + 0.3}{3} = 0.2667\]</span></p></li>
 </ol>
+</div>
+<div id="pregunta-12" class="section level3 hasAnchor" number="4.4.12">
+<h3><span class="header-section-number">4.4.12</span> Pregunta 12<a href="modelos-estructurales.html#pregunta-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una conocida cadena supermercadista ha lanzado una campaña de descuentos a través de cupones de descuento para así aumentar el volumen de ventas totales de la cadena. La campaña consiste en enviar cupones personalizados a la base de clientes que ha comprado al menos una vez en los últimos seis meses. Aunque a nivel agregado la campaña parece haber tenido un efecto positivo en incentivar la demanda, la evaluación de la campaña requiere una descripción más fina de quién usa los descuentos y cuál es el descuento efectivo que está recibiendo cada cliente. Para esto, la compañía ha preparado una base de datos con las transacciones de todos los clientes que recibieron los cupones la cual tiene las siguientes variables:</p>
+<p><em>Tabla 1: Descripción de la Base de Datos de Supermerca2</em></p>
+<table>
+<colgroup>
+<col width="43%" />
+<col width="56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>customer_id</td>
+<td>Identificador de cliente</td>
+</tr>
+<tr class="even">
+<td>item_id</td>
+<td>Identificador de producto</td>
+</tr>
+<tr class="odd">
+<td>selling_price</td>
+<td>Precio de venta</td>
+</tr>
+<tr class="even">
+<td>other_discount</td>
+<td>Otros Descuentos (no considerados en el cupón)</td>
+</tr>
+<tr class="odd">
+<td>coupon_discount</td>
+<td>Descuentos asociados al cupón</td>
+</tr>
+<tr class="even">
+<td>age_range</td>
+<td>Rango de edad del cliente</td>
+</tr>
+<tr class="odd">
+<td>family_size</td>
+<td>Número de integrantes en el grupo familiar</td>
+</tr>
+<tr class="even">
+<td>category</td>
+<td>Categoría del producto</td>
+</tr>
+<tr class="odd">
+<td>brand_type</td>
+<td>Tipo de marca del producto (si tiene presencia nacional o solo local)</td>
+</tr>
+<tr class="even">
+<td>redemption</td>
+<td>1 si canjeó el producto (0 si no)</td>
+</tr>
+</tbody>
+</table>
+<p>Para ayudarle a visualizar el contenido de la base, en la Tabla 2 se presenta una muestra de los datos para las variables seleccionadas para realizar este estudio.</p>
+<p><em>Tabla 2: Muestra de datos</em></p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:auto; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+customer_id
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+item_id
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+selling_price
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+other_discount
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+coupon_discount
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+age_range
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+family_size
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+category
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+brand_type
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+redemption
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+857
+</td>
+<td style="text-align:center;">
+12424
+</td>
+<td style="text-align:center;">
+106.50
+</td>
+<td style="text-align:center;">
+14.25
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+70+
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+Grocery
+</td>
+<td style="text-align:center;">
+Established
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+857
+</td>
+<td style="text-align:center;">
+14930
+</td>
+<td style="text-align:center;">
+110.07
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+70+
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+Meat
+</td>
+<td style="text-align:center;">
+Established
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+857
+</td>
+<td style="text-align:center;">
+16657
+</td>
+<td style="text-align:center;">
+89.05
+</td>
+<td style="text-align:center;">
+35.26
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+70+
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+Packaged Meat
+</td>
+<td style="text-align:center;">
+Established
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+67
+</td>
+<td style="text-align:center;">
+10537
+</td>
+<td style="text-align:center;">
+32.06
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+36-45
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+Grocery
+</td>
+<td style="text-align:center;">
+Established
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+67
+</td>
+<td style="text-align:center;">
+19560
+</td>
+<td style="text-align:center;">
+106.86
+</td>
+<td style="text-align:center;">
+2.85
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+36-45
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+Grocery
+</td>
+<td style="text-align:center;">
+Local
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La compañía está interesada en ver qué factores inciden en que un cliente use un cupón de descuento y cuánto es el descuento final que está siendo descontado para cada cliente. Aunque el cupón de descuento tiene un monto bien definido, existen interacciones con otras reglas del negocio que dificultan anticipar cuál es el monto efectivo de los descuentos. Por ejemplo, existe un número máximo de productos a los que puede aplicarse el producto y por tanto los clientes pueden elegir sobre qué producto aplicar el descuento. Además, existen algunas promociones de algunos productores específicos que no pueden aplicarse simultáneamente con los descuentos de la cadena supermercadista.</p>
+<p>Para estudiar este problema se ha propuesto dos enfoques de solución. Primero un enfoque independiente en que la probabilidad de canjear un cupón se describe como un modelo probit y luego el monto del descuento se describe como un modelo de regresión lineal. El segundo enfoque combina la decisión de usar el cupón y el monto descontado en un único modelo tobit en dos etapas. Los resultados de estos modelos se resumen en la Tabla 3.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="modelos-estructurales.html#cb5-1" tabindex="-1"></a><span class="co"># probit</span></span>
+<span id="cb5-2"><a href="modelos-estructurales.html#cb5-2" tabindex="-1"></a>rmodel.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span> brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb5-3"><a href="modelos-estructurales.html#cb5-3" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="st">&quot;probit&quot;</span>), <span class="at">data =</span> coupon.data)</span>
+<span id="cb5-4"><a href="modelos-estructurales.html#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="modelos-estructurales.html#cb5-5" tabindex="-1"></a><span class="co"># linear regression</span></span>
+<span id="cb5-6"><a href="modelos-estructurales.html#cb5-6" tabindex="-1"></a>rmodel.ols <span class="ot">&lt;-</span> <span class="fu">lm</span>(coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span> brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb5-7"><a href="modelos-estructurales.html#cb5-7" tabindex="-1"></a>                 <span class="at">data =</span> <span class="fu">subset</span>(coupon.data, redemption <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb5-8"><a href="modelos-estructurales.html#cb5-8" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="modelos-estructurales.html#cb5-9" tabindex="-1"></a><span class="co"># tobit</span></span>
+<span id="cb5-10"><a href="modelos-estructurales.html#cb5-10" tabindex="-1"></a>rmodel<span class="fl">.2</span>s <span class="ot">&lt;-</span> <span class="fu">selection</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span> brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb5-11"><a href="modelos-estructurales.html#cb5-11" tabindex="-1"></a>                       coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span> brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>, </span>
+<span id="cb5-12"><a href="modelos-estructurales.html#cb5-12" tabindex="-1"></a>                       <span class="at">data =</span> coupon.data, <span class="at">method =</span> <span class="st">&quot;2step&quot;</span>)</span></code></pre></div>
+<p><em>Tabla 3: Resultados Modelos Tobits e independientes</em></p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:auto; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover table-condensed" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Dependent variable:
+</div>
+</th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+redemption
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+coupon_discount
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+redemption
+</div>
+</th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+selection
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+outcome
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<ol style="list-style-type: decimal">
+<li></th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<ol start="2" style="list-style-type: decimal">
+<li></th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<ol start="3" style="list-style-type: decimal">
+<li></th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+<ol start="4" style="list-style-type: decimal">
+<li></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+selling_price
+</td>
+<td style="text-align:center;">
+0.001***
+</td>
+<td style="text-align:center;">
+0.129***
+</td>
+<td style="text-align:center;">
+0.001***
+</td>
+<td style="text-align:center;">
+0.146***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.0003)
+</td>
+<td style="text-align:center;">
+(0.006)
+</td>
+<td style="text-align:center;">
+(0.0003)
+</td>
+<td style="text-align:center;">
+(0.017)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_range18-25
+</td>
+<td style="text-align:center;">
+-0.163
+</td>
+<td style="text-align:center;">
+18.336*
+</td>
+<td style="text-align:center;">
+-0.163
+</td>
+<td style="text-align:center;">
+-6.235
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.326)
+</td>
+<td style="text-align:center;">
+(10.466)
+</td>
+<td style="text-align:center;">
+(0.319)
+</td>
+<td style="text-align:center;">
+(24.365)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_range26-35
+</td>
+<td style="text-align:center;">
+-1.292***
+</td>
+<td style="text-align:center;">
+17.275***
+</td>
+<td style="text-align:center;">
+-1.292***
+</td>
+<td style="text-align:center;">
+-28.486
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.147)
+</td>
+<td style="text-align:center;">
+(5.006)
+</td>
+<td style="text-align:center;">
+(0.145)
+</td>
+<td style="text-align:center;">
+(40.303)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_range36-45
+</td>
+<td style="text-align:center;">
+-0.839***
+</td>
+<td style="text-align:center;">
+17.677***
+</td>
+<td style="text-align:center;">
+-0.839***
+</td>
+<td style="text-align:center;">
+-19.950
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.103)
+</td>
+<td style="text-align:center;">
+(3.382)
+</td>
+<td style="text-align:center;">
+(0.100)
+</td>
+<td style="text-align:center;">
+(32.956)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_range46-55
+</td>
+<td style="text-align:center;">
+-0.270***
+</td>
+<td style="text-align:center;">
+17.818***
+</td>
+<td style="text-align:center;">
+-0.270***
+</td>
+<td style="text-align:center;">
+-9.050
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.088)
+</td>
+<td style="text-align:center;">
+(2.836)
+</td>
+<td style="text-align:center;">
+(0.087)
+</td>
+<td style="text-align:center;">
+(23.565)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_range56-70
+</td>
+<td style="text-align:center;">
+-0.266
+</td>
+<td style="text-align:center;">
+13.177**
+</td>
+<td style="text-align:center;">
+-0.266
+</td>
+<td style="text-align:center;">
+-13.858
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.179)
+</td>
+<td style="text-align:center;">
+(5.365)
+</td>
+<td style="text-align:center;">
+(0.178)
+</td>
+<td style="text-align:center;">
+(24.295)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_range70+
+</td>
+<td style="text-align:center;">
+-0.335
+</td>
+<td style="text-align:center;">
+33.918***
+</td>
+<td style="text-align:center;">
+-0.335
+</td>
+<td style="text-align:center;">
+5.343
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.211)
+</td>
+<td style="text-align:center;">
+(7.429)
+</td>
+<td style="text-align:center;">
+(0.211)
+</td>
+<td style="text-align:center;">
+(26.055)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+family_size2
+</td>
+<td style="text-align:center;">
+-0.066
+</td>
+<td style="text-align:center;">
+-3.197
+</td>
+<td style="text-align:center;">
+-0.066
+</td>
+<td style="text-align:center;">
+-4.419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.098)
+</td>
+<td style="text-align:center;">
+(3.380)
+</td>
+<td style="text-align:center;">
+(0.097)
+</td>
+<td style="text-align:center;">
+(3.905)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+family_size3
+</td>
+<td style="text-align:center;">
+0.791***
+</td>
+<td style="text-align:center;">
+-11.326**
+</td>
+<td style="text-align:center;">
+0.791***
+</td>
+<td style="text-align:center;">
+3.088
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.151)
+</td>
+<td style="text-align:center;">
+(4.482)
+</td>
+<td style="text-align:center;">
+(0.149)
+</td>
+<td style="text-align:center;">
+(13.580)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+family_size4
+</td>
+<td style="text-align:center;">
+0.996***
+</td>
+<td style="text-align:center;">
+-7.769*
+</td>
+<td style="text-align:center;">
+0.996***
+</td>
+<td style="text-align:center;">
+10.370
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.150)
+</td>
+<td style="text-align:center;">
+(4.523)
+</td>
+<td style="text-align:center;">
+(0.150)
+</td>
+<td style="text-align:center;">
+(16.666)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+family_size5+
+</td>
+<td style="text-align:center;">
+-0.004
+</td>
+<td style="text-align:center;">
+-2.768
+</td>
+<td style="text-align:center;">
+-0.004
+</td>
+<td style="text-align:center;">
+-2.558
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.110)
+</td>
+<td style="text-align:center;">
+(3.747)
+</td>
+<td style="text-align:center;">
+(0.110)
+</td>
+<td style="text-align:center;">
+(4.183)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+brand_typeLocal
+</td>
+<td style="text-align:center;">
+-1.127***
+</td>
+<td style="text-align:center;">
+31.243***
+</td>
+<td style="text-align:center;">
+-1.127***
+</td>
+<td style="text-align:center;">
+8.376
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.118)
+</td>
+<td style="text-align:center;">
+(5.467)
+</td>
+<td style="text-align:center;">
+(0.118)
+</td>
+<td style="text-align:center;">
+(20.663)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+other_discount
+</td>
+<td style="text-align:center;">
+0.005***
+</td>
+<td style="text-align:center;">
+-0.008
+</td>
+<td style="text-align:center;">
+0.005***
+</td>
+<td style="text-align:center;">
+0.070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.001)
+</td>
+<td style="text-align:center;">
+(0.025)
+</td>
+<td style="text-align:center;">
+(0.001)
+</td>
+<td style="text-align:center;">
+(0.074)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Observations
+</td>
+<td style="text-align:center;">
+1,492
+</td>
+<td style="text-align:center;">
+544
+</td>
+<td style="text-align:center;">
+1,492
+</td>
+<td style="text-align:center;">
+1,492
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R²
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.718
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adjusted R²
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.711
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log Likelihood
+</td>
+<td style="text-align:center;">
+-820.572
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Akaike Inf. Crit.
+</td>
+<td style="text-align:center;">
+1,667.143
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rho
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.800
+</td>
+<td style="text-align:center;">
+0.800
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inverse Mills Ratio
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+28.411 (24.596)
+</td>
+<td style="text-align:center;">
+28.411 (24.596)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residual Std. Error
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+27.784 (df = 531)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F Statistic
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+103.838*** (df = 13; 531)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<p><em>Nota: *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</em></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Compare columnas (2) y (4) y discuta por qué se observan diferencias entre ambos modelos. Concluya cuál es el rol que juega el comprar una marca local y la existencia de otros descuentos.</p></li>
+<li><p>Interprete en palabras simples los resultados de <span class="math inline">\(\rho\)</span>.</p></li>
+<li><p>Proponga y justifique al menos dos mejoras a los modelos planteados y explique qué espera que pase al introducir dicha mejora.</p></li>
+</ol>
+<p><strong>Solución:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Se observan diferencias porque en el modelo (4) se incluye un factor adicional (Inverse Mills Ratio) que captura la correlación entre ambas ecuaciones. En general, los coeficientes de los modelos independientes pueden estar sesgados al no capturar que los montos no observados no son aleatorios.</p>
+<p>Respecto a las dos variables que se preguntan:</p>
+<ul>
+<li><p>El efecto de local en la probabilidad de usar el cupón es negativo, pero no significativo en el monto de acuerdo al modelo tobit (que corrige por sesgo de selección).</p></li>
+<li><p>El efecto de otros descuentos en la probabilidad de usar el cupón es positivo, pero no significativo en el monto de acuerdo al modelo tobit (que corrige por sesgo de selección).</p></li>
+</ul></li>
+<li><p>En el modelo <span class="math inline">\(\rho = 0.8\)</span> y por tanto hay una correlación positiva entre los errores asociados al uso del cupón y el monto. Podemos suponer que hay un factor no observable que hace que aquellos que sean más probables de usar el cupón también obtengan descuentos mayores en magnitud.</p></li>
+<li><p>Las mejoras son infinitas, pero algunas para fijar ideas:</p>
+<ul>
+<li><p><strong>Agregar la categoría tanto a la ecuación de incidencia.</strong> Es esperable que los clientes usen los cupones en algunas categorías más que en otras.</p></li>
+<li><p><strong>Agregar un efecto fijo de cliente tanto en las ecuaciones de incidencia como de monto</strong> (y sacar edad y tamaño del hogar porque no sería identificable). Es esperable que algunos individuos sean más propensos a usar los cupones y generar descuentos mayores.</p></li>
+<li><p><strong>Sacar el tipo de marca de la ecuación de monto.</strong> Como ya controlamos por el precio, probablemente el tipo de marca no nos aporte mucho.</p></li>
+</ul></li>
+</ol>
+<div id="pregunta-13" class="section level3 hasAnchor" number="4.4.13">
+<h3><span class="header-section-number">4.4.13</span> Pregunta 13<a href="modelos-estructurales.html#pregunta-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suponga que tras una sucesión de confusos incidentes, usted termina siendo el presidente de la lista 1 y gana el centro de estudiantes del departamento. Una de sus primeras acciones como presidente fue la creación de “ViajesDII”, una iniciativa que ofrece paquetes de viajes a sus compañeros. Antes de lanzar oficialmente la agencia, desea entender cómo las características de los destinos podrían influir en las preferencias de sus compañeros y así poder elegir la oferta de destinos. Para esto, decide recopilar datos de posibles clientes a través de una encuesta realizada a toda la comunidad universitaria, la cual incluye preguntas demográficas, el costo del viaje, la disponibilidad de actividades recreativas, de tal manera que la utilidad para un individuo <span class="math inline">\(n\)</span> que elije la opción de viaje <span class="math inline">\(i\)</span> en el día <span class="math inline">\(t\)</span> está dada por:</p>
+<p><span class="math display">\[v_{nit} = \beta_i + \beta_{gen} \cdot Genero_n + \beta_{edad} \cdot Edad_n + \beta_{precio} \cdot Precio_{it} + \beta_{act} \cdot Actividades_{it}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Plantee un modelo logit tal que describa el comportamiento de las personas encuestadas en relación a la opción de viaje elegida. Suponga que existen <span class="math inline">\(I\)</span> alternativas de viaje y que cada día se encuestaron a <span class="math inline">\(N_t\)</span> personas. Escriba la log-verosimilitud del modelo.</p></li>
+<li><p>Si utilizara un modelo probit, ¿Qué dimensión tendría la matriz de varianza-covarianza? ¿Cómo podría aproximar la probabilidad de elección del destino <span class="math inline">\(i\)</span> para un individuo <span class="math inline">\(n\)</span>, en el día <span class="math inline">\(t\)</span>?</p></li>
+<li><p>Suponga que la iniciativa ha sido tan exitosa que se definió el programa de lealtad “MillasDII”, donde los clientes acumulan puntos que luego pueden ser canjeados como viajes gratis. Para ello, suponga que tiene una base de datos de los clientes por año con la siguiente estructura:</p></li>
+</ol>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="6%" />
+<col width="26%" />
+<col width="20%" />
+<col width="18%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>id_cliente</th>
+<th>Año</th>
+<th>Actividad_Cliente</th>
+<th>Canjea_Millas</th>
+<th>Millas_disp</th>
+<th>Expiró</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2026</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2027</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2025</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2026</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2027</td>
+<td>3</td>
+<td>1</td>
+<td>500</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2025</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabla: Lista de datos de actividad de clientes.</em></p>
+<p>Usted busca evaluar la incidencia en el uso del programa y si efectivamente tiene impacto en la cantidad de viajes vendidos, a partir de un modelo Tobit tipo II. Defina el modelo utilizando <span class="math inline">\(CanjeaMillas_{nt}\)</span> como función de activación, <span class="math inline">\(MillasDisp_{nt}\)</span> como variable latente y las demás columnas como variables explicativas.</p>
+<p><strong>Solución:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>El modelo logit, que en este caso es multiclase, define la probabilidad de que el individuo <span class="math inline">\(n\)</span> elija la opción <span class="math inline">\(i\)</span> en el periodo <span class="math inline">\(t\)</span> como:</p>
+<p><span class="math display">\[P_{nit} = \frac{\exp(v_{nit})}{\sum_{j \in I} \exp(v_{njt})}\]</span></p>
+<p>Luego la función Log-verosimilitud está dada por:</p>
+<p><span class="math display">\[LL(\beta) = \sum_{i \in I} \sum_{t \in T} \sum_{n \in N_t} y_{nit} \cdot \ln(P_{nit})\]</span></p>
+<p>donde <span class="math inline">\(y_{nit} = 1\)</span> si el individuo <span class="math inline">\(n\)</span> eligió la opción <span class="math inline">\(i\)</span> en el día <span class="math inline">\(t\)</span> y 0 en caso contrario.</p></li>
+<li><p>La matriz de varianzas-covarianzas debe ser una matriz de igual número de filas como de columnas, y por tratarse de que asumimos una distribución normal multivariada, la matriz es simétrica, en la cual la diagonal representa la varianza del error de cada alternativa y los elementos fuera de la diagonal representan la covarianza entre alternativas. Por lo que debe tener dimensión <span class="math inline">\(I \times I\)</span>.</p>
+<p>El modelo probit se puede aproximar tomando una muestra aleatoria de <span class="math inline">\(R\)</span> muestras de la componente estocástica de la utilidad <span class="math inline">\(\varepsilon_{nit}\)</span>:</p>
+<p><span class="math display">\[P_{nit} \approx \frac{1}{R} \sum_{r=1}^{R} \mathbb{1}[\varepsilon^r_{njt} - \varepsilon^r_{nit} &lt; v_{nit} - v_{njt}, \forall j \neq i]\]</span></p></li>
+<li><p>Para modelar un Tobit tipo II es necesario definir las dos etapas. Sea <span class="math inline">\(g\)</span> el grupo de actividad al que pertenece cada individuo, entonces las etapas del Tobit se definen como:</p>
+<p><strong>Etapa 1 - Ecuación de Selección:</strong> La función de activación (si canjea millas o no) se activará solo cuando la utilidad del canje sea mayor a 0:</p>
+<p><span class="math display">\[CanjeaMillas_{nt} = \begin{cases}
+1 &amp; \text{si } \sum_g \beta^{Canje}_g \cdot \mathbb{1}[n \in grupo_g] + \gamma^{Canje} \cdot Expiró_{nt} + \varepsilon_{n1} &gt; 0 \\
+0 &amp; \text{en caso contrario}
+\end{cases}\]</span></p>
+<p><strong>Etapa 2 - Ecuación de Resultado:</strong> Las millas generarán utilidades para los individuos cuando la selección sea positiva:</p>
+<p><span class="math display">\[MillasDisp_{nt} = \begin{cases}
+\sum_g \beta^{Millas}_g \cdot \mathbb{1}[n \in grupo_g] + \gamma^{Millas} \cdot Expiró_{nt} + \varepsilon_{n2} &amp; \text{si } CanjeaMillas_{nt} = 1 \\
+0 &amp; \text{en caso contrario}
+\end{cases}\]</span></p>
+<p>donde <span class="math inline">\((\varepsilon_{n1}, \varepsilon_{n2})\)</span> siguen una distribución normal bivariada con correlación <span class="math inline">\(\rho\)</span>, lo que permite capturar la dependencia entre la decisión de canjear y el monto de millas disponibles.</p></li>
+</ol>
 
+</div>
+</div>
 </div>
 </div>
 </div>

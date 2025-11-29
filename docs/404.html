@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2025-11-25" />
+<meta name="date" content="2025-11-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,9 +52,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -92,7 +97,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +110,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -144,18 +149,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="formulas-utiles.html"><a href="formulas-utiles.html"><i class="fa fa-check"></i><b>1</b> Formulas utiles</a></li>
 <li class="chapter" data-level="2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html"><i class="fa fa-check"></i><b>2</b> Modelos de Regresion</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#introducción"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
-<li class="chapter" data-level="2.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#metodología"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
-<li class="chapter" data-level="2.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problemas-teóricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
+<li class="chapter" data-level="2.1" data-path=""><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>2.1</b> Introducción</a></li>
+<li class="chapter" data-level="2.2" data-path=""><a href="#metodolog%C3%ADa"><i class="fa fa-check"></i><b>2.2</b> Metodología</a></li>
+<li class="chapter" data-level="2.3" data-path=""><a href="#problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3</b> Problemas Teóricos</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e1-signo-esperado-y-significancia"><i class="fa fa-check"></i><b>2.3.1</b> E1: Signo esperado y significancia</a></li>
-<li class="chapter" data-level="2.3.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e2-regresión-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
-<li class="chapter" data-level="2.3.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e3-selección-automática-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
-<li class="chapter" data-level="2.3.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e4-regresión-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
+<li class="chapter" data-level="2.3.2" data-path=""><a href="#e2-regresi%C3%B3n-lineal-vs-de-poisson"><i class="fa fa-check"></i><b>2.3.2</b> E2: Regresión Lineal vs de Poisson</a></li>
+<li class="chapter" data-level="2.3.3" data-path=""><a href="#e3-selecci%C3%B3n-autom%C3%A1tica-de-variables"><i class="fa fa-check"></i><b>2.3.3</b> E3: Selección automática de variables</a></li>
+<li class="chapter" data-level="2.3.4" data-path=""><a href="#e4-regresi%C3%B3n-log-nivel-y-log-log"><i class="fa fa-check"></i><b>2.3.4</b> E4: Regresión Log-Nivel y Log-Log</a></li>
 <li class="chapter" data-level="2.3.5" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e5-capturar-efectos"><i class="fa fa-check"></i><b>2.3.5</b> E5: Capturar efectos</a></li>
-<li class="chapter" data-level="2.3.6" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e6-coeficientes-y-parámetros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
-<li class="chapter" data-level="2.3.7" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#e7-qué-es-un-modelo-de-regresión"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
-<li class="chapter" data-level="2.3.8" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#solución-problemas-teóricos"><i class="fa fa-check"></i><b>2.3.8</b> Solución problemas teóricos</a></li>
+<li class="chapter" data-level="2.3.6" data-path=""><a href="#e6-coeficientes-y-par%C3%A1metros"><i class="fa fa-check"></i><b>2.3.6</b> E6: Coeficientes y Parámetros</a></li>
+<li class="chapter" data-level="2.3.7" data-path=""><a href="#e7-qu%C3%A9-es-un-modelo-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>2.3.7</b> E7: ¿Qué es un modelo de Regresión?</a></li>
+<li class="chapter" data-level="2.3.8" data-path=""><a href="#soluci%C3%B3n-problemas-te%C3%B3ricos"><i class="fa fa-check"></i><b>2.3.8</b> Solución problemas teóricos</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problemas-aplicados"><i class="fa fa-check"></i><b>2.4</b> Problemas Aplicados</a>
 <ul>
@@ -163,26 +168,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.2" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-2"><i class="fa fa-check"></i><b>2.4.2</b> Problema 2</a></li>
 <li class="chapter" data-level="2.4.3" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-3"><i class="fa fa-check"></i><b>2.4.3</b> Problema 3</a></li>
 <li class="chapter" data-level="2.4.4" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-4---p1-control-1-primavera-2025"><i class="fa fa-check"></i><b>2.4.4</b> Problema 4 - P1 Control 1 Primavera 2025</a></li>
-<li class="chapter" data-level="2.4.5" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-5---p1-control-otoño-2025"><i class="fa fa-check"></i><b>2.4.5</b> Problema 5 - P1 Control Otoño 2025</a></li>
+<li class="chapter" data-level="2.4.5" data-path=""><a href="#problema-5---p1-control-oto%C3%B1o-2025"><i class="fa fa-check"></i><b>2.4.5</b> Problema 5 - P1 Control Otoño 2025</a></li>
 <li class="chapter" data-level="2.4.6" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-6---p1-control-primavera-2024"><i class="fa fa-check"></i><b>2.4.6</b> Problema 6 - P1 Control Primavera 2024</a></li>
-<li class="chapter" data-level="2.4.7" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-7---p1-control-1-otoño-2024"><i class="fa fa-check"></i><b>2.4.7</b> Problema 7 - P1 Control 1 Otoño 2024</a></li>
+<li class="chapter" data-level="2.4.7" data-path=""><a href="#problema-7---p1-control-1-oto%C3%B1o-2024"><i class="fa fa-check"></i><b>2.4.7</b> Problema 7 - P1 Control 1 Otoño 2024</a></li>
 <li class="chapter" data-level="2.4.8" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-8---p1-control-primavera-2023"><i class="fa fa-check"></i><b>2.4.8</b> Problema 8 - P1 Control Primavera 2023</a></li>
-<li class="chapter" data-level="2.4.9" data-path="modelos-de-regresion.html"><a href="modelos-de-regresion.html#problema-9---p1-control-otoño-2023"><i class="fa fa-check"></i><b>2.4.9</b> Problema 9 - P1 Control Otoño 2023</a></li>
+<li class="chapter" data-level="2.4.9" data-path=""><a href="#problema-9---p1-control-oto%C3%B1o-2023"><i class="fa fa-check"></i><b>2.4.9</b> Problema 9 - P1 Control Otoño 2023</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html"><i class="fa fa-check"></i><b>3</b> Modelos Probabilisticos</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#introducción-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
-<li class="chapter" data-level="3.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#metodología-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
-<li class="chapter" data-level="3.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problemas-teóricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
+<li class="chapter" data-level="3.1" data-path=""><a href="#introducci%C3%B3n-1"><i class="fa fa-check"></i><b>3.1</b> Introducción</a></li>
+<li class="chapter" data-level="3.2" data-path=""><a href="#metodolog%C3%ADa-1"><i class="fa fa-check"></i><b>3.2</b> Metodología</a></li>
+<li class="chapter" data-level="3.3" data-path=""><a href="#problemas-te%C3%B3ricos-1"><i class="fa fa-check"></i><b>3.3</b> Problemas Teóricos</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e1-tasa-de-respuesta"><i class="fa fa-check"></i><b>3.3.1</b> E1: Tasa de respuesta</a></li>
-<li class="chapter" data-level="3.3.2" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e2-distribución-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
-<li class="chapter" data-level="3.3.3" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e3-distribución-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
-<li class="chapter" data-level="3.3.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e4-modelos-de-duración"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
+<li class="chapter" data-level="3.3.2" data-path=""><a href="#e2-distribuci%C3%B3n-weibull"><i class="fa fa-check"></i><b>3.3.2</b> E2: Distribución Weibull</a></li>
+<li class="chapter" data-level="3.3.3" data-path=""><a href="#e3-distribuci%C3%B3n-gamma-y-heterogeneidad"><i class="fa fa-check"></i><b>3.3.3</b> E3: Distribución Gamma y Heterogeneidad</a></li>
+<li class="chapter" data-level="3.3.4" data-path=""><a href="#e4-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.4</b> E4: Modelos de Duración</a></li>
 <li class="chapter" data-level="3.3.5" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e5-modelo-nbd"><i class="fa fa-check"></i><b>3.3.5</b> E5: Modelo NBD</a></li>
 <li class="chapter" data-level="3.3.6" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e6-modelos-de-conteo"><i class="fa fa-check"></i><b>3.3.6</b> E6: Modelos de Conteo</a></li>
-<li class="chapter" data-level="3.3.7" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#e7-tiempo-discreto-en-modelos-de-duración"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
+<li class="chapter" data-level="3.3.7" data-path=""><a href="#e7-tiempo-discreto-en-modelos-de-duraci%C3%B3n"><i class="fa fa-check"></i><b>3.3.7</b> E7: Tiempo discreto en Modelos de Duración</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="modelos-probabilisticos.html"><a href="modelos-probabilisticos.html#problemas-aplicados-1"><i class="fa fa-check"></i><b>3.4</b> Problemas Aplicados</a>
 <ul>
@@ -199,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html"><i class="fa fa-check"></i><b>4</b> Modelos Estructurales</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#introducción-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a>
+<li class="chapter" data-level="4.1" data-path=""><a href="#introducci%C3%B3n-2"><i class="fa fa-check"></i><b>4.1</b> Introducción</a>
 <ul>
 <li class="chapter" data-level="4.1.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-logit"><i class="fa fa-check"></i><b>4.1.1</b> Modelo Logit</a></li>
 <li class="chapter" data-level="4.1.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-probit"><i class="fa fa-check"></i><b>4.1.2</b> Modelo Probit</a></li>
@@ -207,8 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.4" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#modelo-mixed-logit"><i class="fa fa-check"></i><b>4.1.4</b> Modelo Mixed Logit</a></li>
 <li class="chapter" data-level="4.1.5" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#logit-con-clases-latentes"><i class="fa fa-check"></i><b>4.1.5</b> Logit con Clases Latentes</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#metodología-2"><i class="fa fa-check"></i><b>4.2</b> Metodología</a></li>
-<li class="chapter" data-level="4.3" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#problemas-teóricos-2"><i class="fa fa-check"></i><b>4.3</b> Problemas Teóricos</a>
+<li class="chapter" data-level="4.2" data-path=""><a href="#metodolog%C3%ADa-2"><i class="fa fa-check"></i><b>4.2</b> Metodología</a></li>
+<li class="chapter" data-level="4.3" data-path=""><a href="#problemas-te%C3%B3ricos-2"><i class="fa fa-check"></i><b>4.3</b> Problemas Teóricos</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-1"><i class="fa fa-check"></i><b>4.3.1</b> Pregunta 1</a></li>
 <li class="chapter" data-level="4.3.2" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-2"><i class="fa fa-check"></i><b>4.3.2</b> Pregunta 2</a></li>
@@ -231,6 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.9" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-9"><i class="fa fa-check"></i><b>4.4.9</b> Pregunta 9</a></li>
 <li class="chapter" data-level="4.4.10" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-10"><i class="fa fa-check"></i><b>4.4.10</b> Pregunta 10</a></li>
 <li class="chapter" data-level="4.4.11" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-11"><i class="fa fa-check"></i><b>4.4.11</b> Pregunta 11</a></li>
+<li class="chapter" data-level="4.4.12" data-path="modelos-estructurales.html"><a href="modelos-estructurales.html#pregunta-12"><i class="fa fa-check"></i><b>4.4.12</b> Pregunta 12</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>

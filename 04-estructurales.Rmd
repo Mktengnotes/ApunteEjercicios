@@ -905,3 +905,199 @@ d) La probabilidad de pertenecer al segmento 2 viene dada por:
 e) Simplemente tomamos el promedio de las 3 muestras:
    
    $$p_{ikt} = \frac{1}{R} \sum_r p_{ikt}^r = \frac{0.2 + 0.3 + 0.3}{3} = 0.2667$$
+
+### Pregunta 12
+
+Una conocida cadena supermercadista ha lanzado una campaña de descuentos a través de cupones de descuento para así aumentar el volumen de ventas totales de la cadena. La campaña consiste en enviar cupones personalizados a la base de clientes que ha comprado al menos una vez en los últimos seis meses. Aunque a nivel agregado la campaña parece haber tenido un efecto positivo en incentivar la demanda, la evaluación de la campaña requiere una descripción más fina de quién usa los descuentos y cuál es el descuento efectivo que está recibiendo cada cliente. Para esto, la compañía ha preparado una base de datos con las transacciones de todos los clientes que recibieron los cupones la cual tiene las siguientes variables:
+
+*Tabla 1: Descripción de la Base de Datos de Supermerca2*
+
+| Variable | Descripción |
+|----------|-------------|
+| customer_id | Identificador de cliente |
+| item_id | Identificador de producto |
+| selling_price | Precio de venta |
+| other_discount | Otros Descuentos (no considerados en el cupón) |
+| coupon_discount | Descuentos asociados al cupón |
+| age_range | Rango de edad del cliente |
+| family_size | Número de integrantes en el grupo familiar |
+| category | Categoría del producto |
+| brand_type | Tipo de marca del producto (si tiene presencia nacional o solo local) |
+| redemption | 1 si canjeó el producto (0 si no) |
+
+Para ayudarle a visualizar el contenido de la base, en la Tabla 2 se presenta una muestra de los datos para las variables seleccionadas para realizar este estudio.
+
+*Tabla 2: Muestra de datos*
+
+```{r tabla2-muestra, echo=FALSE}
+tabla2 <- data.frame(
+  customer_id = c(857, 857, 857, 67, 67),
+  item_id = c(12424, 14930, 16657, 10537, 19560),
+  selling_price = c(106.50, 110.07, 89.05, 32.06, 106.86),
+  other_discount = c(14.25, 0.00, 35.26, 0.00, 2.85),
+  coupon_discount = c(0, 0, 0, 0, 0),
+  age_range = c("70+", "70+", "70+", "36-45", "36-45"),
+  family_size = c(1, 1, 1, 2, 2),
+  category = c("Grocery", "Meat", "Packaged Meat", "Grocery", "Grocery"),
+  brand_type = c("Established", "Established", "Established", "Established", "Local"),
+  redemption = c(0, 0, 0, 0, 0)
+)
+
+kable(tabla2, format = "html", align = "c") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = TRUE) %>%
+  scroll_box(width = "100%", height = "auto")
+```
+
+La compañía está interesada en ver qué factores inciden en que un cliente use un cupón de descuento y cuánto es el descuento final que está siendo descontado para cada cliente. Aunque el cupón de descuento tiene un monto bien definido, existen interacciones con otras reglas del negocio que dificultan anticipar cuál es el monto efectivo de los descuentos. Por ejemplo, existe un número máximo de productos a los que puede aplicarse el producto y por tanto los clientes pueden elegir sobre qué producto aplicar el descuento. Además, existen algunas promociones de algunos productores específicos que no pueden aplicarse simultáneamente con los descuentos de la cadena supermercadista.
+
+Para estudiar este problema se ha propuesto dos enfoques de solución. Primero un enfoque independiente en que la probabilidad de canjear un cupón se describe como un modelo probit y luego el monto del descuento se describe como un modelo de regresión lineal. El segundo enfoque combina la decisión de usar el cupón y el monto descontado en un único modelo tobit en dos etapas. Los resultados de estos modelos se resumen en la Tabla 3.
+
+```r
+# probit
+rmodel.glm <- glm(redemption ~ selling_price + age_range + family_size + brand_type + other_discount - 1, 
+                  family = binomial("probit"), data = coupon.data)
+
+# linear regression
+rmodel.ols <- lm(coupon_discount ~ selling_price + age_range + family_size + brand_type + other_discount - 1, 
+                 data = subset(coupon.data, redemption > 0))
+
+# tobit
+rmodel.2s <- selection(redemption ~ selling_price + age_range + family_size + brand_type + other_discount - 1, 
+                       coupon_discount ~ selling_price + age_range + family_size + brand_type + other_discount - 1, 
+                       data = coupon.data, method = "2step")
+```
+
+*Tabla 3: Resultados Modelos Tobits e independientes*
+
+```{r tabla3-resultados, echo=FALSE}
+# Crear la tabla de resultados
+tabla3 <- data.frame(
+  Variable = c("selling_price", "", "age_range18-25", "", "age_range26-35", "", 
+               "age_range36-45", "", "age_range46-55", "", "age_range56-70", "", 
+               "age_range70+", "", "family_size2", "", "family_size3", "", 
+               "family_size4", "", "family_size5+", "", "brand_typeLocal", "", 
+               "other_discount", "", "Observations", "R²", "Adjusted R²", 
+               "Log Likelihood", "Akaike Inf. Crit.", "rho", "Inverse Mills Ratio", 
+               "Residual Std. Error", "F Statistic"),
+  Col1 = c("0.001***", "(0.0003)", "-0.163", "(0.326)", "-1.292***", "(0.147)",
+           "-0.839***", "(0.103)", "-0.270***", "(0.088)", "-0.266", "(0.179)",
+           "-0.335", "(0.211)", "-0.066", "(0.098)", "0.791***", "(0.151)",
+           "0.996***", "(0.150)", "-0.004", "(0.110)", "-1.127***", "(0.118)",
+           "0.005***", "(0.001)", "1,492", "", "", "-820.572", "1,667.143", "", "", "", ""),
+  Col2 = c("0.129***", "(0.006)", "18.336*", "(10.466)", "17.275***", "(5.006)",
+           "17.677***", "(3.382)", "17.818***", "(2.836)", "13.177**", "(5.365)",
+           "33.918***", "(7.429)", "-3.197", "(3.380)", "-11.326**", "(4.482)",
+           "-7.769*", "(4.523)", "-2.768", "(3.747)", "31.243***", "(5.467)",
+           "-0.008", "(0.025)", "544", "0.718", "0.711", "", "", "", "", "27.784 (df = 531)", "103.838*** (df = 13; 531)"),
+  Col3 = c("0.001***", "(0.0003)", "-0.163", "(0.319)", "-1.292***", "(0.145)",
+           "-0.839***", "(0.100)", "-0.270***", "(0.087)", "-0.266", "(0.178)",
+           "-0.335", "(0.211)", "-0.066", "(0.097)", "0.791***", "(0.149)",
+           "0.996***", "(0.150)", "-0.004", "(0.110)", "-1.127***", "(0.118)",
+           "0.005***", "(0.001)", "1,492", "", "", "", "", "0.800", "28.411 (24.596)", "", ""),
+  Col4 = c("0.146***", "(0.017)", "-6.235", "(24.365)", "-28.486", "(40.303)",
+           "-19.950", "(32.956)", "-9.050", "(23.565)", "-13.858", "(24.295)",
+           "5.343", "(26.055)", "-4.419", "(3.905)", "3.088", "(13.580)",
+           "10.370", "(16.666)", "-2.558", "(4.183)", "8.376", "(20.663)",
+           "0.070", "(0.074)", "1,492", "", "", "", "", "0.800", "28.411 (24.596)", "", "")
+)
+
+colnames(tabla3) <- c("", "(1)", "(2)", "(3)", "(4)")
+
+kable(tabla3, format = "html", align = c("l", "c", "c", "c", "c"), escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE, font_size = 12) %>%
+  add_header_above(c(" " = 1, " " = 1, " " = 1, "selection" = 1, "outcome" = 1)) %>%
+  add_header_above(c(" " = 1, "redemption" = 1, "coupon_discount" = 1, "redemption" = 2)) %>%
+  add_header_above(c(" " = 1, "Dependent variable:" = 4)) %>%
+  scroll_box(width = "100%", height = "auto")
+```
+
+*Nota: \*p<0.1; \*\*p<0.05; \*\*\*p<0.01*
+
+a) Compare columnas (2) y (4) y discuta por qué se observan diferencias entre ambos modelos. Concluya cuál es el rol que juega el comprar una marca local y la existencia de otros descuentos.
+
+b) Interprete en palabras simples los resultados de $\rho$.
+
+c) Proponga y justifique al menos dos mejoras a los modelos planteados y explique qué espera que pase al introducir dicha mejora.
+
+**Solución:**
+
+a) Se observan diferencias porque en el modelo (4) se incluye un factor adicional (Inverse Mills Ratio) que captura la correlación entre ambas ecuaciones. En general, los coeficientes de los modelos independientes pueden estar sesgados al no capturar que los montos no observados no son aleatorios.
+
+   Respecto a las dos variables que se preguntan:
+   
+   - El efecto de local en la probabilidad de usar el cupón es negativo, pero no significativo en el monto de acuerdo al modelo tobit (que corrige por sesgo de selección).
+   
+   - El efecto de otros descuentos en la probabilidad de usar el cupón es positivo, pero no significativo en el monto de acuerdo al modelo tobit (que corrige por sesgo de selección).
+
+b) En el modelo $\rho = 0.8$ y por tanto hay una correlación positiva entre los errores asociados al uso del cupón y el monto. Podemos suponer que hay un factor no observable que hace que aquellos que sean más probables de usar el cupón también obtengan descuentos mayores en magnitud.
+
+c) Las mejoras son infinitas, pero algunas para fijar ideas:
+
+   - **Agregar la categoría tanto a la ecuación de incidencia.** Es esperable que los clientes usen los cupones en algunas categorías más que en otras.
+   
+   - **Agregar un efecto fijo de cliente tanto en las ecuaciones de incidencia como de monto** (y sacar edad y tamaño del hogar porque no sería identificable). Es esperable que algunos individuos sean más propensos a usar los cupones y generar descuentos mayores.
+   
+   - **Sacar el tipo de marca de la ecuación de monto.** Como ya controlamos por el precio, probablemente el tipo de marca no nos aporte mucho.
+
+### Pregunta 13
+
+Suponga que tras una sucesión de confusos incidentes, usted termina siendo el presidente de la lista 1 y gana el centro de estudiantes del departamento. Una de sus primeras acciones como presidente fue la creación de "ViajesDII", una iniciativa que ofrece paquetes de viajes a sus compañeros. Antes de lanzar oficialmente la agencia, desea entender cómo las características de los destinos podrían influir en las preferencias de sus compañeros y así poder elegir la oferta de destinos. Para esto, decide recopilar datos de posibles clientes a través de una encuesta realizada a toda la comunidad universitaria, la cual incluye preguntas demográficas, el costo del viaje, la disponibilidad de actividades recreativas, de tal manera que la utilidad para un individuo $n$ que elije la opción de viaje $i$ en el día $t$ está dada por:
+
+$$v_{nit} = \beta_i + \beta_{gen} \cdot Genero_n + \beta_{edad} \cdot Edad_n + \beta_{precio} \cdot Precio_{it} + \beta_{act} \cdot Actividades_{it}$$
+
+a) Plantee un modelo logit tal que describa el comportamiento de las personas encuestadas en relación a la opción de viaje elegida. Suponga que existen $I$ alternativas de viaje y que cada día se encuestaron a $N_t$ personas. Escriba la log-verosimilitud del modelo.
+
+b) Si utilizara un modelo probit, ¿Qué dimensión tendría la matriz de varianza-covarianza? ¿Cómo podría aproximar la probabilidad de elección del destino $i$ para un individuo $n$, en el día $t$?
+
+c) Suponga que la iniciativa ha sido tan exitosa que se definió el programa de lealtad "MillasDII", donde los clientes acumulan puntos que luego pueden ser canjeados como viajes gratis. Para ello, suponga que tiene una base de datos de los clientes por año con la siguiente estructura:
+
+| id_cliente | Año | Actividad_Cliente | Canjea_Millas | Millas_disp | Expiró |
+|------------|-----|-------------------|---------------|-------------|--------|
+| 1 | 2026 | 2 | 0 | 0 | 0 |
+| 1 | 2027 | 2 | 0 | 0 | 0 |
+| 2 | 2025 | 3 | 0 | 0 | 0 |
+| 2 | 2026 | 3 | 0 | 0 | 0 |
+| 2 | 2027 | 3 | 1 | 500 | 0 |
+| 3 | 2025 | 1 | 0 | 0 | 0 |
+
+*Tabla: Lista de datos de actividad de clientes.*
+
+Usted busca evaluar la incidencia en el uso del programa y si efectivamente tiene impacto en la cantidad de viajes vendidos, a partir de un modelo Tobit tipo II. Defina el modelo utilizando $CanjeaMillas_{nt}$ como función de activación, $MillasDisp_{nt}$ como variable latente y las demás columnas como variables explicativas.
+
+**Solución:**
+
+a) El modelo logit, que en este caso es multiclase, define la probabilidad de que el individuo $n$ elija la opción $i$ en el periodo $t$ como:
+
+   $$P_{nit} = \frac{\exp(v_{nit})}{\sum_{j \in I} \exp(v_{njt})}$$
+
+   Luego la función Log-verosimilitud está dada por:
+
+   $$LL(\beta) = \sum_{i \in I} \sum_{t \in T} \sum_{n \in N_t} y_{nit} \cdot \ln(P_{nit})$$
+
+   donde $y_{nit} = 1$ si el individuo $n$ eligió la opción $i$ en el día $t$ y 0 en caso contrario.
+
+b) La matriz de varianzas-covarianzas debe ser una matriz de igual número de filas como de columnas, y por tratarse de que asumimos una distribución normal multivariada, la matriz es simétrica, en la cual la diagonal representa la varianza del error de cada alternativa y los elementos fuera de la diagonal representan la covarianza entre alternativas. Por lo que debe tener dimensión $I \times I$.
+
+   El modelo probit se puede aproximar tomando una muestra aleatoria de $R$ muestras de la componente estocástica de la utilidad $\varepsilon_{nit}$:
+
+   $$P_{nit} \approx \frac{1}{R} \sum_{r=1}^{R} \mathbb{1}[\varepsilon^r_{njt} - \varepsilon^r_{nit} < v_{nit} - v_{njt}, \forall j \neq i]$$
+
+c) Para modelar un Tobit tipo II es necesario definir las dos etapas. Sea $g$ el grupo de actividad al que pertenece cada individuo, entonces las etapas del Tobit se definen como:
+
+   **Etapa 1 - Ecuación de Selección:** La función de activación (si canjea millas o no) se activará solo cuando la utilidad del canje sea mayor a 0:
+
+   $$CanjeaMillas_{nt} = \begin{cases}
+   1 & \text{si } \sum_g \beta^{Canje}_g \cdot \mathbb{1}[n \in grupo_g] + \gamma^{Canje} \cdot Expiró_{nt} + \varepsilon_{n1} > 0 \\
+   0 & \text{en caso contrario}
+   \end{cases}$$
+
+   **Etapa 2 - Ecuación de Resultado:** Las millas generarán utilidades para los individuos cuando la selección sea positiva:
+
+   $$MillasDisp_{nt} = \begin{cases}
+   \sum_g \beta^{Millas}_g \cdot \mathbb{1}[n \in grupo_g] + \gamma^{Millas} \cdot Expiró_{nt} + \varepsilon_{n2} & \text{si } CanjeaMillas_{nt} = 1 \\
+   0 & \text{en caso contrario}
+   \end{cases}$$
+
+   donde $(\varepsilon_{n1}, \varepsilon_{n2})$ siguen una distribución normal bivariada con correlación $\rho$, lo que permite capturar la dependencia entre la decisión de canjear y el monto de millas disponibles.

@@ -74,3 +74,5 @@ pregunta-8
 pregunta-9
 pregunta-10
 pregunta-11
+pregunta-12
+pregunta-13
